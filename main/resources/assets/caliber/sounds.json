@@ -1,0 +1,43 @@
+{
+    "gun.pistol.shoot":
+    {
+        "category": "gun",
+        "subtitle": "Pistol Shot",
+        "sounds": [{ "name": "caliber:gun/pistol/shoot", "stream": true}]
+    },
+    
+    "gun.sniper.shoot":
+    {
+        "category": "gun",
+        "subtitle": "Sniper Shot",
+        "sounds": [{ "name": "caliber:gun/sniper/shoot", "stream": true}]
+    },
+    
+    "gun.rifle.shoot":
+    {
+        "category": "gun",
+        "subtitle": "Rifle Shot",
+        "sounds": [{ "name": "caliber:gun/rifle/shoot", "stream": true}]
+    },
+    
+    "reload.firemode":
+    {
+        "category": "reload",
+        "subtitle": "Toggle firemode",
+        "sounds": [{ "name": "caliber:reload/firemode", "stream": true}]
+    },
+    
+    "reload.riflereload":
+    {
+        "category": "reload",
+        "subtitle": "Reload Rifle",
+        "sounds": [{ "name": "caliber:reload/riflereload", "stream": true}]
+    },
+    
+    "reload.pistolreload":
+    {
+        "category": "reload",
+        "subtitle": "Pistol Reload",
+        "sounds": [{ "name": "caliber:reload/pistolreload", "stream": true}]
+    }
+}

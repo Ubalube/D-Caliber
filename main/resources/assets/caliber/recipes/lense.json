@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " # ",
+        "#G#",
+        " # "
+    ],
+   
+    "key":
+    {
+        
+        "#":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "G":
+        {
+            "item": "minecraft:glass"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:lense",
+        "count": 1
+    }
+}

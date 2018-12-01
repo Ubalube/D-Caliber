@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "WWW",
+        "W  "
+    ],
+   
+    "key":
+    {
+        
+        "W":
+        {
+            "item": "caliber:steel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:vectorstock",
+        "count": 1
+    }
+}

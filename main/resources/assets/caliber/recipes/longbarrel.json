@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "III",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:longbarrel",
+        "count": 1
+    }
+}

@@ -1,0 +1,5 @@
+entity.Villager.weaponseller=Gun Dealer
+item.vector.name=Vector .45 ACP
+item.vectormag.name=.45 ACP Magazine
+item.tec9.name=Minetratec Tec-9
+item.tecmag.name=9x19mm Parabellum Magazine

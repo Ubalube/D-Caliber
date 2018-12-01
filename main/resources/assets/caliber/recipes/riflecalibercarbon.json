@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "III",
+        "IT "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:carbonfibre"
+        },
+    
+        "T":
+        {
+            "item": "minecraft:tripwire_hook"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:riflecalibercarbon",
+        "count": 1
+    }
+}

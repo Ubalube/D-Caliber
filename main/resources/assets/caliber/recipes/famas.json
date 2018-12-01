@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        " CB",
+        "   "
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "caliber:ironsights"
+        },
+    
+        "C":
+        {
+            "item": "caliber:riflecalibercarbon"
+        },
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:famas",
+        "count": 1
+    }
+}

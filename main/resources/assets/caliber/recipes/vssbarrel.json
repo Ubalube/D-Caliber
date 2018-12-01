@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "III",
+        "  I"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:carbonfibre"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:vssbarrel",
+        "count": 1
+    }
+}

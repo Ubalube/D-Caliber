@@ -1,0 +1,17 @@
+{ 
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    {
+      "item": "minecraft:diamond",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "caliber:carbonfibre",
+    "data": 0
+  }
+}

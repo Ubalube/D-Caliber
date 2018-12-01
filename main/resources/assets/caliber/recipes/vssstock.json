@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "WWW",
+        "WIW"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "W":
+        {
+            "item": "minecraft:planks"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:vssstock",
+        "count": 1
+    }
+}
