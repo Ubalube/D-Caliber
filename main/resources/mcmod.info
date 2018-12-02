@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["Ubalube"],
   "credits": "Ubalube, SmellyModder",
-  "logoFile": "",
+  "logoFile": "icon.png",
   "screenshots": [],
   "dependencies": []
 }

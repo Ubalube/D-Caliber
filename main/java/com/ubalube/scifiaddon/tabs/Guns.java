@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class Guns extends CreativeTabs
 {
 	public Guns() {
-		super(Reference.MOD_ID);
+		super("Weapons");
 	}
 
 	@Override

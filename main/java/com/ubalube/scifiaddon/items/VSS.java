@@ -63,6 +63,17 @@ public class VSS extends Item implements IHasModel
 		ModItems.ITEMS.add(this);
 	}
 	
+	public VSS(String name, CreativeTabs tab, EntityPlayer p)
+	{
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(tab);
+		setMaxStackSize(1);
+		setMaxDamage(clipsize + 1);
+		
+		ModItems.ITEMS.add(this);
+	}
+	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
@@ -84,11 +95,11 @@ public class VSS extends Item implements IHasModel
 			{
 				if(itemstack.getItemDamage() >= clipsize)
 				{
-					if(playerIn.inventory.hasItemStack(new ItemStack(ModItems.VECTORAMMO)))
+					if(playerIn.inventory.hasItemStack(new ItemStack(ModItems.VSSMAG)))
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, 2.0F, 50);
 						itemstack.setItemDamage(-clipsize - 1);
-						playerIn.inventory.clearMatchingItems(ModItems.VECTORAMMO, 0, 1, null);
+						playerIn.inventory.clearMatchingItems(ModItems.VSSMAG, 0, 1, null);
 						playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.RELOAD_RIFLERELOAD, SoundCategory.MASTER, 1, 1);
 					}
@@ -142,7 +153,7 @@ public class VSS extends Item implements IHasModel
 		
 		
 		
-		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
+		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
 	@SideOnly(Side.CLIENT)

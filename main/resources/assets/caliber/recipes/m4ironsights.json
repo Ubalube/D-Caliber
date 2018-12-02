@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        " G ",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "G":
+        {
+            "item": "caliber:ironsights"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:m16ironsights",
+        "count": 1
+    }
+}

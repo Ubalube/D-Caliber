@@ -64,6 +64,7 @@ public class FamasF1 extends Item implements IHasModel
 		tooltip.add(TextFormatting.YELLOW + "Impact: " + TextFormatting.GREEN + ":::" + TextFormatting.RED + ":::::::");
 		tooltip.add(TextFormatting.YELLOW + "Range:  " + TextFormatting.GREEN + ":::::" + TextFormatting.RED + ":::::");
 		tooltip.add(TextFormatting.YELLOW + "Clipsize: " + TextFormatting.GREEN + "35");
+		
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
@@ -79,11 +80,11 @@ public class FamasF1 extends Item implements IHasModel
 			{
 				if(itemstack.getItemDamage() >= clipsize)
 				{
-					if(playerIn.inventory.hasItemStack(new ItemStack(ModItems.VECTORAMMO)))
+					if(playerIn.inventory.hasItemStack(new ItemStack(ModItems.M16AMMO)))
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, 2.0F, 50);
 						itemstack.setItemDamage(-clipsize - 1);
-						playerIn.inventory.clearMatchingItems(ModItems.VECTORAMMO, 0, 1, null);
+						playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
 						playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.RELOAD_RIFLERELOAD, SoundCategory.MASTER, 1, 1);
 					}
@@ -137,7 +138,7 @@ public class FamasF1 extends Item implements IHasModel
 		
 		
 		
-		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
+		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
 	@SideOnly(Side.CLIENT)

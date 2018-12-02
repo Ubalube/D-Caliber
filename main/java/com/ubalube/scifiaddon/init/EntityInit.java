@@ -4,6 +4,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.entity.Entity;
@@ -12,6 +13,11 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class EntityInit 
 {
+	
+	public static void registerEntities() 
+	{
+		registerEntity("soldier", EntitySoldier.class, Reference.ENTITY_SOLDIER, 50, 7326320, 17920);
+	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)
 	{

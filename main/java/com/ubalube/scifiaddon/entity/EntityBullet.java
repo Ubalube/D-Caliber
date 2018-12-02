@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.entity;
 
+import com.ubalube.scifiaddon.init.ModBlocks;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
@@ -8,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -40,6 +43,7 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
     @Override
     public void onEntityUpdate()
     {
+    	
         double speed = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
         if (!this.world.isRemote && (ticksExisted > range || speed < 0.01))
         {
@@ -71,9 +75,6 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         	
         }
         
-
-        if (!this.world.isRemote)
-            this.setDead();
     }
 
     @Override

@@ -1,5 +1,53 @@
 entity.Villager.weaponseller=Gun Dealer
+entity.Villager.gunsmith=Weapons dealer
 item.vector.name=Vector .45 ACP
 item.vectormag.name=.45 ACP Magazine
 item.tec9.name=Minetratec Tec-9
 item.tecmag.name=9x19mm Parabellum Magazine
+item.famas.name=Famas F1
+item.m16ammo.name= 5.56x45mm NATO Magazine
+item.vssvintorez.name=VSS Vintorez
+item.vssmag.name=9x39mm Magazine
+
+item.riflecaliber.name=Iron Rifle Caliber
+item.pistolcaliber.name=Iron Pistol Caliber
+
+item.m4.name=M16A4
+item.tactm4.name=Combat Rifle
+
+
+itemGroup.Gear=Diamond Caliber Gear
+itemGroup.Parts=Diamond Caliber Parts
+itemGroup.Weapons=Diamond Caliber Firearms
+
+item.riflecalibercarbon.name=Carbon Rifle Caliber
+item.pistolcalibercarbon.name=Carbon Pistol Caliber
+
+item.pso.name=PSO-1
+item.ironsights.name=Ironsights
+item.vectorstock.name=Vector Stock
+item.vssstock.name=VSS Stock
+item.vssbarrel.name=VSS Barrel
+item.shortbarrel.name=Short Barrel
+item.longbarrel.name=Long Barrel
+item.acog.name=Acog 4x32
+item.m16ironsights.name=Carry-Handle Ironsight
+item.m16a4stock.name=Standard Rifle Stock
+
+item.carbonfibre.name=Carbon Fibre
+item.steel.name=Steel Ingot
+item.lense.name=Optic Lense
+
+item.helmet_ranger.name=Ranger Helmet
+item.chest_ranger.name=Ranger Vest
+item.pants_ranger.name=Ranger Pants
+
+item.helmet_spec.name=Night Operator Helmet
+item.chest_spec.name=Night Operator Vest
+item.pants_spec.name=Night Operator Pants
+
+tile.crate.name=Weapon Case
+tile.sandbags.name=Sandbags
+tile.concretebrick.name=Concrete Bricks
+tile.barbedwire.name=Barbed Wire
+tile.steelore.name=Steel Ore

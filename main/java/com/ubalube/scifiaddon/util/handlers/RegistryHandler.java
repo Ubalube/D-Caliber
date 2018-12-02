@@ -55,7 +55,7 @@ public class RegistryHandler
 	public static void preInitRegistries() {
 		
 		EntityInit.registerProjectile();
-		
+		EntityInit.registerEntities();
 	}
 	
 	public static void preInitRegistriesOne() 

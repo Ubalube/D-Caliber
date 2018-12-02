@@ -142,7 +142,7 @@ public class KrissVector extends Item implements IHasModel
 		
 		
 		
-		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
+		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
 	@SideOnly(Side.CLIENT)

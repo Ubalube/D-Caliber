@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " II",
+        "III",
+        "II "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:m16a4stock",
+        "count": 1
+    }
+}

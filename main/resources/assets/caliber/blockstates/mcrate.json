@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:mcrate" },
+        "facing=west": { "model": "caliber:mcrate", "y": 90 },
+        "facing=north": { "model": "caliber:mcrate", "y": 180 },
+        "facing=east": { "model": "caliber:mcrate", "y": 270 }
+    }
+}

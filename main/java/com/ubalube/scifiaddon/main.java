@@ -5,11 +5,15 @@ import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.professions.ModProfessions;
 import com.ubalube.scifiaddon.proxy.CommonProxy;
+import com.ubalube.scifiaddon.tabs.Armor;
+import com.ubalube.scifiaddon.tabs.Decor;
 import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
+import com.ubalube.scifiaddon.world.WorldGen;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -33,6 +37,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
@@ -45,6 +50,8 @@ public class main
 	
 	public static final Guns gunTab = new Guns();
 	public static final Parts partTab = new Parts();
+	public static final Armor armorTab = new Armor();
+	public static final Decor decorTab = new Decor();
 	
 	@Instance
 	public static main instance;
@@ -64,6 +71,7 @@ public class main
 	public static void preinit(FMLPreInitializationEvent event)
 	{
 		RegistryHandler.preInitRegistries();
+		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 	}
 	
 	@SideOnly(Side.CLIENT)

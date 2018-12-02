@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 
 public class ArmorBaseSkin extends ArmorBase {
 	
+	//Credit to SunFlow
+	
 	private String armorTexturePath;
 	private String skinType;
 	

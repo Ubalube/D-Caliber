@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class Parts extends CreativeTabs
 {
 	public Parts() {
-		super(Reference.MOD_ID);
+		super("Parts");
 	}
 
 	@Override

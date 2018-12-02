@@ -1,7 +1,10 @@
 package com.ubalube.scifiaddon.util.handlers;
 
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
+import com.ubalube.scifiaddon.entity.render.RenderSoldier;
+
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
@@ -16,6 +19,15 @@ public class RenderHandler
 	
 	public static void registerEntityRenders()
 	{
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntitySoldier.class, new IRenderFactory<EntitySoldier>()
+		{
+			@Override
+			public Render<? super EntitySoldier> createRenderFor(RenderManager manager) 
+			{
+				return new RenderSoldier(manager);
+			}
+		});
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new IRenderFactory<EntityBullet>()
 		{

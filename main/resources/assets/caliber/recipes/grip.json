@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        " I ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:grip",
+        "count": 1
+    }
+}
