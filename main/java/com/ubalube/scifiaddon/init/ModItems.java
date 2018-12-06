@@ -3,19 +3,16 @@ package com.ubalube.scifiaddon.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ubalube.scifiaddon.items.VSS;
 import com.ubalube.scifiaddon.items.medical.Boosters;
 import com.ubalube.scifiaddon.items.medical.MedicalKit;
-import com.ubalube.scifiaddon.items.TactM4;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
-import com.ubalube.scifiaddon.items.FamasF1;
+import com.ubalube.scifiaddon.items.CGunAimingBase;
+import com.ubalube.scifiaddon.items.CGunBase;
 import com.ubalube.scifiaddon.items.ItemBase;
-import com.ubalube.scifiaddon.items.KrissVector;
-import com.ubalube.scifiaddon.items.M16A4;
-import com.ubalube.scifiaddon.items.Tec;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import net.minecraft.block.BlockPumpkin;
 import net.minecraft.client.gui.GuiIngame;
@@ -25,6 +22,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
@@ -43,24 +41,12 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	
-	//Vector .45 ACP
-	public static final Item VECTOR = new KrissVector("vector", main.gunTab);
+	
+	
+	//Ammmo
 	public static final Item VECTORAMMO = new ItemBase("vectormag", 64, main.gunTab);
-	
-	//M16A4
-	public static final Item M16 = new M16A4("m4", main.gunTab);
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
-	public static final Item TactM4 = new TactM4("tactm4", main.gunTab);
-	
-	//Famas F1
-	public static final Item FAMAS = new FamasF1("famas", main.gunTab);
-	
-	//VSS
-	public static final Item VSS = new VSS("vssvintorez", main.gunTab);
 	public static final Item VSSMAG = new ItemBase("vssmag", 64, main.gunTab);
-	
-	//Minetratec Tec-9
-	public static final Item TEC9 = new Tec("tec9", main.gunTab);
 	public static final Item TECAMMO = new ItemBase("tecmag", 64, main.gunTab);
 	
 	//Parts
@@ -95,12 +81,23 @@ public class ModItems
 	public static final Item MEDKIT = new MedicalKit("medkit", 3, CreativeTabs.COMBAT, 10, 100);
 	
 	//Armor
-	public static final Item RANGER_HELMET = new ArmorBaseSkin("helmet_ranger", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.HEAD);
-	public static final Item RANGER_CHEST = new ArmorBaseSkin("chest_ranger", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.CHEST);
-	public static final Item RANGER_PANTS = new ArmorBaseSkin("pants_ranger", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.FEET);
+	public static final Item RANGER_HELMET = new ArmorBaseSkin("helmet_ranger", "ranger_model_", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.HEAD);
+	public static final Item RANGER_CHEST = new ArmorBaseSkin("chest_ranger", "ranger_model_", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.CHEST);
+	public static final Item RANGER_PANTS = new ArmorBaseSkin("pants_ranger", "ranger_model_", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.FEET);
 	
-	public static final Item SPEC_HELMET = new ArmorBaseSkinNV("helmet_spec", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.HEAD);
-	public static final Item SPEC = new ArmorBaseSkin("chest_spec", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.CHEST);
-	public static final Item SPEC_PANTS = new ArmorBaseSkin("pants_spec", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.FEET);
+	public static final Item SPEC_HELMET = new ArmorBaseSkinNV("helmet_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.HEAD);
+	public static final Item SPEC = new ArmorBaseSkin("chest_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.CHEST);
+	public static final Item SPEC_PANTS = new ArmorBaseSkin("pants_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.FEET);
 	
+	//GUNS
+	//Types: 
+	//1 = Rifle | 2 = Pistol | 3 = Sniper
+	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
+	public static final Item VECTOR = new CGunBase("vector", main.gunTab, 8, 25, 8, 4, 8, 3.0F, 600, ModItems.VECTORAMMO, 1);
+	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.M16AMMO, 1);
+	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.M16AMMO, 1);
+	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.VECTOR, 1);
+	public static final Item VSS = new CGunBase("vssvintorez", main.gunTab, 12, 14, 12, 12, 12, 10.0F, 1000, ModItems.VSSMAG, 3);
+	public static final Item FAMAS = new CGunBase("famas", main.gunTab, 8, 35, 12, 4, 8, 4.5F, 500, ModItems.M16AMMO, 1);
+	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.5F, 300, ModItems.TECAMMO, 2);
 }

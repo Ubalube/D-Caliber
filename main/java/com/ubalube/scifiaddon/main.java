@@ -59,14 +59,6 @@ public class main
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
 	
-	public static ModItems ITEMS = new ModItems();
-	
-	@EventHandler
-	public static void PreInit(FMLPreInitializationEvent e) 
-	{
-		MinecraftForge.EVENT_BUS.register(ITEMS);
-	}
-	
 	@EventHandler
 	public static void preinit(FMLPreInitializationEvent event)
 	{
@@ -95,10 +87,11 @@ public class main
 		ModProfessions.associateCareersAndTrades();
 	}
 	
+	
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent e) 
 	{
-		
+		RegistryHandler.postInitRegistries();
 	}
 
 }

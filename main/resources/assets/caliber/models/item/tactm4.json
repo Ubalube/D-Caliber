@@ -385,11 +385,10 @@
 			"scale":  [ 1.3, 1.3, 1.3 ]
 		}
 	},
-	"overrides": [
+    "overrides": [
         {
             "predicate": {
-                "aiming": 1,
-                "aim": 1
+                "aiming": 1.0
             },
             "model": "caliber:item/tactm4_aiming"
         }

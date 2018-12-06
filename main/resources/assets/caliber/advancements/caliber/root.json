@@ -1,0 +1,29 @@
+{
+    "display": {
+        "title": {
+            "text": "Diamond Caliber",
+            "color": "aqua",
+            "bold": true,
+            "italic": true
+        },
+        "description": {
+            "text": "Thank you for downloading!",
+            "color": "yellow",
+            "italic": true
+        },
+        "icon": {
+            "item": "caliber:tactm4"
+        },
+        "frame": "task",
+        "hidden": false,
+        "background": "caliber:textures/blocks/sandbag.png"
+    },
+    "criteria": {
+        "firstime": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "rewards": {
+        "experience": 20
+    }
+}

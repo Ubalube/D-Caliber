@@ -1,0 +1,30 @@
+{
+    "display": {
+        "title": {
+            "text": "Tank Destroyer",
+            "color": "red"
+        },
+        "description": {
+            "text": "Destroy the Goliath",
+            "color": "yellow"
+        },
+        "icon": {
+            "item": "caliber:tactm4"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+    },
+    "parent": "caliber:caliber/root",
+    "criteria": {
+        "kill": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "caliber:goliath"
+                }
+            }
+        }
+    }
+}

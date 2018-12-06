@@ -7,7 +7,9 @@ import com.ubalube.scifiaddon.init.ModItems;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderZombie;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.IRangedAttackMob;
@@ -17,10 +19,19 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIFollow;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAIMoveTowardsTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
+import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.monster.AbstractSkeleton;
 import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityElderGuardian;
+import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
@@ -41,86 +52,167 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntitySoldier extends EntityMob
+public class EntityGoliath extends EntityMob
 {
-	private static final DataParameter<Integer> VARIANT = EntityDataManager.<Integer>createKey(EntitySoldier.class, DataSerializers.VARINT);
 	
-	public EntitySoldier(World worldIn) 
+	private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.RED, BossInfo.Overlay.NOTCHED_6)).setDarkenSky(true);
+	
+	public EntityGoliath(World worldIn) 
 	{
 		super(worldIn);
-		this.setSize(0.6F, 1.95F);
-		
+		this.setSize(5F, 4F);
+	}
+	
+	@Override
+	protected void updateAITasks() {
+		this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+		super.updateAITasks();
+	}
+	
+	public void setCustomNameTag(String name)
+    {
+        super.setCustomNameTag(name);
+        this.bossInfo.setName(this.getDisplayName());
+    }
+	
+	public void addTrackingPlayer(EntityPlayerMP player)
+    {
+        super.addTrackingPlayer(player);
+        this.bossInfo.addPlayer(player);
+    }
+
+    public void removeTrackingPlayer(EntityPlayerMP player)
+    {
+        super.removeTrackingPlayer(player);
+        this.bossInfo.removePlayer(player);
+    }
+	
+	@Override
+	public void onDeath(DamageSource cause) 
+	{
+		boolean flag = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this);
+		this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5.0F, flag);
+		super.onDeath(cause);
 	}
     
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1000.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(5.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.10D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1000.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+    }
+    
+    @Override
+    public boolean canBeHitWithPotion() {
+    	return false;
     }
     
 	@Override
 	protected void initEntityAI() 
 	{
-		this.tasks.addTask(4, new EntitySoldier.AIShoot(this));
+		this.tasks.addTask(2, new EntityGoliath.AIShoot(this));
+		this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, this.getAIMoveSpeed()));
+		this.tasks.addTask(3, new EntityGoliath.AIMoveTowards(this, this.getAIMoveSpeed(), 200, 200));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 	
-	@Nullable
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
-    {
-        this.setVariant(this.rand.nextInt(4));
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
-	
-	public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-        compound.setInteger("Variant", this.getVariant());
-    }
+	static class AIMoveTowards extends EntityAIMoveTowardsTarget
+	{
+		private EntityLivingBase targetEntity;
+		EntityCreature c;
+		float MoveToDistance;
+		private double movePosX;
+	    private double movePosY;
+	    private double movePosZ;
+	    private final double speed;
+		
+		public AIMoveTowards(EntityCreature creature, double speedIn, float targetMaxDistance, float moveDistance) 
+		{
+			super(creature, speedIn, targetMaxDistance);
+			c = creature;
+			MoveToDistance = moveDistance;
+			this.speed = speedIn;
+		}
+		
+		@Override
+		public boolean shouldExecute() 
+		{
+			
+			this.targetEntity = this.c.getAttackTarget();
+			
+			if(this.targetEntity == null)
+			{
+				return false;
+			}
+			else
+			{
+				if(this.targetEntity.getDistance(c) < MoveToDistance)
+				{
+					return true;
+				}
+				else
+				{
+					if(this.targetEntity.getDistance(c) > MoveToDistance)
+					{
+						return false;
+					}
+				}
+			}
+			
+			
+			return super.shouldExecute();
+		}
+		
+	    public boolean shouldContinueExecuting()
+	    {
+	        return !this.c.getNavigator().noPath() && this.targetEntity.isEntityAlive() && this.targetEntity.getDistanceSq(this.c) < (double)(this.MoveToDistance * this.MoveToDistance);
+	    }
 
-    
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-        this.setVariant(compound.getInteger("Variant"));
-    }
-	
-	protected void entityInit()
-    {
-        super.entityInit();
-        this.dataManager.register(VARIANT, Integer.valueOf(0));
-    }
-	
-	public int getVariant()
-    {
-        return MathHelper.clamp(((Integer)this.dataManager.get(VARIANT)).intValue(), 0, 4);
-    }
+	    /**
+	     * Reset the task's internal state. Called when this task is interrupted by another one
+	     */
+	    public void resetTask()
+	    {
+	        this.targetEntity = null;
+	    }
 
-    public void setVariant(int variant)
-    {
-        this.dataManager.set(VARIANT, Integer.valueOf(variant));
-    }
+	    /**
+	     * Execute a one shot task or start executing a continuous task
+	     */
+	    public void startExecuting()
+	    {
+	        this.c.getNavigator().tryMoveToXYZ(this.movePosX, this.movePosY, this.movePosZ, this.speed);
+	    }
+		
+	}
 	
     static class AIShoot extends EntityAIBase
     {
-        private final EntitySoldier e;
+        private final EntityGoliath e;
         private int attackStep;
         private int attackTime;
 
-        public AIShoot(EntitySoldier en)
+        public AIShoot(EntityGoliath en)
         {
             this.e = en;
             this.setMutexBits(3);

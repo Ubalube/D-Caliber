@@ -9,6 +9,8 @@ item.m16ammo.name= 5.56x45mm NATO Magazine
 item.vssvintorez.name=VSS Vintorez
 item.vssmag.name=9x39mm Magazine
 
+entity.goliath.name=Goliath MkIV
+
 item.riflecaliber.name=Iron Rifle Caliber
 item.pistolcaliber.name=Iron Pistol Caliber
 

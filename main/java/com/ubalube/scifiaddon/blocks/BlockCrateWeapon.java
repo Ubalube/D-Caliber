@@ -160,6 +160,7 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 		
 		return i;
 	}
+	
     
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {

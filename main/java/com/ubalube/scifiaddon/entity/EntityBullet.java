@@ -1,6 +1,8 @@
 package com.ubalube.scifiaddon.entity;
 
+import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
+import com.ubalube.scifiaddon.util.Reference;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -9,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,6 +52,11 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         {
             this.setDead();
         }
+        
+        if(this.ticksExisted >= ticksExisted / 2)
+    	{
+    		this.damage = this.damage / 2;
+    	}
         super.onEntityUpdate();
     }
     
@@ -64,14 +72,54 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         }
         if (result.typeOfHit == Type.ENTITY)
         {
+        	this.setDead();
             if(result.entityHit == this.thrower); 
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
-            world.spawnParticle(EnumParticleTypes.REDSTONE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            
+            if(result.entityHit instanceof EntityGoliath)
+            {
+            	world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            }
+            else
+            {
+            	world.spawnParticle(EnumParticleTypes.REDSTONE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            }
+            
             return;
         }
         
         if(result.typeOfHit == Type.BLOCK)
         {
+        	World w = getEntityWorld();
+        	BlockPos pos = result.getBlockPos();
+        	
+        	BlockPos hitLoc = result.getBlockPos();
+        	if(hitLoc == null)
+        	{
+        		return;
+        	}
+        	
+        	IBlockState hit = world.getBlockState(hitLoc);
+        	
+        	if(hit.getBlock() == Blocks.TALLGRASS || hit.getBlock() == Blocks.DOUBLE_PLANT || hit.getBlock() == Blocks.DEADBUSH 
+        			|| hit.getBlock() == Blocks.BEETROOTS || hit.getBlock() == Blocks.WHEAT || hit.getBlock() == Blocks.CARROTS || hit.getBlock() == Blocks.POTATOES
+        			|| hit.getBlock() == Blocks.MELON_STEM || hit.getBlock() == Blocks.PUMPKIN_STEM || hit.getBlock() == Blocks.LEAVES || hit.getBlock() == Blocks.REEDS)
+        	{
+        		//NOTHING
+        	}
+        	else
+        	{
+        		if(hit.getBlock() == Blocks.GLASS || hit.getBlock() == Blocks.GLASS_PANE || hit.getBlock() == Blocks.STAINED_GLASS || hit.getBlock() == Blocks.STAINED_GLASS_PANE
+        				|| hit.getBlock() == Blocks.ICE || hit.getBlock() == Blocks.FROSTED_ICE || hit.getBlock() == Blocks.PACKED_ICE)
+        		{
+        			w.setBlockToAir(hitLoc);
+        		}
+        		else
+        		{
+        			this.setDead();
+        		}
+        	}
+        	
         	
         }
         

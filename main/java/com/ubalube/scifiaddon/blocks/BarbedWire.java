@@ -34,6 +34,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -42,7 +43,7 @@ import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BarbedWire extends Block implements IHasModel, IShearable
+public class BarbedWire extends Block implements IHasModel
 {
 	
 	public BarbedWire(String name, Material material)
@@ -105,23 +106,14 @@ public class BarbedWire extends Block implements IHasModel, IShearable
 	        return true;
 	    }
 	    
-	    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
-	    {
-	        if (!worldIn.isRemote && stack.getItem() == Items.SHEARS)
-	        {
-	            player.addStat(StatList.getBlockStats(this));
-	            spawnAsEntity(worldIn, pos, new ItemStack(Item.getItemFromBlock(this), 1));
-	        }
-	        else
-	        {
-	            super.harvestBlock(worldIn, player, pos, state, te, stack);
-	        }
-	    }
-	    
-	    @Override public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos) { return true; }
 	    @Override
-	    public java.util.List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-	        return com.google.common.collect.Lists.newArrayList(new ItemStack(Item.getItemFromBlock(this)));
+	    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+	    		EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
+	    {
+	    	ItemStack item = playerIn.getHeldItem(hand);
+	    	
+	    	
+	    	return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	    }
 	
 	@Override

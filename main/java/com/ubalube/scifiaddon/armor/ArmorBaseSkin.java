@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.armor;
 
+import com.ubalube.scifiaddon.util.Reference;
+
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
@@ -7,6 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ArmorBaseSkin extends ArmorBase {
 	
@@ -15,10 +19,12 @@ public class ArmorBaseSkin extends ArmorBase {
 	private String armorTexturePath;
 	private String skinType;
 	
-	public ArmorBaseSkin(String name, ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipmentSlot) {
-		super(name, material, renderIndex, equipmentSlot);
-		this.setPaths(material.getName());
-	}
+	public ArmorBaseSkin(String name, String pathName, ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipmentSlot)
+    {
+        super(name, material, renderIndex, equipmentSlot);
+        this.armorTexturePath = Reference.MOD_ID + ":textures/models/armor/" + pathName;
+        this.skinType = "default";
+    }
 
 	
 	private void setPaths(final String input)
@@ -40,6 +46,7 @@ public class ArmorBaseSkin extends ArmorBase {
 		return this.armorTexturePath + this.skinType + "_layer_" + this.renderIndex + ".png";
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
 		if(itemStack != ItemStack.EMPTY && itemStack.getItem() instanceof ArmorBaseSkin) {

@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.armor;
 
+import com.ubalube.scifiaddon.util.Reference;
+
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
@@ -9,20 +11,25 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.GuiScreenEvent.PotionShiftEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ArmorBaseSkinNV extends ArmorBase {
 	
 	private String armorTexturePath;
 	private String skinType;
 	
-	public ArmorBaseSkinNV(String name, ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipmentSlot) {
-		super(name, material, renderIndex, equipmentSlot);
-		this.setPaths(material.getName());
-	}
+	public ArmorBaseSkinNV(String name, String pathName, ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipmentSlot)
+    {
+        super(name, material, renderIndex, equipmentSlot);
+        this.armorTexturePath = Reference.MOD_ID + ":textures/models/armor/" + pathName;
+        this.skinType = "default";
+    }
 
 	
 	private void setPaths(final String input)
@@ -51,6 +58,7 @@ public class ArmorBaseSkinNV extends ArmorBase {
 		return this.armorTexturePath + this.skinType + "_layer_" + this.renderIndex + ".png";
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
 		if(itemStack != ItemStack.EMPTY && itemStack.getItem() instanceof ArmorBaseSkinNV) {

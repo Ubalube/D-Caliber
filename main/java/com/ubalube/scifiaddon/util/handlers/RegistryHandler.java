@@ -1,18 +1,26 @@
 package com.ubalube.scifiaddon.util.handlers;
 
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.init.BiomeInit;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
+import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -52,6 +60,7 @@ public class RegistryHandler
 		}
 	}
 	
+	
 	public static void preInitRegistries() {
 		
 		EntityInit.registerProjectile();
@@ -66,6 +75,16 @@ public class RegistryHandler
 	public static void initRegistries()
 	{
 		SoundHandler.registerSounds();
+		BiomeInit.registerBiomes();
+		
+		//For the Goliath Spawn
+		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};
+		EntityRegistry.addSpawn(EntityGoliath.class, 1, 1, 1, EnumCreatureType.AMBIENT, spawnBiomes);
+	}
+	
+	public static  void postInitRegistries()
+	{
+		WorldType BADLANDS = new WorldTypeBadlands();
 	}
 	
 }

@@ -32,8 +32,10 @@ public class ModBlocks
 	public static final Block CRATE = new BlockCrateWeapon("crate", Material.SAND);
 	public static final Block MCRATE = new BlockCrateMedic("mcrate", Material.SAND);
 	
-	public static final Block SANDBAGS = new BlockBase("sandbags", Material.ROCK);
-	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK);
+	public static final Block SANDBAGS = new BlockBase("sandbags", Material.ROCK, 1.5F);
+	public static final Block ASPHALT = new BlockBase("asphalt", Material.ROCK, 1.5F);
+	public static final Block CONCRETEBRICKS = new BlockBase("concretebricks", Material.ROCK, 1.5F);
+	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
 	
 	public static final Block BARBEDWIRE = new BarbedWire("barbedwire", Material.WEB);
 	
