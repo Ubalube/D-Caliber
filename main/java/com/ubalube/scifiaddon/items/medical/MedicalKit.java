@@ -37,15 +37,19 @@ public class MedicalKit extends Item implements IHasModel
 	{
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		
-		playerIn.getCooldownTracker().setCooldown(this, Cooldown);
-		if(!worldIn.isRemote)
+		if(playerIn.getHealth() != playerIn.getMaxHealth())
 		{
-			if(playerIn.getHealth() != playerIn.getMaxHealth())
+			playerIn.getCooldownTracker().setCooldown(this, Cooldown);
+			if(!worldIn.isRemote)
 			{
 				playerIn.setHealth(playerIn.getHealth() + HealthFix);
+				
 			}
 			
+			playerIn.inventory.clearMatchingItems(ModItems.MEDKIT, 0, 1, null);
+			
 		}
+		
 		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 	}
 	

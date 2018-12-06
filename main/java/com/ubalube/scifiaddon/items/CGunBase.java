@@ -45,7 +45,7 @@ public class CGunBase extends Item implements IHasModel
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
-		setMaxDamage(clipsize);
+		
 		
 		this.Firerate = fireRate;
 		this.clipsize = ammocap;
@@ -57,6 +57,8 @@ public class CGunBase extends Item implements IHasModel
 		this.ammo = ammunition;
 		
 		this.type = guntype;
+		
+		setMaxDamage(clipsize);
 		
 		ModItems.ITEMS.add(this);
 	}
@@ -90,30 +92,26 @@ public class CGunBase extends Item implements IHasModel
 			nbt = new NBTTagCompound();
 		}
 		
+		if(!nbt.hasKey("firerate"))
+		{
+			nbt.setInteger("firerate", SingleFiremode);
+		}
+		
 		nbt = nbt.getCompoundTag("firerate");
-		
-		if(nbt.hasKey("firerate"))
-		{
-			firemode = nbt.getInteger("firerate");
-		}
-		
-		if(nbt.getInteger("firerate") != SingleFiremode || nbt.getInteger("firerate") != AutoFiremode)
-		{
-			nbt.setInteger("firetate", SingleFiremode);
-		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			if(!worldIn.isRemote)
 			{
-				if(nbt.getInteger("firerate") == SingleFiremode)
-				{
-					nbt.setInteger("firetate", AutoFiremode);
-				}
-				else
-				{
-					nbt.setInteger("firetate", SingleFiremode);
-				}
+					if(nbt.getInteger("firerate") == SingleFiremode)
+					{
+						nbt.setInteger("firerate", AutoFiremode);
+					}
+					else
+					{
+						nbt.setInteger("firerate", SingleFiremode);
+					}
+				
 				itemstack.setTagInfo("firerate", nbt);
 				
 			}
@@ -124,7 +122,7 @@ public class CGunBase extends Item implements IHasModel
 			{
 				if(itemstack.isItemDamaged())
 				{
-					if(itemstack.getItemDamage() >= clipsize)
+					if(itemstack.getItemDamage() == clipsize)
 					{
 						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
 						{
@@ -136,11 +134,11 @@ public class CGunBase extends Item implements IHasModel
 					}
 					else
 					{
-						playerIn.getCooldownTracker().setCooldown(this, firemode);
+						playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 						if (!worldIn.isRemote)
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
-							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
 							
@@ -152,11 +150,11 @@ public class CGunBase extends Item implements IHasModel
 				else
 				{
 					//First Bullet
-					playerIn.getCooldownTracker().setCooldown(this, firemode);
+					playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 					if(!worldIn.isRemote)
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
-						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
+						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						
@@ -170,14 +168,13 @@ public class CGunBase extends Item implements IHasModel
 			{
 				
 				//Creative Move
-				playerIn.getCooldownTracker().setCooldown(this, firemode);
+				playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 				if(!worldIn.isRemote)
 				{
 					EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
-					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
+					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
-					
 				}
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
 				

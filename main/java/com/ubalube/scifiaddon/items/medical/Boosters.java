@@ -41,16 +41,21 @@ public class Boosters extends Item implements IHasModel
 	{
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		
-		playerIn.getCooldownTracker().setCooldown(this, Cooldown);
-		if(!worldIn.isRemote)
+		if(playerIn.getHealth() != playerIn.getMaxHealth())
 		{
-			if(playerIn.getHealth() != playerIn.getMaxHealth())
+			playerIn.getCooldownTracker().setCooldown(this, Cooldown);
+			if(!worldIn.isRemote)
 			{
 				playerIn.addPotionEffect(new PotionEffect(MobEffects.SPEED, Multiplier, 1));
 				playerIn.setHealth(playerIn.getHealth() + HealthFix);
 			}
 			
+			playerIn.inventory.clearMatchingItems(ModItems.PILLS, 0, 1, null);
+			
+			
 		}
+		
+		
 		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 	}
 	

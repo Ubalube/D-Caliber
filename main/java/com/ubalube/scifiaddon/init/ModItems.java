@@ -10,6 +10,7 @@ import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.CRangefinder;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
@@ -79,6 +80,9 @@ public class ModItems
 	//Medical
 	public static final Item PILLS = new Boosters("pills", 3, CreativeTabs.COMBAT, 2, 50, 2400);
 	public static final Item MEDKIT = new MedicalKit("medkit", 3, CreativeTabs.COMBAT, 10, 100);
+	
+	//Objects
+	public static final Item RANGEFINDER = new CRangefinder("rangefinder", main.gunTab);
 	
 	//Armor
 	public static final Item RANGER_HELMET = new ArmorBaseSkin("helmet_ranger", "ranger_model_", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.HEAD);

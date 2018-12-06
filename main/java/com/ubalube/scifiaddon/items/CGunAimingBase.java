@@ -59,7 +59,6 @@ public class CGunAimingBase extends Item implements IHasModel
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
-		setMaxDamage(clipsize);
 		
 		this.Firerate = fireRate;
 		this.clipsize = ammocap;
@@ -69,6 +68,8 @@ public class CGunAimingBase extends Item implements IHasModel
 		this.damage = bulletDamage;
 		this.range = bulletDuration;
 		this.ammo = ammunition;
+		
+		setMaxDamage(clipsize);
 		
 		this.type = guntype;
 		
@@ -161,7 +162,7 @@ public class CGunAimingBase extends Item implements IHasModel
 			{
 				if(itemstack.isItemDamaged())
 				{
-					if(itemstack.getItemDamage() >= clipsize)
+					if(itemstack.getItemDamage() == clipsize)
 					{
 						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
 						{
@@ -179,7 +180,7 @@ public class CGunAimingBase extends Item implements IHasModel
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 							worldIn.spawnEntity(entity);
-							itemstack.setItemDamage(itemstack.getItemDamage() - 1);
+							itemstack.damageItem(1, playerIn);
 							
 						}
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -195,7 +196,7 @@ public class CGunAimingBase extends Item implements IHasModel
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 						worldIn.spawnEntity(entity);
-						itemstack.setItemDamage(itemstack.getItemDamage() - 1);
+						itemstack.damageItem(1, playerIn);
 						
 					}
 					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -213,8 +214,7 @@ public class CGunAimingBase extends Item implements IHasModel
 					EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 					worldIn.spawnEntity(entity);
-					itemstack.setItemDamage(itemstack.getItemDamage() - 1);
-					
+					itemstack.damageItem(1, playerIn);
 				}
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
 				
