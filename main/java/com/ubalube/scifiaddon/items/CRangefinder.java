@@ -45,7 +45,6 @@ import scala.reflect.internal.Trees.Modifiers;
 
 public class CRangefinder extends Item implements IHasModel
 {
-	
 	public CRangefinder(String name, CreativeTabs tab) 
 	{
 		setUnlocalizedName(name);
@@ -99,12 +98,19 @@ public class CRangefinder extends Item implements IHasModel
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
-	@SubscribeEvent
+    @SubscribeEvent
     public static void onFOVUpdate(FOVUpdateEvent event) {
         EntityPlayer player = event.getEntity();
         if (player.getActiveItemStack().getItem() instanceof CRangefinder) 
         {
-            event.setNewfov(0.1F);
+            ItemStack stack = player.getActiveItemStack();
+            NBTTagCompound nbt = stack.getTagCompound();
+            
+            if(nbt.getBoolean("ZOOMING"))
+            {
+                event.setNewfov(10.0F);
+            }
+            
         }
     }
 	
@@ -112,13 +118,15 @@ public class CRangefinder extends Item implements IHasModel
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
-		NBTTagCompound nbt = checkNBTTags(stack);
-        float j = nbt.getBoolean("ADS") ? 1.0F : 0.0F;
-        
-        if(j == 1.0F)
+		
+		NBTTagCompound nbt = stack.getTagCompound();
+        if(nbt == null)
         {
-        	playerIn.setActiveHand(handIn);
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
         }
+        
+        nbt.setBoolean("ZOOMING", !nbt.getBoolean("ZOOMING"));
         
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
