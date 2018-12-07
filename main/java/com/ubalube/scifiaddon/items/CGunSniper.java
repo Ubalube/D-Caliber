@@ -15,14 +15,15 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFishingRod;
@@ -37,20 +38,35 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.FOVUpdateEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.reflect.internal.Trees.Modifiers;
 
-public class CRangefinder extends Item implements IHasModel
+public class CGunSniper extends Item implements IHasModel
 {
-	public CRangefinder(String name, CreativeTabs tab) 
+	int firerate;
+	int clipsize;
+	int ReloadTime;
+	float damage;
+	int range;
+	Item ammo;
+	int type;
+	
+	public CGunSniper(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, float bulletDamage, int bulletDuration, Item ammunition) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
+		
+		this.clipsize = ammocap;
+		this.ReloadTime = reloadtm;
+		this.damage = bulletDamage;
+		this.range = bulletDuration;
+		this.ammo = ammunition;
+		this.firerate = fireRate;
+		
+		setMaxDamage(clipsize);
 		
 		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
@@ -87,9 +103,9 @@ public class CRangefinder extends Item implements IHasModel
 	{
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
-			tooltip.add(TextFormatting.YELLOW + "Controls:");
-			tooltip.add(TextFormatting.AQUA + "LEFT CLICK - Aim");
-			tooltip.add(TextFormatting.AQUA + "RIGHT CLICK - Zoom in/out");
+			tooltip.add(TextFormatting.YELLOW + "Impact: " + TextFormatting.GREEN + damage);
+			tooltip.add(TextFormatting.YELLOW + "Range:  " + TextFormatting.GREEN + range);
+			tooltip.add(TextFormatting.YELLOW + "Clipsize: " + TextFormatting.GREEN + clipsize);
 		}
 		else
 		{
@@ -99,14 +115,81 @@ public class CRangefinder extends Item implements IHasModel
 	}
 	
 	@Override
+	public EnumAction getItemUseAction(ItemStack stack)
+    {
+        return EnumAction.BOW;
+    }
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
 		
-        
-		return super.onItemRightClick(worldIn, playerIn, handIn);
+		ItemStack itemstack = playerIn.getHeldItem(handIn);
+		{
+			if (!playerIn.capabilities.isCreativeMode)
+			{
+				if(itemstack.isItemDamaged())
+				{
+					if(itemstack.getItemDamage() == clipsize)
+					{
+						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
+						{
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+							itemstack.setItemDamage(-clipsize);
+							playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
+							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+						}
+					}
+					else
+					{
+						playerIn.getCooldownTracker().setCooldown(this, firerate);
+						if (!worldIn.isRemote)
+						{
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+							worldIn.spawnEntity(entity);
+							itemstack.damageItem(1, playerIn);
+							
+						}
+						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+					}
+					
+				}
+				else
+				{
+					//First Bullet
+					playerIn.getCooldownTracker().setCooldown(this, firerate);
+					if(!worldIn.isRemote)
+					{
+						EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+						worldIn.spawnEntity(entity);
+						itemstack.damageItem(1, playerIn);
+						
+					}
+					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+					
+				}
+			}
+			
+			else
+			{
+				
+				//Creative Move
+				playerIn.getCooldownTracker().setCooldown(this, firerate);
+				if(!worldIn.isRemote)
+				{
+					EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+					worldIn.spawnEntity(entity);
+					itemstack.damageItem(1, playerIn);
+				}
+				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+				
+			}
+		}
+		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
-	
-	
 	
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 

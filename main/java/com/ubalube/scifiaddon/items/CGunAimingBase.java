@@ -15,13 +15,16 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
+import akka.event.Logging.Debug;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFishingRod;
@@ -120,6 +123,12 @@ public class CGunAimingBase extends Item implements IHasModel
 	}
 	
 	@Override
+	public EnumAction getItemUseAction(ItemStack stack)
+    {
+        return EnumAction.BOW;
+    }
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
 		int firemode = Firerate;
@@ -139,6 +148,7 @@ public class CGunAimingBase extends Item implements IHasModel
 		
 		nbt = nbt.getCompoundTag("firerate");
 		
+		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			if(!worldIn.isRemote)
@@ -151,6 +161,7 @@ public class CGunAimingBase extends Item implements IHasModel
 					{
 						nbt.setInteger("firerate", SingleFiremode);
 					}
+					System.out.println("GUN FIREMODE");
 				
 				itemstack.setTagInfo("firerate", nbt);
 				
@@ -181,6 +192,7 @@ public class CGunAimingBase extends Item implements IHasModel
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
+							System.out.println("GUN SHOOTING");
 							
 						}
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -197,6 +209,7 @@ public class CGunAimingBase extends Item implements IHasModel
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
+						System.out.println("GUN SHOOTING");
 						
 					}
 					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -215,6 +228,7 @@ public class CGunAimingBase extends Item implements IHasModel
 					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
+					System.out.println("GUN SHOOTING");
 				}
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
 				

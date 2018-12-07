@@ -5,7 +5,9 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSword;
 
 public class ItemBase extends Item implements IHasModel
 {
