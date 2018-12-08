@@ -40,4 +40,7 @@ public class ModBlocks
 	public static final Block BARBEDWIRE = new BarbedWire("barbedwire", Material.WEB);
 	
 	public static final Block STEELORE = new BlockOre("steelore", Material.ROCK, ModItems.STEEL);
+	
+	public static final Block ASPHALT_POLISHED = new BlockBase("asphalt_polished", Material.ROCK, 1.5F);
+	public static final Block ASPHALT_POLISHED_CRACKED = new BlockBase("asphalt_polished_cracked", Material.ROCK, 1.5F);
 }
