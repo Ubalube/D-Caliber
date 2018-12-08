@@ -10,6 +10,7 @@ import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.items.CRangefinder;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.util.Reference;
@@ -101,7 +102,11 @@ public class ModItems
 	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.M16AMMO, 1);
 	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.M16AMMO, 1);
 	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 600, ModItems.VECTOR, 1);
-	public static final Item VSS = new CGunBase("vssvintorez", main.gunTab, 12, 14, 12, 12, 12, 10.0F, 1000, ModItems.VSSMAG, 3);
 	public static final Item FAMAS = new CGunBase("famas", main.gunTab, 8, 35, 12, 4, 8, 4.5F, 500, ModItems.M16AMMO, 1);
 	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.5F, 300, ModItems.TECAMMO, 2);
+	
+	//Snipers
+	public static final Item VSS = new CGunSniper("vssvintorez", main.gunTab, 12, 12, 12, 12, 800, ModItems.VSSMAG);
+	public static final Item M24 = new CGunSniper("m24", main.gunTab, 20, 12, 30, 12, 1000, ModItems.VSSMAG);
 }
+
