@@ -33,6 +33,12 @@ public class ModelSoldier extends ModelBiped {
 	    {
 	        super(modelSize, 0.0F, 64, p_i1168_2_ ? 32 : 64);
 	    }
+	    
+	@Override
+	protected EnumHandSide getMainHand(Entity entityIn) 
+	{
+		return EnumHandSide.RIGHT;
+	}
     
     @Override
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,

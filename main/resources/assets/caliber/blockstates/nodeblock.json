@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:nodeblock" },
+        "facing=west": { "model": "caliber:nodeblock", "y": 90 },
+        "facing=north": { "model": "caliber:nodeblock", "y": 180 },
+        "facing=east": { "model": "caliber:nodeblock", "y": 270 }
+    }
+}

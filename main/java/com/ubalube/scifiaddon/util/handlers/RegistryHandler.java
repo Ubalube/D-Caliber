@@ -7,6 +7,8 @@ import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
+import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
+import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
 
 import net.minecraft.block.Block;
@@ -65,6 +67,9 @@ public class RegistryHandler
 		
 		EntityInit.registerProjectile();
 		EntityInit.registerEntities();
+		
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 	}
 	
 	public static void preInitRegistriesOne() 

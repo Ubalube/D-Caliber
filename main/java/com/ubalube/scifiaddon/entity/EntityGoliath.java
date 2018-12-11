@@ -76,6 +76,7 @@ public class EntityGoliath extends EntityMob
 	public EntityGoliath(World worldIn) 
 	{
 		super(worldIn);
+		
 		this.setSize(5F, 4F);
 	}
 	
@@ -292,10 +293,9 @@ public class EntityGoliath extends EntityMob
 
                         for (int i = 0; i < 1; ++i)
                         {
-                        	World w = this.e.getEntityWorld();
-                        	EntityBullet b = new EntityBullet(w, this.e, 3.0F, 1000);
-                            b.shoot(this.e, this.e.rotationPitch, this.e.rotationYawHead, 0.0F, 1.5F, 0.0F);
-                            w.spawnEntity(b);
+                        	EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.e.world, this.e, d1 + this.e.getRNG().nextGaussian() * (double)f, d2, d3 + this.e.getRNG().nextGaussian() * (double)f);
+                            entitysmallfireball.posY = this.e.posY + (double)(this.e.height / 2.0F) + 0.5D;
+                            this.e.world.spawnEntity(entitysmallfireball);
                         }
                     }
                 }

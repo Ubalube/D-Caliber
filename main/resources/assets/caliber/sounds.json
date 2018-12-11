@@ -39,5 +39,23 @@
         "category": "reload",
         "subtitle": "Pistol Reload",
         "sounds": [{ "name": "caliber:reload/pistolreload", "stream": false}]
+    },
+    
+    "gun.glockshoot":
+    {
+        "category": "gun",
+        "subtitle": "G17 Shot",
+        "sounds": [{ "name": "caliber:gun/glock_shoot", "stream": false}]
+    },
+    
+    "gun.elcovertshoot":
+    {
+        "category": "gun",
+        "subtitle": "El Covert Shot",
+        "sounds": [{ "name": "caliber:gun/elcovert_shoot", "stream": false}]
+    },
+    "hostile_lands": 
+    {
+    "sounds": [{"name": "caliber:music/hostile_lands", "stream": true}]
     }
 }

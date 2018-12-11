@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenCustomStructures implements IWorldGenerator
 {
-	public static final WorldGenStructures COMPOUND = new WorldGenStructures("compound");
+	public static final WorldGenStructures CHECKPOINT = new WorldGenStructures("checkpoint");
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -38,7 +38,7 @@ public class WorldGenCustomStructures implements IWorldGenerator
 			
 		case 0:
 			
-			generateStructure(COMPOUND, world, random, chunkX, chunkZ, 25, ModBlocks.ASPHALT, BiomePlains.class);
+			generateStructure(CHECKPOINT, world, random, chunkX, chunkZ, 100, Blocks.GRASS, BiomePlains.class);
 			
 			break;
 			

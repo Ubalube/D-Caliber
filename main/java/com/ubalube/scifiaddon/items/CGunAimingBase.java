@@ -23,10 +23,12 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemElytra;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -51,12 +53,12 @@ public class CGunAimingBase extends Item implements IHasModel
 	int ReloadTime;
 	int AutoFiremode;
 	int SingleFiremode;
-	float damage;
+	int damage;
 	int range;
 	Item ammo;
 	int type;
 	
-	public CGunAimingBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
+	public CGunAimingBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, int bulletDamage, int bulletDuration, Item ammunition, int guntype) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -148,7 +150,6 @@ public class CGunAimingBase extends Item implements IHasModel
 		
 		nbt = nbt.getCompoundTag("firerate");
 		
-		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			if(!worldIn.isRemote)
@@ -179,7 +180,7 @@ public class CGunAimingBase extends Item implements IHasModel
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							itemstack.setItemDamage(-clipsize);
-							playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
+							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
 						}
 					}

@@ -10,6 +10,7 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,18 +35,16 @@ public class CGunBase extends Item implements IHasModel
 	int ReloadTime;
 	int AutoFiremode;
 	int SingleFiremode;
-	float damage;
+	int damage;
 	int range;
 	Item ammo;
-	int type;
 	
-	public CGunBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
+	public CGunBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, int bulletDamage, int bulletDuration, Item ammunition) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
-		
 		
 		this.Firerate = fireRate;
 		this.clipsize = ammocap;
@@ -55,8 +54,6 @@ public class CGunBase extends Item implements IHasModel
 		this.damage = bulletDamage;
 		this.range = bulletDuration;
 		this.ammo = ammunition;
-		
-		this.type = guntype;
 		
 		setMaxDamage(clipsize);
 		
@@ -128,7 +125,7 @@ public class CGunBase extends Item implements IHasModel
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							itemstack.setItemDamage(-clipsize);
-							playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
+							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
 						}
 					}

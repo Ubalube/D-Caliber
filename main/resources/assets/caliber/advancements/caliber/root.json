@@ -4,7 +4,8 @@
             "text": "Diamond Caliber",
             "color": "aqua",
             "bold": true,
-            "italic": true
+            "italic": true,
+            "obfuscated": false
         },
         "description": {
             "text": "Thank you for downloading!",
@@ -14,7 +15,9 @@
         "icon": {
             "item": "caliber:tactm4"
         },
-        "frame": "task",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
         "hidden": false,
         "background": "caliber:textures/blocks/sandbag.png"
     },

@@ -47,12 +47,12 @@ public class CGunSniper extends Item implements IHasModel
 	int firerate;
 	int clipsize;
 	int ReloadTime;
-	float damage;
+	int damage;
 	int range;
 	Item ammo;
 	int type;
 	
-	public CGunSniper(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, float bulletDamage, int bulletDuration, Item ammunition) 
+	public CGunSniper(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int bulletDamage, int bulletDuration, Item ammunition) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -136,7 +136,7 @@ public class CGunSniper extends Item implements IHasModel
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							itemstack.setItemDamage(-clipsize);
-							playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
+							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
 						}
 					}

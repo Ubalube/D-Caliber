@@ -78,6 +78,11 @@ public class EntitySoldier extends EntityMob
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 	
+    @Override
+    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+    	this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.COMBATRIFLE));
+    }
+	
 	@Nullable
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
@@ -201,7 +206,7 @@ public class EntitySoldier extends EntityMob
                         for (int i = 0; i < 1; ++i)
                         {
                         	World w = this.e.getEntityWorld();
-                        	EntityBullet b = new EntityBullet(w, this.e, 3.0F, 1000);
+                        	EntityBullet b = new EntityBullet(w, this.e, 5, 1000);
                             b.shoot(this.e, this.e.rotationPitch, this.e.rotationYawHead, 0.0F, 1.5F, 0.0F);
                             w.spawnEntity(b);
                         }

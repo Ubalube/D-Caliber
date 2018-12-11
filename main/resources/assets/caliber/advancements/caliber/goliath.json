@@ -2,23 +2,25 @@
     "display": {
         "title": {
             "text": "Tank Destroyer",
-            "color": "red"
+            "color": "light_purple",
+            "bold": true
         },
         "description": {
-            "text": "Destroy the Goliath",
-            "color": "yellow"
+            "text": "Defeat the Goliath",
+            "color": "white",
+            "bold": false,
+            "italic": false
         },
         "icon": {
-            "item": "caliber:tactm4"
+            "item": "caliber:m24"
         },
         "frame": "challenge",
         "show_toast": true,
         "announce_to_chat": true,
-        "hidden": false,
+        "hidden": false
     },
-    "parent": "caliber:caliber/root",
     "criteria": {
-        "kill": {
+        "Killed": {
             "trigger": "minecraft:player_killed_entity",
             "conditions": {
                 "entity": {
@@ -26,5 +28,9 @@
                 }
             }
         }
-    }
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "parent": "caliber:caliber/root"
 }

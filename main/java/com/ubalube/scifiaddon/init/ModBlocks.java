@@ -7,8 +7,12 @@ import com.ubalube.scifiaddon.blocks.Airdrop;
 import com.ubalube.scifiaddon.blocks.BarbedWire;
 import com.ubalube.scifiaddon.blocks.BlockBase;
 import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
+import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
+import com.ubalube.scifiaddon.blocks.BlockFan;
 import com.ubalube.scifiaddon.blocks.BlockOre;
+import com.ubalube.scifiaddon.blocks.NodeBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.material.Material;
@@ -31,6 +35,10 @@ public class ModBlocks
 	
 	public static final Block CRATE = new BlockCrateWeapon("crate", Material.SAND);
 	public static final Block MCRATE = new BlockCrateMedic("mcrate", Material.SAND);
+	public static final Block LCRATE = new BlockCrateSupplies("lcrate", Material.SAND);
+	
+	public static final Block FAN = new BlockFan("fan", Material.IRON, 2.0F);
+	public static final Block NODEBLOCK = new NodeBlock("nodeblock", Material.ROCK, 10000.0F);
 	
 	public static final Block SANDBAGS = new BlockBase("sandbags", Material.ROCK, 1.5F);
 	public static final Block ASPHALT = new BlockBase("asphalt", Material.ROCK, 1.5F);

@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.entity;
 
+import java.util.Random;
+
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.util.Reference;
@@ -12,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,15 +30,15 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBullet extends EntityThrowable implements IEntityAdditionalSpawnData
 {
-    public float damage;
-    public int range;
-
+    int damage;
+    int range;
+    
     public EntityBullet(World worldIn)
     {
         super(worldIn);
     }
 
-    public EntityBullet(World worldIn, EntityLivingBase throwerIn, float damage, int r)
+    public EntityBullet(World worldIn, EntityLivingBase throwerIn, int damage, int r)
     {
         super(worldIn, throwerIn);
         this.damage = damage;
@@ -63,19 +66,18 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
     int x = (int) this.posX;
     int y = (int) this.posY;
     int z = (int) this.posZ;
-    @Override
+    
     protected void onImpact(RayTraceResult result)
     {
-        if (result == null || isDead)
-        {
-        	
-        }
+    	
+    	Random rand = new Random();
+    	
         if (result.typeOfHit == Type.ENTITY)
         {
-        	this.setDead();
-            if(result.entityHit == this.thrower); 
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
-            
+        	
+        	if(result.entityHit == this.thrower); 
+        	result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)damage);
+        	
             if(result.entityHit instanceof EntityGoliath)
             {
             	world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
@@ -85,7 +87,9 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
             	world.spawnParticle(EnumParticleTypes.REDSTONE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
             }
             
-            return;
+            if (!this.world.isRemote)
+                this.setDead();
+            
         }
         
         if(result.typeOfHit == Type.BLOCK)
@@ -135,15 +139,15 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
     public void writeEntityToNBT(NBTTagCompound compound)
     {
         super.writeEntityToNBT(compound);
-        compound.setFloat("Damage", damage);
-        compound.setFloat("Damage", damage);
+        compound.setInteger("Damage", damage);
+        compound.setInteger("Damage", damage);
     }
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound)
     {
         super.readEntityFromNBT(compound);
-        this.damage = compound.getFloat("Damage");
+        this.damage = compound.getInteger("Damage");
     }
 
     @Override

@@ -19,7 +19,6 @@ public class RenderSoldier extends RenderBiped<EntitySoldier>{
 	
 	public RenderSoldier(RenderManager manager) {
 		super(manager, new ModelSoldier(), 0.3F);
-		
 	}
 	
 	protected void applyRotations(EntitySoldier entityLiving, float p_77043_2_, float rotationYaw, float PartialTicks ) {
