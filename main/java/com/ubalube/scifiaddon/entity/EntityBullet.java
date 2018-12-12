@@ -76,7 +76,11 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         {
         	
         	if(result.entityHit == this.thrower); 
-        	result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)damage);
+        	else
+        	{
+        		result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)damage);s
+        	}
+        	
         	
             if(result.entityHit instanceof EntityGoliath)
             {

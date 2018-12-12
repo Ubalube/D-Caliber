@@ -1,0 +1,46 @@
+{
+	"__comment": "Designed by Sgeorge1970 with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"texture": "caliber:blocks/lab/laser"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box1",
+			"from": [ 0, 2, 2 ],
+			"to": [ 16, 14, 14 ],
+			"faces": {
+				"down": { "uv": [ 0, 2, 16, 14 ], "texture": "#texture" },
+				"up": { "uv": [ 0, 2, 16, 14 ], "texture": "#texture" },
+				"north": { "uv": [ 0, 2, 16, 14 ], "texture": "#texture" },
+				"south": { "uv": [ 0, 2, 16, 14 ], "texture": "#texture" },
+				"west": { "uv": [ 2, 2, 14, 14 ], "texture": "#texture" },
+				"east": { "uv": [ 2, 2, 14, 14 ], "texture": "#texture" }
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale":  [ 0.3, 0.3, 0.3 ]
+		},
+		"thirdperson_lefthand": {
+			"scale":  [ 0.3, 0.3, 0.3 ]
+		},
+		"firstperson_righthand": {
+			"translation":  [ 0, 0, -1.391 ],
+			"scale":  [ 1.0565, 0.5, 0.5 ]
+		},
+		"firstperson_lefthand": {
+			"translation":  [ 0, 0, -1.391 ],
+			"scale":  [ 1.0565, 0.5, 0.5 ]
+		},
+		"gui": {
+			"scale":  [ 0.9739, 0.3, 0.3 ]
+		},
+		"ground": {
+			"scale":  [ 1.0782, 0.3, 0.3 ]
+		},
+		"fixed": {
+			"scale":  [ 1.3129, 0.4434, 0.4434 ]
+		}
+	}
+}

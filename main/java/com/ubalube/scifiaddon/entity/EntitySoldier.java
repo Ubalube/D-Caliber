@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.entity;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import com.ubalube.scifiaddon.init.ModItems;
@@ -17,7 +19,11 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIFollow;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIOpenDoor;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.AbstractSkeleton;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -36,6 +42,7 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -62,6 +69,28 @@ public class EntitySoldier extends EntityMob
 		this.setSize(0.6F, 1.95F);
 		
 	}
+	
+	@Override
+    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
+    {
+    	int d = Math.round(difficulty.getClampedAdditionalDifficulty()*3f);
+    	this.addGear(d);
+    } 
+	
+	protected void addGear(int difficulty){
+		Random r = new Random();
+		Item weapon = null;
+		switch (r.nextInt(2)) {
+		case 0:
+			weapon = ModItems.VECTOR;
+			break;
+		default:
+			weapon = ModItems.M4;
+			break;
+		}
+		if (weapon != null) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(weapon));
+        
+    }
     
     protected void applyEntityAttributes()
     {
@@ -75,18 +104,18 @@ public class EntitySoldier extends EntityMob
 	protected void initEntityAI() 
 	{
 		this.tasks.addTask(4, new EntitySoldier.AIShoot(this));
+		this.tasks.addTask(3, new EntityAIWander(this, this.getAIMoveSpeed()));
+		this.tasks.addTask(2, new EntityAIOpenDoor(this, false));
+		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 	
-    @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-    	this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.COMBATRIFLE));
-    }
 	
 	@Nullable
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
         this.setVariant(this.rand.nextInt(4));
+        this.setEquipmentBasedOnDifficulty(difficulty);
         return super.onInitialSpawn(difficulty, livingdata);
     }
 	

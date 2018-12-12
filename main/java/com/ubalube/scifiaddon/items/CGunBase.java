@@ -76,6 +76,20 @@ public class CGunBase extends Item implements IHasModel
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
+    public void fireWeaponFromNPC(EntityLivingBase shooter, float dmgscale, float accscale) 
+    {
+    	
+    	World worldIn = shooter.getEntityWorld();
+    	
+    	if (!shooter.world.isRemote)
+    	{
+    		EntityBullet entity = new EntityBullet(worldIn, shooter, damage, range);
+			entity.shoot(shooter, shooter.rotationPitch, shooter.rotationYaw, 1.0F, 1.5F, 0.0F);
+			worldIn.spawnEntity(entity);
+    	}
+    }
+
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{

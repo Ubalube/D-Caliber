@@ -10,8 +10,10 @@ import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
 import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
 import com.ubalube.scifiaddon.blocks.BlockFan;
+import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
+import com.ubalube.scifiaddon.blocks.TransparentBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAnvil;
@@ -44,6 +46,13 @@ public class ModBlocks
 	public static final Block ASPHALT = new BlockBase("asphalt", Material.ROCK, 1.5F);
 	public static final Block CONCRETEBRICKS = new BlockBase("concretebricks", Material.ROCK, 1.5F);
 	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
+	
+	//Labs
+	public static final Block LABGLASS = new TransparentBlock("labglass", Material.GLASS, 3.0F, false);
+	
+	public static final Block LABSTONE = new BlockBase("labstone", Material.ROCK, 1.0F);
+	public static final Block CHISELED_LABSTONE = new BlockBase("chiseled_labstone", Material.ROCK, 1.0F);
+	public static final Block LASER = new BlockLaser("laser", Material.CLAY, 100000000.0F);
 	
 	public static final Block BARBEDWIRE = new BarbedWire("barbedwire", Material.WEB);
 	
