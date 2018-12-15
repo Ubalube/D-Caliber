@@ -21,7 +21,7 @@ item.elcovert.name= §fEl §dCovert §c✩
 
 //music
 item.hostile_lands.name=Music Disc
-item.record.hostile_lands.name=Hostile Lands
+item.record.hostile_lands.desc=Hostile Lands
 
 itemGroup.Gear=Diamond Caliber Gear
 itemGroup.Parts=Diamond Caliber Parts

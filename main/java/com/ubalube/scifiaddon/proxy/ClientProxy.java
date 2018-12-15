@@ -1,7 +1,9 @@
 package com.ubalube.scifiaddon.proxy;
 
+import com.ubalube.scifiaddon.client.gui.FactionViewer;
 import com.ubalube.scifiaddon.util.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;

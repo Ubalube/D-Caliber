@@ -13,5 +13,7 @@ public class Reference
 	public static final int ENTITY_BULLET = 155;
 	public static final int ENTITY_SOLDIER = 156;
 	public static final int ENTITY_GOLIATH = 157;
+	public static final int ENTITY_GHOST = 158;
+	public static final int ENTITY_APACHE = 159;
 }
 

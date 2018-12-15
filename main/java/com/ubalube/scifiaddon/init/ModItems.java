@@ -20,6 +20,7 @@ import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.CRangefinder;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemDurability;
+import com.ubalube.scifiaddon.items.ItemFactions;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 import net.minecraft.block.Block;
@@ -60,6 +61,7 @@ public class ModItems
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
 	public static final Item VSSMAG = new ItemBase("vssmag", 64, main.gunTab);
 	public static final Item TECAMMO = new ItemBase("tecmag", 64, main.gunTab);
+	public static final Item DRUMMAG = new ItemBase("drummag", 64, main.gunTab);
 	
 	//Parts
 	public static final Item RIFLECALIBER = new ItemBase("riflecaliber", 64, main.partTab);
@@ -81,7 +83,7 @@ public class ModItems
 	public static final Item SHOTBARREL = new ItemBase("shortbarrel", 64, main.partTab);
 	public static final Item LONGBARREL = new ItemBase("longbarrel", 64, main.partTab);
 	
-	public static final Item GRIP = new ItemDurability("grip", 64, main.partTab);
+	public static final Item GRIP = new ItemFactions("grip", 64, main.partTab);
 	
 	//Materials
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
@@ -117,10 +119,16 @@ public class ModItems
 	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 5, 600, ModItems.M16AMMO);
 	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 5, 600, ModItems.M16AMMO, 1);
 	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 5, 600, ModItems.VECTOR, 1);
+	public static final Item TACTSCAR = new CGunAimingBase("tactscar", main.gunTab, 8, 55, 15, 8, 4, 6, 600, ModItems.DRUMMAG, 1);
 	public static final Item FAMAS = new CGunBase("famas", main.gunTab, 8, 35, 12, 4, 8, 4, 500, ModItems.M16AMMO);
+	public static final Item SCAR = new CGunBase("scar", main.gunTab, 8, 35, 12, 4, 8, 4, 500, ModItems.M16AMMO);
 	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2, 300, ModItems.TECAMMO);
 	
 	public static final Item PDW = new CGunPDW("PDW", main.gunTab, 8, 35, 12, 4, 8, 100, 600, ModItems.M16AMMO, 1);
+	
+	//LMG
+	public static final Item LMG = new CGunAimingBase("lmg", main.gunTab, 8, 55, 15, 8, 4, 6, 600, ModItems.DRUMMAG, 1);
+	public static final Item LMG_NOSHIELD = new CGunAimingBase("lmg_noshield", main.gunTab, 8, 55, 15, 8, 4, 6, 600, ModItems.DRUMMAG, 1);
 	
 	//Snipers
 	public static final Item VSS = new CGunSniper("vssvintorez", main.gunTab, 12, 12, 12, 12, 800, ModItems.VSSMAG);
@@ -131,6 +139,7 @@ public class ModItems
 	
 	//Helpers
 	public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);
+	public static final Item THELOSTONE = new CGunHelper("thelostone", main.gunTab, 10, 100, 12, 5, 600, ModItems.TECAMMO, "Found from another realm, slipped through a portal", "SmellyModder", TextFormatting.AQUA);
 	
 }
 

@@ -18,21 +18,26 @@ import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 import akka.event.Logging.Debug;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemElytra;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -239,6 +244,47 @@ public class CGunAimingBase extends Item implements IHasModel
 	}
 	
 	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
+	{
+		
+		NBTTagCompound nbt = stack.getTagCompound();
+		
+		if(nbt.getBoolean("ADS") == true)
+        {
+        	if(entityIn instanceof EntityPlayer)
+        	{
+        		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.TACTSCAR)
+        		{
+        			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 20, 2));
+        		}
+        		
+        	}
+        }
+		
+		if(entityIn instanceof EntityPlayer)
+    	{
+    		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG_NOSHIELD)
+    		{
+    			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
+    			
+    			
+    		}
+    		else
+    		{
+    			//Shield
+    			if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG)
+    			{
+    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
+    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 2));
+    			}
+    		}
+    		
+    	}
+		
+		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+	}
+	
+	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
 	{
 		NBTTagCompound nbt = stack.getTagCompound();
@@ -249,6 +295,9 @@ public class CGunAimingBase extends Item implements IHasModel
         }
         
         nbt.setBoolean("ADS", !nbt.getBoolean("ADS"));
+        
+        
+        
 		return true;
 	}
 	

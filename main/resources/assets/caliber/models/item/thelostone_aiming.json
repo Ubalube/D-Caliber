@@ -1,9 +1,9 @@
 {
 	"__comment": "Made By Ubalube",
 	"textures": {
-		"texture1": "caliber:gun/helpers/smellymodder_primary",
-		"texture2": "caliber:gun/helpers/smellymodder_secondary",
-		"texture3": "caliber:gun/helpers/smellymodder_barrel"
+		"texture1": "gun/helpers/smellymodder_primary",
+		"texture2": "gun/helpers/smellymodder_secondary",
+		"texture3": "gun/helpers/smellymodder_barrel"
 	},
 	"elements": [ 	 
 		{
@@ -89,7 +89,7 @@
 		{
 			"__comment": "Box8",
 			"from": [ 10, 2.5, 4.8 ],
-			"to": [ 10.5, 4.5, 5.7 ],
+			"to": [ 10.5, 4.5, 5.699998 ],
 			"rotation": { "origin": [ 10, 2.5, 4.8 ], "axis": "z", "angle": 22.5 },
 			"faces": {
 				"down": { "uv": [ 10.5, 3.5, 12.5, 4.5 ], "texture": "#texture1" },
@@ -198,7 +198,7 @@
 		{
 			"__comment": "Box15",
 			"from": [ 2.5, 3, 5.05 ],
-			"to": [ 3.5, 3.5, 5.45 ],
+			"to": [ 3.5, 3.5, 5.449998 ],
 			"faces": {
 				"down": { "uv": [ 10.5, 3.5, 12.5, 4.5 ], "texture": "#texture1" },
 				"up": { "uv": [ 11, 4, 13, 5 ], "texture": "#texture1" },
@@ -327,13 +327,13 @@
 			"translation":  [ 2.782, 4.1739, 0 ]
 		},
 		"firstperson_righthand": {
-			"rotation":  [ 0, -95, 0 ],
-			"translation":  [ -4.173, 6.2608, -0.695 ],
+			"rotation":  [ 0, -90, 0 ],
+			"translation":  [ -11.75, 9.6, 7 ],
 			"scale":  [ 1.1043, 1, 1 ]
 		},
 		"firstperson_lefthand": {
-			"rotation":  [ 0, 85, 0 ],
-			"translation":  [ 2.173, 6.2608, -0.695 ],
+			"rotation":  [ 0, 90, 0 ],
+			"translation":  [ -6.24, 9.6, 6.3043 ],
 			"scale":  [ 1.1043, 1, 1 ]
 		},
 		"gui": {
@@ -344,13 +344,5 @@
 			"rotation":  [ 90, 0, 0 ],
 			"translation":  [ 0, -4.869, 2.0869 ]
 		}
-	},
-    "overrides": [
-        {
-            "predicate": {
-                "aiming": 1.0
-            },
-            "model": "caliber:item/thelostone_aiming"
-        }
-    ]
+	}
 }
