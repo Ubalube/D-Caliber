@@ -3,7 +3,6 @@ package com.ubalube.scifiaddon.init;
 import org.apache.http.util.EntityUtils;
 
 import com.ubalube.scifiaddon.main;
-import com.ubalube.scifiaddon.entity.EntityApache;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
@@ -22,7 +21,6 @@ public class EntityInit
 		registerEntity("soldier", EntitySoldier.class, Reference.ENTITY_SOLDIER, 50, 7326320, 17920);
 		registerEntity("ghost", EntityGhost.class, Reference.ENTITY_GHOST, 50, 7326320, 17920);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
-		registerEntity("apache", EntityApache.class, Reference.ENTITY_APACHE, 50, 000000, 10289152);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)

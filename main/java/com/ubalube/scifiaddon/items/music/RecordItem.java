@@ -13,7 +13,7 @@ public class RecordItem extends ItemRecord implements IHasModel{
 		super(name, soundIn);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(main.partTab);
+		setCreativeTab(main.objectTab);
 		
 		ModItems.ITEMS.add(this);
 	}

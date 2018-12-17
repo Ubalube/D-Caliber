@@ -8,6 +8,7 @@ import com.ubalube.scifiaddon.proxy.CommonProxy;
 import com.ubalube.scifiaddon.tabs.Armor;
 import com.ubalube.scifiaddon.tabs.Decor;
 import com.ubalube.scifiaddon.tabs.Guns;
+import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
@@ -52,6 +53,7 @@ public class main
 	public static final Parts partTab = new Parts();
 	public static final Armor armorTab = new Armor();
 	public static final Decor decorTab = new Decor();
+	public static final Objects objectTab = new Objects();
 	
 	@Instance
 	public static main instance;
@@ -78,6 +80,7 @@ public class main
 	public void serverStart(FMLServerStartingEvent event) 
 	{
 		World world = event.getServer().getEntityWorld();
+		RegistryHandler.serverRegistries(event);
 	}
 	
 	@EventHandler

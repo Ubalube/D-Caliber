@@ -235,8 +235,9 @@ public class EntitySoldier extends EntityMob
                         for (int i = 0; i < 1; ++i)
                         {
                         	World w = this.e.getEntityWorld();
-                        	EntityBullet b = new EntityBullet(w, this.e, 5, 1000);
+                        	EntityBullet b = new EntityBullet(w, this.e, 1000);
                             b.shoot(this.e, this.e.rotationPitch, this.e.rotationYawHead, 0.0F, 1.5F, 0.0F);
+                            b.setBulletDamage(8);
                             w.spawnEntity(b);
                         }
                     }

@@ -17,4 +17,6 @@ public class CommonProxy
 		Minecraft.getMinecraft().displayGuiScreen(new FactionViewer());
 	}
 	
+	public void overrideCrosshair() { }
+	
 }

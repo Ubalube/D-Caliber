@@ -38,6 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -58,12 +59,12 @@ public class CGunAimingBase extends Item implements IHasModel
 	int ReloadTime;
 	int AutoFiremode;
 	int SingleFiremode;
-	int damage;
+	float damage;
 	int range;
 	Item ammo;
 	int type;
 	
-	public CGunAimingBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, int bulletDamage, int bulletDuration, Item ammunition, int guntype) 
+	public CGunAimingBase(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -183,7 +184,6 @@ public class CGunAimingBase extends Item implements IHasModel
 					{
 						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							itemstack.setItemDamage(-clipsize);
 							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
@@ -194,8 +194,9 @@ public class CGunAimingBase extends Item implements IHasModel
 						playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 						if (!worldIn.isRemote)
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+							entity.setBulletDamage(this.damage);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
 							System.out.println("GUN SHOOTING");
@@ -211,8 +212,9 @@ public class CGunAimingBase extends Item implements IHasModel
 					playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 					if(!worldIn.isRemote)
 					{
-						EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+						EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+						entity.setBulletDamage(this.damage);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						System.out.println("GUN SHOOTING");
@@ -230,8 +232,9 @@ public class CGunAimingBase extends Item implements IHasModel
 				playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 				if(!worldIn.isRemote)
 				{
-					EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+					EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+					entity.setBulletDamage(this.damage);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
 					System.out.println("GUN SHOOTING");
@@ -240,6 +243,7 @@ public class CGunAimingBase extends Item implements IHasModel
 				
 			}
 		}
+		playerIn.addStat(StatList.getObjectUseStats(this));
 		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
@@ -265,9 +269,7 @@ public class CGunAimingBase extends Item implements IHasModel
     	{
     		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG_NOSHIELD)
     		{
-    			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
-    			
-    			
+    			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 1));
     		}
     		else
     		{

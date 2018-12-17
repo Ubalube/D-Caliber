@@ -49,6 +49,16 @@ public class BlockLaser extends BlockHorizontal implements IHasModel
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 	
+	@Override
+	public boolean isNormalCube(IBlockState state){
+		return false;
+	}
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state){
+		return EnumBlockRenderType.MODEL;
+	}
+
 	
 	protected BlockStateContainer createBlockState()
     {
@@ -85,11 +95,6 @@ public class BlockLaser extends BlockHorizontal implements IHasModel
     public EnumPushReaction getMobilityFlag(IBlockState state)
     {
         return EnumPushReaction.PUSH_ONLY;
-    }
-	
-	public EnumBlockRenderType getRenderType(IBlockState state)
-    {
-        return EnumBlockRenderType.MODEL;
     }
 	
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)

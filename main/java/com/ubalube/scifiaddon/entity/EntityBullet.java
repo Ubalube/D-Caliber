@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBullet extends EntityThrowable implements IEntityAdditionalSpawnData
 {
-    int damage;
+    float damage;
     int range;
     
     public EntityBullet(World worldIn)
@@ -38,11 +38,20 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         super(worldIn);
     }
 
-    public EntityBullet(World worldIn, EntityLivingBase throwerIn, int damage, int r)
+    public EntityBullet(World worldIn, EntityLivingBase throwerIn, int r)
     {
         super(worldIn, throwerIn);
-        this.damage = damage;
         this.range = r;
+    }
+    
+    public void setBulletDamage(float damage)
+    {
+    	this.damage = damage;
+    }
+    
+    public float getBulletDamage()
+    {
+    	return this.damage;
     }
 
 
@@ -78,7 +87,7 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
         	if(result.entityHit == this.thrower); 
         	else
         	{
-        		result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)damage);
+        		result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), this.getBulletDamage());
         	}
         	
         	
@@ -143,8 +152,8 @@ public class EntityBullet extends EntityThrowable implements IEntityAdditionalSp
     public void writeEntityToNBT(NBTTagCompound compound)
     {
         super.writeEntityToNBT(compound);
-        compound.setInteger("Damage", damage);
-        compound.setInteger("Damage", damage);
+        compound.setInteger("Damage", (int)damage);
+        compound.setInteger("Damage", (int)damage);
     }
 
     @Override

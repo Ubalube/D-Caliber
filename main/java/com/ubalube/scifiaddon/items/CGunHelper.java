@@ -30,6 +30,7 @@ import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -47,7 +48,7 @@ public class CGunHelper extends Item implements IHasModel
 	int firerate;
 	int clipsize;
 	int ReloadTime;
-	int damage;
+	float damage;
 	int range;
 	Item ammo;
 	int type;
@@ -55,7 +56,7 @@ public class CGunHelper extends Item implements IHasModel
 	String author;
 	TextFormatting Lorecolor;
 	
-	public CGunHelper(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int bulletDamage, int bulletDuration, Item ammunition, String Lore, String Author, TextFormatting color) 
+	public CGunHelper(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, float bulletDamage, int bulletDuration, Item ammunition, String Lore, String Author, TextFormatting color) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -144,7 +145,6 @@ public class CGunHelper extends Item implements IHasModel
 					{
 						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
 							itemstack.setItemDamage(-clipsize);
 							playerIn.inventory.clearMatchingItems(ModItems.M16AMMO, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
@@ -155,8 +155,9 @@ public class CGunHelper extends Item implements IHasModel
 						playerIn.getCooldownTracker().setCooldown(this, firerate);
 						if (!worldIn.isRemote)
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+							entity.setBulletDamage(this.damage);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
 							
@@ -171,8 +172,9 @@ public class CGunHelper extends Item implements IHasModel
 					playerIn.getCooldownTracker().setCooldown(this, firerate);
 					if(!worldIn.isRemote)
 					{
-						EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+						EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+						entity.setBulletDamage(this.damage);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						
@@ -189,8 +191,9 @@ public class CGunHelper extends Item implements IHasModel
 				playerIn.getCooldownTracker().setCooldown(this, firerate);
 				if(!worldIn.isRemote)
 				{
-					EntityBullet entity = new EntityBullet(worldIn, playerIn, damage, range);
+					EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
 					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
+					entity.setBulletDamage(this.damage);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
 				}
@@ -198,6 +201,7 @@ public class CGunHelper extends Item implements IHasModel
 				
 			}
 		}
+		playerIn.addStat(StatList.getObjectUseStats(this));
 		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	

@@ -1,6 +1,10 @@
 package com.ubalube.scifiaddon.util.handlers;
 
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.commands.CommandCreateTeam;
+import com.ubalube.scifiaddon.commands.CommandLeaveTeam;
+import com.ubalube.scifiaddon.commands.CommandSquadInfo;
+import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.init.BiomeInit;
 import com.ubalube.scifiaddon.init.EntityInit;
@@ -20,6 +24,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -84,12 +89,21 @@ public class RegistryHandler
 		
 		//For the Goliath Spawn
 		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};
-		EntityRegistry.addSpawn(EntityGoliath.class, 1, 1, 1, EnumCreatureType.AMBIENT, spawnBiomes);
+		EntityRegistry.addSpawn(EntityGoliath.class, 20, 1, 1, EnumCreatureType.AMBIENT, spawnBiomes);
+		Biome[] spawnBiomes2 = {Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")), };
+		EntityRegistry.addSpawn(EntityGhost.class, 30, 2, 4, EnumCreatureType.MONSTER, spawnBiomes2);
 	}
 	
 	public static  void postInitRegistries()
 	{
 		WorldType BADLANDS = new WorldTypeBadlands();
+	}
+	
+	public static void serverRegistries(FMLServerStartingEvent e)
+	{
+		e.registerServerCommand(new CommandCreateTeam());
+		e.registerServerCommand(new CommandLeaveTeam());
+		e.registerServerCommand(new CommandSquadInfo());
 	}
 	
 }

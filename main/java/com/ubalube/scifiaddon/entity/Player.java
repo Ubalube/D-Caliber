@@ -4,9 +4,14 @@ import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import org.lwjgl.opengl.GL11;
 
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
@@ -14,12 +19,14 @@ import com.ubalube.scifiaddon.items.CGunHelper;
 import com.ubalube.scifiaddon.items.CGunPDW;
 import com.ubalube.scifiaddon.items.CGunPistol;
 import com.ubalube.scifiaddon.items.CGunSniper;
+import com.ubalube.scifiaddon.util.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-
 @EventBusSubscriber
 public class Player
 {
+	
 	@SubscribeEvent
     public static void EntityRender(RenderLivingEvent.Pre event) {
         

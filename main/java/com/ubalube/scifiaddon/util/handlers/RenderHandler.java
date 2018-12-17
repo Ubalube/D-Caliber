@@ -1,11 +1,9 @@
 package com.ubalube.scifiaddon.util.handlers;
 
-import com.ubalube.scifiaddon.entity.EntityApache;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.entity.render.RenderApache;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
@@ -41,15 +39,6 @@ public class RenderHandler
 			public Render<? super EntityGhost> createRenderFor(RenderManager manager) 
 			{
 				return new RenderGhost(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityApache.class, new IRenderFactory<EntityApache>()
-		{
-			@Override
-			public Render<? super EntityApache> createRenderFor(RenderManager manager) 
-			{
-				return new RenderApache(manager);
 			}
 		});
 		
