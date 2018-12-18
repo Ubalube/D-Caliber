@@ -1,5 +1,6 @@
 package com.ubalube.scifiaddon;
 
+import com.ubalube.scifiaddon.client.gui.Crosshair;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
@@ -11,6 +12,7 @@ import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
 import com.ubalube.scifiaddon.world.WorldGen;
@@ -66,6 +68,7 @@ public class main
 	{
 		RegistryHandler.preInitRegistries();
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
+		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -88,6 +91,9 @@ public class main
 	{
 		RegistryHandler.initRegistries();
 		ModProfessions.associateCareersAndTrades();
+		
+		MinecraftForge.EVENT_BUS.register(new Crosshair());
+		
 	}
 	
 	

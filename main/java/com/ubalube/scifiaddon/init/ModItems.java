@@ -15,6 +15,7 @@ import com.ubalube.scifiaddon.items.CGunBase;
 import com.ubalube.scifiaddon.items.CGunHelper;
 import com.ubalube.scifiaddon.items.CGunPDW;
 import com.ubalube.scifiaddon.items.CGunPistol;
+import com.ubalube.scifiaddon.items.CGunSkinnable;
 import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.CRangefinder;
@@ -22,6 +23,7 @@ import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemFactions;
 import com.ubalube.scifiaddon.items.ItemLore;
+import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 import net.minecraft.block.Block;
@@ -65,6 +67,10 @@ public class ModItems
 	public static final Item DRUMMAG = new ItemBase("drummag", 64, main.gunTab);
 	public static final Item C96MAG = new ItemBase("c96magazine", 64, main.gunTab);
 	public static final Item LMGMAG = new ItemBase("lmgmag", 64, main.gunTab);
+	
+	//Paints
+	public static final Item REDSTONE_PAINT = new ItemPaint("redstonepaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
+	public static final Item LIGHTNING_PAINT = new ItemPaint("lightningpaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
@@ -121,14 +127,15 @@ public class ModItems
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
-	public static final Item VECTOR = new CGunBase("vector", main.gunTab, 8, 25, 8, 4, 8, 4.5F, 600, ModItems.VECTORAMMO);
+	public static final Item VECTOR = new CGunSkinnable("vector", main.gunTab, 8, 25, 8, 4, 8, 4.5F, 600, ModItems.VECTORAMMO, 2);
 	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 6.5F, 600, ModItems.M16AMMO);
 	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 1);
 	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.VECTOR, 1);
 	public static final Item TACTSCAR = new CGunAimingBase("tactscar", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
-	public static final Item FAMAS = new CGunBase("famas", main.gunTab, 8, 35, 12, 4, 8, 5.5F, 500, ModItems.M16AMMO);
+	public static final Item FAMAS = new CGunSkinnable("famas", main.gunTab, 8, 35, 12, 4, 8, 5.5F, 500, ModItems.M16AMMO, 1);
 	public static final Item SCAR = new CGunBase("scar", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 500, ModItems.M16AMMO);
 	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.0F, 300, ModItems.TECAMMO);
+	public static final Item AK12 = new CGunSkinnable("ak12", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.TECAMMO, 1);
 	
 	public static final Item PDW = new CGunPDW("PDW", main.gunTab, 8, 35, 12, 4, 8, 100.0F, 600, ModItems.M16AMMO, 1);
 	

@@ -2,7 +2,7 @@
 	"__comment": "Made By Ubalube",
 	"textures": {
 		"texture": "caliber:gun/main_body_2",
-		"texture1": "caliber:gun/main_body"
+		"texture1": "caliber:gun/skins/diamond"
 	},
 	"elements": [ 	 
 		{
@@ -277,8 +277,8 @@
 			"from": [ 0.05, 8.45, 7.65 ],
 			"to": [ 7.05, 9.95, 8.15 ],
 			"faces": {
-				"down": { "uv": [ 0.05, 7.849999, 7.05, 8.349999 ], "texture": "#texture" },
-				"up": { "uv": [ 0.05, 7.650001, 7.05, 8.150001 ], "texture": "#texture" },
+				"down": { "uv": [ 0.05, 7.849998, 7.05, 8.349999 ], "texture": "#texture" },
+				"up": { "uv": [ 0.05, 7.650002, 7.05, 8.150001 ], "texture": "#texture" },
 				"north": { "uv": [ 8.95, 6.05, 15.95, 7.55 ], "texture": "#texture" },
 				"south": { "uv": [ 0.05, 6.05, 7.05, 7.55 ], "texture": "#texture" },
 				"west": { "uv": [ 7.650001, 6.05, 8.150001, 7.55 ], "texture": "#texture" },
@@ -291,7 +291,7 @@
 			"to": [ 7.1, 9.9, 5.85 ],
 			"faces": {
 				"down": { "uv": [ 0.1, 10.15, 7.1, 10.65 ], "texture": "#texture" },
-				"up": { "uv": [ 0.1, 5.349999, 7.1, 5.849999 ], "texture": "#texture" },
+				"up": { "uv": [ 0.1, 5.349998, 7.1, 5.849998 ], "texture": "#texture" },
 				"north": { "uv": [ 8.9, 6.1, 15.9, 7.6 ], "texture": "#texture" },
 				"south": { "uv": [ 0.1, 6.1, 7.1, 7.6 ], "texture": "#texture" },
 				"west": { "uv": [ 5.349999, 6.1, 5.849999, 7.6 ], "texture": "#texture" },
@@ -359,16 +359,16 @@
 			"faces": {
 				"down": { "uv": [ 1, 8.25, 2.5, 10.25 ], "texture": "#texture" },
 				"up": { "uv": [ 1, 5.75, 2.5, 7.75 ], "texture": "#texture" },
-				"north": { "uv": [ 13.5, 5.28, 15, 6 ], "texture": "#texture" },
-				"south": { "uv": [ 1, 5.28, 2.5, 6 ], "texture": "#texture" },
-				"west": { "uv": [ 5.75, 5.28, 7.75, 6 ], "texture": "#texture" },
-				"east": { "uv": [ 8.25, 5.28, 10.25, 6 ], "texture": "#texture" }
+				"north": { "uv": [ 13.5, 5.280001, 15, 6 ], "texture": "#texture" },
+				"south": { "uv": [ 1, 5.280001, 2.5, 6 ], "texture": "#texture" },
+				"west": { "uv": [ 5.75, 5.280001, 7.75, 6 ], "texture": "#texture" },
+				"east": { "uv": [ 8.25, 5.280001, 10.25, 6 ], "texture": "#texture" }
 			}
 		},
 		{
 			"__comment": "Box28",
 			"from": [ 1.45, 10.55, 7.3 ],
-			"to": [ 2.45, 11.55, 7.7 ],
+			"to": [ 2.45, 11.55, 7.699998 ],
 			"rotation": { "origin": [ 1.45, 10.55, 7.3 ], "axis": "x", "angle": -22.5 },
 			"faces": {
 				"down": { "uv": [ 1, 8.3, 2, 8.700001 ], "texture": "#texture" },
@@ -382,7 +382,7 @@
 		{
 			"__comment": "Box28",
 			"from": [ 1.45, 10.7, 5.8 ],
-			"to": [ 2.45, 11.7, 6.2 ],
+			"to": [ 2.45, 11.7, 6.199998 ],
 			"rotation": { "origin": [ 1.45, 10.7, 5.8 ], "axis": "x", "angle": 22.5 },
 			"faces": {
 				"down": { "uv": [ 1, 9.799999, 2, 10.2 ], "texture": "#texture" },
@@ -515,19 +515,5 @@
 			"translation":  [ 0, -2.086, 0 ],
 			"scale":  [ 1, 0.8956, 0.7652 ]
 		}
-	},
-    "overrides": [
-        {
-            "predicate": {
-                "skin": 1
-            },
-            "model": "caliber:item/vector_redstone"
-        },
-        {
-            "predicate": {
-                "skin": 2
-            },
-            "model": "caliber:item/vector_lightning"
-        }
-    ]
+	}
 }

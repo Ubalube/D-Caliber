@@ -30,6 +30,9 @@ itemGroup.Weapons=Diamond Caliber Firearms
 item.riflecalibercarbon.name=Carbon Rifle Caliber
 item.pistolcalibercarbon.name=Carbon Pistol Caliber
 
+//Containers
+container.skinner=Skin Bench
+
 item.pso.name=PSO-1
 item.ironsights.name=Ironsights
 item.vectorstock.name=Vector Stock

@@ -1,5 +1,6 @@
 package com.ubalube.scifiaddon.util.handlers;
 
+import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.commands.CommandCreateTeam;
 import com.ubalube.scifiaddon.commands.CommandLeaveTeam;
@@ -43,6 +44,7 @@ public class RegistryHandler
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
+		TileEntityHandler.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -86,6 +88,8 @@ public class RegistryHandler
 	{
 		SoundHandler.registerSounds();
 		BiomeInit.registerBiomes();
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
 		
 		//For the Goliath Spawn
 		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};

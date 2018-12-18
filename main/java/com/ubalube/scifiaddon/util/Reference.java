@@ -15,5 +15,9 @@ public class Reference
 	public static final int ENTITY_GOLIATH = 157;
 	public static final int ENTITY_GHOST = 158;
 	public static final int ENTITY_APACHE = 159;
+	
+	//GUIS
+	public static final int GUI_SKINNER = 0;
+	
 }
 
