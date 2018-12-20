@@ -726,10 +726,10 @@
 			"to": [ 1, 16, 8 ],
 			"rotation": { "origin": [ 0.5, 15.5, 6.5 ], "axis": "z", "angle": 45 },
 			"faces": {
-				"up": { "uv": [ 0.5, 14, 1, 15 ], "texture": "#texture" },
-				"north": { "uv": [ 15, 15, 15.5, 15.5 ], "texture": "#texture" },
-				"south": { "uv": [ 0.5, 15, 1, 15.5 ], "texture": "#texture" },
-				"east": { "uv": [ 1, 15, 2, 15.5 ], "texture": "#texture" }
+				"up": { "uv": [ 0.5, 14, 1, 15 ], "texture": "#texture2" },
+				"north": { "uv": [ 15, 15, 15.5, 15.5 ], "texture": "#texture2" },
+				"south": { "uv": [ 0.5, 15, 1, 15.5 ], "texture": "#texture2" },
+				"east": { "uv": [ 1, 15, 2, 15.5 ], "texture": "#texture2" }
 			}
 		},
 		{
@@ -774,10 +774,10 @@
 			"to": [ 2.5, 16, 8 ],
 			"rotation": { "origin": [ 2, 15.5, 6.5 ], "axis": "z", "angle": 45 },
 			"faces": {
-				"up": { "uv": [ 0.5, 14, 1, 15 ], "texture": "#texture" },
-				"north": { "uv": [ 15, 15, 15.5, 15.5 ], "texture": "#texture" },
-				"south": { "uv": [ 0.5, 15, 1, 15.5 ], "texture": "#texture" },
-				"east": { "uv": [ 1, 15, 2, 15.5 ], "texture": "#texture" }
+				"up": { "uv": [ 0.5, 14, 1, 15 ], "texture": "#texture2" },
+				"north": { "uv": [ 15, 15, 15.5, 15.5 ], "texture": "#texture2" },
+				"south": { "uv": [ 0.5, 15, 1, 15.5 ], "texture": "#texture2" },
+				"east": { "uv": [ 1, 15, 2, 15.5 ], "texture": "#texture2" }
 			}
 		},
 		{
@@ -989,10 +989,10 @@
 			"from": [ 8.5, 17, 6.5 ],
 			"to": [ 9, 17.5, 7 ],
 			"faces": {
-				"north": { "uv": [ 7, 14.5, 7.5, 15 ], "texture": "#texture" },
-				"south": { "uv": [ 8.5, 14.5, 9, 15 ], "texture": "#texture" },
-				"west": { "uv": [ 6.5, 14.5, 7, 15 ], "texture": "#texture" },
-				"east": { "uv": [ 9, 14.5, 9.5, 15 ], "texture": "#texture" }
+				"north": { "uv": [ 7, 14.5, 7.5, 15 ], "texture": "#texture2" },
+				"south": { "uv": [ 8.5, 14.5, 9, 15 ], "texture": "#texture2" },
+				"west": { "uv": [ 6.5, 14.5, 7, 15 ], "texture": "#texture2" },
+				"east": { "uv": [ 9, 14.5, 9.5, 15 ], "texture": "#texture2" }
 			}
 		},
 		{
@@ -1066,12 +1066,12 @@
 			"scale":  [ 0.6869, 0.6521, 0.4782 ]
 		}
 	},
-    "overrides": [
-        {
-            "predicate": {
-                "skin": 1
+	"overrides": [
+		{
+			"predicate": {
+                "skin": 2
             },
-            "model": "caliber:item/famas_lightning"
-        }
-    ]
+			"model": "caliber:item/famas_lightning"
+		}
+	]
 }

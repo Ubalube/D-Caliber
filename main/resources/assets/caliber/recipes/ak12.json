@@ -3,21 +3,31 @@
    
     "pattern":
     [
-        " C ",
-        " R ",
+        " I ",
+        "SRB",
         "   "
     ],
    
     "key":
     {
-        "R":
+        "S":
         {
-            "item": "caliber:ak12"
+            "item": "caliber:m16a4stock"
         },
     
-        "C":
+        "R":
         {
-            "item": "minecraft:diamond"
+            "item": "caliber:riflecalibercarbon"
+        }
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        }
+        
+        "I":
+        {
+            "item": "caliber:ironsights"
         }
     },
     

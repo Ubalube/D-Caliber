@@ -35,6 +35,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.text.TextFormatting;
@@ -57,20 +58,27 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	
-	
-	
 	//Ammmo
 	public static final Item VECTORAMMO = new ItemBase("vectormag", 64, main.gunTab);
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
+	public static final Item AKAMMO = new ItemBase("akmag", 64, main.gunTab);
 	public static final Item VSSMAG = new ItemBase("vssmag", 64, main.gunTab);
 	public static final Item TECAMMO = new ItemBase("tecmag", 64, main.gunTab);
 	public static final Item DRUMMAG = new ItemBase("drummag", 64, main.gunTab);
 	public static final Item C96MAG = new ItemBase("c96magazine", 64, main.gunTab);
 	public static final Item LMGMAG = new ItemBase("lmgmag", 64, main.gunTab);
+	public static final Item P90AMMO = new ItemBase("p90ammo", 64, main.gunTab);
 	
 	//Paints
 	public static final Item REDSTONE_PAINT = new ItemPaint("redstonepaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
-	public static final Item LIGHTNING_PAINT = new ItemPaint("lightningpaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
+	public static final Item LIGHTNING_PAINT = new ItemPaint("lightningpaint", 10, main.objectTab, "Lightning", TextFormatting.LIGHT_PURPLE);
+	public static final Item VOLCANIC_PAINT = new ItemPaint("volcanicpaint", 10, main.objectTab, "Volcanic", TextFormatting.GOLD);
+	public static final Item FADE_PAINT = new ItemPaint("fadepaint", 10, main.objectTab, "Fade", TextFormatting.WHITE);
+	
+	public static final Item FOREST_PAINT = new ItemPaint("forestpaint", 10, main.objectTab, "Forest", TextFormatting.GREEN);
+	public static final Item DESERT_PAINT = new ItemPaint("desertpaint", 10, main.objectTab, "Desert", TextFormatting.YELLOW);
+	
+	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.BLUE); 
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
@@ -90,6 +98,7 @@ public class ModItems
 	public static final Item VECTORSTOCK = new ItemBase("vectorstock", 64, main.partTab);
 	public static final Item VSSSTOCK = new ItemBase("vssstock", 64, main.partTab);
 	public static final Item M16STOCK = new ItemBase("m16a4stock", 64, main.partTab);
+	public static final Item SHORTSTOCK = new ItemBase("shortstock", 64, main.partTab);
 	
 	public static final Item VSSBARREL = new ItemBase("vssbarrel", 64, main.partTab);
 	public static final Item SHOTBARREL = new ItemBase("shortbarrel", 64, main.partTab);
@@ -101,6 +110,7 @@ public class ModItems
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
 	public static final Item STEEL = new ItemBase("steel", 64, main.partTab);
 	public static final Item LENSE = new ItemBase("lense", 64, main.partTab);
+	public static final Item CARBONMIXTURE = new ItemBase("carbonmixture", 64, main.partTab);
 	
 	//Music
 	//Music Discs
@@ -129,19 +139,22 @@ public class ModItems
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
 	public static final Item VECTOR = new CGunSkinnable("vector", main.gunTab, 8, 25, 8, 4, 8, 4.5F, 600, ModItems.VECTORAMMO, 2);
 	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 6.5F, 600, ModItems.M16AMMO);
-	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 1);
+	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 3);
+	public static final Item AUG = new CGunAimingBase("aug", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 3);
 	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.VECTOR, 1);
 	public static final Item TACTSCAR = new CGunAimingBase("tactscar", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
 	public static final Item FAMAS = new CGunSkinnable("famas", main.gunTab, 8, 35, 12, 4, 8, 5.5F, 500, ModItems.M16AMMO, 1);
 	public static final Item SCAR = new CGunBase("scar", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 500, ModItems.M16AMMO);
 	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.0F, 300, ModItems.TECAMMO);
-	public static final Item AK12 = new CGunSkinnable("ak12", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.TECAMMO, 1);
+	public static final Item AK12 = new CGunSkinnable("ak12", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 1);
+	public static final Item FAL = new CGunSkinnable("fal", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 6);
+	public static final Item P90 = new CGunSkinnable("p90", main.gunTab, 8, 45, 15, 8, 4, 7.5F, 500, ModItems.P90AMMO, 4);
 	
 	public static final Item PDW = new CGunPDW("PDW", main.gunTab, 8, 35, 12, 4, 8, 100.0F, 600, ModItems.M16AMMO, 1);
 	
 	//LMG
 	public static final Item LMG = new CGunAimingBase("lmg", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.DRUMMAG, 1);
-	public static final Item LMG_NOSHIELD = new CGunAimingBase("lmg_noshield", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.DRUMMAG, 1);
+	public static final Item LMG_NOSHIELD = new CGunAimingBase("lmg_noshield", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.LMGMAG, 1);
 	
 	//Snipers
 	public static final Item VSS = new CGunSniper("vssvintorez", main.gunTab, 12, 12, 12, 15.0F, 800, ModItems.VSSMAG);

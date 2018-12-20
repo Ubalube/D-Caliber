@@ -4,6 +4,7 @@ import com.ubalube.scifiaddon.client.gui.Crosshair;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
+import com.ubalube.scifiaddon.init.ModRecipes;
 import com.ubalube.scifiaddon.professions.ModProfessions;
 import com.ubalube.scifiaddon.proxy.CommonProxy;
 import com.ubalube.scifiaddon.tabs.Armor;
@@ -92,7 +93,7 @@ public class main
 		RegistryHandler.initRegistries();
 		ModProfessions.associateCareersAndTrades();
 		
-		MinecraftForge.EVENT_BUS.register(new Crosshair());
+		ModRecipes.init();
 		
 	}
 	

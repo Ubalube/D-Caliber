@@ -24,16 +24,17 @@ import com.ubalube.scifiaddon.items.CGunBase;
 import com.ubalube.scifiaddon.items.CGunHelper;
 import com.ubalube.scifiaddon.items.CGunPDW;
 import com.ubalube.scifiaddon.items.CGunPistol;
+import com.ubalube.scifiaddon.items.CGunSkinnable;
 import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+
+
 @EventBusSubscriber
 public class Player
 {
-	
-	
 	
 	@SubscribeEvent
     public static void EntityRender(RenderLivingEvent.Pre event) {
@@ -44,7 +45,8 @@ public class Player
             EntityPlayer player = (EntityPlayer)entity;
             if (player.getHeldItemMainhand().getItem() instanceof CGunBase || player.getHeldItemMainhand().getItem() instanceof CGunAimingBase ||
             		player.getHeldItemMainhand().getItem() instanceof CGunHelper || player.getHeldItemMainhand().getItem() instanceof CGunPDW ||
-            		player.getHeldItemMainhand().getItem() instanceof CGunSniper || player.getHeldItemMainhand().getItem() instanceof CGunPistol) 
+            		player.getHeldItemMainhand().getItem() instanceof CGunSniper || player.getHeldItemMainhand().getItem() instanceof CGunPistol ||
+            		player.getHeldItemMainhand().getItem() instanceof CGunSkinnable) 
             {
             
                 RenderLivingBase renderer = event.getRenderer();

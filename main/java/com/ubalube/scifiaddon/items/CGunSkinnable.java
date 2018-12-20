@@ -122,6 +122,49 @@ public class CGunSkinnable extends Item implements IHasModel
 			tooltip.add(TextFormatting.YELLOW + "Impact: " + TextFormatting.GREEN + damage);
 			tooltip.add(TextFormatting.YELLOW + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.YELLOW + "Clipsize: " + TextFormatting.GREEN + clipsize);
+			tooltip.add("------------------");
+			/*
+			 Skins
+			 1 = Redstone
+			 2 = Lightning
+			 3 = Volcanic
+			 */
+			NBTTagCompound nbt = stack.getTagCompound();
+			int skin = nbt.getInteger("SKIN");
+			
+			switch (skin) {
+			case 0:
+				tooltip.add("Not Skinned");
+				break;
+				
+			case 1:
+				tooltip.add(TextFormatting.GREEN + "Redstone");
+				break;
+				
+			case 2:
+				tooltip.add(TextFormatting.GREEN + "Lightning");
+				break;
+				
+			case 3:
+				tooltip.add(TextFormatting.GREEN + "Volcanic");
+				break;
+				
+			case 4:
+				tooltip.add(TextFormatting.GREEN + "Fade");
+				break;
+				
+			case 5:
+				tooltip.add(TextFormatting.GREEN + "Desert");
+				break;
+				
+			case 6:
+				tooltip.add(TextFormatting.GREEN + "Forest");
+				break;
+
+			default:
+				tooltip.add("Not Skinned");
+				break;
+			}
 		}
 		else
 		{

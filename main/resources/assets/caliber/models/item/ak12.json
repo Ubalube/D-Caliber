@@ -468,6 +468,30 @@
                 "skin": 1
             },
             "model": "caliber:item/ak12_redstone"
+        },
+        {
+            "predicate": {
+                "skin": 3
+            },
+            "model": "caliber:item/ak12_volcanic"
+        },
+        {
+            "predicate": {
+                "skin": 4
+            },
+            "model": "caliber:item/ak12_fade"
+        },
+        {
+            "predicate": {
+                "skin": 5
+            },
+            "model": "caliber:item/ak12_desert"
+        },
+        {
+            "predicate": {
+                "skin": 6
+            },
+            "model": "caliber:item/ak12_forest"
         }
     ]
 }

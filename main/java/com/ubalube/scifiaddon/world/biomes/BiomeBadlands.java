@@ -17,8 +17,6 @@ public class BiomeBadlands extends Biome
 		topBlock = Blocks.SANDSTONE.getDefaultState();
 		fillerBlock = Blocks.STONE.getDefaultState();
 		
-		this.decorator.ironGen = new WorldGenMinable(ModBlocks.STEELORE.getDefaultState(), 5);
-		
 		this.decorator.treesPerChunk = 0;
 		this.getSkyColorByTemp(8.0F);
 		
