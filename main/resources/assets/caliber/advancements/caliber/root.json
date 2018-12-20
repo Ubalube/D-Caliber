@@ -2,10 +2,7 @@
     "display": {
         "title": {
             "text": "Diamond Caliber",
-            "color": "aqua",
-            "bold": true,
-            "italic": true,
-            "obfuscated": false
+            "color": "aqua"
         },
         "description": {
             "text": "Thank you for downloading!",

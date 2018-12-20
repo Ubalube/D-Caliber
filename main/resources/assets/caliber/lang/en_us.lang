@@ -1,13 +1,32 @@
 entity.Villager.weaponseller=Gun Dealer
 entity.Villager.gunsmith=Weapons dealer
 item.vector.name=Vector .45 ACP
-item.vectormag.name=.45 ACP Magazine
+item.vectormag.name=.45 ACP Clip
 item.tec9.name=Minetratec Tec-9
-item.tecmag.name=9x19mm Parabellum Magazine
+item.tecmag.name=9x19mm Parabellum Clip
 item.famas.name=Famas F1
-item.m16ammo.name= 5.56x45mm NATO Magazine
+item.m16mag.name= 5.56x45mm NATO Clip
 item.vssvintorez.name=VSS Vintorez
-item.vssmag.name=9x39mm Magazine
+item.vssmag.name=9x39mm Clip
+item.aug.name=Aug A3
+item.combatsmg.name=Combat SMG
+item.tactscar.name= Tactical Scar
+item.scar.name= Scar-L
+item.ak12.name=AK-12
+item.fal.name=FN FAL
+item.p90.name=P90
+item.PDW.name=PDW
+item.lmg.name=LMG <Shield>
+item.lmg_noshield.name=LMG
+item.m24.name=M24
+item.bfg.name=BFG .50
+item.g18.name=G17
+item.c96.name=Mauser C96
+item.akmag.name=4.45x39mm Clip
+item.drummag.name=5.56x45mm NATO Drum Clip
+item.c96magazine.name=7.63x25mm Mauser Magazine
+item.lmgmag.name=5.56x45mm NATO LMG Clip
+item.p90ammo.name=FN 5.7x28mm Clip
 
 entity.goliath.name=Goliath MkIV
 
@@ -16,6 +35,20 @@ item.pistolcaliber.name=Iron Pistol Caliber
 
 item.m4.name=M16A4
 item.tactm4.name=Combat Rifle
+
+//objects
+item.redstonepaint.name=Camo <Redstone>
+item.lightningpaint.name=Camo <Lightning>
+item.volcanicpaint.name=Camo <Volcanic>
+item.fadepaint.name=Camo <Fade>
+item.forestpaint.name=Camo <Forest>
+item.desertpaint.name=Camo <Desert>
+item.defaultpaint.name=Camo <Default>
+
+item.tankmedal.name=Medal <Goliath>
+item.pills.name=Adrenaline Pills
+item.medkit.name=Medical Kit
+item.node.name=Node
 
 item.elcovert.name= §fEl §dCovert §c✩
 
@@ -26,6 +59,8 @@ item.record.hostile_lands.desc=Hostile Lands
 itemGroup.Gear=Diamond Caliber Gear
 itemGroup.Parts=Diamond Caliber Parts
 itemGroup.Weapons=Diamond Caliber Firearms
+itemGroup.Decoration= Diamond Caliber Decoration
+itemGroup.Object= Diamond Caliber Objects
 
 item.riflecalibercarbon.name=Carbon Rifle Caliber
 item.pistolcalibercarbon.name=Carbon Pistol Caliber
@@ -43,6 +78,8 @@ item.longbarrel.name=Long Barrel
 item.acog.name=Acog 4x32
 item.m16ironsights.name=Carry-Handle Ironsight
 item.m16a4stock.name=Standard Rifle Stock
+item.shortstock.name=Short Stock
+item.carbonmixture.name=Steel Mixture
 
 item.carbonfibre.name=Carbon Fibre
 item.steel.name=Steel Ingot
@@ -61,3 +98,16 @@ tile.sandbags.name=Sandbags
 tile.concretebrick.name=Concrete Bricks
 tile.barbedwire.name=Barbed Wire
 tile.steelore.name=Steel Ore
+tile.asphalt.name=Asphalt
+tile.concretebricks.name=Concrete Bricks
+tile.skinner.name=Skin Bench
+tile.labglass.name=Laboratory Glass
+tile.labstone.name=Laboratory Stone
+tile.chiseled_labstone.name=Laboratory Stone <Charged>
+tile.laser.name=Laser
+tile.asphalt_polished.name=Polished Asphalt
+tile.asphalt_polished_cracked.name=Polished Asphalt <Cracked>
+tile.mcrate.name=Medical Case
+tile.lcrate.name=Loot Case
+tile.fan.name=Small Ceiling Fan
+tile.nodeblock.name=Node

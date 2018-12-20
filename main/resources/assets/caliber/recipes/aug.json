@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "SRB",
+        "   "
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "caliber:shortstock"
+        },
+    
+        "R":
+        {
+            "item": "caliber:riflecalibercarbon"
+        },
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        },
+        
+        "I":
+        {
+            "item": "caliber:acog"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:aug",
+        "count": 1
+    }
+}

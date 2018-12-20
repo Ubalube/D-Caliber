@@ -1,0 +1,27 @@
+{
+    "display": {
+        "title": {
+            "text": "Skinner",
+            "color": "gold"
+        },
+        "description": {
+            "text": "Place the skin bench!"
+        },
+        "icon": {
+            "item": "caliber:volcanicpaint"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "place": {
+            "trigger": "minecraft:placed_block",
+            "conditions": {
+                "block": "caliber:skinner"
+            }
+        }
+    },
+    "parent": "caliber:caliber/root"
+}

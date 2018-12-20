@@ -135,9 +135,10 @@ public class CGunBase extends Item implements IHasModel
 						playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 						if (!worldIn.isRemote)
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
-							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
-							entity.setBulletDamage(this.damage);
+							EntityBullet entity = new EntityBullet(worldIn, playerIn);
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
+							entity.setDamage((double)this.damage);
+							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
 							
@@ -152,9 +153,10 @@ public class CGunBase extends Item implements IHasModel
 					playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 					if(!worldIn.isRemote)
 					{
-						EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
-						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
-						entity.setBulletDamage(this.damage);
+						EntityBullet entity = new EntityBullet(worldIn, playerIn);
+						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
+						entity.setDamage((double)this.damage);
+						entity.setRange(this.range);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						
@@ -171,9 +173,10 @@ public class CGunBase extends Item implements IHasModel
 				playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
 				if(!worldIn.isRemote)
 				{
-					EntityBullet entity = new EntityBullet(worldIn, playerIn, range);
-					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 1.5F, 0.0F);
-					entity.setBulletDamage(this.damage);
+					EntityBullet entity = new EntityBullet(worldIn, playerIn);
+					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
+					entity.setDamage((double)this.damage);
+					entity.setRange(this.range);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
 				}
