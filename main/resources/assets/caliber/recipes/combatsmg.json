@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        " G ",
+        "   "
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "caliber:holographic"
+        },
+        
+        "G":
+        {
+            "item": "caliber:vector"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:combatsmg",
+        "count": 1
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "SRB",
+        "   "
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "caliber:m16a4stock"
+        },
+    
+        "R":
+        {
+            "item": "caliber:lmgcaliber"
+        },
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        },
+        
+        "I":
+        {
+            "item": "caliber:acog"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:lmg_noshield",
+        "count": 1
+    }
+}

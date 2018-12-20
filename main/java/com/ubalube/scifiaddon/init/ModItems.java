@@ -86,6 +86,8 @@ public class ModItems
 	//Parts
 	public static final Item RIFLECALIBER = new ItemBase("riflecaliber", 64, main.partTab);
 	public static final Item RIFLECALIBERCARBON = new ItemBase("riflecalibercarbon", 64, main.partTab);
+	public static final Item LMGCALIBER = new ItemBase("lmgcaliber", 64, main.partTab);
+	public static final Item BFGCALIBER = new ItemBase("bfgcaliber", 64, main.partTab);
 	
 	public static final Item PISTOLCALIBER = new ItemBase("pistolcaliber", 64, main.partTab);
 	public static final Item PISTOLCALIBERCARBON = new ItemBase("pistolcalibercarbon", 64, main.partTab);
@@ -94,6 +96,11 @@ public class ModItems
 	public static final Item IRONSIGHTS = new ItemBase("ironsights", 64, main.partTab);
 	public static final Item M16IRONSIGHTS = new ItemBase("m16ironsights", 64, main.partTab);
 	public static final Item ACOG = new ItemBase("acog", 64, main.partTab);
+	public static final Item HOLOSIGHT = new ItemBase("holosight", 64, main.partTab);
+	public static final Item NVSCOPE = new ItemBase("nvscope", 64, main.partTab);
+	public static final Item SNIPERSCOPE = new ItemBase("sniperscope", 64, main.partTab);
+	public static final Item SHIELD = new ItemBase("shield", 64, main.partTab);
+	public static final Item BOLT = new ItemBase("bolt", 64, main.partTab);
 	
 	public static final Item VECTORSTOCK = new ItemBase("vectorstock", 64, main.partTab);
 	public static final Item VSSSTOCK = new ItemBase("vssstock", 64, main.partTab);

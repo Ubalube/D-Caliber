@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        "SCB",
+        "   "
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "caliber:sniperscope"
+        },
+    
+        "C":
+        {
+            "item": "caliber:bfgcaliber"
+        },
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        },
+        
+        "S":
+        {
+            "item": "caliber:m16a4stock"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:m4",
+        "count": 1
+    }
+}

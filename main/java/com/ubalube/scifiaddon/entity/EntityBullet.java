@@ -84,6 +84,16 @@ public class EntityBullet extends EntityTippedArrow
 		if(e != null)
 		{
 			this.setDead();
+			
+			if(e instanceof EntityGoliath)
+            {
+            	world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            }
+            else
+            {
+            	world.spawnParticle(EnumParticleTypes.REDSTONE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            }
+			
 		}
 		
 		super.onHit(raytraceResultIn);

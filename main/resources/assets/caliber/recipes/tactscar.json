@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        " G ",
+        "   "
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "caliber:nvscope"
+        },
+        
+        "G":
+        {
+            "item": "caliber:scar"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:tactscar",
+        "count": 1
+    }
+}

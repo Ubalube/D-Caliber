@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "SRB",
+        "   "
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "caliber:m16a4stock"
+        },
+    
+        "R":
+        {
+            "item": "caliber:riflecaliber"
+        },
+        
+        "B":
+        {
+            "item": "caliber:longbarrel"
+        },
+        
+        "I":
+        {
+            "item": "caliber:ironsights"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:scar",
+        "count": 1
+    }
+}
