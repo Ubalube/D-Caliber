@@ -1,6 +1,5 @@
 package com.ubalube.scifiaddon;
 
-import com.ubalube.scifiaddon.client.gui.Crosshair;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
