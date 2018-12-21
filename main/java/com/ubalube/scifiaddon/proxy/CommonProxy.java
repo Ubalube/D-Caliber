@@ -4,6 +4,7 @@ import com.ubalube.scifiaddon.client.gui.FactionViewer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 
 public class CommonProxy 
@@ -17,6 +18,8 @@ public class CommonProxy
 		Minecraft.getMinecraft().displayGuiScreen(new FactionViewer());
 	}
 	
-	public void overrideCrosshair() { }
+	public EntityPlayer getPlayer() {
+        return null;    
+    }
 	
 }

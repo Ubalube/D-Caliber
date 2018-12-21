@@ -10,6 +10,7 @@ import com.ubalube.scifiaddon.items.music.RecordItem;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
+import com.ubalube.scifiaddon.items.CGrenade;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
 import com.ubalube.scifiaddon.items.CGunHelper;
@@ -176,5 +177,8 @@ public class ModItems
 	public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5.0F, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);
 	public static final Item THELOSTONE = new CGunHelper("thelostone", main.gunTab, 10, 100, 12, 5.0F, 600, ModItems.TECAMMO, "Found from another realm, slipped through a portal", "SmellyModder", TextFormatting.AQUA);
 	
+	
+	//Grenade
+	public static final Item FRAG = new CGrenade("frag", 3, main.gunTab);
 }
 

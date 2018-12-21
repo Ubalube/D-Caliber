@@ -4,6 +4,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
@@ -31,6 +32,7 @@ public class EntityInit
 	public static void registerProjectile() 
 	{
 		registerProjectileType("gunBullet", EntityBullet.class , Reference.ENTITY_BULLET, 50);
+		registerProjectileType("frag", EntityFrag.class , Reference.ENTITY_FRAG, 50);
 	}
 	
 	private static void registerProjectileType(String entityName, Class<? extends Entity> entityClass, int id, int range) 
