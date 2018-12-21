@@ -25,10 +25,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModProfessions 
 {
     // instantiate VillagerProfessions
-    public final static VillagerProfession gunsmith = null;
+    public final static VillagerProfession skinner = null;
     
     // declare VillagerCareers
-    public static VillagerCareer weaponseller;
+    public static VillagerCareer skin;
 
     @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
     public static class RegistrationHandler
@@ -64,10 +64,10 @@ public class ModProfessions
         // DEBUG
         System.out.println("Associating careers and trades to villager professions");
         
-        weaponseller = (new VillagerCareer(gunsmith, "gunsmith")).addTrade(1, new TradeEmeraldForVector());
+        skin = (new VillagerCareer(skinner, "skinner")).addTrade(1, new TradeEmeraldForVector());
     }
     
-    public static class TradeEmeraldForVector implements ITradeList
+    public static class TradeSkin implements ITradeList
     {
         /** The  item stack to buy */
         public ItemStack stack;
@@ -77,10 +77,11 @@ public class ModProfessions
         /**
          * Instantiates a new trade emeralds for enchanted boots.
          */
-        public TradeEmeraldForVector()
+        public TradeSkin(Item skin)
         {
-            stack = new ItemStack(ModItems.VECTOR);
+            stack = new ItemStack(ModItems.DESERT_PAINT);
             priceInfo = new PriceInfo(17, 64);
+            
         }
 
         /* (non-Javadoc)
@@ -96,7 +97,7 @@ public class ModProfessions
                 actualPrice = priceInfo.getPrice(random);
             }
 
-            ItemStack stackToPay = new ItemStack(Items.EMERALD, actualPrice, 1);
+            ItemStack stackToPay = new ItemStack(Items.EMERALD, actualPrice, 0);
             recipeList.add(new MerchantRecipe(stackToPay, stack));
             
             // DEBUG
