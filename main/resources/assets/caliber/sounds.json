@@ -54,6 +54,14 @@
         "subtitle": "El Covert Shot",
         "sounds": [{ "name": "caliber:gun/elcovert_shoot", "stream": false}]
     },
+    
+    "gun.grenadelauncher":
+    {
+        "category": "gun",
+        "subtitle": "Grenade Launcher Shot",
+        "sounds": [{ "name": "caliber:gun/grenadelauncher", "stream": false}]
+    },
+    
     "hostile_lands": 
     {
     "sounds": [{"name": "caliber:music/hostile_lands", "stream": true}]

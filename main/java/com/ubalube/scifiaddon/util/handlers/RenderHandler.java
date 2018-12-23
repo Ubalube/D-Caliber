@@ -1,13 +1,17 @@
 package com.ubalube.scifiaddon.util.handlers;
 
 import com.ubalube.scifiaddon.entity.EntityBullet;
-import com.ubalube.scifiaddon.entity.EntityFrag;
+import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
+import com.ubalube.scifiaddon.entity.EntityVehicle;
+import com.ubalube.scifiaddon.entity.render.EntityTankVehicle;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
+import com.ubalube.scifiaddon.entity.render.RenderImpact;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
-import com.ubalube.scifiaddon.entity.render.RenderGrenade;
+import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
 import com.ubalube.scifiaddon.entity.render.RenderTank;
 
@@ -62,12 +66,30 @@ public class RenderHandler
 			}
 		});
 		
+		RenderingRegistry.registerEntityRenderingHandler(EntityImpact.class, new IRenderFactory<EntityImpact>()
+		{
+			@Override
+			public Render<? super EntityImpact> createRenderFor(RenderManager manager) 
+			{
+				return new RenderImpact(manager);
+			}
+		});
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityVehicle.class, new IRenderFactory<EntityVehicle>()
+		{
+			@Override
+			public Render<? super EntityVehicle> createRenderFor(RenderManager manager) 
+			{
+				return new EntityTankVehicle(manager);
+			}
+		});
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityFrag.class, new IRenderFactory<EntityFrag>()
 		{
 			@Override
 			public Render<? super EntityFrag> createRenderFor(RenderManager manager) 
 			{
-				return new RenderGrenade(manager);
+				return new RenderFrag(manager);
 			}
 		});
 		

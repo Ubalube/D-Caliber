@@ -13,6 +13,8 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -36,11 +38,10 @@ public class Crosshair extends Gui
         EntityPlayer player = main.proxy.getPlayer();
         if (event.getType() == RenderGameOverlayEvent.ElementType.CROSSHAIRS) 
         {
+        	
         	event.setCanceled(true);
-        	Minecraft MC = Minecraft.getMinecraft();
-        	Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/crosshairs/gun.png"));
-			Minecraft.getMinecraft().ingameGUI.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, 0, 0, 256, 256);
-            GL11.glColor4f(1, 1, 1, 1);
+        	
+        	
         }
         
     }

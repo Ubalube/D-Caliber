@@ -4,7 +4,6 @@ import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.init.ModRecipes;
-import com.ubalube.scifiaddon.professions.ModProfessions;
 import com.ubalube.scifiaddon.proxy.CommonProxy;
 import com.ubalube.scifiaddon.tabs.Armor;
 import com.ubalube.scifiaddon.tabs.Decor;
@@ -90,7 +89,6 @@ public class main
 	public static void init(FMLInitializationEvent e) 
 	{
 		RegistryHandler.initRegistries();
-		ModProfessions.associateCareersAndTrades();
 		
 		ModRecipes.init();
 		

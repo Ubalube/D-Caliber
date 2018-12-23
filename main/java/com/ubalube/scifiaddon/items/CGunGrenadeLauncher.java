@@ -11,6 +11,7 @@ import org.lwjgl.input.Keyboard;
 import com.google.common.collect.Multimap;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
@@ -51,7 +52,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.reflect.internal.Trees.Modifiers;
 
-public class CGunSkinnable extends Item implements IHasModel
+public class CGunGrenadeLauncher extends Item implements IHasModel
 {
 	
 	int Firerate;
@@ -62,9 +63,9 @@ public class CGunSkinnable extends Item implements IHasModel
 	float damage;
 	int range;
 	Item ammo;
-	int skinamt;
+	int type;
 	
-	public CGunSkinnable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int skins) 
+	public CGunGrenadeLauncher(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -82,15 +83,18 @@ public class CGunSkinnable extends Item implements IHasModel
 		
 		setMaxDamage(clipsize);
 		
-		this.skinamt = skins;
+		this.type = guntype;
 		
-		this.addPropertyOverride(new ResourceLocation("skin"), new IItemPropertyGetter()
+		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
 			@SideOnly(Side.CLIENT)
 	        public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
 	        {
+	            if (entityIn == null) {
+	                return 0.0F;
+	            }
 	            NBTTagCompound nbt = checkNBTTags(stack);
-	            float j = nbt.getInteger("SKIN");
+	            float j = nbt.getBoolean("ADS") ? 1.0F : 0.0F;
 	            return j; 
 	        }
         });
@@ -104,8 +108,8 @@ public class CGunSkinnable extends Item implements IHasModel
             nbt = new NBTTagCompound();
             stack.setTagCompound(nbt);
         }
-        if (!nbt.hasKey("SKIN")) {
-            nbt.setInteger("SKIN", 0);
+        if (!nbt.hasKey("ADS")) {
+            nbt.setBoolean("ADS", false);
         }
         
         return nbt;
@@ -119,49 +123,6 @@ public class CGunSkinnable extends Item implements IHasModel
 			tooltip.add(TextFormatting.YELLOW + "Impact: " + TextFormatting.GREEN + damage);
 			tooltip.add(TextFormatting.YELLOW + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.YELLOW + "Clipsize: " + TextFormatting.GREEN + clipsize);
-			tooltip.add("------------------");
-			/*
-			 Skins
-			 1 = Redstone
-			 2 = Lightning
-			 3 = Volcanic
-			 */
-			NBTTagCompound nbt = stack.getTagCompound();
-			int skin = nbt.getInteger("SKIN");
-			
-			switch (skin) {
-			case 0:
-				tooltip.add("Not Skinned");
-				break;
-				
-			case 1:
-				tooltip.add(TextFormatting.GREEN + "Redstone");
-				break;
-				
-			case 2:
-				tooltip.add(TextFormatting.GREEN + "Lightning");
-				break;
-				
-			case 3:
-				tooltip.add(TextFormatting.GREEN + "Volcanic");
-				break;
-				
-			case 4:
-				tooltip.add(TextFormatting.GREEN + "Fade");
-				break;
-				
-			case 5:
-				tooltip.add(TextFormatting.GREEN + "Desert");
-				break;
-				
-			case 6:
-				tooltip.add(TextFormatting.GREEN + "Forest");
-				break;
-
-			default:
-				tooltip.add("Not Skinned");
-				break;
-			}
 		}
 		else
 		{
@@ -179,43 +140,8 @@ public class CGunSkinnable extends Item implements IHasModel
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
-		int firemode = Firerate;
 		
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
-		
-		NBTTagCompound nbt = itemstack.getTagCompound();
-		if(nbt == null)
-		{
-			nbt = new NBTTagCompound();
-		}
-		
-		if(!nbt.hasKey("firerate"))
-		{
-			nbt.setInteger("firerate", SingleFiremode);
-		}
-		
-		nbt = nbt.getCompoundTag("firerate");
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-		{
-			if(!worldIn.isRemote)
-			{
-					if(nbt.getInteger("firerate") == SingleFiremode)
-					{
-						nbt.setInteger("firerate", AutoFiremode);
-					}
-					else
-					{
-						nbt.setInteger("firerate", SingleFiremode);
-					}
-					System.out.println("GUN FIREMODE");
-				
-				itemstack.setTagInfo("firerate", nbt);
-				
-			}
-		}
-		else
-		{
 			if (!playerIn.capabilities.isCreativeMode)
 			{
 				if(itemstack.isItemDamaged())
@@ -231,38 +157,36 @@ public class CGunSkinnable extends Item implements IHasModel
 					}
 					else
 					{
-						playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+						playerIn.getCooldownTracker().setCooldown(this, 8);
 						if (!worldIn.isRemote)
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn);
-							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
-							entity.setDamage((double)this.damage);
-							entity.setRange(this.range);
+							EntityImpact entity = new EntityImpact(worldIn, playerIn);
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 3.0F, 0.0F);
+							entity.setGravity(0.1F);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
 							System.out.println("GUN SHOOTING");
 							
 						}
-						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GRENADELAUNCHER_SHOT, SoundCategory.MASTER, 1, 1);
 					}
 					
 				}
 				else
 				{
 					//First Bullet
-					playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+					playerIn.getCooldownTracker().setCooldown(this, 8);
 					if(!worldIn.isRemote)
 					{
-						EntityBullet entity = new EntityBullet(worldIn, playerIn);
-						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
-						entity.setDamage((double)this.damage);
-						entity.setRange(this.range);
+						EntityImpact entity = new EntityImpact(worldIn, playerIn);
+						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 3.0F, 0.0F);
+						entity.setGravity(0.1F);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						System.out.println("GUN SHOOTING");
 						
 					}
-					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GRENADELAUNCHER_SHOT, SoundCategory.MASTER, 1, 1);
 					
 				}
 			}
@@ -271,23 +195,77 @@ public class CGunSkinnable extends Item implements IHasModel
 			{
 				
 				//Creative Move
-				playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+				playerIn.getCooldownTracker().setCooldown(this, 8);
 				if(!worldIn.isRemote)
 				{
-					EntityBullet entity = new EntityBullet(worldIn, playerIn);
-					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 2.0F, 0.0F);
-					entity.setDamage((double)this.damage);
-					entity.setRange(this.range);
+					EntityImpact entity = new EntityImpact(worldIn, playerIn);
+					entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 3.0F, 0.0F);
+					entity.setGravity(0.1F);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
 					System.out.println("GUN SHOOTING");
 				}
-				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
+				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GRENADELAUNCHER_SHOT, SoundCategory.MASTER, 1, 1);
 				
 			}
-		}
 		playerIn.addStat(StatList.getObjectUseStats(this));
 		return new ActionResult(EnumActionResult.PASS, itemstack);
+	}
+	
+	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
+	{
+		
+		NBTTagCompound nbt = stack.getTagCompound();
+		
+		if(nbt.getBoolean("ADS") == true)
+        {
+        	if(entityIn instanceof EntityPlayer)
+        	{
+        		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.TACTSCAR)
+        		{
+        			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 20, 2));
+        		}
+        		
+        	}
+        }
+		
+		if(entityIn instanceof EntityPlayer)
+    	{
+    		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG_NOSHIELD)
+    		{
+    			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 1));
+    		}
+    		else
+    		{
+    			//Shield
+    			if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG)
+    			{
+    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
+    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 2));
+    			}
+    		}
+    		
+    	}
+		
+		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+	}
+	
+	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
+	{
+		NBTTagCompound nbt = stack.getTagCompound();
+        if(nbt == null)
+        {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        
+        nbt.setBoolean("ADS", !nbt.getBoolean("ADS"));
+        
+        
+        
+		return true;
 	}
 	
 	@Override

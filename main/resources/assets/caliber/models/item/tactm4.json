@@ -391,12 +391,6 @@
                 "aiming": 1.0
             },
             "model": "caliber:item/tactm4_aiming"
-        },
-        {
-            "predicate": {
-                "skin": 3
-            },
-            "model": "caliber:item/tactm4_volcanic"
         }
     ]
 }

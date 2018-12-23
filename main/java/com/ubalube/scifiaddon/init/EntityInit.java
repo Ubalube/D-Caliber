@@ -4,10 +4,12 @@ import org.apache.http.util.EntityUtils;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
-import com.ubalube.scifiaddon.entity.EntityFrag;
+import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
+import com.ubalube.scifiaddon.entity.EntityVehicle;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.entity.Entity;
@@ -22,6 +24,7 @@ public class EntityInit
 		registerEntity("soldier", EntitySoldier.class, Reference.ENTITY_SOLDIER, 50, 7326320, 17920);
 		registerEntity("ghost", EntityGhost.class, Reference.ENTITY_GHOST, 50, 7326320, 17920);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
+		registerEntity("tank", EntityVehicle.class, Reference.ENTITY_TANK, 50, 000000, 10289152);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)
@@ -32,7 +35,8 @@ public class EntityInit
 	public static void registerProjectile() 
 	{
 		registerProjectileType("gunBullet", EntityBullet.class , Reference.ENTITY_BULLET, 50);
-		registerProjectileType("frag", EntityFrag.class , Reference.ENTITY_FRAG, 50);
+		registerProjectileType("frag", EntityImpact.class , Reference.ENTITY_FRAG, 50);
+		registerProjectileType("grenade", EntityFrag.class , Reference.ENTITY_FRAG + 1, 50);
 	}
 	
 	private static void registerProjectileType(String entityName, Class<? extends Entity> entityClass, int id, int range) 

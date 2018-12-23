@@ -11,8 +11,10 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
 import com.ubalube.scifiaddon.items.CGrenade;
+import com.ubalube.scifiaddon.items.CGrenade.type;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.CGunGrenadeLauncher;
 import com.ubalube.scifiaddon.items.CGunHelper;
 import com.ubalube.scifiaddon.items.CGunPDW;
 import com.ubalube.scifiaddon.items.CGunPistol;
@@ -179,6 +181,10 @@ public class ModItems
 	
 	
 	//Grenade
-	public static final Item FRAG = new CGrenade("frag", 3, main.gunTab);
+	public static final Item IMPACT = new CGrenade("impact", 3, main.gunTab, type.IMPACT);
+	public static final Item SMOKE = new CGrenade("smoke", 3, main.gunTab, type.SMOKE);
+	public static final Item FRAG = new CGrenade("frag", 3, main.gunTab, type.FRAG);
+	
+	public static final Item GRENADELAUNCHER = new CGunGrenadeLauncher("grenadelauncher", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
 }
 
