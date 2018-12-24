@@ -76,6 +76,11 @@ public class CGunBase extends Item implements IHasModel
 		}
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
+	
+	@Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
 
 	
 	@Override

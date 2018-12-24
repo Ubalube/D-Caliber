@@ -6,6 +6,14 @@ import org.lwjgl.opengl.GL11;
 
 import com.ubalube.scifiaddon.BooleanHelper;
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.items.CGunAimingBase;
+import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.CGunGrenadeLauncher;
+import com.ubalube.scifiaddon.items.CGunHelper;
+import com.ubalube.scifiaddon.items.CGunPDW;
+import com.ubalube.scifiaddon.items.CGunPistol;
+import com.ubalube.scifiaddon.items.CGunSkinnable;
+import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -35,11 +43,18 @@ public class Crosshair extends Gui
 	
 	@SubscribeEvent
     public static void onRenderGameOverlayEvent(RenderGameOverlayEvent event) {
-        EntityPlayer player = main.proxy.getPlayer();
+        Minecraft mc = Minecraft.getMinecraft();
+		EntityPlayer p = mc.player;
         if (event.getType() == RenderGameOverlayEvent.ElementType.CROSSHAIRS) 
         {
+        	if (p.getHeldItemMainhand().getItem() instanceof CGunBase || p.getHeldItemMainhand().getItem() instanceof CGunAimingBase ||
+            		p.getHeldItemMainhand().getItem() instanceof CGunHelper || p.getHeldItemMainhand().getItem() instanceof CGunPDW ||
+            		p.getHeldItemMainhand().getItem() instanceof CGunSniper || p.getHeldItemMainhand().getItem() instanceof CGunPistol ||
+            		p.getHeldItemMainhand().getItem() instanceof CGunSkinnable || p.getHeldItemMainhand().getItem() instanceof CGunGrenadeLauncher) 
+            {
+        		event.setCanceled(true);
+            }
         	
-        	event.setCanceled(true);
         	
         	
         }

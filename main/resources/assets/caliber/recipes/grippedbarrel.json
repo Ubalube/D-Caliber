@@ -4,21 +4,27 @@
     "pattern":
     [
         "   ",
-        "III",
-        "III"
+        " I ",
+        " G "
     ],
    
     "key":
     {
+        
+        "G":
+        {
+            "item": "caliber:grip"
+        },
+        
         "I":
         {
-            "item": "caliber:steel"
+            "item": "caliber:shortbarrel"
         }
     },
     
     "result":
     {
-        "item": "caliber:vssstock",
+        "item": "caliber:grippedbarrel",
         "count": 1
     }
 }

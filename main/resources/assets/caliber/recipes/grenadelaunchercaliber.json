@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "TTT",
+        "TIT",
+        "TTT"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:riflecalibercarbon"
+        },
+    
+        "T":
+        {
+            "item": "caliber:carbonfibre"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:grenadelaunchercaliber",
+        "count": 1
+    }
+}

@@ -12,28 +12,28 @@
     {
         "R":
         {
-            "item": "caliber:sniperscope"
+            "item": "caliber:acog"
         },
     
         "C":
         {
-            "item": "caliber:bfgcaliber"
+            "item": "caliber:grenadelaunchercaliber"
         },
         
         "B":
         {
-            "item": "caliber:longbarrel"
+            "item": "caliber:m16a4stock"
         },
         
         "S":
         {
-            "item": "caliber:m16a4stock"
+            "item": "caliber:grippedbarrel"
         }
     },
     
     "result":
     {
-        "item": "caliber:bfg",
+        "item": "caliber:grenadelauncher",
         "count": 1
     }
 }

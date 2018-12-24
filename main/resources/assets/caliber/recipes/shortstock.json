@@ -4,12 +4,13 @@
     "pattern":
     [
         "   ",
-        "III",
-        "III"
+        "II ",
+        " I "
     ],
    
     "key":
     {
+        
         "I":
         {
             "item": "caliber:steel"
@@ -18,7 +19,7 @@
     
     "result":
     {
-        "item": "caliber:vssstock",
+        "item": "caliber:shortstock",
         "count": 1
     }
 }

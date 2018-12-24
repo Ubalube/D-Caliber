@@ -133,6 +133,11 @@ public class CGunPDW extends Item implements IHasModel
     }
 	
 	@Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
 		int firemode = Firerate;

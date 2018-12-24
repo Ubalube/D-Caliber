@@ -61,6 +61,13 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	
+	//Bullets
+	public static final Item SNIPERBULLET = new ItemBase("sniperbullet", 64, main.gunTab);
+	public static final Item CALROUND = new ItemBase("50round", 64, main.gunTab);
+	public static final Item SMGBULLET = new ItemBase("smgbullet", 64, main.gunTab);
+	public static final Item RIFLEBULLET = new ItemBase("riflebullet", 64, main.gunTab);
+	public static final Item PISTOLBULLET = new ItemBase("pistolbullet", 64, main.gunTab);
+	
 	//Ammmo
 	public static final Item VECTORAMMO = new ItemBase("vectormag", 64, main.gunTab);
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
@@ -85,12 +92,14 @@ public class ModItems
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
+	public static final Item ICON = new ItemBase("icon", 1, main.objectTab);
 	
 	//Parts
 	public static final Item RIFLECALIBER = new ItemBase("riflecaliber", 64, main.partTab);
 	public static final Item RIFLECALIBERCARBON = new ItemBase("riflecalibercarbon", 64, main.partTab);
 	public static final Item LMGCALIBER = new ItemBase("lmgcaliber", 64, main.partTab);
 	public static final Item BFGCALIBER = new ItemBase("bfgcaliber", 64, main.partTab);
+	public static final Item GRENADELAUNCHERCALIBER = new ItemBase("grenadelaunchercaliber", 64, main.partTab);
 	
 	public static final Item PISTOLCALIBER = new ItemBase("pistolcaliber", 64, main.partTab);
 	public static final Item PISTOLCALIBERCARBON = new ItemBase("pistolcalibercarbon", 64, main.partTab);
@@ -113,12 +122,14 @@ public class ModItems
 	public static final Item VSSBARREL = new ItemBase("vssbarrel", 64, main.partTab);
 	public static final Item SHOTBARREL = new ItemBase("shortbarrel", 64, main.partTab);
 	public static final Item LONGBARREL = new ItemBase("longbarrel", 64, main.partTab);
+	public static final Item GRIPPEDBARREL = new ItemBase("grippedbarrel", 64, main.partTab);
 	
 	public static final Item GRIP = new ItemFactions("grip", 64, main.partTab);
 	
 	//Materials
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
 	public static final Item STEEL = new ItemBase("steel", 64, main.partTab);
+	public static final Item COPPER = new ItemBase("copper", 64, main.partTab);
 	public static final Item LENSE = new ItemBase("lense", 64, main.partTab);
 	public static final Item CARBONMIXTURE = new ItemBase("carbonmixture", 64, main.partTab);
 	
@@ -182,7 +193,6 @@ public class ModItems
 	
 	//Grenade
 	public static final Item IMPACT = new CGrenade("impact", 3, main.gunTab, type.IMPACT);
-	public static final Item SMOKE = new CGrenade("smoke", 3, main.gunTab, type.SMOKE);
 	public static final Item FRAG = new CGrenade("frag", 3, main.gunTab, type.FRAG);
 	
 	public static final Item GRENADELAUNCHER = new CGunGrenadeLauncher("grenadelauncher", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);

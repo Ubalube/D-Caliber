@@ -5,25 +5,30 @@
     [
         " R ",
         " G ",
-        "   "
+        " I "
     ],
    
     "key":
     {
         "R":
         {
-            "item": "caliber:holosight"
+            "item": "minecraft:gunpowder"
+        },
+        
+        "I":
+        {
+            "item": "caliber:copper"
         },
         
         "G":
         {
-            "item": "caliber:vector"
+            "item": "caliber:sniperbullet"
         }
     },
     
     "result":
     {
-        "item": "caliber:combatsmg",
-        "count": 1
+        "item": "caliber:50round",
+        "count": 3
     }
 }

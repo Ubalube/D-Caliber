@@ -4,26 +4,32 @@
     "pattern":
     [
         " R ",
-        " G ",
+        "ITI",
         "   "
     ],
    
     "key":
     {
+        
         "R":
         {
-            "item": "caliber:holosight"
+            "item": "minecraft:redstone"
         },
         
-        "G":
+        "I":
         {
-            "item": "caliber:vector"
+            "item": "caliber:lense"
+        },
+        
+        "T":
+        {
+            "item": "caliber:steel"
         }
     },
     
     "result":
     {
-        "item": "caliber:combatsmg",
+        "item": "caliber:sniperscope",
         "count": 1
     }
 }
