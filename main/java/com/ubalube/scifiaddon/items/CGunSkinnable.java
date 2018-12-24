@@ -112,6 +112,11 @@ public class CGunSkinnable extends Item implements IHasModel
     }
 	
 	@Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged;
+    }
+	
+	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))

@@ -101,6 +101,11 @@ public class CGunAimingBase extends Item implements IHasModel
 		ModItems.ITEMS.add(this);
 	}
 	
+	@Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
+	
 	public static NBTTagCompound checkNBTTags(ItemStack stack) {
         NBTTagCompound nbt = stack.getTagCompound();
         if (nbt == null) {

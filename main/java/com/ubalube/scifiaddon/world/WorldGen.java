@@ -33,7 +33,7 @@ public class WorldGen implements IWorldGenerator
 	}
 	
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		
+		generateOre(ModBlocks.COPPERORE.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, 4 + random.nextInt(4), 6);
 	}
 	
 }

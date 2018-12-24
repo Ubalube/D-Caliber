@@ -4,21 +4,26 @@
     "pattern":
     [
         "   ",
-        "III",
-        "III"
+        " IT",
+        "   "
     ],
    
     "key":
     {
         "I":
         {
-            "item": "caliber:steel"
+            "item": "caliber:riflecalibercarbon"
+        },
+    
+        "T":
+        {
+            "item": "caliber:longbarrel"
         }
     },
     
     "result":
     {
-        "item": "caliber:vssstock",
+        "item": "caliber:bfgcaliber",
         "count": 1
     }
 }

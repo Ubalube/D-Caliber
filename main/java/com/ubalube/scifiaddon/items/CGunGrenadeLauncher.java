@@ -132,6 +132,11 @@ public class CGunGrenadeLauncher extends Item implements IHasModel
 	}
 	
 	@Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
+	
+	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
     {
         return EnumAction.BOW;

@@ -15,6 +15,6 @@ public class Guns extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(ModItems.VECTOR);
+		return new ItemStack(ModItems.ICON);
 	}
 }

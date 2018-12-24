@@ -10,7 +10,7 @@
             "italic": true
         },
         "icon": {
-            "item": "caliber:tactm4"
+            "item": "caliber:icon"
         },
         "frame": "challenge",
         "show_toast": true,

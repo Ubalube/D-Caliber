@@ -4,26 +4,27 @@
     "pattern":
     [
         " R ",
-        " G ",
+        " I ",
         "   "
     ],
    
     "key":
     {
+        
         "R":
         {
-            "item": "caliber:holosight"
+            "item": "minecraft:gunpowder"
         },
         
-        "G":
+        "I":
         {
-            "item": "caliber:vector"
+            "item": "caliber:copper"
         }
     },
     
     "result":
     {
-        "item": "caliber:combatsmg",
-        "count": 1
+        "item": "caliber:riflebullet",
+        "count": 16
     }
 }

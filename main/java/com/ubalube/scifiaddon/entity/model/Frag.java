@@ -1,4 +1,4 @@
-package j;
+package com.ubalube.scifiaddon.entity.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
  * M67Frag - VampireRedEye
  * Created using Tabula 7.0.0
  */
-public class M67Frag extends ModelBase {
+public class Frag extends ModelBase {
     public ModelRenderer fragbase;
     public ModelRenderer fragside1;
     public ModelRenderer fragside2;
@@ -23,7 +23,7 @@ public class M67Frag extends ModelBase {
     public ModelRenderer pin3;
     public ModelRenderer pinring;
 
-    public M67Frag() {
+    public Frag() {
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.fragside2 = new ModelRenderer(this, 0, 18);
@@ -88,6 +88,8 @@ public class M67Frag extends ModelBase {
         this.fragbase.render(f5);
         GlStateManager.popMatrix();
     }
+    
+    
 
     /**
      * This is a helper function from Tabula to set the rotation of model parts

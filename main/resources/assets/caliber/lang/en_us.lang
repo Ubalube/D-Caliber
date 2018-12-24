@@ -27,6 +27,11 @@ item.drummag.name=5.56x45mm NATO Drum Clip
 item.c96magazine.name=7.63x25mm Mauser Magazine
 item.lmgmag.name=5.56x45mm NATO LMG Clip
 item.p90ammo.name=FN 5.7x28mm Clip
+item.sniperbullet.name=Sniper Bullet
+item.50round.name=.50 Caliber Bullet
+item.smgbullet.name=SMG Bullet
+item.riflebullet.name=Rifle Bullet
+item.pistolbullet.name=Pistol Bullet
 
 entity.goliath.name=Goliath MkIV
 
@@ -80,6 +85,17 @@ item.m16ironsights.name=Carry-Handle Ironsight
 item.m16a4stock.name=Standard Rifle Stock
 item.shortstock.name=Short Stock
 item.carbonmixture.name=Steel Mixture
+item.lmgcaliber.name=LMG Caliber
+item.grenadelaunchercaliber.name=Grenade Launcher Caliber
+item.sniperscope.name=Sniper Scope
+item.nvscope.name=Night Vision Scope
+item.holosight.name=Holographic Sight
+item.grippedbarrel.name=Gripped Barrel
+item.grip.name=Grip
+item.grenadelauncher.name=M32 Grenade Launcher
+item.frag.name=Frag Grenade
+item.impact.name=Impact Grenade
+item.thelostone.name=The Lost One
 
 item.carbonfibre.name=Carbon Fibre
 item.steel.name=Steel Ingot

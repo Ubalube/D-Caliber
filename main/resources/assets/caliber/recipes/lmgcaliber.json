@@ -3,27 +3,27 @@
    
     "pattern":
     [
-        " S ",
-        " R ",
-        "   "
+        "TTT",
+        "TIT",
+        "TTT"
     ],
    
     "key":
     {
-        "S":
+        "I":
         {
-            "item": "caliber:shield"
+            "item": "caliber:riflecalibercarbon"
         },
     
-        "R":
+        "T":
         {
-            "item": "caliber:lmg_noshield"
+            "item": "minecraft:iron_ingot"
         }
     },
     
     "result":
     {
-        "item": "caliber:lmg",
+        "item": "caliber:lmgcaliber",
         "count": 1
     }
 }

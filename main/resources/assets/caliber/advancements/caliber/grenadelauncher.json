@@ -1,0 +1,31 @@
+{
+    "display": {
+        "title": {
+            "text": "Grenade Propeller",
+            "color": "red"
+        },
+        "description": {
+            "text": "Obtain the M32 Grenade Launcher"
+        },
+        "icon": {
+            "item": "caliber:grenadelauncher"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "caliber:grenadelauncher"
+                    }
+                ]
+            }
+        }
+    },
+    "parent": "caliber:caliber/root"
+}

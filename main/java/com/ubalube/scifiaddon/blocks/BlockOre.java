@@ -27,6 +27,8 @@ public class BlockOre extends Block implements IHasModel
 		setRegistryName(name);
 		setCreativeTab(main.decorTab);
 		
+		this.setHardness(4.0F);
+		
 		i = item;
 		
 		ModBlocks.BLOCKS.add(this);

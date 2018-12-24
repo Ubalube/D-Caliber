@@ -1,9 +1,0 @@
-{
-    "type": "smelting",
-    "ingredient": {
-        "item": "caliber:carbonmixture"
-    },
-    "result": "caliber:steel",
-    "experience": 0.1,
-    "cookingtime": 100
-}

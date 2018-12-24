@@ -1,0 +1,41 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        "TEI",
+        "   "
+    ],
+   
+    "key":
+    {
+        
+        "E":
+        {
+            "item": "minecraft:stained_glass",
+            "data": "5"
+        },
+        
+        "R":
+        {
+            "item": "minecraft:redstone"
+        },
+        
+        "I":
+        {
+            "item": "caliber:lense"
+        },
+        
+        "T":
+        {
+            "item": "caliber:steel"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:nvscope",
+        "count": 1
+    }
+}

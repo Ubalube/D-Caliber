@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
+import com.ubalube.scifiaddon.util.handlers.RenderGUIHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
 import com.ubalube.scifiaddon.world.WorldGen;
 
@@ -68,6 +69,7 @@ public class main
 		RegistryHandler.preInitRegistries();
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
+		MinecraftForge.EVENT_BUS.register(new RenderGUIHandler());
 	}
 	
 	@SideOnly(Side.CLIENT)
