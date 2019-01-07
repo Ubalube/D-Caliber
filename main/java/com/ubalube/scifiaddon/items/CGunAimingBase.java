@@ -144,7 +144,7 @@ public class CGunAimingBase extends Item implements IHasModel
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
-		int firemode = Firerate;
+		int firemode = AutoFiremode;
 		
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		
@@ -161,7 +161,7 @@ public class CGunAimingBase extends Item implements IHasModel
 		
 		nbt = nbt.getCompoundTag("firerate");
 		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+		/*if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			if(!worldIn.isRemote)
 			{
@@ -180,7 +180,7 @@ public class CGunAimingBase extends Item implements IHasModel
 			}
 		}
 		else
-		{
+		{*/
 			if (!playerIn.capabilities.isCreativeMode)
 			{
 				if(itemstack.isItemDamaged())
@@ -196,7 +196,7 @@ public class CGunAimingBase extends Item implements IHasModel
 					}
 					else
 					{
-						playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+						playerIn.getCooldownTracker().setCooldown(this, firemode);
 						if (!worldIn.isRemote)
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -215,7 +215,7 @@ public class CGunAimingBase extends Item implements IHasModel
 				else
 				{
 					//First Bullet
-					playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+					playerIn.getCooldownTracker().setCooldown(this, firemode);
 					if(!worldIn.isRemote)
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -236,7 +236,7 @@ public class CGunAimingBase extends Item implements IHasModel
 			{
 				
 				//Creative Move
-				playerIn.getCooldownTracker().setCooldown(this, nbt.getInteger("firerate"));
+				playerIn.getCooldownTracker().setCooldown(this, firemode);
 				if(!worldIn.isRemote)
 				{
 					EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -250,7 +250,7 @@ public class CGunAimingBase extends Item implements IHasModel
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
 				
 			}
-		}
+		//}
 		playerIn.addStat(StatList.getObjectUseStats(this));
 		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}

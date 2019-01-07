@@ -6,14 +6,14 @@ import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.entity.EntityVehicle;
-import com.ubalube.scifiaddon.entity.render.EntityTankVehicle;
+import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
 import com.ubalube.scifiaddon.entity.render.RenderImpact;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
 import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
 import com.ubalube.scifiaddon.entity.render.RenderTank;
+import com.ubalube.scifiaddon.entity.render.RenderTrader;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -48,6 +48,15 @@ public class RenderHandler
 			}
 		});
 		
+		RenderingRegistry.registerEntityRenderingHandler(EntityTrader.class, new IRenderFactory<EntityTrader>()
+		{
+			@Override
+			public Render<? super EntityTrader> createRenderFor(RenderManager manager) 
+			{
+				return new RenderTrader(manager);
+			}
+		});
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoliath.class, new IRenderFactory<EntityGoliath>()
 		{
 			@Override
@@ -72,15 +81,6 @@ public class RenderHandler
 			public Render<? super EntityImpact> createRenderFor(RenderManager manager) 
 			{
 				return new RenderImpact(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityVehicle.class, new IRenderFactory<EntityVehicle>()
-		{
-			@Override
-			public Render<? super EntityVehicle> createRenderFor(RenderManager manager) 
-			{
-				return new EntityTankVehicle(manager);
 			}
 		});
 		

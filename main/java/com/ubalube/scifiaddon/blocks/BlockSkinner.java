@@ -41,11 +41,11 @@ public class BlockSkinner extends Block implements IHasModel, ITileEntityProvide
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 	
-	@Override
+	/*@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
 	{
 		return Item.getItemFromBlock(ModBlocks.SKINNER);
-	}
+	}*/
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,

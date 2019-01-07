@@ -1,7 +1,8 @@
 package com.ubalube.scifiaddon.proxy;
 
-import com.ubalube.scifiaddon.BooleanHelper;
-import com.ubalube.scifiaddon.client.gui.Crosshair;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -15,6 +16,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy
 {
+	
+	public static List<String> RequestsSent = new ArrayList<>();
+	
 	public static void preInit(FMLPreInitializationEvent e)
 	{
 		

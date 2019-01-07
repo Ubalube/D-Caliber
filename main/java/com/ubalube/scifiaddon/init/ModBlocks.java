@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.blocks.BlockFan;
 import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
+import com.ubalube.scifiaddon.blocks.BlockSquadTable;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
 import com.ubalube.scifiaddon.blocks.TransparentBlock;
 
@@ -48,6 +49,9 @@ public class ModBlocks
 	public static final Block CONCRETEBRICKS = new BlockBase("concretebricks", Material.ROCK, 1.5F);
 	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
 	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER);
+	
+	//Tables
+	public static final Block SQUADTABLE = new BlockSquadTable("squadtable", Material.ROCK);
 	
 	//Skinner
 	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);

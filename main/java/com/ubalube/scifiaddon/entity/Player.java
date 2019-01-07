@@ -33,7 +33,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 
 
-@EventBusSubscriber
 public class Player
 {
 	

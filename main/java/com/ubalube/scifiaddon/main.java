@@ -1,6 +1,12 @@
 package com.ubalube.scifiaddon;
 
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.Player;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.init.ModRecipes;
@@ -10,13 +16,21 @@ import com.ubalube.scifiaddon.tabs.Decor;
 import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
+import com.ubalube.scifiaddon.util.CamoDropEvent;
+import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
 import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
-import com.ubalube.scifiaddon.util.handlers.RenderGUIHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
+import com.ubalube.scifiaddon.util.packets.MessageReputation;
+import com.ubalube.scifiaddon.util.packets.MessageRequestSquad;
+import com.ubalube.scifiaddon.util.packets.MessageSquad;
 import com.ubalube.scifiaddon.world.WorldGen;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -29,15 +43,19 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.GameRules.ValueType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -60,8 +78,11 @@ public class main
 	@Instance
 	public static main instance;
 	
+	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
+	
+	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
 	
 	@EventHandler
 	public static void preinit(FMLPreInitializationEvent event)
@@ -69,7 +90,9 @@ public class main
 		RegistryHandler.preInitRegistries();
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
-		MinecraftForge.EVENT_BUS.register(new RenderGUIHandler());
+		CapabilityHandler.register();
+		NETWORK.registerMessage(MessageRequestSquad.HandleRequestSquad.class, MessageRequestSquad.class, 0, Side.SERVER);
+		NETWORK.registerMessage(MessageSquad.HandleMessageSquads.class, MessageSquad.class, 1, Side.CLIENT);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -91,8 +114,12 @@ public class main
 	public static void init(FMLInitializationEvent e) 
 	{
 		RegistryHandler.initRegistries();
+		MinecraftForge.EVENT_BUS.register(new Player());
+		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
+		MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		
 		ModRecipes.init();
+		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		
 	}
 	

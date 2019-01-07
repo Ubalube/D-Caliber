@@ -24,7 +24,6 @@ import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.CRangefinder;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemDurability;
-import com.ubalube.scifiaddon.items.ItemFactions;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.util.Reference;
@@ -60,6 +59,7 @@ public class ModItems
 	
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
+	public static final ArmorMaterial GHILLIE_SUIT = EnumHelper.addArmorMaterial("ghilliesuit", "caliber:ghilliesuit", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	//Bullets
 	public static final Item SNIPERBULLET = new ItemBase("sniperbullet", 64, main.gunTab);
@@ -67,6 +67,10 @@ public class ModItems
 	public static final Item SMGBULLET = new ItemBase("smgbullet", 64, main.gunTab);
 	public static final Item RIFLEBULLET = new ItemBase("riflebullet", 64, main.gunTab);
 	public static final Item PISTOLBULLET = new ItemBase("pistolbullet", 64, main.gunTab);
+	
+	//Objects
+	public static final Item SUPPLIES1 = new ItemBase("supplies1", 64, main.objectTab);
+	public static final Item SUPPLIES2 = new ItemBase("supplies2", 64, main.objectTab);
 	
 	//Ammmo
 	public static final Item VECTORAMMO = new ItemBase("vectormag", 64, main.gunTab);
@@ -124,7 +128,7 @@ public class ModItems
 	public static final Item LONGBARREL = new ItemBase("longbarrel", 64, main.partTab);
 	public static final Item GRIPPEDBARREL = new ItemBase("grippedbarrel", 64, main.partTab);
 	
-	public static final Item GRIP = new ItemFactions("grip", 64, main.partTab);
+	public static final Item GRIP = new ItemBase("grip", 64, main.partTab);
 	
 	//Materials
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
@@ -153,6 +157,7 @@ public class ModItems
 	public static final Item SPEC_HELMET = new ArmorBaseSkinNV("helmet_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.HEAD);
 	public static final Item SPEC = new ArmorBaseSkin("chest_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.CHEST);
 	public static final Item SPEC_PANTS = new ArmorBaseSkin("pants_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.FEET);
+	
 	
 	//GUNS
 	//Types: 
@@ -187,13 +192,13 @@ public class ModItems
 	public static final Item C96 = new CGunPistol("c96", main.gunTab, 6, 12, 15, 8, 300, ModItems.TECAMMO);
 	
 	//Helpers
-	public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5.0F, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);
-	public static final Item THELOSTONE = new CGunHelper("thelostone", main.gunTab, 10, 100, 12, 5.0F, 600, ModItems.TECAMMO, "Found from another realm, slipped through a portal", "SmellyModder", TextFormatting.AQUA);
+	//public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5.0F, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);
+	//public static final Item THELOSTONE = new CGunHelper("thelostone", main.gunTab, 10, 100, 12, 5.0F, 600, ModItems.TECAMMO, "Found from another realm, slipped through a portal", "SmellyModder", TextFormatting.AQUA);
 	
 	
 	//Grenade
 	public static final Item IMPACT = new CGrenade("impact", 3, main.gunTab, type.IMPACT);
-	public static final Item FRAG = new CGrenade("frag", 3, main.gunTab, type.FRAG);
+	//public static final Item FRAG = new CGrenade("frag", 3, main.gunTab, type.FRAG);
 	
 	public static final Item GRENADELAUNCHER = new CGunGrenadeLauncher("grenadelauncher", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
 }

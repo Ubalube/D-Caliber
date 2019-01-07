@@ -2,8 +2,7 @@ package com.ubalube.scifiaddon.util.handlers;
 
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
-import com.ubalube.scifiaddon.commands.CommandCreateTeam;
-import com.ubalube.scifiaddon.commands.CommandLeaveTeam;
+import com.ubalube.scifiaddon.commands.CommandJoinSquad;
 import com.ubalube.scifiaddon.commands.CommandSquadInfo;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
@@ -23,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -79,6 +79,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void preInitRegistriesOne() 
 	{
 		RenderHandler.registerEntityRenders();
@@ -89,11 +90,11 @@ public class RegistryHandler
 		SoundHandler.registerSounds();
 		BiomeInit.registerBiomes();
 		
-		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
+		//NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
 		
 		//For the Goliath Spawn
 		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};
-		EntityRegistry.addSpawn(EntityGoliath.class, 20, 1, 1, EnumCreatureType.AMBIENT, spawnBiomes);
+		EntityRegistry.addSpawn(EntityGoliath.class, 1, 0, 1, EnumCreatureType.CREATURE, spawnBiomes);
 		Biome[] spawnBiomes2 = {Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")), };
 		EntityRegistry.addSpawn(EntityGhost.class, 30, 2, 4, EnumCreatureType.MONSTER, spawnBiomes2);
 	}
@@ -101,12 +102,12 @@ public class RegistryHandler
 	public static  void postInitRegistries()
 	{
 		WorldType BADLANDS = new WorldTypeBadlands();
+		
 	}
 	
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
-		e.registerServerCommand(new CommandCreateTeam());
-		e.registerServerCommand(new CommandLeaveTeam());
+		e.registerServerCommand(new CommandJoinSquad());
 		e.registerServerCommand(new CommandSquadInfo());
 	}
 	

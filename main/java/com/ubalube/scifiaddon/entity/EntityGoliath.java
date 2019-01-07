@@ -149,7 +149,7 @@ public class EntityGoliath extends EntityMob
 		this.tasks.addTask(2, new EntityGoliath.AIShoot(this));
 		this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, this.getAIMoveSpeed()));
 		this.tasks.addTask(3, new EntityGoliath.AIMoveTowards(this, this.getAIMoveSpeed(), 200, 200));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 	
 	static class AIMoveTowards extends EntityAIMoveTowardsTarget

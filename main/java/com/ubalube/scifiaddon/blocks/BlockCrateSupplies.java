@@ -114,7 +114,7 @@ public class BlockCrateSupplies extends BlockHorizontal implements IHasModel
 	{
 		Random r = new Random();
 		Item i = ModItems.STEEL;
-		int result = r.nextInt(9);
+		int result = r.nextInt(10);
 		switch (result) {
 		case 0:
 			i = Items.BREAD;
@@ -150,6 +150,14 @@ public class BlockCrateSupplies extends BlockHorizontal implements IHasModel
 			
 		case 8:
 			i = ModItems.MEDKIT;
+			break;
+			
+		case 9:
+			i = ModItems.SUPPLIES1;
+			break;
+			
+		case 10:
+			i = ModItems.SUPPLIES2;
 			break;
 
 		default:

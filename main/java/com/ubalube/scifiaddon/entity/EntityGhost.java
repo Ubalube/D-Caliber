@@ -82,7 +82,7 @@ public class EntityGhost extends EntityMob
 		Item weapon = null;
 		switch (r.nextInt(2)) {
 		case 0:
-			weapon = ModItems.SCAR;
+			weapon = ModItems.TACTSCAR;
 			break;
 		default:
 			weapon = ModItems.SCAR;
@@ -107,7 +107,8 @@ public class EntityGhost extends EntityMob
 		this.tasks.addTask(3, new EntityAIWander(this, this.getAIMoveSpeed()));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, false));
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		
 	}
 	
 	
