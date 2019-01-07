@@ -158,7 +158,6 @@ public class ModItems
 	public static final Item SPEC = new ArmorBaseSkin("chest_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.CHEST);
 	public static final Item SPEC_PANTS = new ArmorBaseSkin("pants_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.FEET);
 	
-	
 	//GUNS
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
