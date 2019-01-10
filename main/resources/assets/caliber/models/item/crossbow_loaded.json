@@ -447,5 +447,13 @@
 		"ground": {
 			"rotation":  [ 90, 0, 0 ]
 		}
-	}
+	},
+    "overrides": [
+        {
+            "predicate": {
+                "reload": 1.0
+            },
+            "model": "caliber:item/crossbow_unloaded"
+        }
+    ]
 }

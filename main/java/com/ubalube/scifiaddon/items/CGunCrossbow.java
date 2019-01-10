@@ -67,8 +67,11 @@ public class CGunCrossbow extends Item implements IHasModel
 			@SideOnly(Side.CLIENT)
 	        public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
 	        {
+	            if (entityIn == null) {
+	                return 0.0F;
+	            }
 	            NBTTagCompound nbt = checkNBTTags(stack);
-	            float j = nbt.getInteger("STATE");
+	            float j = nbt.getBoolean("STATE") ? 1.0F : 0.0F;
 	            return j; 
 	        }
         });
@@ -85,7 +88,7 @@ public class CGunCrossbow extends Item implements IHasModel
             stack.setTagCompound(nbt);
         }
         if (!nbt.hasKey("STATE")) {
-            nbt.setInteger("STATE", 0);
+            nbt.setBoolean("STATE", false);
         }
         
         return nbt;
@@ -111,29 +114,6 @@ public class CGunCrossbow extends Item implements IHasModel
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return false;
     }
-	
-	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) 
-	{
-		NBTTagCompound nbt = stack.getTagCompound();
-		if(nbt == null)
-        {
-            nbt = new NBTTagCompound();
-            stack.setTagCompound(nbt);
-        }
-        
-		if(stack.getItemDamage() == 1)
-		{
-			nbt.setBoolean("STATE", true);
-		}
-		else
-		{
-			nbt.setBoolean("STATE", false);
-		}
-		
-        
-		super.onUsingTick(stack, player, count);
-	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
@@ -185,6 +165,7 @@ public class CGunCrossbow extends Item implements IHasModel
 							itemstack.setItemDamage(-clipsize);
 							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
 							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+							nbt.setBoolean("STATE", false);
 						}
 					}
 					else
@@ -198,6 +179,7 @@ public class CGunCrossbow extends Item implements IHasModel
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
+							nbt.setBoolean("STATE", true);
 							
 						}
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -216,6 +198,7 @@ public class CGunCrossbow extends Item implements IHasModel
 						entity.setRange(this.range);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
+						nbt.setBoolean("STATE", true);
 						
 					}
 					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
