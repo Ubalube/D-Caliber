@@ -4,7 +4,9 @@ import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.model.ModelEnderman;
 import net.minecraft.client.model.ModelPlayer;
+import net.minecraft.client.renderer.entity.RenderEnderman;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;

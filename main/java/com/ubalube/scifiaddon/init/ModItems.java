@@ -14,6 +14,7 @@ import com.ubalube.scifiaddon.items.CGrenade;
 import com.ubalube.scifiaddon.items.CGrenade.type;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.CGunCrossbow;
 import com.ubalube.scifiaddon.items.CGunGrenadeLauncher;
 import com.ubalube.scifiaddon.items.CGunHelper;
 import com.ubalube.scifiaddon.items.CGunPDW;
@@ -59,9 +60,11 @@ public class ModItems
 	
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
-	public static final ArmorMaterial GHILLIE_SUIT = EnumHelper.addArmorMaterial("ghilliesuit", "caliber:ghilliesuit", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial SEAL_SUIT = EnumHelper.addArmorMaterial("seal", "caliber:seal", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	//Bullets
+	public static final Item CROSSBOWBOLT = new ItemBase("crossbowbolt", 64, main.gunTab);
 	public static final Item SNIPERBULLET = new ItemBase("sniperbullet", 64, main.gunTab);
 	public static final Item CALROUND = new ItemBase("50round", 64, main.gunTab);
 	public static final Item SMGBULLET = new ItemBase("smgbullet", 64, main.gunTab);
@@ -91,8 +94,9 @@ public class ModItems
 	
 	public static final Item FOREST_PAINT = new ItemPaint("forestpaint", 10, main.objectTab, "Forest", TextFormatting.GREEN);
 	public static final Item DESERT_PAINT = new ItemPaint("desertpaint", 10, main.objectTab, "Desert", TextFormatting.YELLOW);
-	
-	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.BLUE); 
+	public static final Item BLUE_PAINT = new ItemPaint("bluepaint", 10, main.objectTab, "Bright Blue", TextFormatting.BLUE);
+	public static final Item RED_PAINT = new ItemPaint("redpaint", 10, main.objectTab, "Bright Red", TextFormatting.RED);
+	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.WHITE); 
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
@@ -158,6 +162,14 @@ public class ModItems
 	public static final Item SPEC = new ArmorBaseSkin("chest_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.CHEST);
 	public static final Item SPEC_PANTS = new ArmorBaseSkin("pants_spec", "specop_", ARMOR_MATERIAL_SPECOPS, 1, EntityEquipmentSlot.FEET);
 	
+	public static final Item SEAL_HELMET = new ArmorBaseSkin("helmet_seal", "seal_", SEAL_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item SEAL_CHEST = new ArmorBaseSkin("chest_seal", "seal_", SEAL_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item SEAL_PANTS = new ArmorBaseSkin("pants_seal", "seal_", SEAL_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item GIGN_HELMET = new ArmorBaseSkin("helmet_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item GIGN_CHEST = new ArmorBaseSkin("chest_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item GIGN_PANTS = new ArmorBaseSkin("pants_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
+	
 	//GUNS
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
@@ -169,6 +181,7 @@ public class ModItems
 	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.VECTOR, 1);
 	public static final Item TACTSCAR = new CGunAimingBase("tactscar", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
 	public static final Item FAMAS = new CGunSkinnable("famas", main.gunTab, 8, 35, 12, 4, 8, 5.5F, 500, ModItems.M16AMMO, 1);
+	public static final Item TAVOR = new CGunSkinnable("tavor", main.gunTab, 6, 30, 14, 4, 8, 7.5F, 500, ModItems.M16AMMO, 1);
 	public static final Item SCAR = new CGunBase("scar", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 500, ModItems.M16AMMO);
 	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.0F, 300, ModItems.TECAMMO);
 	public static final Item AK12 = new CGunSkinnable("ak12", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 1);
@@ -189,6 +202,9 @@ public class ModItems
 	//Pistols
 	public static final Item G17 = new CGunPistol("g18", main.gunTab, 8, 17, 12, 3, 300, ModItems.TECAMMO);
 	public static final Item C96 = new CGunPistol("c96", main.gunTab, 6, 12, 15, 8, 300, ModItems.TECAMMO);
+	
+	
+	public static final Item CROSSBOW = new CGunCrossbow("crossbow_loaded", main.gunTab, 0, 1, 40, 0, 0, 15, 1000, ModItems.CROSSBOWBOLT);
 	
 	//Helpers
 	//public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5.0F, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);

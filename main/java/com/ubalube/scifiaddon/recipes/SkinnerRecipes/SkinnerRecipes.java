@@ -37,6 +37,8 @@ public class SkinnerRecipes
 		 4 = Fade
 		 5 = Desert
 		 6 = Forest
+		 7 = Blue
+		 8 = Red
 		 */
 		
 		//AK12
@@ -45,6 +47,9 @@ public class SkinnerRecipes
 		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.FADE_PAINT), new ItemStack(ModItems.AK12), 5.0F, 4);
 		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.DESERT_PAINT), new ItemStack(ModItems.AK12), 5.0F, 5);
 		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.FOREST_PAINT), new ItemStack(ModItems.AK12), 5.0F, 6);
+		
+		addHarvestorRecipe(new ItemStack(ModItems.TAVOR), new ItemStack(ModItems.RED_PAINT), new ItemStack(ModItems.TAVOR), 5.0F, 8);
+		addHarvestorRecipe(new ItemStack(ModItems.TAVOR), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.TAVOR), 5.0F, 7);
 		
 		//FAMAS
 		addHarvestorRecipe(new ItemStack(ModItems.FAMAS), new ItemStack(ModItems.LIGHTNING_PAINT), new ItemStack(ModItems.FAMAS), 5.0F, 2);

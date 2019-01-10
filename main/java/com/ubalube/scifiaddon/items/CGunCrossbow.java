@@ -1,43 +1,27 @@
 package com.ubalube.scifiaddon.items;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.Nullable;
 
 import org.lwjgl.input.Keyboard;
 
-import com.google.common.collect.Multimap;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
-import akka.event.Logging.Debug;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemElytra;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -49,9 +33,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.reflect.internal.Trees.Modifiers;
 
-public class CGunSkinnable extends Item implements IHasModel
+public class CGunCrossbow extends Item implements IHasModel
 {
 	
 	int Firerate;
@@ -62,9 +45,8 @@ public class CGunSkinnable extends Item implements IHasModel
 	float damage;
 	int range;
 	Item ammo;
-	int skinamt;
 	
-	public CGunSkinnable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition, int skins) 
+	public CGunCrossbow(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int AFiremode, int SFiremode, float bulletDamage, int bulletDuration, Item ammunition) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -80,20 +62,18 @@ public class CGunSkinnable extends Item implements IHasModel
 		this.range = bulletDuration;
 		this.ammo = ammunition;
 		
-		setMaxDamage(clipsize);
-		
-		this.skinamt = skins;
-		
-		this.addPropertyOverride(new ResourceLocation("skin"), new IItemPropertyGetter()
+		this.addPropertyOverride(new ResourceLocation("reload"), new IItemPropertyGetter()
         {
 			@SideOnly(Side.CLIENT)
 	        public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
 	        {
 	            NBTTagCompound nbt = checkNBTTags(stack);
-	            float j = nbt.getInteger("SKIN");
+	            float j = nbt.getInteger("STATE");
 	            return j; 
 	        }
         });
+		
+		setMaxDamage(clipsize);
 		
 		ModItems.ITEMS.add(this);
 	}
@@ -104,16 +84,11 @@ public class CGunSkinnable extends Item implements IHasModel
             nbt = new NBTTagCompound();
             stack.setTagCompound(nbt);
         }
-        if (!nbt.hasKey("SKIN")) {
-            nbt.setInteger("SKIN", 0);
+        if (!nbt.hasKey("STATE")) {
+            nbt.setInteger("STATE", 0);
         }
         
         return nbt;
-    }
-	
-	@Override
-    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return slotChanged;
     }
 	
 	@Override
@@ -124,57 +99,6 @@ public class CGunSkinnable extends Item implements IHasModel
 			tooltip.add(TextFormatting.YELLOW + "Impact: " + TextFormatting.GREEN + damage);
 			tooltip.add(TextFormatting.YELLOW + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.YELLOW + "Clipsize: " + TextFormatting.GREEN + clipsize);
-			tooltip.add("------------------");
-			/*
-			 Skins
-			 1 = Redstone
-			 2 = Lightning
-			 3 = Volcanic
-			 */
-			NBTTagCompound nbt = stack.getTagCompound();
-			int skin = nbt.getInteger("SKIN");
-			
-			switch (skin) {
-			case 0:
-				tooltip.add("Not Skinned");
-				break;
-				
-			case 1:
-				tooltip.add(TextFormatting.GREEN + "Redstone");
-				break;
-				
-			case 2:
-				tooltip.add(TextFormatting.GREEN + "Lightning");
-				break;
-				
-			case 3:
-				tooltip.add(TextFormatting.GREEN + "Volcanic");
-				break;
-				
-			case 4:
-				tooltip.add(TextFormatting.GREEN + "Fade");
-				break;
-				
-			case 5:
-				tooltip.add(TextFormatting.GREEN + "Desert");
-				break;
-				
-			case 6:
-				tooltip.add(TextFormatting.GREEN + "Forest");
-				break;
-				
-			case 7:
-				tooltip.add(TextFormatting.GREEN + "Bright Blue");
-				break;
-				
-			case 8:
-				tooltip.add(TextFormatting.GREEN + "Bright Red");
-				break;
-
-			default:
-				tooltip.add("Not Skinned");
-				break;
-			}
 		}
 		else
 		{
@@ -184,15 +108,37 @@ public class CGunSkinnable extends Item implements IHasModel
 	}
 	
 	@Override
-	public EnumAction getItemUseAction(ItemStack stack)
-    {
-        return EnumAction.BOW;
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
     }
+	
+	@Override
+	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) 
+	{
+		NBTTagCompound nbt = stack.getTagCompound();
+		if(nbt == null)
+        {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        
+		if(stack.getItemDamage() == 1)
+		{
+			nbt.setBoolean("STATE", true);
+		}
+		else
+		{
+			nbt.setBoolean("STATE", false);
+		}
+		
+        
+		super.onUsingTick(stack, player, count);
+	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
-		int firemode = Firerate;
+		int firemode = AutoFiremode;
 		
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		
@@ -221,7 +167,6 @@ public class CGunSkinnable extends Item implements IHasModel
 					{
 						nbt.setInteger("firerate", SingleFiremode);
 					}
-					System.out.println("GUN FIREMODE");
 				
 				itemstack.setTagInfo("firerate", nbt);
 				
@@ -244,7 +189,7 @@ public class CGunSkinnable extends Item implements IHasModel
 					}
 					else
 					{
-						playerIn.getCooldownTracker().setCooldown(this, AutoFiremode);
+						playerIn.getCooldownTracker().setCooldown(this, firemode);
 						if (!worldIn.isRemote)
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -253,7 +198,6 @@ public class CGunSkinnable extends Item implements IHasModel
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
-							System.out.println("GUN SHOOTING");
 							
 						}
 						worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -263,7 +207,7 @@ public class CGunSkinnable extends Item implements IHasModel
 				else
 				{
 					//First Bullet
-					playerIn.getCooldownTracker().setCooldown(this, AutoFiremode);
+					playerIn.getCooldownTracker().setCooldown(this, firemode);
 					if(!worldIn.isRemote)
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -272,7 +216,6 @@ public class CGunSkinnable extends Item implements IHasModel
 						entity.setRange(this.range);
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
-						System.out.println("GUN SHOOTING");
 						
 					}
 					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -284,7 +227,7 @@ public class CGunSkinnable extends Item implements IHasModel
 			{
 				
 				//Creative Move
-				playerIn.getCooldownTracker().setCooldown(this, AutoFiremode);
+				playerIn.getCooldownTracker().setCooldown(this, firemode);
 				if(!worldIn.isRemote)
 				{
 					EntityBullet entity = new EntityBullet(worldIn, playerIn);
@@ -293,7 +236,6 @@ public class CGunSkinnable extends Item implements IHasModel
 					entity.setRange(this.range);
 					worldIn.spawnEntity(entity);
 					itemstack.damageItem(1, playerIn);
-					System.out.println("GUN SHOOTING");
 				}
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.MASTER, 1, 1);
 				

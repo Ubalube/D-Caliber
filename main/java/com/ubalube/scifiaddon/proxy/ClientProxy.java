@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ubalube.scifiaddon.client.gui.TraderShop;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -34,6 +35,11 @@ public class ClientProxy extends CommonProxy
     {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID, filename), id));
     }
+	
+	@Override
+	public void openTraderGUI(EntityPlayer player) {
+		 Minecraft.getMinecraft().displayGuiScreen(new TraderShop(player));
+	}
 	
 	public EntityPlayer getPlayer(EntityPlayer player) {
         return player = Minecraft.getMinecraft().player;

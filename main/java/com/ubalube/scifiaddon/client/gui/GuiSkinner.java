@@ -8,7 +8,10 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiSkinner extends GuiContainer
 {
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/painter.png");
@@ -20,6 +23,7 @@ public class GuiSkinner extends GuiContainer
 		super(new ContainerSkinner(player, tileentity));
 		this.player = player;
 		this.tileentity = tileentity;
+		
 	}
 	
 	@Override

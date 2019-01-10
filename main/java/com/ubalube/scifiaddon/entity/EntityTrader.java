@@ -1,19 +1,25 @@
 package com.ubalube.scifiaddon.entity;
 
+import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.squads.SquadProvider;
 import com.ubalube.scifiaddon.util.packets.ISquad;
 
+import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 
 public class EntityTrader extends EntityCreature
@@ -55,7 +61,7 @@ public class EntityTrader extends EntityCreature
 		
 		ItemStack handItem = player.getHeldItem(hand);
 		
-		if(handItem.getItem() == ModItems.SUPPLIES1)
+		/*if(handItem.getItem() == ModItems.SUPPLIES1)
 		{
 			player.inventory.clearMatchingItems(ModItems.SUPPLIES1, 0, 1, null);
 			player.addExperience(12);
@@ -75,8 +81,12 @@ public class EntityTrader extends EntityCreature
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.BLUE + "+ 50 Squad Rep"));
 			}
+
 			
-		}
+		}*/
+		
+		
+		main.proxy.openTraderGUI(player);
 		
         return super.processInteract(player, hand);
 		
@@ -91,6 +101,7 @@ public class EntityTrader extends EntityCreature
 	protected void playStepSound(BlockPos pos, Block blockIn) {
 		return;
 	}
+
 	
 	
 	
