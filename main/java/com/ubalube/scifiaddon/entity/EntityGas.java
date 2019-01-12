@@ -15,18 +15,22 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.model.ModelShulkerBullet;
 import net.minecraft.client.renderer.entity.RenderShulkerBullet;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemLingeringPotion;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
@@ -40,7 +44,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
-public class EntityFrag extends EntityThrowable
+public class EntityGas extends EntityThrowable
 {
 	
 	int x;
@@ -49,14 +53,14 @@ public class EntityFrag extends EntityThrowable
     
     float gravity;
 	
-    public EntityFrag(World worldIn)
+    public EntityGas(World worldIn)
     {
         super(worldIn);
         this.setSize(0.5F, 0.5F);
         this.height=0.5f;
     }
 
-    public EntityFrag(World worldIn, EntityLivingBase throwerIn)
+    public EntityGas(World worldIn, EntityLivingBase throwerIn)
     {
         super(worldIn, throwerIn);
         
@@ -84,14 +88,6 @@ public class EntityFrag extends EntityThrowable
         this.x = (int)this.posX;
         this.y = (int)this.posY;
         this.z = (int)this.posZ;
-        
-        if (!this.world.isRemote && (ticksExisted > 100 || speed < 0.01))
-        {
-        	this.setDead();
-			this.world.createExplosion(this, x, y, z, 5.0F, true);
-        }
-        
-        this.pushOutOfBlocks(this.posX, (this.getEntityBoundingBox().minY + this.getEntityBoundingBox().maxY) / 2.0D, this.posZ);
         
         super.onEntityUpdate();
     }
@@ -125,20 +121,15 @@ public class EntityFrag extends EntityThrowable
 		
 		if(result.typeOfHit == Type.BLOCK)
 		{
-			
-			BlockPos pos = result.getBlockPos();
-			
-			EnumFacing face = result.sideHit;
-			
-			if(face == EnumFacing.UP)
-			{
-				double rand = Math.random() * 0.35D;
-				if(rand <= 0)
-				{
-					rand = 1;
-				}
-				this.motionY += rand;
-			}
+			this.setDead();
+			EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(this.world, this.posX, this.posY, this.posZ);
+	        entityareaeffectcloud.setOwner(this.getThrower());
+	        entityareaeffectcloud.setRadius(3.0F);
+	        entityareaeffectcloud.setRadiusOnUse(-0.5F);
+	        entityareaeffectcloud.setWaitTime(10);
+	        entityareaeffectcloud.setRadiusPerTick(-entityareaeffectcloud.getRadius() / (float)entityareaeffectcloud.getDuration());
+	        entityareaeffectcloud.setPotion(PotionTypes.SLOWNESS);
+	        entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.BLINDNESS));
 			
 		}
 		

@@ -15,6 +15,7 @@ import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -29,12 +30,15 @@ public class TraderShop extends GuiScreen
 	
 	private boolean error;
 	private boolean tavorinfo;
+	private boolean pdwinfo;
 	private boolean bought;
 	private String boughtItem;
 	private GuiButton exit;
 	private GuiButton buy;
+	private GuiButton buyapdw;
 	private GuiButton sell;
 	private GuiButton tavorInfo;
+	private GuiButton pdwInfo;
 	private int messagefade;
 	
 	int g_width = 256;
@@ -53,6 +57,8 @@ public class TraderShop extends GuiScreen
 		int y_offset = (height - this.g_height) / 2;
 		this.buttonList.add(exit = new GuiButton(0, y_offset, this.height - (this.height / 4) - 0, "Close"));
 		this.buttonList.add(buy = new GuiButton(0, y_offset, this.height - (this.height / 4) - 20, "Buy Tavor"));
+		this.buttonList.add(buyapdw = new GuiButton(0, y_offset, this.height - (this.height / 4), "Buy Tier 2 PDW"));
+		this.buttonList.add(pdwInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4), 16, 16, "?"));
 		this.buttonList.add(tavorInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4) - 20, 16, 16, "?"));
 		this.buttonList.add(sell = new GuiButton(0, y_offset, this.height - (this.height / 4) - 40, "Sell Materials"));
 		super.initGui();
@@ -90,10 +96,20 @@ public class TraderShop extends GuiScreen
 		
 		if(this.tavorinfo)
 		{
+			this.pdwinfo = false;
 			mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/tavorinfo.png"));
 			this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
 			this.fontRenderer.drawString("Costs 1 Supply", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
 			this.fontRenderer.drawString("TAVOR - Rifle", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
+		}
+		
+		if(this.pdwinfo)
+		{
+			this.tavorinfo = false;
+			mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/apdwinfo.png"));
+			this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
+			this.fontRenderer.drawString("Costs ", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
+			this.fontRenderer.drawString("Enhanced PDW - PDW", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
 		}
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
@@ -140,12 +156,16 @@ public class TraderShop extends GuiScreen
 		if(button == tavorInfo)
 		{
 			tavorinfo = !tavorinfo;
-			
+		}
+		
+		if(button == pdwInfo)
+		{
+			pdwinfo = !pdwinfo;
 		}
 		
 		if(button == sell)
 		{
-			ItemStack i = this.findCurrency(p);
+			ItemStack i = this.findCurrency(p, ModItems.SUPPLIES1);
         	if(!i.isEmpty())
         	{
         		if(i.getItem() == ModItems.SUPPLIES1)
@@ -168,7 +188,7 @@ public class TraderShop extends GuiScreen
         if(button == buy)
         {
         	
-        	ItemStack i = this.findCurrency(p);
+        	ItemStack i = this.findCurrency(p, ModItems.SUPPLIES1);
         	if(!i.isEmpty())
         	{
         		if(i.getItem() == ModItems.SUPPLIES1)
@@ -186,21 +206,41 @@ public class TraderShop extends GuiScreen
         	}
         }
         
+        if(button == buyapdw)
+        {
+        	
+        	ItemStack i = this.findCurrency(p, ModItems.SUPPLIES1);
+        	if(!i.isEmpty())
+        	{
+        		if(i.getItem() == ModItems.SUPPLIES1)
+        		{
+        			i.shrink(1);
+        			p.inventory.addItemStackToInventory(new ItemStack(ModItems.TAVOR));
+        			this.bought = true;
+        			this.error = false;
+        			this.boughtItem = "Enhanced PDW";
+        		}
+        	}
+        	else
+        	{
+        		this.error = true;
+        	}
+        }
+        
     }
 	
-	protected boolean isCurrency(ItemStack stack)
+	protected boolean isCurrency(ItemStack stack, Item itemS)
 	{
-	   return stack.getItem() instanceof ItemBase;
+	   return stack.getItem() == itemS;
 	}
 	
-	private ItemStack findCurrency(EntityPlayer p)
+	private ItemStack findCurrency(EntityPlayer p, Item itemS)
 	{
 		for(int i = 0; i < p.inventory.getSizeInventory(); ++i)
     	{
     		ItemStack item = p.inventory.getStackInSlot(i);
     		
-    		
-    		if(this.isCurrency(item))
+    		if(this.isCurrency(item, itemS))
     		{
     			return item;
     		}

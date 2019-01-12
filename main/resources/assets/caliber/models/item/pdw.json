@@ -460,13 +460,5 @@
 		"fixed": {
 			"scale":  [ 1.3, 1.3, 1.3 ]
 		}
-	},
-    "overrides": [
-        {
-            "predicate": {
-                "aiming": 1.0
-            },
-            "model": "caliber:item/pdw_aiming"
-        }
-    ]
+	}
 }

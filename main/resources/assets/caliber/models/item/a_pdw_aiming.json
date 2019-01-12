@@ -1,11 +1,11 @@
 {
 	"__comment": "Made By Ubalube",
 	"textures": {
-		"texture": "gun/main_body_2",
-		"texture1": "gun/bfgbody",
-		"texture2": "gun/pdw/orange",
-		"texture3": "gun/pdw/ammocounter",
-		"texture4": "gun/holo"
+		"texture": "caliber:gun/main_body_2",
+		"texture1": "caliber:gun/bfgbody",
+		"texture2": "caliber:gun/pdw/orange",
+		"texture3": "caliber:gun/pdw/ammocounter",
+		"texture4": "caliber:gun/holo"
 	},
 	"elements": [ 	 
 		{
@@ -710,12 +710,5 @@
 		"fixed": {
 			"scale":  [ 0.8, 0.8, 0.8 ]
 		}
-	},
-	"overrides": [
-		{
-			"predicate": {
-			},
-			"model": "caliber:item/pdw_aiming"
-		}
-	]
+	}
 }

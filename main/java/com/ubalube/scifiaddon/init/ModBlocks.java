@@ -10,6 +10,7 @@ import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
 import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
 import com.ubalube.scifiaddon.blocks.BlockFan;
+import com.ubalube.scifiaddon.blocks.BlockGasbench;
 import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
@@ -52,6 +53,9 @@ public class ModBlocks
 	
 	//Tables
 	public static final Block SQUADTABLE = new BlockSquadTable("squadtable", Material.ROCK);
+	
+	//Gas Table
+	public static final Block GASBENCH = new BlockGasbench("gastable", Material.ROCK, 1.5F);
 	
 	//Skinner
 	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);

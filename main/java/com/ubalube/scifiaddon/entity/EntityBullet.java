@@ -4,11 +4,14 @@ import java.util.Random;
 
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
+import com.ubalube.scifiaddon.particles.MainParticles;
+import com.ubalube.scifiaddon.particles.ParticleBlood;
 import com.ubalube.scifiaddon.util.Reference;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,6 +33,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
+import scala.collection.concurrent.Debug;
 
 public class EntityBullet extends EntityTippedArrow
 {
@@ -91,11 +95,17 @@ public class EntityBullet extends EntityTippedArrow
             }
             else
             {
-            	world.spawnParticle(EnumParticleTypes.REDSTONE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+            	Vec3d pos = e.getPositionVector();
+            	double d0 = (double)((float)pos.x + rand.nextFloat());
+                double d1 = (double)((float)pos.y + rand.nextFloat());
+                double d2 = (double)((float)pos.z + rand.nextFloat());
+                double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+                double d4 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+                double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            	MainParticles.BLOOD.spawn(e.world, d0, d1, d2, d3, d4, d5);
             }
 			
 		}
-		
 		super.onHit(raytraceResultIn);
 	}
 	

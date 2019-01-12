@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:gastable" },
+        "facing=west": { "model": "caliber:gastable", "y": 90 },
+        "facing=north": { "model": "caliber:gastable", "y": 180 },
+        "facing=east": { "model": "caliber:gastable", "y": 270 }
+    }
+}

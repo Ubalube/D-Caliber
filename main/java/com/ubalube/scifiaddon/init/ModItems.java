@@ -24,7 +24,9 @@ import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.CRangefinder;
 import com.ubalube.scifiaddon.items.ItemBase;
+import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
+import com.ubalube.scifiaddon.items.ItemGasbottle;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.util.Reference;
@@ -62,6 +64,13 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial SEAL_SUIT = EnumHelper.addArmorMaterial("seal", "caliber:seal", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	
+	//Gas
+	public static final Item GASBOTTLE = new ItemGasbottle("gasbottle", 1, main.objectTab);
+	public static final Item GASBOTTLE_C = new ItemGasbottle("creepergas", 1, main.objectTab);
+	public static final Item CREEPERGAS = new ItemBase("creeperpowder", 64, main.objectTab);
+	
+	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
 	
 	//Bullets
 	public static final Item CROSSBOWBOLT = new ItemBase("crossbowbolt", 64, main.gunTab);
@@ -188,7 +197,8 @@ public class ModItems
 	public static final Item FAL = new CGunSkinnable("fal", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 6);
 	public static final Item P90 = new CGunSkinnable("p90", main.gunTab, 8, 45, 15, 8, 4, 7.5F, 500, ModItems.P90AMMO, 4);
 	
-	public static final Item PDW = new CGunPDW("PDW", main.gunTab, 8, 35, 12, 4, 8, 100.0F, 600, ModItems.M16AMMO, 1);
+	public static final Item PDW = new CGunBase("pdw", main.gunTab, 8, 35, 12, 4, 8, 7F, 600, ModItems.M16AMMO);
+	public static final Item APDW = new CGunAimingBase("a_pdw", main.gunTab, 8, 35, 12, 4, 8, 7F, 600, ModItems.M16AMMO, 1);
 	
 	//LMG
 	public static final Item LMG = new CGunAimingBase("lmg", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.DRUMMAG, 1);
