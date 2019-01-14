@@ -52,7 +52,6 @@ public class ModBlocks
 	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER);
 	
 	//Tables
-	public static final Block SQUADTABLE = new BlockSquadTable("squadtable", Material.ROCK);
 	
 	//Gas Table
 	public static final Block GASBENCH = new BlockGasbench("gastable", Material.ROCK, 1.5F);

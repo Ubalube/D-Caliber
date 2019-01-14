@@ -114,19 +114,19 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 		int result = r.nextInt(11);
 		switch (result) {
 		case 0:
-			i = ModItems.FAMAS;
+			i = ModItems.SCAR;
 			break;
 			
 		case 1:
-			i = ModItems.VECTOR;
+			i = ModItems.AWP;
 			break;
 			
 		case 2:
-			i = ModItems.TEC9;
+			i = ModItems.GLOCK;
 			break;
 			
 		case 3:
-			i = ModItems.VSS;
+			i = ModItems.HK416;
 			break;
 
 		case 4:

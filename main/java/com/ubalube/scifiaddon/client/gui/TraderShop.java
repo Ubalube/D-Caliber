@@ -112,6 +112,7 @@ public class TraderShop extends GuiScreen
 			this.fontRenderer.drawString("Enhanced PDW - PDW", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
 		}
 		
+		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
 	
@@ -148,6 +149,7 @@ public class TraderShop extends GuiScreen
     protected void actionPerformed(GuiButton button) throws IOException {
         
 		ISquad squad = mc.player.getCapability(SquadProvider.SQUAD, null);
+		
 		
 		if (button == exit) {
             mc.player.closeScreen();
@@ -194,7 +196,6 @@ public class TraderShop extends GuiScreen
         		if(i.getItem() == ModItems.SUPPLIES1)
         		{
         			i.shrink(1);
-        			p.inventory.addItemStackToInventory(new ItemStack(ModItems.TAVOR));
         			this.bought = true;
         			this.error = false;
         			this.boughtItem = "Tavor";
@@ -215,7 +216,6 @@ public class TraderShop extends GuiScreen
         		if(i.getItem() == ModItems.SUPPLIES1)
         		{
         			i.shrink(1);
-        			p.inventory.addItemStackToInventory(new ItemStack(ModItems.TAVOR));
         			this.bought = true;
         			this.error = false;
         			this.boughtItem = "Enhanced PDW";

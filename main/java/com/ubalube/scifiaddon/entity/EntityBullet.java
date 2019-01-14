@@ -21,6 +21,7 @@ import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -51,6 +52,8 @@ public class EntityBullet extends EntityTippedArrow
 	public EntityBullet(World worldIn, EntityLivingBase shooter) {
 		super(worldIn, shooter);
 	}
+	
+	
 
 	@Override
 	public void onUpdate() {
@@ -102,10 +105,12 @@ public class EntityBullet extends EntityTippedArrow
                 double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
                 double d4 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
                 double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            	MainParticles.BLOOD.spawn(e.world, d0, d1, d2, d3, d4, d5);
+            	//MainParticles.BLOOD.spawn(e.world, d0, d1, d2, d3, d4, d5);
             }
 			
 		}
+		
+		this.playSound(SoundEvents.ENTITY_BLAZE_HURT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 		super.onHit(raytraceResultIn);
 	}
 	

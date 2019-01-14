@@ -8,6 +8,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.items.CGunSkinnable;
+import com.ubalube.scifiaddon.items.GunAimableSkin;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -42,40 +44,10 @@ public class SkinnerRecipes
 		 */
 		
 		//AK12
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.REDSTONE_PAINT), new ItemStack(ModItems.AK12), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.VOLCANIC_PAINT), new ItemStack(ModItems.AK12), 5.0F, 3);
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.FADE_PAINT), new ItemStack(ModItems.AK12), 5.0F, 4);
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.DESERT_PAINT), new ItemStack(ModItems.AK12), 5.0F, 5);
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.FOREST_PAINT), new ItemStack(ModItems.AK12), 5.0F, 6);
-		
-		addHarvestorRecipe(new ItemStack(ModItems.TAVOR), new ItemStack(ModItems.RED_PAINT), new ItemStack(ModItems.TAVOR), 5.0F, 8);
-		addHarvestorRecipe(new ItemStack(ModItems.TAVOR), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.TAVOR), 5.0F, 7);
-		
-		//FAMAS
-		addHarvestorRecipe(new ItemStack(ModItems.FAMAS), new ItemStack(ModItems.LIGHTNING_PAINT), new ItemStack(ModItems.FAMAS), 5.0F, 2);
-		
-		//VECTOR
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.LIGHTNING_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 2);
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.REDSTONE_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.DESERT_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 6);
-		
-		//FAL
-		addHarvestorRecipe(new ItemStack(ModItems.FAL), new ItemStack(ModItems.DESERT_PAINT), new ItemStack(ModItems.FAL), 5.0F, 5);
-		addHarvestorRecipe(new ItemStack(ModItems.FAL), new ItemStack(ModItems.FOREST_PAINT), new ItemStack(ModItems.FAL), 5.0F, 6);
-		
-		//P90
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.LIGHTNING_PAINT), new ItemStack(ModItems.P90), 5.0F, 2);
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.VOLCANIC_PAINT), new ItemStack(ModItems.P90), 5.0F, 3);
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.FADE_PAINT), new ItemStack(ModItems.P90), 5.0F, 4);
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.DESERT_PAINT), new ItemStack(ModItems.P90), 5.0F, 5);
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.FOREST_PAINT), new ItemStack(ModItems.P90), 5.0F, 6);
-		
-		//Default
-		addHarvestorRecipe(new ItemStack(ModItems.AK12), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.AK12), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.FAMAS), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.FAMAS), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.P90), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.P90), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.FAL), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.FAL), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.HK416), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
 	}
 
 	
@@ -87,13 +59,14 @@ public class SkinnerRecipes
 		
 		NBTTagCompound nbt = result.getTagCompound();
 		
-		if(result.getItem() instanceof CGunSkinnable)
+		if(result.getItem() instanceof GunAimableSkin)
 		{
 			if (nbt == null) {
 	            nbt = new NBTTagCompound();
 	            result.setTagCompound(nbt);
 	        }
 			nbt.setInteger("SKIN", skinId);
+			nbt.setBoolean("reload", false);
 		}
 		
 	}

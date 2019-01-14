@@ -6,18 +6,28 @@ import com.ubalube.scifiaddon.commands.CommandJoinSquad;
 import com.ubalube.scifiaddon.commands.CommandSquadInfo;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.model.shields.Blitzshield;
+import com.ubalube.scifiaddon.entity.model.shields.ModelShield;
 import com.ubalube.scifiaddon.init.BiomeInit;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
+import com.ubalube.scifiaddon.util.IShield;
+import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
+import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Lab;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelWolf;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
@@ -52,6 +62,18 @@ public class RegistryHandler
 	{
 		for(Item item : ModItems.ITEMS) 
 		{
+			
+			if(item instanceof IShield)
+			{
+				ModelShield shield = ((IShield) item).shieldModel();
+				
+				if(item == ModItems.BLITZSHIELD)
+				{
+					RegistryHandler.createRender(item, shield, ":textures/models/shield/blitzshield.png");
+				}
+				
+			}
+			
 			if(item instanceof IHasModel) 
 			{
 				((IHasModel)item).registerModels();
@@ -75,8 +97,9 @@ public class RegistryHandler
 		EntityInit.registerProjectile();
 		EntityInit.registerEntities();
 		
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -109,6 +132,20 @@ public class RegistryHandler
 	{
 		e.registerServerCommand(new CommandJoinSquad());
 		e.registerServerCommand(new CommandSquadInfo());
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private static void createRender(Item item, ModelShield s, String resource) {
+		item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {    
+		@Override
+            public void renderByItem(ItemStack stack) {
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + resource));
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(1.0F, -1.0F, -1.0F);
+                s.render();
+                GlStateManager.popMatrix();
+            }
+	    });
 	}
 	
 }

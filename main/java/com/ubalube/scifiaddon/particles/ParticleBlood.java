@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 import com.ubalube.scifiaddon.util.Reference;
 
+@SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.CLIENT)
 public class ParticleBlood extends ParticleMain
 {

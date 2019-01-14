@@ -8,6 +8,7 @@ import com.ubalube.scifiaddon.items.medical.Boosters;
 import com.ubalube.scifiaddon.items.medical.MedicalKit;
 import com.ubalube.scifiaddon.items.music.RecordItem;
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.armor.Armor3D;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
 import com.ubalube.scifiaddon.items.CGrenade;
@@ -23,6 +24,8 @@ import com.ubalube.scifiaddon.items.CGunSkinnable;
 import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.CRangefinder;
+import com.ubalube.scifiaddon.items.GunAimable;
+import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
@@ -36,6 +39,7 @@ import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockPumpkin;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -64,6 +68,8 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial SEAL_SUIT = EnumHelper.addArmorMaterial("seal", "caliber:seal", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	
+	public static final ArmorMaterial CHROM_SUIT = EnumHelper.addArmorMaterial("chrom", "caliber:chrom", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	//Gas
 	public static final Item GASBOTTLE = new ItemGasbottle("gasbottle", 1, main.objectTab);
@@ -179,52 +185,18 @@ public class ModItems
 	public static final Item GIGN_CHEST = new ArmorBaseSkin("chest_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item GIGN_PANTS = new ArmorBaseSkin("pants_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
+	public static final Item CHROM_HELMET = new Armor3D("chromhelm", CHROM_SUIT, 1, EntityEquipmentSlot.HEAD);
+	
 	//GUNS
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
-	public static final Item VECTOR = new CGunSkinnable("vector", main.gunTab, 8, 25, 8, 4, 8, 4.5F, 600, ModItems.VECTORAMMO, 2);
-	public static final Item M4 = new CGunBase("m4", main.gunTab, 8, 35, 12, 4, 8, 6.5F, 600, ModItems.M16AMMO);
-	public static final Item COMBATRIFLE = new CGunAimingBase("tactm4", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 3);
-	public static final Item AUG = new CGunAimingBase("aug", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.M16AMMO, 3);
-	public static final Item COMBATSMG = new CGunAimingBase("combatsmg", main.gunTab, 8, 35, 12, 4, 8, 7.5F, 600, ModItems.VECTOR, 1);
-	public static final Item TACTSCAR = new CGunAimingBase("tactscar", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
-	public static final Item FAMAS = new CGunSkinnable("famas", main.gunTab, 8, 35, 12, 4, 8, 5.5F, 500, ModItems.M16AMMO, 1);
-	public static final Item TAVOR = new CGunSkinnable("tavor", main.gunTab, 6, 30, 14, 4, 8, 7.5F, 500, ModItems.M16AMMO, 1);
-	public static final Item SCAR = new CGunBase("scar", main.gunTab, 8, 35, 12, 4, 8, 5.0F, 500, ModItems.M16AMMO);
-	public static final Item TEC9 = new CGunBase("tec9", main.gunTab, 8, 20, 8, 4, 8, 2.0F, 300, ModItems.TECAMMO);
-	public static final Item AK12 = new CGunSkinnable("ak12", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 1);
-	public static final Item FAL = new CGunSkinnable("fal", main.gunTab, 8, 35, 8, 4, 8, 10.0F, 300, ModItems.AKAMMO, 6);
-	public static final Item P90 = new CGunSkinnable("p90", main.gunTab, 8, 45, 15, 8, 4, 7.5F, 500, ModItems.P90AMMO, 4);
-	
-	public static final Item PDW = new CGunBase("pdw", main.gunTab, 8, 35, 12, 4, 8, 7F, 600, ModItems.M16AMMO);
-	public static final Item APDW = new CGunAimingBase("a_pdw", main.gunTab, 8, 35, 12, 4, 8, 7F, 600, ModItems.M16AMMO, 1);
-	
-	//LMG
-	public static final Item LMG = new CGunAimingBase("lmg", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.DRUMMAG, 1);
-	public static final Item LMG_NOSHIELD = new CGunAimingBase("lmg_noshield", main.gunTab, 8, 55, 15, 8, 4, 6.5F, 600, ModItems.LMGMAG, 1);
-	
-	//Snipers
-	public static final Item VSS = new CGunSniper("vssvintorez", main.gunTab, 12, 12, 12, 15.0F, 800, ModItems.VSSMAG);
-	public static final Item M24 = new CGunSniper("m24", main.gunTab, 20, 12, 30, 50.0F, 1000, ModItems.VSSMAG);
-	public static final Item BFG = new CGunSniper("bfg", main.gunTab, 0, 1, 80, 100.0F, 1000, ModItems.VSSMAG);
-	
-	//Pistols
-	public static final Item G17 = new CGunPistol("g18", main.gunTab, 8, 17, 12, 3, 300, ModItems.TECAMMO);
-	public static final Item C96 = new CGunPistol("c96", main.gunTab, 6, 12, 15, 8, 300, ModItems.TECAMMO);
-	
-	
-	public static final Item CROSSBOW = new CGunCrossbow("crossbow_loaded", main.gunTab, 0, 1, 40, 0, 0, 15, 1000, ModItems.CROSSBOWBOLT);
-	
-	//Helpers
-	//public static final Item ELCOVERT = new CGunHelper("elcovert", main.gunTab, 4, 34, 12, 5.0F, 600, ModItems.TECAMMO, "They won't know what hit em!", "XboxSignOut", TextFormatting.AQUA);
-	//public static final Item THELOSTONE = new CGunHelper("thelostone", main.gunTab, 10, 100, 12, 5.0F, 600, ModItems.TECAMMO, "Found from another realm, slipped through a portal", "SmellyModder", TextFormatting.AQUA);
-	
-	
-	//Grenade
-	public static final Item IMPACT = new CGrenade("impact", 3, main.gunTab, type.IMPACT);
-	//public static final Item FRAG = new CGrenade("frag", 3, main.gunTab, type.FRAG);
-	
-	public static final Item GRENADELAUNCHER = new CGunGrenadeLauncher("grenadelauncher", main.gunTab, 8, 55, 15, 8, 4, 7.0F, 600, ModItems.DRUMMAG, 1);
+	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 8, 200, ModItems.M16AMMO, 1);
+	public static final Item AWP = new GunAimable("awp", main.gunTab, 10, 20, 100, 3, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item SMG = new GunAimable("a_smg", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
 }
 

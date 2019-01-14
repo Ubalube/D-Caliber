@@ -17,6 +17,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import akka.event.Logging.Debug;
+import net.minecraft.client.model.ModelShield;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -215,45 +216,6 @@ public class CGunGrenadeLauncher extends Item implements IHasModel
 			}
 		playerIn.addStat(StatList.getObjectUseStats(this));
 		return new ActionResult(EnumActionResult.PASS, itemstack);
-	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
-	{
-		
-		NBTTagCompound nbt = stack.getTagCompound();
-		
-		if(nbt.getBoolean("ADS") == true)
-        {
-        	if(entityIn instanceof EntityPlayer)
-        	{
-        		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.TACTSCAR)
-        		{
-        			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 20, 2));
-        		}
-        		
-        	}
-        }
-		
-		if(entityIn instanceof EntityPlayer)
-    	{
-    		if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG_NOSHIELD)
-    		{
-    			((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 1));
-    		}
-    		else
-    		{
-    			//Shield
-    			if(((EntityPlayer)entityIn).getHeldItemMainhand().getItem() == ModItems.LMG)
-    			{
-    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
-    				((EntityPlayer)entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 2));
-    			}
-    		}
-    		
-    	}
-		
-		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 	
 	@Override

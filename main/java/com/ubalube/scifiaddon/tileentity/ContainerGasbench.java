@@ -6,6 +6,7 @@ import com.ubalube.scifiaddon.client.gui.slot.SlotOutput;
 import com.ubalube.scifiaddon.client.gui.slot.SlotOutput_Gasbench;
 import com.ubalube.scifiaddon.recipes.GasRecipes.GasbenchRecipes;
 
+import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

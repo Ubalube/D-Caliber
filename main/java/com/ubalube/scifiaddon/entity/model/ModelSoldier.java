@@ -63,6 +63,7 @@ public class ModelSoldier extends ModelBiped {
         	}
         }
         
+        
     }
     
 }

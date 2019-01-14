@@ -17,6 +17,7 @@ import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
+import com.ubalube.scifiaddon.util.FovUpdater;
 import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
@@ -100,6 +101,7 @@ public class main
 	public static void preinitOne(FMLPreInitializationEvent event)
 	{
 		RegistryHandler.preInitRegistriesOne();
+		
 	}
 	
 	//GAMERULES
@@ -114,9 +116,10 @@ public class main
 	public static void init(FMLInitializationEvent e) 
 	{
 		RegistryHandler.initRegistries();
-		MinecraftForge.EVENT_BUS.register(new Player());
+		
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
-		MinecraftForge.EVENT_BUS.register(new MobKillEvent());
+		MinecraftForge.EVENT_BUS.register(new FovUpdater());
+		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		
 		ModRecipes.init();
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());

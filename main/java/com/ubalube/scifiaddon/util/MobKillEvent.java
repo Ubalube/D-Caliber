@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class MobKillEvent 
 {
+	
 	@SubscribeEvent
 	public void AllianceEnder(LivingDeathEvent e)
 	{

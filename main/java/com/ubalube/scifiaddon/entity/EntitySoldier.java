@@ -82,10 +82,10 @@ public class EntitySoldier extends EntityMob
 		Item weapon = null;
 		switch (r.nextInt(2)) {
 		case 0:
-			weapon = ModItems.VECTOR;
+			weapon = ModItems.HK416;
 			break;
 		default:
-			weapon = ModItems.M4;
+			weapon = ModItems.HK416;
 			break;
 		}
 		if (weapon != null) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(weapon));
@@ -233,12 +233,14 @@ public class EntitySoldier extends EntityMob
                         this.e.world.playEvent((EntityPlayer)null, 1018, new BlockPos((int)this.e.posX, (int)this.e.posY, (int)this.e.posZ), 0);
 
                         for (int i = 0; i < 1; ++i)
+                        	
                         {
                         	World w = this.e.getEntityWorld();
-                        	EntityBullet b = new EntityBullet(w, this.e);
-                            b.shoot(this.e, this.e.rotationPitch, this.e.rotationYawHead, 0.0F, 1.5F, 0.0F);
-                            b.setDamage(5.0D);
-                            w.spawnEntity(b);
+                        	EntityBullet entity = new EntityBullet(w, this.e);
+    						entity.shoot(this.e, this.e.rotationPitch, this.e.rotationYaw, 1.0F, 2.0F, 0.0F);
+    						entity.setDamage((double)6.0);
+    						entity.setRange(500);
+    						w.spawnEntity(entity);
                         }
                     }
                 }

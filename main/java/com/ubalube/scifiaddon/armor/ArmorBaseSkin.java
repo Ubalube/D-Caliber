@@ -41,6 +41,8 @@ public class ArmorBaseSkin extends ArmorBase {
 
         this.skinType = "default";
     }
+	
+	
 
 	
 	@Override

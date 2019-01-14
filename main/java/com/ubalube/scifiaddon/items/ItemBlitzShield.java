@@ -1,24 +1,48 @@
 package com.ubalube.scifiaddon.items;
 
+import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nullable;
 
+import org.lwjgl.input.Keyboard;
+
+import com.mojang.realmsclient.gui.ChatFormatting;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.model.shields.Blitzshield;
 import com.ubalube.scifiaddon.entity.model.shields.ModelShield;
 import com.ubalube.scifiaddon.util.IShield;
 
+import akka.japi.Pair;
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.block.SoundType;
+import net.minecraft.client.audio.Sound;
+import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,6 +67,13 @@ public class ItemBlitzShield extends ItemBase implements IShield
         });
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
     }
+	
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
+	{
+		tooltip.add(TextFormatting.YELLOW.ITALIC + "Just a little gift from Blitz");
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
 
 	public String getItemStackDisplayName(ItemStack stack)
     {
@@ -58,6 +89,45 @@ public class ItemBlitzShield extends ItemBase implements IShield
     {
         return 72000;
     }
+    
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+    	return false;
+    }
+    
+    @Override
+    public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
+    {
+    	
+    	EntityPlayer playerIn = (EntityPlayer) entityLiving;
+    	World worldIn = playerIn.world;
+    	
+    	Vec3d playerVision = playerIn.getLookVec();
+		AxisAlignedBB reachDistance = playerIn.getEntityBoundingBox().expand(15.0F, 15.0F, 15.0F);
+
+		List<Entity> locatedEntities = playerIn.world.getEntitiesWithinAABB(Entity.class, reachDistance);
+		
+		for(Object e : locatedEntities)
+		{
+			
+			Entity eb = (Entity) e;
+			
+			if(eb instanceof EntityLivingBase)
+			{
+				if(eb != playerIn)
+				{
+					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 140, 2));
+					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 140, 2));
+					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 80, 2));
+				}
+				
+			}
+			
+		}
+		
+		worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1, 1);
+    	return true;
+    }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
@@ -69,4 +139,5 @@ public class ItemBlitzShield extends ItemBase implements IShield
 	@Override
 	public ModelShield shieldModel() {
 		return new Blitzshield();
-	}}
+	}
+}

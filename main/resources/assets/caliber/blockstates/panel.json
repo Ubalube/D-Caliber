@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:panel" },
+        "facing=west": { "model": "caliber:panel", "y": 90 },
+        "facing=north": { "model": "caliber:panel", "y": 180 },
+        "facing=east": { "model": "caliber:panel", "y": 270 }
+    }
+}

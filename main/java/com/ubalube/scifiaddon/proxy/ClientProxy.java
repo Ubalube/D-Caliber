@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ubalube.scifiaddon.client.gui.TraderShop;
+import com.ubalube.scifiaddon.entity.Player;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -22,7 +23,7 @@ public class ClientProxy extends CommonProxy
 	
 	public static void preInit(FMLPreInitializationEvent e)
 	{
-		
+		MinecraftForge.EVENT_BUS.register(new Player());
 	}
 
 	public void registerItemRender(Item item, int meta, String id) 
