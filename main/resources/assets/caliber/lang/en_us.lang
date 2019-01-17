@@ -13,6 +13,11 @@ entity.bandit.name=Bandit
 entity.milita.name=Milita
 entity.trader.name=Trader
 
+#Classes
+class.assault.name=Rifleman
+class.scout.name=Scout
+class.recon.name=Marksman
+class.engineer.name=Support
 
 //objects
 item.redstonepaint.name=Camo <Redstone>

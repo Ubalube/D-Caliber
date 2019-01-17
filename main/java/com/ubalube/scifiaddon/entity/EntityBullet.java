@@ -7,14 +7,19 @@ import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.particles.MainParticles;
 import com.ubalube.scifiaddon.particles.ParticleBlood;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -26,17 +31,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import scala.collection.concurrent.Debug;
 
-public class EntityBullet extends EntityTippedArrow
+public class EntityBullet extends EntityArrow
 {
     float damage;
     int range;
@@ -90,6 +98,7 @@ public class EntityBullet extends EntityTippedArrow
 		
 		if(e != null)
 		{
+			
 			this.setDead();
 			
 			if(e instanceof EntityGoliath)
@@ -124,5 +133,11 @@ public class EntityBullet extends EntityTippedArrow
         }
         super.onEntityUpdate();
     }
+
+	@Override
+	protected ItemStack getArrowStack() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -154,16 +154,16 @@ public class ModItems
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
-	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 8, 200, ModItems.M16AMMO, 1);
-	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 20, 100, 3, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item SMG = new GunAimable("sting", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1);
+	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1);
+	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 1, 200, ModItems.M16AMMO, 1);
+	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 20, 100, 3, 4, 500, ModItems.M16AMMO, 1);
+	public static final Item SMG = new GunAimable("sting", main.gunTab, 8, 35, 50, 1, 2, 500, ModItems.M16AMMO, 1);
+	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 1.5F, 500, ModItems.M16AMMO, 1);
+	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 2.1F, 500, ModItems.M16AMMO, 1);
+	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 2.2F, 500, ModItems.M16AMMO, 1);
+	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 2.4F, 500, ModItems.M16AMMO, 1);
+	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 2.3F, 500, ModItems.M16AMMO, 1);
+	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 1.4F, 500, ModItems.M16AMMO, 1);
 }
 

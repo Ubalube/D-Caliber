@@ -16,4 +16,8 @@ public class CommonProxy
 		
 	}
 	
+	public void openLoadoutGUI(EntityPlayer player) {
+		
+	}
+	
 }

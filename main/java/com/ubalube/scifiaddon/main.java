@@ -18,6 +18,7 @@ import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
 import com.ubalube.scifiaddon.util.FovUpdater;
+import com.ubalube.scifiaddon.util.LoadoutEvent;
 import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
@@ -110,6 +111,7 @@ public class main
 	{
 		World world = event.getServer().getEntityWorld();
 		RegistryHandler.serverRegistries(event);
+		world.getGameRules().addGameRule("classes", "false", ValueType.BOOLEAN_VALUE);
 	}
 	
 	@EventHandler
@@ -118,6 +120,7 @@ public class main
 		RegistryHandler.initRegistries();
 		
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
+		MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
 		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		

@@ -165,16 +165,19 @@ public class GunBase extends Item implements IHasModel
 		
 		Random rand = new Random();
 		int yawWay = rand.nextInt(2);
-		mc.player.rotationPitch += -this.Recoil;
+		/*p.rotationPitch += -this.Recoil;
 		if(yawWay == 1)
 		{
-			mc.player.rotationYaw += this.Recoil + 1;
+			p.rotationYaw += this.Recoil + 1;
 		}
 		
 		if(yawWay == 2)
 		{
-			mc.player.rotationYaw += -this.Recoil - 1;
-		}
+			p.rotationYaw += -this.Recoil - 1;
+		}*/
+		
+		
+		
 	}
 	public static NBTTagCompound checkNBTTags(ItemStack stack) {
         NBTTagCompound nbt = stack.getTagCompound();
@@ -241,13 +244,18 @@ public class GunBase extends Item implements IHasModel
         }
 	}
 	
-	public void playShootSound(SoundEvent sound, EntityPlayer playerIn)
+	public void playShootSound(EntityPlayer playerIn)
 	{
 		World worldIn = playerIn.getEntityWorld();
-		if(!playerIn.isSprinting()) 
+		ItemStack stack = playerIn.getHeldItem(playerIn.getActiveHand());
+		Item i = stack.getItem();
+		
+		if(i == ModItems.AKM || i == ModItems.SCAR || i == ModItems.SCARACOG || i == ModItems.HK416 || i == ModItems.FAL)
 		{
-			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, sound, SoundCategory.MASTER, 1, 1);
+			//worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, sound, SoundCategory.MASTER, 1, 1);
 		}
+		
+		
 	}
 	
 	/*
@@ -292,13 +300,14 @@ public class GunBase extends Item implements IHasModel
 								EntityBullet entity = new EntityBullet(worldIn, playerIn);
 								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 								entity.setDamage((double)this.damage);
+								entity.shootingEntity = playerIn;
 								entity.setRange(this.range);
 								worldIn.spawnEntity(entity);
 								itemstack.damageItem(1, playerIn);
 								this.doRecoil(playerIn);
 							}
 							
-							playShootSound(this.sound, playerIn);
+							worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
 							
 						}
 						
@@ -317,6 +326,7 @@ public class GunBase extends Item implements IHasModel
 							EntityBullet entity = new EntityBullet(worldIn, playerIn);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 							entity.setDamage((double)this.damage);
+							entity.shootingEntity = playerIn;
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
@@ -324,7 +334,7 @@ public class GunBase extends Item implements IHasModel
 						}
 						
 					}
-					playShootSound(this.sound, playerIn);
+					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
 					
 				}
 			}
@@ -342,12 +352,13 @@ public class GunBase extends Item implements IHasModel
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 						entity.setDamage((double)this.damage);
 						entity.setRange(this.range);
+						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 						this.doRecoil(playerIn);
 					}
 				}
-				playShootSound(this.sound, playerIn);
+				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
 		}
 	}
 	
