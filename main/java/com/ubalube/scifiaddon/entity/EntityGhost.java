@@ -82,10 +82,10 @@ public class EntityGhost extends EntityMob
 		Item weapon = null;
 		switch (r.nextInt(2)) {
 		case 0:
-			weapon = ModItems.HK416;
+			weapon = ModItems.SCAR;
 			break;
 		default:
-			weapon = ModItems.SCAR;
+			weapon = ModItems.SCARACOG;
 			break;
 		}
 		if (weapon != null) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(weapon));

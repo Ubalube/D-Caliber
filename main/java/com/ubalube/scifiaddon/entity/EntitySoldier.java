@@ -82,7 +82,7 @@ public class EntitySoldier extends EntityMob
 		Item weapon = null;
 		switch (r.nextInt(2)) {
 		case 0:
-			weapon = ModItems.HK416;
+			weapon = ModItems.AKM;
 			break;
 		default:
 			weapon = ModItems.HK416;

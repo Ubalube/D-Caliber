@@ -1,45 +1,18 @@
-entity.Villager.weaponseller=Gun Dealer
-entity.Villager.gunsmith=Weapons dealer
-item.vector.name=Vector .45 ACP
-item.vectormag.name=.45 ACP Clip
-item.tec9.name=Minetratec Tec-9
-item.tecmag.name=9x19mm Parabellum Clip
-item.famas.name=Famas F1
-item.m16mag.name= 5.56x45mm NATO Clip
-item.vssvintorez.name=VSS Vintorez
-item.vssmag.name=9x39mm Clip
-item.aug.name=Aug A3
-item.combatsmg.name=Combat SMG
-item.tactscar.name= Tactical Scar
-item.scar.name= Scar-L
-item.ak12.name=AK-12
-item.fal.name=FN FAL
-item.p90.name=P90
-item.PDW.name=PDW
-item.lmg.name=LMG <Shield>
-item.lmg_noshield.name=LMG
-item.m24.name=M24
-item.bfg.name=BFG .50
-item.g18.name=G17
-item.c96.name=Mauser C96
-item.akmag.name=4.45x39mm Clip
-item.drummag.name=5.56x45mm NATO Drum Clip
-item.c96magazine.name=7.63x25mm Mauser Magazine
-item.lmgmag.name=5.56x45mm NATO LMG Clip
-item.p90ammo.name=FN 5.7x28mm Clip
-item.sniperbullet.name=Sniper Bullet
-item.50round.name=.50 Caliber Bullet
-item.smgbullet.name=SMG Bullet
-item.riflebullet.name=Rifle Bullet
-item.pistolbullet.name=Pistol Bullet
-
 entity.goliath.name=Goliath MkIV
 
-item.riflecaliber.name=Iron Rifle Caliber
-item.pistolcaliber.name=Iron Pistol Caliber
+itemGroup.Object=Diamond Caliber Objects
+itemGroup.Decoration=Diamond Caliber Blocks
+itemGroup.Gear=Diamond Caliber Armor
+itemGroup.Parts=Diamond Caliber Parts
+itemGroup.Weapons=Diamond Caliber Weapons
 
-item.m4.name=M16A4
-item.tactm4.name=Combat Rifle
+#Entity
+entity.soldier.name=Scorpion
+entity.ghost.name=Ghost
+entity.bandit.name=Bandit
+entity.milita.name=Milita
+entity.trader.name=Trader
+
 
 //objects
 item.redstonepaint.name=Camo <Redstone>
@@ -55,51 +28,22 @@ item.pills.name=Adrenaline Pills
 item.medkit.name=Medical Kit
 item.node.name=Node
 
-item.elcovert.name= §fEl §dCovert §c✩
-
 //music
 item.hostile_lands.name=Music Disc
 item.record.hostile_lands.desc=Hostile Lands
 
-itemGroup.Gear=Diamond Caliber Gear
-itemGroup.Parts=Diamond Caliber Parts
-itemGroup.Weapons=Diamond Caliber Firearms
-itemGroup.Decoration= Diamond Caliber Decoration
-itemGroup.Object= Diamond Caliber Objects
-
-item.riflecalibercarbon.name=Carbon Rifle Caliber
-item.pistolcalibercarbon.name=Carbon Pistol Caliber
-
-//Containers
 container.skinner=Skin Bench
 
-item.pso.name=PSO-1
-item.ironsights.name=Ironsights
-item.vectorstock.name=Vector Stock
-item.vssstock.name=VSS Stock
-item.vssbarrel.name=VSS Barrel
-item.shortbarrel.name=Short Barrel
-item.longbarrel.name=Long Barrel
-item.acog.name=Acog 4x32
-item.m16ironsights.name=Carry-Handle Ironsight
-item.m16a4stock.name=Standard Rifle Stock
-item.shortstock.name=Short Stock
-item.carbonmixture.name=Steel Mixture
-item.lmgcaliber.name=LMG Caliber
-item.grenadelaunchercaliber.name=Grenade Launcher Caliber
-item.sniperscope.name=Sniper Scope
-item.nvscope.name=Night Vision Scope
-item.holosight.name=Holographic Sight
-item.grippedbarrel.name=Gripped Barrel
-item.grip.name=Grip
-item.grenadelauncher.name=M32 Grenade Launcher
 item.frag.name=Frag Grenade
 item.impact.name=Impact Grenade
-item.thelostone.name=The Lost One
-
 item.carbonfibre.name=Carbon Fibre
 item.steel.name=Steel Ingot
-item.lense.name=Optic Lense
+item.copper.name=Copper Ingot
+item.lense.name=Optical Lense
+item.carbonmixture.name=Carbon Mixture
+item.icon.name=Mod Icon
+item.supplies1.name=Parts
+item.supplies2.name=Encrypted Codes
 
 item.helmet_ranger.name=Ranger Helmet
 item.chest_ranger.name=Ranger Vest
@@ -108,6 +52,30 @@ item.pants_ranger.name=Ranger Pants
 item.helmet_spec.name=Night Operator Helmet
 item.chest_spec.name=Night Operator Vest
 item.pants_spec.name=Night Operator Pants
+
+item.helmet_seal.name=Water Operator Helmet
+item.chest_seal.name=Water Operator Shirt
+item.pants_seal.name=Water Operator Pants
+
+item.helmet_gign.name=GIGN Helmet
+item.chest_gign.name=GIGN Vest
+item.pants_gign.name=GIGN Pants
+
+item.chromhelm.name=Advanced Gasmask
+item.chest_chrom.name=Advanced Suit
+item.pants_chrom.name=Advanced Pants
+
+item.helmet_vector.name=Vector Helmet
+item.chest_vector.name=Vector Shirt
+item.pants_vector.name=Vector Pants
+
+item.helmet_combat.name=Combat Helmet
+item.chest_combat.name=Combat Vest
+item.pants_combat.name=Combat Pants
+
+item.helmet_ghillie.name=Ghillie Hat
+item.chest_ghillie.name=Ghillie Suit
+item.pants_ghillie.name=Ghillie Pants
 
 tile.crate.name=Weapon Case
 tile.sandbags.name=Sandbags
@@ -127,3 +95,18 @@ tile.mcrate.name=Medical Case
 tile.lcrate.name=Loot Case
 tile.fan.name=Small Ceiling Fan
 tile.nodeblock.name=Node
+tile.copperore.name=Copper Ore
+
+#Guns
+item.blitz.name=G52 - Tactical Shield
+item.scar_acog.name=Scar H
+item.scar.name=Scar H
+item.glock.name=Glock 18
+item.l69a1.name=L69A1
+item.sting.name=Sting PDW
+item.thompson.name=Thompson
+item.hk.name=HK416
+item.akm.name=AKM
+item.cr4.name=CR4-C
+item.fal.name=FN Fal
+item.uzi.name=Micro Uzi

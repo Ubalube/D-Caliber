@@ -15,6 +15,6 @@ public class Parts extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(ModItems.RIFLECALIBERCARBON);
+		return new ItemStack(ModItems.BLITZSHIELD);
 	}
 }

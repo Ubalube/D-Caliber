@@ -10,7 +10,6 @@ import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
 import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
 import com.ubalube.scifiaddon.blocks.BlockFan;
-import com.ubalube.scifiaddon.blocks.BlockGasbench;
 import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
@@ -54,7 +53,6 @@ public class ModBlocks
 	//Tables
 	
 	//Gas Table
-	public static final Block GASBENCH = new BlockGasbench("gastable", Material.ROCK, 1.5F);
 	
 	//Skinner
 	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);
@@ -64,7 +62,6 @@ public class ModBlocks
 	
 	public static final Block LABSTONE = new BlockBase("labstone", Material.ROCK, 1.0F);
 	public static final Block CHISELED_LABSTONE = new BlockBase("chiseled_labstone", Material.ROCK, 1.0F);
-	public static final Block LASER = new BlockLaser("laser", Material.CLAY, 100000000.0F);
 	
 	public static final Block BARBEDWIRE = new BarbedWire("barbedwire", Material.WEB);
 	

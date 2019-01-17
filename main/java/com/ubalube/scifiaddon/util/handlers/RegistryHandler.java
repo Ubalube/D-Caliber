@@ -16,6 +16,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.IShield;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
+import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Armory;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Lab;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
@@ -100,6 +101,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
 	}
 	
 	@SideOnly(Side.CLIENT)

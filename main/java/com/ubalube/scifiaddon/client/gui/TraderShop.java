@@ -56,10 +56,8 @@ public class TraderShop extends GuiScreen
 		
 		int y_offset = (height - this.g_height) / 2;
 		this.buttonList.add(exit = new GuiButton(0, y_offset, this.height - (this.height / 4) - 0, "Close"));
-		this.buttonList.add(buy = new GuiButton(0, y_offset, this.height - (this.height / 4) - 20, "Buy Tavor"));
-		this.buttonList.add(buyapdw = new GuiButton(0, y_offset, this.height - (this.height / 4), "Buy Tier 2 PDW"));
-		this.buttonList.add(pdwInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4), 16, 16, "?"));
-		this.buttonList.add(tavorInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4) - 20, 16, 16, "?"));
+		this.buttonList.add(buy = new GuiButton(0, y_offset, this.height - (this.height / 4) - 20, "Buy Crate"));
+		this.buttonList.add(tavorInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4) - 40, 16, 16, "?"));
 		this.buttonList.add(sell = new GuiButton(0, y_offset, this.height - (this.height / 4) - 40, "Sell Materials"));
 		super.initGui();
 	}
@@ -100,16 +98,9 @@ public class TraderShop extends GuiScreen
 			mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/tavorinfo.png"));
 			this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
 			this.fontRenderer.drawString("Costs 1 Supply", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
-			this.fontRenderer.drawString("TAVOR - Rifle", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
-		}
-		
-		if(this.pdwinfo)
-		{
-			this.tavorinfo = false;
-			mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/apdwinfo.png"));
-			this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
-			this.fontRenderer.drawString("Costs ", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
-			this.fontRenderer.drawString("Enhanced PDW - PDW", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
+			this.fontRenderer.drawString("You Can Sell The Following:", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
+			this.fontRenderer.drawString("FAL - 1 Emerald", offsetFromScreenLeft + (int)90.5F, y + 50 - 10, 16777215, true);
+			this.fontRenderer.drawString("UZI - 1 Diamond", offsetFromScreenLeft + (int)90.5F, y + 50 - 10, 16777215, true);
 		}
 		
 		

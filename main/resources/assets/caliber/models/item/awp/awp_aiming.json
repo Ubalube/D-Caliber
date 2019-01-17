@@ -13648,11 +13648,11 @@
 			"scale":  [ 0.6, 0.6, 0.6 ]
 		},
 		"firstperson_righthand": {
-			"translation":  [ -9.04, 5.7, 1 ],
+			"translation":  [ -8.96, 5.7, 1 ],
 			"scale":  [ 0.6, 0.6, 0.6 ]
 		},
 		"firstperson_lefthand": {
-			"translation":  [ -9.04, 5.7, 1 ],
+			"translation":  [ -8.96, 5.7, 1 ],
 			"scale":  [ 0.6, 0.6, 0.6 ]
 		},
 		"gui": {

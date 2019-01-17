@@ -82,10 +82,10 @@ public class EntityBandit extends EntityMob
 		Item weapon = null;
 		switch (r.nextInt(2)) {
 		case 0:
-			weapon = ModItems.SCAR;
+			weapon = ModItems.TOMMYGUN;
 			break;
 		default:
-			weapon = ModItems.HK416;
+			weapon = ModItems.GLOCK;
 			break;
 		}
 		if (weapon != null) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(weapon));

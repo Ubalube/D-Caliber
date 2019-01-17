@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.util.handlers;
 import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.entity.EntityImpact;
+import com.ubalube.scifiaddon.entity.EntityMilita;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntityFrag;
@@ -11,6 +12,7 @@ import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.entity.render.RenderBandit;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
 import com.ubalube.scifiaddon.entity.render.RenderImpact;
+import com.ubalube.scifiaddon.entity.render.RenderMilita;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
 import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
@@ -56,6 +58,15 @@ public class RenderHandler
 			public Render<? super EntityGhost> createRenderFor(RenderManager manager) 
 			{
 				return new RenderGhost(manager);
+			}
+		});
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityMilita.class, new IRenderFactory<EntityMilita>()
+		{
+			@Override
+			public Render<? super EntityMilita> createRenderFor(RenderManager manager) 
+			{
+				return new RenderMilita(manager);
 			}
 		});
 		

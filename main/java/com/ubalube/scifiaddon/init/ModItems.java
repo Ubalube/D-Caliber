@@ -29,7 +29,6 @@ import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
-import com.ubalube.scifiaddon.items.ItemGasbottle;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.util.Reference;
@@ -48,6 +47,7 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.gen.structure.StructureVillagePieces.Church;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -68,38 +68,20 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial SEAL_SUIT = EnumHelper.addArmorMaterial("seal", "caliber:seal", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial GHILLIE_SUIT = EnumHelper.addArmorMaterial("ghillie", "caliber:ghillie", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial COMBAT_SUIT = EnumHelper.addArmorMaterial("combat", "caliber:combat", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial VECTOR_SUIT = EnumHelper.addArmorMaterial("vector", "caliber:vector", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final ArmorMaterial CHROM_SUIT = EnumHelper.addArmorMaterial("chrom", "caliber:chrom", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	
-	//Gas
-	public static final Item GASBOTTLE = new ItemGasbottle("gasbottle", 1, main.objectTab);
-	public static final Item GASBOTTLE_C = new ItemGasbottle("creepergas", 1, main.objectTab);
-	public static final Item CREEPERGAS = new ItemBase("creeperpowder", 64, main.objectTab);
+	public static final ArmorMaterial CHROMB_SUIT = EnumHelper.addArmorMaterial("chrombody", "caliber:chrombody", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
-	
-	//Bullets
-	public static final Item CROSSBOWBOLT = new ItemBase("crossbowbolt", 64, main.gunTab);
-	public static final Item SNIPERBULLET = new ItemBase("sniperbullet", 64, main.gunTab);
-	public static final Item CALROUND = new ItemBase("50round", 64, main.gunTab);
-	public static final Item SMGBULLET = new ItemBase("smgbullet", 64, main.gunTab);
-	public static final Item RIFLEBULLET = new ItemBase("riflebullet", 64, main.gunTab);
-	public static final Item PISTOLBULLET = new ItemBase("pistolbullet", 64, main.gunTab);
 	
 	//Objects
 	public static final Item SUPPLIES1 = new ItemBase("supplies1", 64, main.objectTab);
 	public static final Item SUPPLIES2 = new ItemBase("supplies2", 64, main.objectTab);
 	
-	//Ammmo
-	public static final Item VECTORAMMO = new ItemBase("vectormag", 64, main.gunTab);
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
-	public static final Item AKAMMO = new ItemBase("akmag", 64, main.gunTab);
-	public static final Item VSSMAG = new ItemBase("vssmag", 64, main.gunTab);
-	public static final Item TECAMMO = new ItemBase("tecmag", 64, main.gunTab);
-	public static final Item DRUMMAG = new ItemBase("drummag", 64, main.gunTab);
-	public static final Item C96MAG = new ItemBase("c96magazine", 64, main.gunTab);
-	public static final Item LMGMAG = new ItemBase("lmgmag", 64, main.gunTab);
-	public static final Item P90AMMO = new ItemBase("p90ammo", 64, main.gunTab);
 	
 	//Paints
 	public static final Item REDSTONE_PAINT = new ItemPaint("redstonepaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
@@ -117,38 +99,6 @@ public class ModItems
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
 	public static final Item ICON = new ItemBase("icon", 1, main.objectTab);
 	
-	//Parts
-	public static final Item RIFLECALIBER = new ItemBase("riflecaliber", 64, main.partTab);
-	public static final Item RIFLECALIBERCARBON = new ItemBase("riflecalibercarbon", 64, main.partTab);
-	public static final Item LMGCALIBER = new ItemBase("lmgcaliber", 64, main.partTab);
-	public static final Item BFGCALIBER = new ItemBase("bfgcaliber", 64, main.partTab);
-	public static final Item GRENADELAUNCHERCALIBER = new ItemBase("grenadelaunchercaliber", 64, main.partTab);
-	
-	public static final Item PISTOLCALIBER = new ItemBase("pistolcaliber", 64, main.partTab);
-	public static final Item PISTOLCALIBERCARBON = new ItemBase("pistolcalibercarbon", 64, main.partTab);
-	
-	public static final Item PSO = new ItemBase("pso", 64, main.partTab);
-	public static final Item IRONSIGHTS = new ItemBase("ironsights", 64, main.partTab);
-	public static final Item M16IRONSIGHTS = new ItemBase("m16ironsights", 64, main.partTab);
-	public static final Item ACOG = new ItemBase("acog", 64, main.partTab);
-	public static final Item HOLOSIGHT = new ItemBase("holosight", 64, main.partTab);
-	public static final Item NVSCOPE = new ItemBase("nvscope", 64, main.partTab);
-	public static final Item SNIPERSCOPE = new ItemBase("sniperscope", 64, main.partTab);
-	public static final Item SHIELD = new ItemBase("shield", 64, main.partTab);
-	public static final Item BOLT = new ItemBase("bolt", 64, main.partTab);
-	
-	public static final Item VECTORSTOCK = new ItemBase("vectorstock", 64, main.partTab);
-	public static final Item VSSSTOCK = new ItemBase("vssstock", 64, main.partTab);
-	public static final Item M16STOCK = new ItemBase("m16a4stock", 64, main.partTab);
-	public static final Item SHORTSTOCK = new ItemBase("shortstock", 64, main.partTab);
-	
-	public static final Item VSSBARREL = new ItemBase("vssbarrel", 64, main.partTab);
-	public static final Item SHOTBARREL = new ItemBase("shortbarrel", 64, main.partTab);
-	public static final Item LONGBARREL = new ItemBase("longbarrel", 64, main.partTab);
-	public static final Item GRIPPEDBARREL = new ItemBase("grippedbarrel", 64, main.partTab);
-	
-	public static final Item GRIP = new ItemBase("grip", 64, main.partTab);
-	
 	//Materials
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
 	public static final Item STEEL = new ItemBase("steel", 64, main.partTab);
@@ -165,7 +115,6 @@ public class ModItems
 	public static final Item MEDKIT = new MedicalKit("medkit", 3, main.objectTab, 10, 100);
 	
 	//Objects
-	public static final Item RANGEFINDER = new CRangefinder("rangefinder", main.gunTab);
 	public static final Item NODE = new CNode("node", main.objectTab);
 	
 	//Armor
@@ -185,7 +134,21 @@ public class ModItems
 	public static final Item GIGN_CHEST = new ArmorBaseSkin("chest_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item GIGN_PANTS = new ArmorBaseSkin("pants_gign", "gign_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
+	public static final Item VECTOR_HELMET = new ArmorBaseSkin("helmet_vector", "vector_", VECTOR_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item VECTOR_CHEST = new ArmorBaseSkin("chest_vector", "vector_", VECTOR_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item VECTOR_PANTS = new ArmorBaseSkin("pants_vector", "vector_", VECTOR_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item COMBAT_HELMET = new ArmorBaseSkin("helmet_combat", "combat_", COMBAT_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item COMBAT_CHEST = new ArmorBaseSkin("chest_combat", "combat_", COMBAT_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item COMBAT_PANTS = new ArmorBaseSkin("pants_combat", "combat_", COMBAT_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item GHILLIE_HELMET = new ArmorBaseSkin("helmet_ghillie", "ghillie_", GHILLIE_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item GHILLIE_CHEST = new ArmorBaseSkin("chest_ghillie", "ghillie_", GHILLIE_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item GHILLIE_PANTS = new ArmorBaseSkin("pants_ghillie", "ghillie_", GHILLIE_SUIT, 1, EntityEquipmentSlot.FEET);
+	
 	public static final Item CHROM_HELMET = new Armor3D("chromhelm", CHROM_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHROM_CHEST = new ArmorBaseSkin("chest_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item CHROM_PANTS = new ArmorBaseSkin("pants_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
 	//GUNS
 	//Types: 
@@ -194,9 +157,13 @@ public class ModItems
 	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
 	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 8, 500, ModItems.M16AMMO, 1);
 	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 8, 200, ModItems.M16AMMO, 1);
-	public static final Item AWP = new GunAimable("awp", main.gunTab, 10, 20, 100, 3, 8, 500, ModItems.M16AMMO, 1);
-	public static final Item SMG = new GunAimable("a_smg", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 20, 100, 3, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item SMG = new GunAimable("sting", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
 	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 8, 500, ModItems.M16AMMO, 1);
 	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
+	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 8, 500, ModItems.M16AMMO, 1);
 }
 
