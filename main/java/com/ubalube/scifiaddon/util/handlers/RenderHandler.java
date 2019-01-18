@@ -18,6 +18,8 @@ import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
 import com.ubalube.scifiaddon.entity.render.RenderTank;
 import com.ubalube.scifiaddon.entity.render.RenderTrader;
+import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
+import com.ubalube.scifiaddon.vehicles.render.RenderHumvee;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -33,6 +35,12 @@ public class RenderHandler
 	
 	public static void registerEntityRenders()
 	{
+		
+		/*
+		 * 
+		 * ENTITIES
+		 * 
+		 */
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntitySoldier.class, new IRenderFactory<EntitySoldier>()
 		{
@@ -112,6 +120,21 @@ public class RenderHandler
 			public Render<? super EntityFrag> createRenderFor(RenderManager manager) 
 			{
 				return new RenderFrag(manager);
+			}
+		});
+		
+		/*
+		 * 
+		 * VEHICLES
+		 * 
+		 */
+		
+		RenderingRegistry.registerEntityRenderingHandler(VehicleHumvee.class, new IRenderFactory<VehicleHumvee>()
+		{
+			@Override
+			public Render<? super VehicleHumvee> createRenderFor(RenderManager manager) 
+			{
+				return new RenderHumvee(manager);
 			}
 		});
 		

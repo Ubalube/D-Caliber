@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -29,6 +30,9 @@ public class EntityInit
 		registerEntity("milita", EntityMilita.class, Reference.ENTITY_MILITA, 50, 7326320, 17920);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
 		registerEntity("trader", EntityTrader.class, Reference.ENTITY_TRADER, 50, 000000, 10289152);
+		
+		//VEHICLES
+		registerEntity("humvee", VehicleHumvee.class, Reference.ENTITY_VEHICLE_HUMVEE, 50, 000000, 10289152);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)

@@ -20,6 +20,9 @@ public class Reference
 	public static final int ENTITY_BANDIT = 163;
 	public static final int ENTITY_MILITA = 164;
 	
+	//Vehicles
+	public static final int ENTITY_VEHICLE_HUMVEE = 300;
+	
 	//GUIS
 	public static final int GUI_SKINNER = 0;
 	public static final int GUI_GASBENCH = 1;
