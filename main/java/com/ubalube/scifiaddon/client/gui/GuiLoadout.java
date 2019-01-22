@@ -2,6 +2,7 @@ package com.ubalube.scifiaddon.client.gui;
 
 import java.io.IOException;
 
+import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunBase;
@@ -10,6 +11,7 @@ import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.squads.SquadProvider;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.packets.ISquad;
+import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -146,13 +148,10 @@ public class GuiLoadout extends GuiScreen
         	ItemStack Secondary = new ItemStack(ModItems.GLOCK);
         	this.setNBT(Primary);
         	this.setNBT(Secondary);
-        	
-        	player.inventory.clear();
-        	player.inventory.addItemStackToInventory(Primary);
-        	player.inventory.addItemStackToInventory(Secondary);
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.MEDKIT, 3));
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.PILLS, 2));
-        	
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Primary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Secondary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.MEDKIT, 3));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.PILLS, 2));
         	this.displayClassMessage(AssaultName);
         	
         	this.p.closeScreen();
@@ -164,12 +163,10 @@ public class GuiLoadout extends GuiScreen
         	ItemStack Secondary = new ItemStack(ModItems.GLOCK);
         	this.setNBT(Primary);
         	this.setNBT(Secondary);
-        	
-        	player.inventory.clear();
-        	player.inventory.addItemStackToInventory(Primary);
-        	player.inventory.addItemStackToInventory(Secondary);
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.MEDKIT, 3));
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.PILLS, 2));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Primary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Secondary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.MEDKIT, 3));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.PILLS, 2));
         	
         	this.displayClassMessage(ScoutName);
         	
@@ -183,11 +180,10 @@ public class GuiLoadout extends GuiScreen
         	this.setNBT(Primary);
         	this.setNBT(Secondary);
         	
-        	player.inventory.clear();
-        	player.inventory.addItemStackToInventory(Primary);
-        	player.inventory.addItemStackToInventory(Secondary);
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.MEDKIT, 3));
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.PILLS, 2));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Primary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Secondary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.MEDKIT, 3));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.PILLS, 2));
         	
         	this.displayClassMessage(ReconName);
         	
@@ -201,11 +197,10 @@ public class GuiLoadout extends GuiScreen
         	this.setNBT(Primary);
         	this.setNBT(Secondary);
         	
-        	player.inventory.clear();
-        	player.inventory.addItemStackToInventory(Primary);
-        	player.inventory.addItemStackToInventory(Secondary);
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.MEDKIT, 3));
-        	player.inventory.addItemStackToInventory(new ItemStack(ModItems.BLITZSHIELD, 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Primary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, Secondary.getItem(), 1));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.MEDKIT, 3));
+        	main.NETWORK.sendToServer(new MessageGiveItems(player, ModItems.BLITZSHIELD, 1));
         	
         	this.displayClassMessage(EngineerName);
         	

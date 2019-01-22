@@ -19,6 +19,7 @@ import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Armory;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Lab;
+import com.ubalube.scifiaddon.world.gen.legion.WorldGenCustomStructures_Legion_SmallComp;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
 
 import net.minecraft.block.Block;
@@ -102,6 +103,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_SmallComp(), 50);
 	}
 	
 	@SideOnly(Side.CLIENT)

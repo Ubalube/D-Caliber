@@ -44,10 +44,10 @@ public class SkinnerRecipes
 		 */
 		
 		//AK12
-		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.HK416), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.RED_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.ORANGE_PAINT), new ItemStack(ModItems.HK416), 5.0F, 1);
 		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
 	}
 
 	

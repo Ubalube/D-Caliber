@@ -28,7 +28,7 @@ public class CamoDropEvent
         	World world = event.getEntity().getEntityWorld();
             
         	int dropCamo = rand.nextInt(3);
-            int camo = rand.nextInt(6);
+            int camo = rand.nextInt(5);
             
             Item dropItem = null;
             
@@ -39,27 +39,19 @@ public class CamoDropEvent
             	break;
             	
             case 1:
-            	dropItem = ModItems.DESERT_PAINT;
+            	dropItem = ModItems.ORANGE_PAINT;
             	break;
             	
             case 2:
-            	dropItem = ModItems.FOREST_PAINT;
+            	dropItem = ModItems.BLUE_PAINT;
             	break;
             	
             case 3:
-            	dropItem = ModItems.FADE_PAINT;
+            	dropItem = ModItems.RED_PAINT;
             	break;
             	
             case 4:
-            	dropItem = ModItems.LIGHTNING_PAINT;
-            	break;
-            	
-            case 5:
-            	dropItem = ModItems.REDSTONE_PAINT;
-            	break;
-            	
-            case 6:
-            	dropItem = ModItems.VOLCANIC_PAINT;
+            	dropItem = ModItems.GREEN_PAINT;
             	break;
             	
             }

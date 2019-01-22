@@ -31,12 +31,14 @@ import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
+import com.ubalube.scifiaddon.items.TraderCase;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockPumpkin;
 import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.Blocks;
@@ -84,16 +86,13 @@ public class ModItems
 	public static final Item M16AMMO = new ItemBase("m16mag", 64, main.gunTab);
 	
 	//Paints
-	public static final Item REDSTONE_PAINT = new ItemPaint("redstonepaint", 10, main.objectTab, "Redstone Dust", TextFormatting.RED);
-	public static final Item LIGHTNING_PAINT = new ItemPaint("lightningpaint", 10, main.objectTab, "Lightning", TextFormatting.LIGHT_PURPLE);
-	public static final Item VOLCANIC_PAINT = new ItemPaint("volcanicpaint", 10, main.objectTab, "Volcanic", TextFormatting.GOLD);
-	public static final Item FADE_PAINT = new ItemPaint("fadepaint", 10, main.objectTab, "Fade", TextFormatting.WHITE);
-	
-	public static final Item FOREST_PAINT = new ItemPaint("forestpaint", 10, main.objectTab, "Forest", TextFormatting.GREEN);
-	public static final Item DESERT_PAINT = new ItemPaint("desertpaint", 10, main.objectTab, "Desert", TextFormatting.YELLOW);
 	public static final Item BLUE_PAINT = new ItemPaint("bluepaint", 10, main.objectTab, "Bright Blue", TextFormatting.BLUE);
 	public static final Item RED_PAINT = new ItemPaint("redpaint", 10, main.objectTab, "Bright Red", TextFormatting.RED);
+	public static final Item GREEN_PAINT = new ItemPaint("greenpaint", 10, main.objectTab, "Bright Green", TextFormatting.RED);
+	public static final Item ORANGE_PAINT = new ItemPaint("orangepaint", 10, main.objectTab, "Orange", TextFormatting.RED);
 	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.WHITE); 
+	
+	public static final Item CASE = new TraderCase("case", 1, main.objectTab);
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
@@ -154,16 +153,16 @@ public class ModItems
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
-	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1);
-	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1);
-	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 1, 200, ModItems.M16AMMO, 1);
-	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 20, 100, 3, 4, 500, ModItems.M16AMMO, 1);
-	public static final Item SMG = new GunAimable("sting", main.gunTab, 8, 35, 50, 1, 2, 500, ModItems.M16AMMO, 1);
-	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 1.5F, 500, ModItems.M16AMMO, 1);
-	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 2.1F, 500, ModItems.M16AMMO, 1);
-	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 2.2F, 500, ModItems.M16AMMO, 1);
-	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 2.4F, 500, ModItems.M16AMMO, 1);
-	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 2.3F, 500, ModItems.M16AMMO, 1);
-	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 1.4F, 500, ModItems.M16AMMO, 1);
+	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1, I18n.format("gun.scar.desc"));
+	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 8, 35, 50, 2, 2, 500, ModItems.M16AMMO, 1, I18n.format("gun.scar.desc"));
+	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 1, 200, ModItems.M16AMMO, 1, I18n.format("gun.glock.desc"));
+	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 20, 100, 3, 4, 500, ModItems.M16AMMO, 1, I18n.format("gun.l69a1.desc"));
+	public static final Item SMG = new GunAimable("sting", main.gunTab, 8, 35, 50, 1, 2, 500, ModItems.M16AMMO, 1, I18n.format("gun.sting.desc"));
+	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 1.5F, 500, ModItems.M16AMMO, 1, I18n.format("gun.thompson.desc"));
+	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 8, 35, 50, 1, 2.1F, 500, ModItems.M16AMMO, 1, I18n.format("gun.hk.desc"));
+	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 8, 35, 50, 5, 2.2F, 500, ModItems.M16AMMO, 1, I18n.format("gun.akm.desc"));
+	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 2.4F, 500, ModItems.M16AMMO, 1, I18n.format("gun.cr4.desc"));
+	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 2.3F, 500, ModItems.M16AMMO, 1, I18n.format("gun.fal.desc"));
+	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 1.4F, 500, ModItems.M16AMMO, 1, I18n.format("gun.uzi.desc"));
 }
 

@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -51,7 +52,9 @@ public class GunBase extends Item implements IHasModel
 	Item ammo;
 	int type;
 	
-	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
+	String description;
+	
+	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -64,6 +67,7 @@ public class GunBase extends Item implements IHasModel
 		this.range = bulletDuration;
 		this.ammo = ammunition;
 		this.Recoil = recoil;
+		this.description = desc;
 		
 		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
@@ -130,10 +134,21 @@ public class GunBase extends Item implements IHasModel
 			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: " + (this.getRecoil() + 1));
 		}
 		
+		if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
+		{
+			tooltip.add(TextFormatting.AQUA + this.description);
+		}
+		
+		
+		
 		else
 		{
 			tooltip.add(TextFormatting.YELLOW + "Show Information (LSHIFT)");
 			tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (CTRL)");
+			tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (RSHIFT)");
+			tooltip.add(TextFormatting.GREEN + "----------------------");
+			
+			
 		}
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
@@ -200,6 +215,8 @@ public class GunBase extends Item implements IHasModel
         return nbt;
     }
 	
+	
+	
 	public void doAim(ItemStack stack)
 	{
 		NBTTagCompound nbt = stack.getTagCompound();
@@ -212,17 +229,19 @@ public class GunBase extends Item implements IHasModel
         nbt.setBoolean("ADS", !nbt.getBoolean("ADS"));
 	}
 	
+	
+	
 	/*
 	 * Checks for the gun states (NBT)
 	 */
-	public void checkStates(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
+	public void checkStates(ItemStack stack, World worldIn, Entity entityIn)
 	{
 		NBTTagCompound nbt = stack.getTagCompound();
 		
 		EntityPlayer playerIn = (EntityPlayer) entityIn;
 		
 		CooldownTracker cd = playerIn.getCooldownTracker();
-        if (!cd.hasCooldown(this) && nbt.getBoolean("reload") == true) {
+        if (!cd.hasCooldown(this) && nbt.getBoolean("reload") == true && stack.getItem() instanceof GunBase) {
             nbt.setBoolean("reload", false);
         }
         
@@ -234,13 +253,6 @@ public class GunBase extends Item implements IHasModel
             	nbt.setBoolean("ADS", false);
         	}
         	
-        }
-        else
-        {
-        	if(!playerIn.isSprinting() && nbt.getBoolean("running") == true)
-        	{
-        		nbt.setBoolean("running", false);
-        	}
         }
 	}
 	

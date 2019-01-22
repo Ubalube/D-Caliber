@@ -86,7 +86,7 @@ public class EntityTrader extends EntityCreature
 		}*/
 		
 		
-		main.proxy.openLoadoutGUI(player);
+		main.proxy.openTraderGUI(player);
 		
         return super.processInteract(player, hand);
 		

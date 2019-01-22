@@ -75,7 +75,7 @@ public class EntityMilita extends EntityMob
     {
     	int d = Math.round(difficulty.getClampedAdditionalDifficulty()*3f);
     	this.addGear(d);
-    } 
+    }
 	
 	protected void addGear(int difficulty){
 		Random r = new Random();

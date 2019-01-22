@@ -29,16 +29,13 @@ public class TraderShop extends GuiScreen
 	Minecraft mc = Minecraft.getMinecraft();
 	
 	private boolean error;
-	private boolean tavorinfo;
-	private boolean pdwinfo;
 	private boolean bought;
+	private boolean showInfo;
 	private String boughtItem;
 	private GuiButton exit;
 	private GuiButton buy;
-	private GuiButton buyapdw;
-	private GuiButton sell;
-	private GuiButton tavorInfo;
-	private GuiButton pdwInfo;
+	private GuiButton buyI;
+	private boolean buyInfo;
 	private int messagefade;
 	
 	int g_width = 256;
@@ -56,9 +53,8 @@ public class TraderShop extends GuiScreen
 		
 		int y_offset = (height - this.g_height) / 2;
 		this.buttonList.add(exit = new GuiButton(0, y_offset, this.height - (this.height / 4) - 0, "Close"));
-		this.buttonList.add(buy = new GuiButton(0, y_offset, this.height - (this.height / 4) - 20, "Buy Crate"));
-		this.buttonList.add(tavorInfo = new GuiButton(0, y_offset + 200, this.height - (this.height / 4) - 40, 16, 16, "?"));
-		this.buttonList.add(sell = new GuiButton(0, y_offset, this.height - (this.height / 4) - 40, "Sell Materials"));
+		this.buttonList.add(buy = new GuiButton(0, y_offset, this.height - (this.height / 4) - 40, "Buy Crate"));
+		this.buttonList.add(buyI = new GuiButton(0, y_offset + 200, this.height - (this.height / 4) - 40, 16, 16, "?"));
 		super.initGui();
 	}
 	
@@ -92,15 +88,17 @@ public class TraderShop extends GuiScreen
 			this.fontRenderer.drawString("Successfully bought " + this.boughtItem + "!", offsetFromScreenLeft + 202, y + 180, 65280, true);
 		}
 		
-		if(this.tavorinfo)
+		if(this.buyInfo)
 		{
-			this.pdwinfo = false;
-			mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/tavorinfo.png"));
-			this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
-			this.fontRenderer.drawString("Costs 1 Supply", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
-			this.fontRenderer.drawString("You Can Sell The Following:", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
-			this.fontRenderer.drawString("FAL - 1 Emerald", offsetFromScreenLeft + (int)90.5F, y + 50 - 10, 16777215, true);
-			this.fontRenderer.drawString("UZI - 1 Diamond", offsetFromScreenLeft + (int)90.5F, y + 50 - 10, 16777215, true);
+			//mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/trader/guns/tavorinfo.png"));
+			//this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
+			this.fontRenderer.drawString("Costs 5 Supplies", offsetFromScreenLeft + (int)90.5F, y + 2, 16777215, true);
+			this.fontRenderer.drawString("This crate can drop:", offsetFromScreenLeft + (int)90.5F, y + 50, 16777215, true);
+			this.fontRenderer.drawString("FAL", offsetFromScreenLeft + (int)90.5F, y + 60, 16777215, true);
+			this.fontRenderer.drawString("UZI", offsetFromScreenLeft + (int)90.5F, y + 70, 16777215, true);
+			this.fontRenderer.drawString("SCAR", offsetFromScreenLeft + (int)90.5F, y + 80, 16777215, true);
+			this.fontRenderer.drawString("UZI", offsetFromScreenLeft + (int)90.5F, y + 90, 16777215, true);
+			this.fontRenderer.drawString("Blue Skin", offsetFromScreenLeft + (int)90.5F, y + 100, 16777215, true);
 		}
 		
 		
@@ -146,36 +144,9 @@ public class TraderShop extends GuiScreen
             mc.player.closeScreen();
         }
 		
-		if(button == tavorInfo)
+		if(button == buyI)
 		{
-			tavorinfo = !tavorinfo;
-		}
-		
-		if(button == pdwInfo)
-		{
-			pdwinfo = !pdwinfo;
-		}
-		
-		if(button == sell)
-		{
-			ItemStack i = this.findCurrency(p, ModItems.SUPPLIES1);
-        	if(!i.isEmpty())
-        	{
-        		if(i.getItem() == ModItems.SUPPLIES1)
-        		{
-        			squad.setSquadRep(squad.getSquadRep() + 5);
-        			i.shrink(1);
-        			this.error = false;
-        		}
-        		
-        		if(i.getItem() == ModItems.SUPPLIES2)
-        		{
-        			squad.setSquadRep(squad.getSquadRep() + 10);
-        			i.shrink(1);
-        			this.error = false;
-        		}
-        		
-        	}
+			buyInfo = !buyInfo;
 		}
         
         if(button == buy)
@@ -186,30 +157,17 @@ public class TraderShop extends GuiScreen
         	{
         		if(i.getItem() == ModItems.SUPPLIES1)
         		{
-        			i.shrink(1);
-        			this.bought = true;
-        			this.error = false;
-        			this.boughtItem = "Tavor";
-        		}
-        	}
-        	else
-        	{
-        		this.error = true;
-        	}
-        }
-        
-        if(button == buyapdw)
-        {
-        	
-        	ItemStack i = this.findCurrency(p, ModItems.SUPPLIES1);
-        	if(!i.isEmpty())
-        	{
-        		if(i.getItem() == ModItems.SUPPLIES1)
-        		{
-        			i.shrink(1);
-        			this.bought = true;
-        			this.error = false;
-        			this.boughtItem = "Enhanced PDW";
+        			if(this.getTargetStackSize(i) == 5)
+        			{
+        				i.shrink(5);
+            			this.bought = true;
+            			this.error = false;
+            			this.boughtItem = "Supply Crate";
+        			}
+        			else
+                	{
+                		this.error = true;
+                	}
         		}
         	}
         	else
@@ -238,6 +196,12 @@ public class TraderShop extends GuiScreen
     		
     	}
 		return ItemStack.EMPTY;
+	}
+	
+	private int getTargetStackSize(ItemStack stack)
+	{
+		int i = stack.getCount();
+		return i;
 	}
 	
 	

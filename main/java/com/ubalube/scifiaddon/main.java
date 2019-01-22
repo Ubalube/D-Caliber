@@ -18,6 +18,7 @@ import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
 import com.ubalube.scifiaddon.util.FovUpdater;
+import com.ubalube.scifiaddon.util.GunNBTEvent;
 import com.ubalube.scifiaddon.util.LoadoutEvent;
 import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Reference;
@@ -25,9 +26,12 @@ import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
 import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
+import com.ubalube.scifiaddon.util.packets.CPacketSteerVehicle;
+import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
 import com.ubalube.scifiaddon.util.packets.MessageReputation;
 import com.ubalube.scifiaddon.util.packets.MessageRequestSquad;
 import com.ubalube.scifiaddon.util.packets.MessageSquad;
+import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 import com.ubalube.scifiaddon.world.WorldGen;
 
 import net.minecraft.client.Minecraft;
@@ -95,6 +99,8 @@ public class main
 		CapabilityHandler.register();
 		NETWORK.registerMessage(MessageRequestSquad.HandleRequestSquad.class, MessageRequestSquad.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageSquad.HandleMessageSquads.class, MessageSquad.class, 1, Side.CLIENT);
+		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 2, Side.SERVER);
+		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 3, Side.SERVER);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -111,7 +117,7 @@ public class main
 	{
 		World world = event.getServer().getEntityWorld();
 		RegistryHandler.serverRegistries(event);
-		world.getGameRules().addGameRule("classes", "false", ValueType.BOOLEAN_VALUE);
+		//world.getGameRules().addGameRule("classes", "false", ValueType.BOOLEAN_VALUE);
 	}
 	
 	@EventHandler
@@ -120,7 +126,8 @@ public class main
 		RegistryHandler.initRegistries();
 		
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
-		MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
+		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
+		//MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
 		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		

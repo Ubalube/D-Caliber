@@ -102,6 +102,19 @@ tile.fan.name=Small Ceiling Fan
 tile.nodeblock.name=Node
 tile.copperore.name=Copper Ore
 
+#Guns Description
+#Definitions: MBU - Multi Biome Use. S - Slanted
+gun.scar.desc=A gas-operated rifle designed with a self-rotating bolt. Constructed to be extremely Modular. 
+gun.sting.desc=A battery powered PDW designed with a plasma generator. Equipped with a MBU S-Red Dot.
+gun.l69a1.desc=A bolt-action sniper rifle. A popular rifle among past civilians and police.
+gun.glock.desc=A short-recoil operated, locked-breech semi-automatic pistol. The top performer in reliability.
+gun.fal.desc=A gas-operated battlerifle with a tilting breechblock.
+gun.thompson.desc=A .45 ACP Fed SMG with large accuracy and high volume of automatic fire.
+gun.akm.desc=A modernized variant of the AK-47, a gas-operated rifle with a rotating bolt.
+gun.cr4.desc=A gas-operated rifle with a high impact but semi-automatic fire.
+gun.uzi.desc=An open-bolted, blockback-operated submachine gun. One of the first weapons to use a telescoping bolt.
+gun.hk.desc=A gun based on the AR-15 class of weapons. Using an HK-proprietary short-stroke gas piston system.
+
 #Guns
 item.blitz.name=G52 - Tactical Shield
 item.scar_acog.name=Scar H

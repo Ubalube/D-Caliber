@@ -59,10 +59,10 @@ import scala.util.Random;
 public class GunAimableSkin extends GunBase implements IHasModel
 {
 	
-	public GunAimableSkin(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype) 
+	public GunAimableSkin(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype);
+		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		setMaxDamage(clipsize);
@@ -99,13 +99,28 @@ public class GunAimableSkin extends GunBase implements IHasModel
 		this.shootGun(worldIn, playerIn, handIn, itemstack);
 		//}
 		playerIn.addStat(StatList.getObjectUseStats(this));
+		this.checkStates(itemstack, worldIn, playerIn);
 		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
 	{
-		this.checkStates(stack, worldIn, entityIn, itemSlot, isSelected);
+		EntityPlayer p = (EntityPlayer) entityIn;
+		NBTTagCompound nbt = stack.getTagCompound();
+		if(p.isSprinting())
+		{
+			this.checkStates(stack, worldIn, entityIn);
+		}
+		else
+		{
+			if(!p.isSprinting() && nbt.getBoolean("running") == true)
+			{
+				nbt.setBoolean("running", false);
+			}
+		}
+		
+		
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 	
@@ -113,6 +128,8 @@ public class GunAimableSkin extends GunBase implements IHasModel
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
 	{
 		this.doAim(stack);
+		World worldIn = entityLiving.world;
+		this.checkStates(stack, worldIn, entityLiving);
 		return true;
 	}
 	

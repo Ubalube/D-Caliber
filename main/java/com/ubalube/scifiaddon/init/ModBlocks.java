@@ -12,6 +12,7 @@ import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
 import com.ubalube.scifiaddon.blocks.BlockFan;
 import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
+import com.ubalube.scifiaddon.blocks.BlockRadius;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
 import com.ubalube.scifiaddon.blocks.BlockSquadTable;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
@@ -50,7 +51,8 @@ public class ModBlocks
 	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
 	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER);
 	
-	//Tables
+	//Radius
+	public static final Block RADIUS = new BlockRadius("radius", Material.ROCK, 1.5F);
 	
 	//Gas Table
 	
