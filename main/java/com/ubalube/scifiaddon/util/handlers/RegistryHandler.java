@@ -102,7 +102,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
+		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_SmallComp(), 50);
 	}
 	

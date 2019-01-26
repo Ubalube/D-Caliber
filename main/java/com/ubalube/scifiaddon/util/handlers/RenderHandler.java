@@ -78,14 +78,14 @@ public class RenderHandler
 			}
 		});
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityTrader.class, new IRenderFactory<EntityTrader>()
+		/*RenderingRegistry.registerEntityRenderingHandler(EntityTrader.class, new IRenderFactory<EntityTrader>()
 		{
 			@Override
 			public Render<? super EntityTrader> createRenderFor(RenderManager manager) 
 			{
 				return new RenderTrader(manager);
 			}
-		});
+		});*/
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoliath.class, new IRenderFactory<EntityGoliath>()
 		{

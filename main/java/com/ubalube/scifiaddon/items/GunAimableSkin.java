@@ -119,8 +119,6 @@ public class GunAimableSkin extends GunBase implements IHasModel
 				nbt.setBoolean("running", false);
 			}
 		}
-		
-		
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 	
