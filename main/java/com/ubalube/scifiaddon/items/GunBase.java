@@ -254,6 +254,10 @@ public class GunBase extends Item implements IHasModel
         	}
         	
         }
+        else
+        {
+        	nbt.setBoolean("running", false);
+        }
 	}
 	
 	public void playShootSound(EntityPlayer playerIn)

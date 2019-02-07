@@ -101,7 +101,8 @@ public class GunAimable extends GunBase implements IHasModel
 	{
 		EntityPlayer p = (EntityPlayer) entityIn;
 		NBTTagCompound nbt = stack.getTagCompound();
-		if(p.isSprinting())
+		this.checkStates(stack, worldIn, entityIn);
+		/*if(p.isSprinting())
 		{
 			this.checkStates(stack, worldIn, entityIn);
 		}
@@ -111,7 +112,7 @@ public class GunAimable extends GunBase implements IHasModel
 			{
 				nbt.setBoolean("running", false);
 			}
-		}
+		}*/
 		
 		
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
@@ -122,7 +123,7 @@ public class GunAimable extends GunBase implements IHasModel
 	{
 		this.doAim(stack);
 		World worldIn = entityLiving.world;
-		this.checkStates(stack, worldIn, entityLiving);
+		//this.checkStates(stack, worldIn, entityLiving);
 		return true;
 	}
 	

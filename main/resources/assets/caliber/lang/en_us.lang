@@ -6,6 +6,9 @@ itemGroup.Gear=Diamond Caliber Armor
 itemGroup.Parts=Diamond Caliber Parts
 itemGroup.Weapons=Diamond Caliber Weapons
 
+key.nv.desc=Toggle Nightvision
+key.dc=Diamond Caliber
+
 #Entity
 entity.soldier.name=Scorpion
 entity.ghost.name=Ghost

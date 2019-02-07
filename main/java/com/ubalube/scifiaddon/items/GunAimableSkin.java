@@ -99,7 +99,7 @@ public class GunAimableSkin extends GunBase implements IHasModel
 		this.shootGun(worldIn, playerIn, handIn, itemstack);
 		//}
 		playerIn.addStat(StatList.getObjectUseStats(this));
-		this.checkStates(itemstack, worldIn, playerIn);
+		//this.checkStates(itemstack, worldIn, playerIn);
 		return new ActionResult(EnumActionResult.PASS, itemstack);
 	}
 	
@@ -108,17 +108,18 @@ public class GunAimableSkin extends GunBase implements IHasModel
 	{
 		EntityPlayer p = (EntityPlayer) entityIn;
 		NBTTagCompound nbt = stack.getTagCompound();
-		if(p.isSprinting())
-		{
-			this.checkStates(stack, worldIn, entityIn);
-		}
-		else
-		{
-			if(!p.isSprinting() && nbt.getBoolean("running") == true)
-			{
-				nbt.setBoolean("running", false);
-			}
-		}
+		this.checkStates(stack, worldIn, entityIn);
+		//if(p.isSprinting())
+		//{
+		//	this.checkStates(stack, worldIn, entityIn);
+		//}
+		//else
+		//{
+			//if(!p.isSprinting() && nbt.getBoolean("running") == true)
+			//{
+			//	nbt.setBoolean("running", false);
+			//}
+		//}
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 	
@@ -127,7 +128,7 @@ public class GunAimableSkin extends GunBase implements IHasModel
 	{
 		this.doAim(stack);
 		World worldIn = entityLiving.world;
-		this.checkStates(stack, worldIn, entityLiving);
+		//this.checkStates(stack, worldIn, entityLiving);
 		return true;
 	}
 	

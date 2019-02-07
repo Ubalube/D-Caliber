@@ -19,6 +19,7 @@ import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
 import com.ubalube.scifiaddon.util.FovUpdater;
 import com.ubalube.scifiaddon.util.GunNBTEvent;
+import com.ubalube.scifiaddon.util.KeyInputEvent;
 import com.ubalube.scifiaddon.util.LoadoutEvent;
 import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Reference;
@@ -129,6 +130,8 @@ public class main
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
 		//MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
+		MinecraftForge.EVENT_BUS.register(new KeyInputEvent());
+		
 		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		
 		ModRecipes.init();

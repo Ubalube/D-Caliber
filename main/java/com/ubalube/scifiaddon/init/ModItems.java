@@ -11,6 +11,7 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.armor.Armor3D;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
+import com.ubalube.scifiaddon.armor.ArmorNV;
 import com.ubalube.scifiaddon.items.CGrenade;
 import com.ubalube.scifiaddon.items.CGrenade.type;
 import com.ubalube.scifiaddon.items.CGunAimingBase;
@@ -75,6 +76,7 @@ public class ModItems
 	public static final ArmorMaterial VECTOR_SUIT = EnumHelper.addArmorMaterial("vector", "caliber:vector", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final ArmorMaterial CHROM_SUIT = EnumHelper.addArmorMaterial("chrom", "caliber:chrom", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial NV = EnumHelper.addArmorMaterial("nightvision", "caliber:nightvision", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial CHROMB_SUIT = EnumHelper.addArmorMaterial("chrombody", "caliber:chrombody", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
@@ -148,6 +150,8 @@ public class ModItems
 	public static final Item CHROM_HELMET = new Armor3D("chromhelm", CHROM_SUIT, 1, EntityEquipmentSlot.HEAD);
 	public static final Item CHROM_CHEST = new ArmorBaseSkin("chest_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item CHROM_PANTS = new ArmorBaseSkin("pants_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item NVGOGGLES = new ArmorNV("nightvision", NV, 1, EntityEquipmentSlot.HEAD);
 	
 	//GUNS
 	//Types: 

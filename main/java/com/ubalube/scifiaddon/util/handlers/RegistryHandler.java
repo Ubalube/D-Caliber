@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon.util.handlers;
 
+import org.lwjgl.input.Keyboard;
+
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.commands.CommandJoinSquad;
@@ -27,6 +29,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelWolf;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,6 +39,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -48,6 +52,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber
 public class RegistryHandler 
 {
+	
+	public static KeyBinding[] keyBindings;
+	
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(ModItems.ITEMS.toArray(new Item[0]));
@@ -110,6 +117,16 @@ public class RegistryHandler
 	public static void preInitRegistriesOne() 
 	{
 		RenderHandler.registerEntityRenders();
+		keyBindings = new KeyBinding[1]; 
+		  
+		// instantiate the key bindings
+		keyBindings[0] = new KeyBinding("key.nv.desc", Keyboard.KEY_N, "key.dc");
+		  
+		// register all the key bindings
+		for (int i = 0; i < keyBindings.length; ++i) 
+		{
+		    ClientRegistry.registerKeyBinding(keyBindings[i]);
+		}
 	}
 	
 	public static void initRegistries()
