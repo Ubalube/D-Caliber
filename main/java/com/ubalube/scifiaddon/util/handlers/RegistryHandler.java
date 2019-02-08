@@ -14,6 +14,7 @@ import com.ubalube.scifiaddon.init.BiomeInit;
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.init.ModItems;
+import com.ubalube.scifiaddon.init.ModMusic;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.IShield;
 import com.ubalube.scifiaddon.util.Reference;

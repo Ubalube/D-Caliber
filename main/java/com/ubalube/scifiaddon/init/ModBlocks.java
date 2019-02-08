@@ -52,7 +52,7 @@ public class ModBlocks
 	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER);
 	
 	//Radius
-	public static final Block RADIUS = new BlockRadius("radius", Material.ROCK, 1.5F);
+	//public static final Block RADIUS = new BlockRadius("radius", Material.ROCK, 1.5F);
 	
 	//Gas Table
 	

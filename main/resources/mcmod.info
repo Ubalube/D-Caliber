@@ -7,11 +7,13 @@
   "mcversion": "1.12.2",
   "url": "",
   "updateUrl": "",
-  "authorList": ["XboxSignOut, SmellyModder"],
+  "authorList": ["XboxSignOut"],
   "credits": "Thanks to all of the helpers below!
     Textures: XboxSignOut, VampireRedEye
     Models: Kevin Liang (MrSanBro)
-    Vehicle Models: VampireRedEye",
+    Vehicle Models: VampireRedEye
+    -------
+    Huge thanks to Kevin Liang for all of the gun models!",
   "logoFile": "icon.png",
   "screenshots": [],
   "dependencies": []

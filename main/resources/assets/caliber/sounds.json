@@ -65,5 +65,10 @@
     "hostile_lands": 
     {
     "sounds": [{"name": "caliber:music/hostile_lands", "stream": true}]
+    },
+    
+    "crysis": 
+    {
+    "sounds": [{"name": "caliber:music/crysis", "stream": true}]
     }
 }

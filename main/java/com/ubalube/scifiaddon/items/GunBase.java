@@ -67,7 +67,7 @@ public class GunBase extends Item implements IHasModel
 		this.range = bulletDuration;
 		this.ammo = ammunition;
 		this.Recoil = recoil;
-		this.description = desc;
+		//this.description = desc;
 		
 		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
@@ -180,16 +180,18 @@ public class GunBase extends Item implements IHasModel
 		
 		Random rand = new Random();
 		int yawWay = rand.nextInt(2);
-		/*p.rotationPitch += -this.Recoil;
+		
+		mc.player.rotationPitch += -this.Recoil;
+		
 		if(yawWay == 1)
 		{
-			p.rotationYaw += this.Recoil + 1;
+			mc.player.rotationYaw += this.Recoil + 1;
 		}
 		
 		if(yawWay == 2)
 		{
-			p.rotationYaw += -this.Recoil - 1;
-		}*/
+			mc.player.rotationYaw += -this.Recoil + 1;
+		}
 		
 		
 		
@@ -279,7 +281,6 @@ public class GunBase extends Item implements IHasModel
 	 */
 	public void shootGun(World worldIn, EntityPlayer playerIn, EnumHand handIn, ItemStack itemstack)
 	{
-		int firemode = AutoFiremode;
 		
 		boolean attach = false;
 		
@@ -308,7 +309,7 @@ public class GunBase extends Item implements IHasModel
 					}
 					else
 					{
-						playerIn.getCooldownTracker().setCooldown(this, firemode);
+						playerIn.getCooldownTracker().setCooldown(this, Firerate);
 						if (!worldIn.isRemote)
 						{
 							if(!playerIn.isSprinting())
@@ -334,7 +335,7 @@ public class GunBase extends Item implements IHasModel
 				else
 				{
 					//First Bullet
-					playerIn.getCooldownTracker().setCooldown(this, firemode);
+					playerIn.getCooldownTracker().setCooldown(this, Firerate);
 					if(!worldIn.isRemote)
 					{
 						if(!playerIn.isSprinting())
@@ -359,7 +360,7 @@ public class GunBase extends Item implements IHasModel
 			{
 				
 				//Creative Move
-				playerIn.getCooldownTracker().setCooldown(this, firemode);
+				playerIn.getCooldownTracker().setCooldown(this, Firerate);
 				if(!worldIn.isRemote)
 				{
 					if(!playerIn.isSprinting())
