@@ -28,6 +28,7 @@ import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
+import com.ubalube.scifiaddon.items.ItemBounty;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
@@ -164,5 +165,7 @@ public class ModItems
 	public static final Item CR4 = new GunAimableSkin("cr4", main.gunTab, 8, 35, 50, 5, 2.4F, 500, ModItems.M16AMMO, 1, I18n.format("gun.cr4.desc"));
 	public static final Item FAL = new GunAimableSkin("fal", main.gunTab, 8, 35, 50, 5, 2.3F, 500, ModItems.M16AMMO, 1, I18n.format("gun.fal.desc"));
 	public static final Item UZI = new GunAimableSkin("uzi", main.gunTab, 8, 35, 50, 5, 1.4F, 500, ModItems.M16AMMO, 1, I18n.format("gun.uzi.desc"));
+	
+	public static final Item BOUNTY = new ItemBounty("bounty", 1, main.objectTab);
 }
 

@@ -1,0 +1,14 @@
+{
+   "parent": "item/generated",
+   "textures": {
+       "layer0": "caliber:objects/bounty"
+   },
+    "overrides": [
+        {
+            "predicate": {
+                "isdone": 1.0
+            },
+            "model": "caliber:item/bounty_done"
+        }
+    ]
+}
