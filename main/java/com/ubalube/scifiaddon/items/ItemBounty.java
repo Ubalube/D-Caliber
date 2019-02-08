@@ -7,8 +7,12 @@ import javax.annotation.Nullable;
 import org.lwjgl.input.Keyboard;
 
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.bounties.BountyProvider;
 import com.ubalube.scifiaddon.init.ModItems;
+import com.ubalube.scifiaddon.squads.SquadProvider;
 import com.ubalube.scifiaddon.util.IHasModel;
+import com.ubalube.scifiaddon.util.packets.IBounty;
+import com.ubalube.scifiaddon.util.packets.ISquad;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -110,10 +114,47 @@ public class ItemBounty extends Item implements IHasModel
             nbt = new NBTTagCompound();
             stack.setTagCompound(nbt);
         }
+        IBounty bounty = playerIn.getCapability(BountyProvider.BOUNTY, null);
         
-        nbt.setBoolean("DONE", !nbt.getBoolean("DONE"));
+        if(bounty.activeBounty() == true)
+        {
+        	if(bounty.bountyCompleted() == true)
+        	{
+        		nbt.setBoolean("DONE", true);
+        		nbt.setBoolean("ACTIVE", false);
+        		bounty.bountyState(true);
+        	}
+        	
+        	nbt.setBoolean("ACTIVE", true);
+        	bounty.setActive(true);
+        }
+        else
+        {
+        	nbt.setBoolean("ACTIVE", false);
+        	bounty.setActive(false);
+        }
         
 		return super.onItemRightClick(worldIn, playerIn, handIn);
+	}
+	
+	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		NBTTagCompound nbt = stack.getTagCompound();
+        if (nbt == null) {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        
+        EntityPlayer playerIn = (EntityPlayer) entityLiving;
+        
+        IBounty bounty = playerIn.getCapability(BountyProvider.BOUNTY, null);
+        
+        if(bounty.activeBounty() != true && bounty.bountyCompleted() != true)
+        {
+        	bounty.setActive(true);
+        }
+        
+		return super.onEntitySwing(entityLiving, stack);
 	}
 	
 	@Override
