@@ -114,25 +114,7 @@ public class ItemBounty extends Item implements IHasModel
             nbt = new NBTTagCompound();
             stack.setTagCompound(nbt);
         }
-        IBounty bounty = playerIn.getCapability(BountyProvider.BOUNTY, null);
-        
-        if(bounty.activeBounty() == true)
-        {
-        	if(bounty.bountyCompleted() == true)
-        	{
-        		nbt.setBoolean("DONE", true);
-        		nbt.setBoolean("ACTIVE", false);
-        		bounty.bountyState(true);
-        	}
-        	
-        	nbt.setBoolean("ACTIVE", true);
-        	bounty.setActive(true);
-        }
-        else
-        {
-        	nbt.setBoolean("ACTIVE", false);
-        	bounty.setActive(false);
-        }
+        nbt.setBoolean("DONE", !nbt.getBoolean("DONE"));
         
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}

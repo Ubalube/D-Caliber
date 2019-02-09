@@ -90,6 +90,7 @@ public class GunAimable extends GunBase implements IHasModel
 	{
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		this.shootGun(worldIn, playerIn, handIn, itemstack);
+		this.doRecoil(playerIn);
 		//}
 		playerIn.addStat(StatList.getObjectUseStats(this));
 		this.checkStates(itemstack, worldIn, playerIn);

@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -176,25 +177,22 @@ public class GunBase extends Item implements IHasModel
 	 */
 	public void doRecoil(EntityPlayer p)
 	{
-		Minecraft mc = Minecraft.getMinecraft();
-		
 		Random rand = new Random();
 		int yawWay = rand.nextInt(2);
 		
-		mc.player.rotationPitch += -this.Recoil;
+		EntityPlayerSP sp = (EntityPlayerSP) p;
+		
+		p.rotationPitch += -this.Recoil;
 		
 		if(yawWay == 1)
 		{
-			mc.player.rotationYaw += this.Recoil + 1;
+			p.rotationYaw += this.Recoil + 1;
 		}
 		
 		if(yawWay == 2)
 		{
-			mc.player.rotationYaw += -this.Recoil + 1;
+			p.rotationYaw += -this.Recoil + 1;
 		}
-		
-		
-		
 	}
 	public static NBTTagCompound checkNBTTags(ItemStack stack) {
         NBTTagCompound nbt = stack.getTagCompound();
@@ -321,7 +319,7 @@ public class GunBase extends Item implements IHasModel
 								entity.setRange(this.range);
 								worldIn.spawnEntity(entity);
 								itemstack.damageItem(1, playerIn);
-								this.doRecoil(playerIn);
+								
 							}
 							
 							worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
@@ -347,7 +345,6 @@ public class GunBase extends Item implements IHasModel
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
-							this.doRecoil(playerIn);
 						}
 						
 					}
@@ -372,7 +369,6 @@ public class GunBase extends Item implements IHasModel
 						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
-						this.doRecoil(playerIn);
 					}
 				}
 				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);

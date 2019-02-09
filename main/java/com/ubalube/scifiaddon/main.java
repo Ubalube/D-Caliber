@@ -22,6 +22,7 @@ import com.ubalube.scifiaddon.util.GunNBTEvent;
 import com.ubalube.scifiaddon.util.KeyInputEvent;
 import com.ubalube.scifiaddon.util.LoadoutEvent;
 import com.ubalube.scifiaddon.util.MobKillEvent;
+import com.ubalube.scifiaddon.util.Overlay;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
 import com.ubalube.scifiaddon.util.handlers.GuiHandler;
@@ -144,6 +145,7 @@ public class main
 	public static void PostInit(FMLPostInitializationEvent e) 
 	{
 		RegistryHandler.postInitRegistries();
+		MinecraftForge.EVENT_BUS.register(new Overlay());
 	}
 
 }
