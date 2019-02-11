@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.AMDPerformanceMonitor;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBullet;
@@ -54,8 +55,9 @@ public class GunBase extends Item implements IHasModel
 	int type;
 	
 	String description;
+	String ammoName;
 	
-	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc) 
+	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoName) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -68,7 +70,9 @@ public class GunBase extends Item implements IHasModel
 		this.range = bulletDuration;
 		this.ammo = ammunition;
 		this.Recoil = recoil;
-		//this.description = desc;
+		
+		this.description = desc;
+		this.ammoName = ammoName;
 		
 		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
@@ -119,17 +123,24 @@ public class GunBase extends Item implements IHasModel
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
+		
+		tooltip.add(TextFormatting.YELLOW + "Show Information (LSHIFT)");
+		tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (CTRL)");
+		tooltip.add(TextFormatting.YELLOW + "Weapon Description (RSHIFT)");
+		tooltip.add(TextFormatting.GREEN + "----------------------");
+		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			tooltip.add(TextFormatting.YELLOW + "Weapon Information <!>");
 			tooltip.add(TextFormatting.BLUE + "Impact: " + TextFormatting.GREEN + damage);
 			tooltip.add(TextFormatting.BLUE + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.BLUE + "Clipsize: " + TextFormatting.GREEN + clipsize);
+			tooltip.add(TextFormatting.BLUE + "Ammunition: " + TextFormatting.GREEN + ammoName);
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
 		{
-			tooltip.add(TextFormatting.YELLOW + "Recoil Patterns <!>");
+			tooltip.add(TextFormatting.RED + "Recoil Patterns <!>");
 			tooltip.add(TextFormatting.RED + "Verticle Recoil: 1");
 			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Left> : " + (this.getRecoil() - 1));
 			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: " + (this.getRecoil() + 1));
@@ -137,20 +148,11 @@ public class GunBase extends Item implements IHasModel
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			tooltip.add(TextFormatting.AQUA + this.description);
+			tooltip.add(TextFormatting.RED + "Weapon Description <!>");
+			tooltip.add(TextFormatting.AQUA + I18n.format(this.description));
 		}
 		
 		
-		
-		else
-		{
-			tooltip.add(TextFormatting.YELLOW + "Show Information (LSHIFT)");
-			tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (CTRL)");
-			tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (RSHIFT)");
-			tooltip.add(TextFormatting.GREEN + "----------------------");
-			
-			
-		}
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
@@ -238,6 +240,12 @@ public class GunBase extends Item implements IHasModel
 	{
 		NBTTagCompound nbt = stack.getTagCompound();
 		
+		if(nbt == null)
+        {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+		
 		EntityPlayer playerIn = (EntityPlayer) entityIn;
 		
 		CooldownTracker cd = playerIn.getCooldownTracker();
@@ -263,14 +271,26 @@ public class GunBase extends Item implements IHasModel
 	public void playShootSound(EntityPlayer playerIn)
 	{
 		World worldIn = playerIn.getEntityWorld();
-		ItemStack stack = playerIn.getHeldItem(playerIn.getActiveHand());
-		Item i = stack.getItem();
 		
-		if(i == ModItems.AKM || i == ModItems.SCAR || i == ModItems.SCARACOG || i == ModItems.HK416 || i == ModItems.FAL)
+		if(this.ammo == ModItems.DMRCLIP || this.ammo == ModItems.SNIPERCLIP)
 		{
-			//worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, sound, SoundCategory.MASTER, 1, 1);
+			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_SNIPER_SHOOT, SoundCategory.PLAYERS, 1, 1);
 		}
 		
+		if(this.ammo == ModItems.RIFLE56 || this.ammo == ModItems.RIFLE762)
+		{
+			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.PLAYERS, 1, 1);
+		}
+		
+		if(this.ammo == ModItems.SMG45)
+		{
+			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.PLAYERS, 1, 1);
+		}
+		
+		if(this.ammo == ModItems.PISTOL9mm)
+		{
+			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.PLAYERS, 1, 1);
+		}
 		
 	}
 	
@@ -314,7 +334,7 @@ public class GunBase extends Item implements IHasModel
 							{
 								EntityBullet entity = new EntityBullet(worldIn, playerIn);
 								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-								entity.setDamage((double)this.damage);
+								entity.setGunDamage((double)this.damage);
 								entity.shootingEntity = playerIn;
 								entity.setRange(this.range);
 								worldIn.spawnEntity(entity);
@@ -322,7 +342,7 @@ public class GunBase extends Item implements IHasModel
 								
 							}
 							
-							worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
+							
 							
 						}
 						
@@ -340,7 +360,7 @@ public class GunBase extends Item implements IHasModel
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-							entity.setDamage((double)this.damage);
+							entity.setGunDamage((double)this.damage);
 							entity.shootingEntity = playerIn;
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
@@ -348,7 +368,6 @@ public class GunBase extends Item implements IHasModel
 						}
 						
 					}
-					worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
 					
 				}
 			}
@@ -364,14 +383,13 @@ public class GunBase extends Item implements IHasModel
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn);
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-						entity.setDamage((double)this.damage);
+						entity.setGunDamage((double)this.damage);
 						entity.setRange(this.range);
 						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
 					}
 				}
-				worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.MASTER, 1, 1);
 		}
 	}
 	

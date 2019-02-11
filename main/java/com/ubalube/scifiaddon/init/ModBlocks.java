@@ -9,10 +9,11 @@ import com.ubalube.scifiaddon.blocks.BlockBase;
 import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
 import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
-import com.ubalube.scifiaddon.blocks.BlockFan;
+import com.ubalube.scifiaddon.blocks.BlockLight;
 import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockRadius;
+import com.ubalube.scifiaddon.blocks.BlockRotaryLamp;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
 import com.ubalube.scifiaddon.blocks.BlockSquadTable;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
@@ -42,7 +43,8 @@ public class ModBlocks
 	public static final Block MCRATE = new BlockCrateMedic("mcrate", Material.SAND);
 	public static final Block LCRATE = new BlockCrateSupplies("lcrate", Material.SAND);
 	
-	public static final Block FAN = new BlockFan("fan", Material.IRON, 2.0F);
+	public static final Block FAN = new BlockLight("fan", Material.IRON, 2.0F);
+	public static final Block ROTARYLAMP = new BlockRotaryLamp("rotarylamp", Material.IRON, 2.0F);
 	public static final Block NODEBLOCK = new NodeBlock("nodeblock", Material.ROCK, 10000.0F);
 	
 	public static final Block SANDBAGS = new BlockBase("sandbags", Material.ROCK, 1.5F);

@@ -16,10 +16,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.Sound;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -29,6 +32,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketChangeGameState;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -46,8 +50,17 @@ import scala.collection.concurrent.Debug;
 
 public class EntityBullet extends EntityArrow
 {
+	private int xTile;
+    private int yTile;
+    private int zTile;
+    private Block inTile;
+    private int inData;
+    protected boolean inGround;
+    protected int timeInGround;
     float damage;
     int range;
+    private int ticksInGround;
+    private int ticksInAir;
     
     public EntityBullet(World a) {
 		super(a);
@@ -71,9 +84,16 @@ public class EntityBullet extends EntityArrow
 		int z = MathHelper.floor(this.getEntityBoundingBox().minZ);
 		World world = this.world;
 		Entity entity = (Entity) shootingEntity;
+		
 		if (this.inGround) {
 			this.world.removeEntity(this);
 		}
+	}
+	
+	public void setGunDamage(double damage)
+	{
+		double d = damage;
+		this.setDamage(d);
 	}
 	
 	public void setRange(int range) 
@@ -92,36 +112,99 @@ public class EntityBullet extends EntityArrow
 	}
 	
 	@Override
-	protected void onHit(RayTraceResult raytraceResultIn) 
-	{
-		Entity e = raytraceResultIn.entityHit;
-		
-		if(e != null)
-		{
-			
-			this.setDead();
-			
-			if(e instanceof EntityGoliath)
+	protected void onHit(RayTraceResult raytraceResultIn)
+    {
+        Entity entity = raytraceResultIn.entityHit;
+
+        if (entity != null)
+        {
+        	
+            int i = MathHelper.ceil((double)this.getDamage());
+
+            if (this.getIsCritical())
             {
-            	world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double) posX, (double) posY, (double) posZ, 0.0D, 0.0D, 0.0D);
+                i += this.rand.nextInt(i / 2 + 2);
+            }
+
+            DamageSource damagesource;
+
+            if (this.shootingEntity == null)
+            {
+                damagesource = DamageSource.causeArrowDamage(this, this);
             }
             else
             {
-            	Vec3d pos = e.getPositionVector();
-            	double d0 = (double)((float)pos.x + rand.nextFloat());
-                double d1 = (double)((float)pos.y + rand.nextFloat());
-                double d2 = (double)((float)pos.z + rand.nextFloat());
-                double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-                double d4 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-                double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            	//MainParticles.BLOOD.spawn(e.world, d0, d1, d2, d3, d4, d5);
+                damagesource = DamageSource.causeArrowDamage(this, this.shootingEntity);
             }
-			
-		}
-		
-		this.playSound(SoundEvents.ENTITY_BLAZE_HURT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-		super.onHit(raytraceResultIn);
-	}
+
+            if (entity.attackEntityFrom(damagesource, (float)i))
+            {
+                if (entity instanceof EntityLivingBase)
+                {
+                    EntityLivingBase entitylivingbase = (EntityLivingBase)entity;
+
+                    if (!this.world.isRemote)
+                    {
+                    }
+
+                    this.arrowHit(entitylivingbase);
+
+                    if (this.shootingEntity != null && entitylivingbase != this.shootingEntity && entitylivingbase instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
+                    {
+                        ((EntityPlayerMP)this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
+                    }
+                }
+
+                this.playSound(SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+
+                if (!(entity instanceof EntityEnderman))
+                {
+                    this.setDead();
+                }
+            }
+            else
+            {
+                this.motionX *= -0.10000000149011612D;
+                this.motionY *= -0.10000000149011612D;
+                this.motionZ *= -0.10000000149011612D;
+                this.rotationYaw += 180.0F;
+                this.prevRotationYaw += 180.0F;
+                this.ticksInAir = 0;
+
+                if (!this.world.isRemote && this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ < 0.0010000000474974513D)
+                {
+                    this.setDead();
+                }
+            }
+        }
+        else
+        {
+            BlockPos blockpos = raytraceResultIn.getBlockPos();
+            this.xTile = blockpos.getX();
+            this.yTile = blockpos.getY();
+            this.zTile = blockpos.getZ();
+            IBlockState iblockstate = this.world.getBlockState(blockpos);
+            this.inTile = iblockstate.getBlock();
+            this.inData = this.inTile.getMetaFromState(iblockstate);
+            this.motionX = (double)((float)(raytraceResultIn.hitVec.x - this.posX));
+            this.motionY = (double)((float)(raytraceResultIn.hitVec.y - this.posY));
+            this.motionZ = (double)((float)(raytraceResultIn.hitVec.z - this.posZ));
+            float f2 = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+            this.posX -= this.motionX / (double)f2 * 0.05000000074505806D;
+            this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
+            this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
+            this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+            this.inGround = true;
+            this.arrowShake = 7;
+            this.setIsCritical(false);
+
+            if (iblockstate.getMaterial() != Material.AIR)
+            {
+                this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+            }
+        }
+        this.setDead();
+    }
 	
 	@Override
     public void onEntityUpdate()
@@ -136,7 +219,6 @@ public class EntityBullet extends EntityArrow
 
 	@Override
 	protected ItemStack getArrowStack() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

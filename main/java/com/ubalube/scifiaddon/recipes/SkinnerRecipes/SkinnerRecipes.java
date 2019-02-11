@@ -7,7 +7,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.ubalube.scifiaddon.init.ModItems;
-import com.ubalube.scifiaddon.items.CGunSkinnable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 
 import net.minecraft.init.Blocks;
@@ -48,6 +47,7 @@ public class SkinnerRecipes
 		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.ORANGE_PAINT), new ItemStack(ModItems.HK416), 5.0F, 1);
 		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 1);
 		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.MP18), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.MP18), 5.0F, 1);
 	}
 
 	

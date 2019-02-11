@@ -11,9 +11,10 @@ key.dc=Diamond Caliber
 
 #Entity
 entity.soldier.name=Scorpion
-entity.ghost.name=Ghost
+entity.legionsoldier.name=Legion Soldier
 entity.bandit.name=Bandit
-entity.milita.name=Milita
+entity.milita.name=Legion Soldier
+entity.legionboss.name=Legion General
 entity.trader.name=Trader
 
 #Classes
@@ -117,12 +118,17 @@ gun.akm.desc=A modernized variant of the AK-47, a gas-operated rifle with a rota
 gun.cr4.desc=A gas-operated rifle with a high impact but semi-automatic fire.
 gun.uzi.desc=An open-bolted, blockback-operated submachine gun. One of the first weapons to use a telescoping bolt.
 gun.hk.desc=A gun based on the AR-15 class of weapons. Using an HK-proprietary short-stroke gas piston system.
+gun.g36.desc=A 5.56x45mm assault rifle designed in Germany as a replacement for the heavier 7.62mm G3 battle rifle.
+gun.ak74u.desc=A lightweight AK-47 and modified to be in the SMG category.
+gun.p250.desc=A semi-automatic pistol that uses .45 ACP rounds.
+gun.mp18.desc=A SMG used in WW1 as the first submachine gun used in combat by the German Army.
 
 #Guns
 item.blitz.name=G52 - Tactical Shield
 item.scar_acog.name=Scar H
 item.scar.name=Scar H
 item.glock.name=Glock 18
+item.g18_scoped.name=Glock 18
 item.l69a1.name=L69A1
 item.sting.name=Sting PDW
 item.thompson.name=Thompson
@@ -133,3 +139,6 @@ item.fal.name=FN Fal
 item.uzi.name=Micro Uzi
 item.g36.name=G36
 item.g36c.name=G36 Tactical
+item.ak748.name=AKS-74U
+item.mp18.name=MP18
+item.p250.name=P250

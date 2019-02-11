@@ -6,6 +6,7 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityBullet;
 import com.ubalube.scifiaddon.entity.EntityImpact;
+import com.ubalube.scifiaddon.entity.EntityLegionBoss;
 import com.ubalube.scifiaddon.entity.EntityMilita;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
@@ -25,10 +26,11 @@ public class EntityInit
 	public static void registerEntities() 
 	{
 		registerEntity("soldier", EntitySoldier.class, Reference.ENTITY_SOLDIER, 50, 7326320, 17920);
-		registerEntity("ghost", EntityGhost.class, Reference.ENTITY_GHOST, 50, 7326320, 17920);
+		registerEntity("legionsoldier", EntityGhost.class, Reference.ENTITY_GHOST, 50, 7326320, 17920);
 		registerEntity("bandit", EntityBandit.class, Reference.ENTITY_BANDIT, 50, 7326320, 17920);
 		registerEntity("milita", EntityMilita.class, Reference.ENTITY_MILITA, 50, 7326320, 17920);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
+		registerEntity("legionboss", EntityLegionBoss.class, Reference.ENTITY_L_BOSS, 50, 000000, 10289152);
 		//registerEntity("trader", EntityTrader.class, Reference.ENTITY_TRADER, 50, 000000, 10289152);
 		
 		//VEHICLES

@@ -8,6 +8,7 @@ import com.ubalube.scifiaddon.entity.model.ModelNV1;
 import com.ubalube.scifiaddon.entity.model.ModelNvGoggles;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
+import com.ubalube.scifiaddon.util.Overlay;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
@@ -36,7 +37,7 @@ public class ArmorNV2 extends ItemArmor implements IHasModel{
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		
+		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 1, 1));
 		super.onArmorTick(world, player, itemStack);
 	}
 	

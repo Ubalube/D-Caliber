@@ -2,7 +2,7 @@ package com.ubalube.scifiaddon.entity.model;
 
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.items.CGunBase;
+import com.ubalube.scifiaddon.items.GunBase;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
@@ -56,7 +56,7 @@ public class ModelMilita extends ModelBiped
         if(entityIn instanceof EntityGhost) {
         	EntityGhost npc = (EntityGhost) entityIn;
         	
-        	if(!npc.getHeldItemMainhand().isEmpty() && npc.getHeldItemMainhand().getItem() instanceof CGunBase) {
+        	if(!npc.getHeldItemMainhand().isEmpty() && npc.getHeldItemMainhand().getItem() instanceof GunBase) {
         		if (npc.isLeftHanded()) {
         			this.leftArmPose=ArmPose.BOW_AND_ARROW;
         		} else {

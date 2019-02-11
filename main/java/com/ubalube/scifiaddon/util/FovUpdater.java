@@ -2,7 +2,6 @@ package com.ubalube.scifiaddon.util;
 
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
-import com.ubalube.scifiaddon.items.CGunAimingBase;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.vehicles.VehicleHumvee;

@@ -1,7 +1,7 @@
 {
 	"__comment": "Designed by Sanbroh with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"texture": "item/glock18reddot"
+		"texture": "caliber:gun/glock18reddot"
 	},
 	"elements": [ 	 
 		{
@@ -2632,5 +2632,25 @@
 			"translation":  [ 1.5, 1.5, 0 ],
 			"scale":  [ 0.4, 0.4, 0.4 ]
 		}
-	}
+	},
+    "overrides": [
+        {
+            "predicate": {
+                "aiming": 1.0
+            },
+            "model": "caliber:item/glock/scoped/glock_aim"
+        },
+        {
+            "predicate": {
+                "reloading": 1.0
+            },
+            "model": "caliber:item/glock/scoped/glock_reload"
+        },
+        {
+            "predicate": {
+                "running": 1.0
+            },
+            "model": "caliber:item/glock/scoped/glock_running"
+        }
+    ]
 }

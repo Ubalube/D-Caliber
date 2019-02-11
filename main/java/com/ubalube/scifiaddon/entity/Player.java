@@ -24,14 +24,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ubalube.scifiaddon.items.CGunAimingBase;
-import com.ubalube.scifiaddon.items.CGunBase;
-import com.ubalube.scifiaddon.items.CGunGrenadeLauncher;
-import com.ubalube.scifiaddon.items.CGunHelper;
-import com.ubalube.scifiaddon.items.CGunPDW;
-import com.ubalube.scifiaddon.items.CGunPistol;
-import com.ubalube.scifiaddon.items.CGunSkinnable;
-import com.ubalube.scifiaddon.items.CGunSniper;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunBase;

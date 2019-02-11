@@ -131,7 +131,7 @@ public class main
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
 		//MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
-		MinecraftForge.EVENT_BUS.register(new KeyInputEvent());
+		//MinecraftForge.EVENT_BUS.register(new KeyInputEvent());
 		
 		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		
@@ -145,7 +145,7 @@ public class main
 	public static void PostInit(FMLPostInitializationEvent e) 
 	{
 		RegistryHandler.postInitRegistries();
-		MinecraftForge.EVENT_BUS.register(new Overlay());
+		//MinecraftForge.EVENT_BUS.register(new Overlay());
 	}
 
 }

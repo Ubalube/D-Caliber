@@ -60,10 +60,10 @@ public class GunAimable extends GunBase implements IHasModel
 	
 	
 	
-	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc) 
+	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc);
+		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		
@@ -91,6 +91,7 @@ public class GunAimable extends GunBase implements IHasModel
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		this.shootGun(worldIn, playerIn, handIn, itemstack);
 		this.doRecoil(playerIn);
+		this.playShootSound(playerIn);
 		//}
 		playerIn.addStat(StatList.getObjectUseStats(this));
 		this.checkStates(itemstack, worldIn, playerIn);

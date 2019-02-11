@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class SoundHandler 
 {
-	public static SoundEvent GUN_PISTOL_SHOOT, GUN_RIFLE_SHOOT, GUN_SNIPER_SHOOT, RELOAD_FIREMODE, RELOAD_PISTOLRELOAD, RELOAD_RIFLERELOAD, G17_SHOOT, ELCOVERT_SHOOT, GRENADELAUNCHER_SHOT;
+	public static SoundEvent GUN_PISTOL_SHOOT, GUN_RIFLE_SHOOT, GUN_SNIPER_SHOOT, RELOAD_FIREMODE, RELOAD_PISTOLRELOAD, RELOAD_RIFLERELOAD, G17_SHOOT;
 	
 	public static void registerSounds()
 	{
@@ -18,10 +18,7 @@ public class SoundHandler
 		
 		
 		//SPECIFIC
-		G17_SHOOT = registerSound("gun.g17shoot");
-		ELCOVERT_SHOOT = registerSound("gun.elcovertshoot");
-		GRENADELAUNCHER_SHOT = registerSound("gun.grenadelauncher");
-		
+		G17_SHOOT = registerSound("gun.glockshoot");
 		//Reload
 		RELOAD_FIREMODE = registerSound("reload.firemode");
 		RELOAD_PISTOLRELOAD = registerSound("reload.pistolreload");
