@@ -1,0 +1,113 @@
+{
+	"__comment": "Made By Ubalube",
+	"textures": {
+		"texture": "caliber:parts/textures/carbon_mat"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box23",
+			"from": [ 5, 7, 6.5 ],
+			"to": [ 7.5, 8, 7.5 ],
+			"faces": {
+				"down": { "uv": [ 5, 8.5, 7.5, 9.5 ], "texture": "#texture" },
+				"up": { "uv": [ 5, 6.5, 7.5, 7.5 ], "texture": "#texture" },
+				"north": { "uv": [ 8.5, 8, 11, 9 ], "texture": "#texture" },
+				"south": { "uv": [ 5, 8, 7.5, 9 ], "texture": "#texture" },
+				"west": { "uv": [ 6.5, 8, 7.5, 9 ], "texture": "#texture" },
+				"east": { "uv": [ 8.5, 8, 9.5, 9 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box23",
+			"from": [ 7.5, 7, 6.5 ],
+			"to": [ 9, 8, 7.5 ],
+			"rotation": { "origin": [ 7.5, 8, 7.5 ], "axis": "z", "angle": -22.5 },
+			"faces": {
+				"down": { "uv": [ 7.5, 6.5, 8.5, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 7.5, 8, 8.5, 9.5 ], "texture": "#texture" },
+				"north": { "uv": [ 8.5, 9, 7.5, 8 ], "texture": "#texture" },
+				"south": { "uv": [ 8.5, 9, 7.5, 8 ], "texture": "#texture" },
+				"west": { "uv": [ 6.5, 8, 8, 9 ], "texture": "#texture", "rotation": 180 },
+				"east": { "uv": [ 8, 8, 9.5, 9 ], "texture": "#texture", "rotation": 180 }
+			}
+		},
+		{
+			"__comment": "Box28",
+			"from": [ 8.5, 6.5, 6.5 ],
+			"to": [ 11, 7.5, 7.5 ],
+			"faces": {
+				"down": { "uv": [ 8.5, 8.5, 11, 9.5 ], "texture": "#texture" },
+				"up": { "uv": [ 8.5, 6.5, 11, 7.5 ], "texture": "#texture" },
+				"north": { "uv": [ 5, 8.5, 7.5, 9.5 ], "texture": "#texture" },
+				"south": { "uv": [ 8.5, 8.5, 11, 9.5 ], "texture": "#texture" },
+				"west": { "uv": [ 6.5, 8.5, 7.5, 9.5 ], "texture": "#texture" },
+				"east": { "uv": [ 8.5, 8.5, 9.5, 9.5 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box4",
+			"from": [ 11, 6.5, 6.5 ],
+			"to": [ 12.5, 7.5, 7.5 ],
+			"rotation": { "origin": [ 11, 7.5, 7.5 ], "axis": "z", "angle": -45 },
+			"faces": {
+				"down": { "uv": [ 11, 14, 12.5, 15 ], "texture": "#texture" },
+				"up": { "uv": [ 11, 1, 12.5, 2 ], "texture": "#texture" },
+				"north": { "uv": [ 12.5, 9.5, 11, 8.5 ], "texture": "#texture" },
+				"south": { "uv": [ 5, 9.5, 3.5, 8.5 ], "texture": "#texture" },
+				"west": { "uv": [ 14, 8.5, 15, 9.5 ], "texture": "#texture", "rotation": 180 },
+				"east": { "uv": [ 1, 8.5, 2, 9.5 ], "texture": "#texture", "rotation": 180 }
+			}
+		},
+		{
+			"__comment": "Box5",
+			"from": [ 11, 3.5, 6.5 ],
+			"to": [ 12, 6.5, 7.5 ],
+			"faces": {
+				"down": { "uv": [ 11, 8.5, 12, 9.5 ], "texture": "#texture" },
+				"up": { "uv": [ 11, 6.5, 12, 7.5 ], "texture": "#texture" },
+				"north": { "uv": [ 4, 9.5, 5, 12.5 ], "texture": "#texture" },
+				"south": { "uv": [ 11, 9.5, 12, 12.5 ], "texture": "#texture" },
+				"west": { "uv": [ 6.5, 9.5, 7.5, 12.5 ], "texture": "#texture" },
+				"east": { "uv": [ 8.5, 9.5, 9.5, 12.5 ], "texture": "#texture" }
+			}
+		},
+		{
+			"__comment": "Box6",
+			"from": [ 11, 4.5, 6.75 ],
+			"to": [ 12, 7, 7.25 ],
+			"rotation": { "origin": [ 11, 4.5, 6.75 ], "axis": "z", "angle": 22.5 },
+			"faces": {
+				"down": { "uv": [ 10.5, 1, 11.5, 2 ], "texture": "#texture" },
+				"up": { "uv": [ 10.5, 14, 11.5, 15 ], "texture": "#texture" },
+				"north": { "uv": [ 4.5, 9, 5.5, 11.5 ], "texture": "#texture" },
+				"south": { "uv": [ 10.5, 9, 11.5, 11.5 ], "texture": "#texture" },
+				"west": { "uv": [ 14, 9, 15, 11.5 ], "texture": "#texture" },
+				"east": { "uv": [ 1, 9, 2, 11.5 ], "texture": "#texture" }
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation":  [ 0, -45, 0 ],
+			"translation":  [ -0.695, 4.1738, 0 ]
+		},
+		"thirdperson_lefthand": {
+			"rotation":  [ 0, -45, 0 ],
+			"translation":  [ -0.695, 4.1738, 0 ]
+		},
+		"firstperson_righthand": {
+			"rotation":  [ 0, -25, 0 ],
+			"translation":  [ -1.391, 6.9565, 0 ]
+		},
+		"firstperson_lefthand": {
+			"rotation":  [ 0, -25, 0 ],
+			"translation":  [ -1.391, 6.9565, 0 ]
+		},
+		"gui": {
+			"translation":  [ -0.695, 2.7826, 0 ]
+		},
+		"fixed": {
+			"translation":  [ -1.391, 2.7826, 0 ]
+		}
+	}
+}

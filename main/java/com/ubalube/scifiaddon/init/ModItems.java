@@ -20,13 +20,14 @@ import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
-import com.ubalube.scifiaddon.items.ItemBounty;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.items.TraderCase;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
+
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockPumpkin;
@@ -49,6 +50,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -73,7 +75,7 @@ public class ModItems
 	public static final ArmorMaterial NV1 = EnumHelper.addArmorMaterial("nightvision1", "caliber:nightvision1", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial CHROMB_SUIT = EnumHelper.addArmorMaterial("chrombody", "caliber:chrombody", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
-	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
+	//public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
 	
 	//Objects
 	public static final Item SUPPLIES1 = new ItemBase("supplies1", 64, main.objectTab);
@@ -93,10 +95,9 @@ public class ModItems
 	public static final Item ORANGE_PAINT = new ItemPaint("orangepaint", 10, main.objectTab, "Orange", TextFormatting.RED);
 	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.WHITE); 
 	
-	//public static final Item CASE = new TraderCase("case", 1, main.objectTab);
-	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
+	public static final Item LEGIONMEDAL = new ItemLore("bossmedal", 1, main.objectTab, "You defeated the Legion General", TextFormatting.YELLOW);
 	public static final Item ICON = new ItemBase("icon", 1, main.objectTab);
 	
 	//Materials
@@ -105,6 +106,19 @@ public class ModItems
 	public static final Item COPPER = new ItemBase("copper", 64, main.partTab);
 	public static final Item LENSE = new ItemBase("lense", 64, main.partTab);
 	public static final Item CARBONMIXTURE = new ItemBase("carbonmixture", 64, main.partTab);
+	public static final Item HOLOGRAPHIC = new ItemBase("holo", 1, main.partTab);
+	public static final Item ACOG = new ItemBase("acog", 1, main.partTab);
+	public static final Item SNIPERSCOPE = new ItemBase("sniperscope", 1, main.partTab);
+	public static final Item REDDOT = new ItemBase("reddot", 1, main.partTab);
+	public static final Item AIMPOINT = new ItemBase("aimpoint", 1, main.partTab);
+	public static final Item CALIBERCARBON = new ItemBase("caliber_carbon", 64, main.partTab);
+	public static final Item CALIBERIRON = new ItemBase("caliber_iron", 64, main.partTab);
+	public static final Item PISTOLCALIBERCARBON = new ItemBase("pistol_caliber_carbon", 64, main.partTab);
+	public static final Item PISTOLCALIBERIRON = new ItemBase("pistol_caliber_iron", 64, main.partTab);
+	public static final Item TACTICALSTOCK = new ItemBase("stock_tactical", 64, main.partTab);
+	public static final Item UZISTOCK = new ItemBase("stock_uzi", 64, main.partTab);
+	public static final Item COMPACTSTOCK = new ItemBase("stock_compact", 64, main.partTab);
+	public static final Item WOODCOMPACTSTOCK = new ItemBase("stock_compact_wood", 64, main.partTab);
 	
 	//Music
 	//Music Discs
@@ -175,7 +189,6 @@ public class ModItems
 	public static final Item AK74U = new GunAimable("ak74u", main.gunTab, 2, 12, 50, 1, 5.5F, 200, ModItems.RIFLE762, 1, "gun.ak74u.desc", "7.62x39mm Clip");
 	public static final Item MP18 = new GunAimableSkin("mp18", main.gunTab, 3, 12, 50, 1, 5, 200, ModItems.SMG45, 1, "gun.mp18.desc", ".45ACP Clip");
 	public static final Item P250 = new GunAimable("p250", main.gunTab, 8, 12, 50, 1, 4, 200, ModItems.PISTOL9mm, 1, "gun.p250.desc", "9mm Clip");
-	
-	public static final Item BOUNTY = new ItemBounty("bounty", 1, main.objectTab);
+	public static final Item AK12 = new GunAimable("ak12", main.gunTab, 2, 12, 50, 1, 5.5F, 200, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip");
 }
 

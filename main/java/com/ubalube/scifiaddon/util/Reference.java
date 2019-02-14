@@ -16,16 +16,14 @@ public class Reference
 	public static final int ENTITY_GHOST = 158;
 	public static final int ENTITY_APACHE = 159;
 	public static final int ENTITY_FRAG = 160;
-	public static final int ENTITY_TRADER = 162;
-	public static final int ENTITY_BANDIT = 163;
-	public static final int ENTITY_MILITA = 164;
-	public static final int ENTITY_L_BOSS = 165;
+	public static final int ENTITY_BANDIT = 162;
+	public static final int ENTITY_MILITA = 163;
+	public static final int ENTITY_L_BOSS = 164;
 	
 	//Vehicles
 	public static final int ENTITY_VEHICLE_HUMVEE = 300;
 	
 	//GUIS
 	public static final int GUI_SKINNER = 0;
-	public static final int GUI_GASBENCH = 1;
 }
 

@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "IG ",
+        "ICS",
+        "I  "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_steel"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "G":
+        {
+            "item": "caliber:sniperscope"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:l69a1",
+        "count": 1
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RL ",
+        "III",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "R":
+        {
+            "item": "minecraft:redstone"
+        },
+        
+        "L":
+        {
+            "item": "caliber:lense"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:holo",
+        "count": 1
+    }
+}

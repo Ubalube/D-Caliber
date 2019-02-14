@@ -19,20 +19,12 @@ import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
 import com.ubalube.scifiaddon.util.FovUpdater;
 import com.ubalube.scifiaddon.util.GunNBTEvent;
-import com.ubalube.scifiaddon.util.KeyInputEvent;
-import com.ubalube.scifiaddon.util.LoadoutEvent;
-import com.ubalube.scifiaddon.util.MobKillEvent;
 import com.ubalube.scifiaddon.util.Overlay;
 import com.ubalube.scifiaddon.util.Reference;
-import com.ubalube.scifiaddon.util.handlers.CapabilityHandler;
 import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
-import com.ubalube.scifiaddon.util.packets.CPacketSteerVehicle;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
-import com.ubalube.scifiaddon.util.packets.MessageReputation;
-import com.ubalube.scifiaddon.util.packets.MessageRequestSquad;
-import com.ubalube.scifiaddon.util.packets.MessageSquad;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 import com.ubalube.scifiaddon.world.WorldGen;
 
@@ -98,9 +90,6 @@ public class main
 		RegistryHandler.preInitRegistries();
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
-		CapabilityHandler.register();
-		NETWORK.registerMessage(MessageRequestSquad.HandleRequestSquad.class, MessageRequestSquad.class, 0, Side.SERVER);
-		NETWORK.registerMessage(MessageSquad.HandleMessageSquads.class, MessageSquad.class, 1, Side.CLIENT);
 		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 2, Side.SERVER);
 		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 3, Side.SERVER);
 	}
@@ -110,7 +99,6 @@ public class main
 	public static void preinitOne(FMLPreInitializationEvent event)
 	{
 		RegistryHandler.preInitRegistriesOne();
-		
 	}
 	
 	//GAMERULES
@@ -119,7 +107,7 @@ public class main
 	{
 		World world = event.getServer().getEntityWorld();
 		RegistryHandler.serverRegistries(event);
-		//world.getGameRules().addGameRule("classes", "false", ValueType.BOOLEAN_VALUE);
+		world.getGameRules().addGameRule("lethalguns", "false", ValueType.BOOLEAN_VALUE);
 	}
 	
 	@EventHandler
@@ -129,14 +117,9 @@ public class main
 		
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
-		//MinecraftForge.EVENT_BUS.register(new LoadoutEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
-		//MinecraftForge.EVENT_BUS.register(new KeyInputEvent());
-		
-		//MinecraftForge.EVENT_BUS.register(new MobKillEvent());
 		
 		ModRecipes.init();
-		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		
 	}
 	
@@ -145,7 +128,6 @@ public class main
 	public static void PostInit(FMLPostInitializationEvent e) 
 	{
 		RegistryHandler.postInitRegistries();
-		//MinecraftForge.EVENT_BUS.register(new Overlay());
 	}
 
 }

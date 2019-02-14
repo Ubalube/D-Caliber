@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "ICS",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_iron"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:hk",
+        "count": 1
+    }
+}

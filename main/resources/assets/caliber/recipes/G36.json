@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " S ",
+        "ICR",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_carbon"
+        },
+        
+        "R":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "S":
+        {
+            "item": "caliber:holo"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:g36",
+        "count": 1
+    }
+}

@@ -40,6 +40,8 @@ item.node.name=Node
 //music
 item.hostile_lands.name=Music Disc
 item.record.hostile_lands.desc=Hostile Lands
+item.crysis.name=Music Disc
+item.record.crysis.desc=Crysis 2 Epilogue Hans Zimmer
 
 container.skinner=Skin Bench
 
@@ -139,6 +141,6 @@ item.fal.name=FN Fal
 item.uzi.name=Micro Uzi
 item.g36.name=G36
 item.g36c.name=G36 Tactical
-item.ak748.name=AKS-74U
+item.ak74u.name=AKS-74U
 item.mp18.name=MP18
 item.p250.name=P250

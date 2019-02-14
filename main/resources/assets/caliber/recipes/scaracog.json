@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " S ",
+        " C ",
+        "   "
+    ],
+   
+    "key":
+    {
+    
+        "C":
+        {
+            "item": "caliber:scar"
+        },
+        
+        "S":
+        {
+            "item": "caliber:acog"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:scar_acog",
+        "count": 1
+    }
+}

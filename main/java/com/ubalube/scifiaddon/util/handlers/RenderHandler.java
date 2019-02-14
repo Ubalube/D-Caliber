@@ -9,7 +9,6 @@ import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.entity.render.RenderBandit;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
 import com.ubalube.scifiaddon.entity.render.RenderImpact;
@@ -19,7 +18,6 @@ import com.ubalube.scifiaddon.entity.render.RenderGhost;
 import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
 import com.ubalube.scifiaddon.entity.render.RenderTank;
-import com.ubalube.scifiaddon.entity.render.RenderTrader;
 import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
 import com.ubalube.scifiaddon.vehicles.render.RenderHumvee;
 
@@ -79,15 +77,6 @@ public class RenderHandler
 				return new RenderMilita(manager);
 			}
 		});
-		
-		/*RenderingRegistry.registerEntityRenderingHandler(EntityTrader.class, new IRenderFactory<EntityTrader>()
-		{
-			@Override
-			public Render<? super EntityTrader> createRenderFor(RenderManager manager) 
-			{
-				return new RenderTrader(manager);
-			}
-		});*/
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoliath.class, new IRenderFactory<EntityGoliath>()
 		{

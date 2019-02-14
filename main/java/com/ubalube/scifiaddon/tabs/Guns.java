@@ -4,10 +4,14 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class Guns extends CreativeTabs
 {
+	
+	
+	
 	public Guns() {
 		super("Weapons");
 	}
@@ -15,6 +19,7 @@ public class Guns extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(ModItems.ICON);
+		
+		return new ItemStack(ModItems.G36);
 	}
 }

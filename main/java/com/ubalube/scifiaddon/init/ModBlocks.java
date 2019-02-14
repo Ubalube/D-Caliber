@@ -15,7 +15,6 @@ import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockRadius;
 import com.ubalube.scifiaddon.blocks.BlockRotaryLamp;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
-import com.ubalube.scifiaddon.blocks.BlockSquadTable;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
 import com.ubalube.scifiaddon.blocks.TransparentBlock;
 
@@ -51,12 +50,10 @@ public class ModBlocks
 	public static final Block ASPHALT = new BlockBase("asphalt", Material.ROCK, 1.5F);
 	public static final Block CONCRETEBRICKS = new BlockBase("concretebricks", Material.ROCK, 1.5F);
 	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
-	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER);
+	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER, 2);
 	
 	//Radius
 	//public static final Block RADIUS = new BlockRadius("radius", Material.ROCK, 1.5F);
-	
-	//Gas Table
 	
 	//Skinner
 	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);

@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "ICS",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_iron"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_compact"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:akm",
+        "count": 1
+    }
+}

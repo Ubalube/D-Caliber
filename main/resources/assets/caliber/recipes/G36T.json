@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " S ",
+        " C ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:dmrclip"
+        },
+    
+        "C":
+        {
+            "item": "caliber:g36"
+        },
+        
+        "S":
+        {
+            "item": "caliber:aimpoint"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:g36c",
+        "count": 1
+    }
+}

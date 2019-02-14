@@ -1,0 +1,36 @@
+{
+    "display": {
+        "title": {
+            "text": "Freedom",
+            "color": "light_purple",
+            "bold": true
+        },
+        "description": {
+            "text": "Defeat the Legion General",
+            "color": "white",
+            "bold": false,
+            "italic": false
+        },
+        "icon": {
+            "item": "caliber:bossmedal"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Killed": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "caliber:legionboss"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "parent": "caliber:caliber/bossfight"
+}

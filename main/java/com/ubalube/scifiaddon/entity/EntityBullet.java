@@ -93,6 +93,10 @@ public class EntityBullet extends EntityArrow
 	public void setGunDamage(double damage)
 	{
 		double d = damage;
+		if(this.getEntityWorld().getGameRules().getBoolean("lethalguns") == true)
+		{
+			d = d * 2;
+		}
 		this.setDamage(d);
 	}
 	

@@ -4,12 +4,10 @@ import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityLegionBoss;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.entity.model.ModelBandit;
 import com.ubalube.scifiaddon.entity.model.ModelGhost;
 import com.ubalube.scifiaddon.entity.model.ModelLegionBoss;
 import com.ubalube.scifiaddon.entity.model.ModelSoldier;
-import com.ubalube.scifiaddon.entity.model.ModelTrader;
 import com.ubalube.scifiaddon.util.Reference;
 
 import net.minecraft.client.renderer.entity.RenderBiped;

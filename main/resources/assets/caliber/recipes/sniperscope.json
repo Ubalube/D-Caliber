@@ -3,28 +3,33 @@
    
     "pattern":
     [
-        " R ",
-        "ITI",
-        "   "
+        "IDI",
+        "LRL",
+        "IDI"
     ],
    
     "key":
     {
-        
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
         "R":
         {
             "item": "minecraft:redstone"
         },
         
-        "I":
+        "L":
         {
             "item": "caliber:lense"
         },
         
-        "T":
+        "D":
         {
-            "item": "caliber:steel"
+            "item": "minecraft:diamond"
         }
+        
     },
     
     "result":

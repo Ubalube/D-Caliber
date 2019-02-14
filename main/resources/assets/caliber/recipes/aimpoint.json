@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "IRL",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "R":
+        {
+            "item": "minecraft:redstone"
+        },
+        
+        "L":
+        {
+            "item": "caliber:lense"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:aimpoint",
+        "count": 1
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "IC ",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:pistol_caliber_carbon"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:p250",
+        "count": 1
+    }
+}

@@ -4,8 +4,8 @@
     "pattern":
     [
         "   ",
-        " II",
-        " T "
+        "II ",
+        "IT "
     ],
    
     "key":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "caliber:pistolcalibercarbon",
+        "item": "caliber:pistol_caliber_carbon",
         "count": 1
     }
 }

@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " G ",
+        "ICS",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_iron"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "G":
+        {
+            "item": "caliber:aimpoint"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:cr4",
+        "count": 1
+    }
+}

@@ -1,22 +1,23 @@
 {
     "display": {
         "title": {
-            "text": "Skinner",
-            "color": "gold"
+            "text": "Skinning",
+            "color": "aqua",
+            "bold": false
         },
         "description": {
-            "text": "Place the skin bench!"
+            "text": "Place a skinning bench"
         },
         "icon": {
-            "item": "caliber:volcanicpaint"
+            "item": "caliber:skinner"
         },
-        "frame": "goal",
+        "frame": "task",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": false
     },
     "criteria": {
-        "place": {
+        "Place": {
             "trigger": "minecraft:placed_block",
             "conditions": {
                 "block": "caliber:skinner"

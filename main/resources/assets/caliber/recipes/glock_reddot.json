@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " S ",
+        " C ",
+        "   "
+    ],
+   
+    "key":
+    {
+        "C":
+        {
+            "item": "caliber:glock"
+        },
+    
+        "S":
+        {
+            "item": "caliber:reddot"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:g18_scoped",
+        "count": 1
+    }
+}

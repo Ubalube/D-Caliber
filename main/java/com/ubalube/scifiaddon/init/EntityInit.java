@@ -12,7 +12,6 @@ import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
-import com.ubalube.scifiaddon.entity.EntityTrader;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
 

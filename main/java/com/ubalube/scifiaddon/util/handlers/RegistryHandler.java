@@ -4,8 +4,6 @@ import org.lwjgl.input.Keyboard;
 
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
-import com.ubalube.scifiaddon.commands.CommandJoinSquad;
-import com.ubalube.scifiaddon.commands.CommandSquadInfo;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.model.shields.Blitzshield;
@@ -22,6 +20,7 @@ import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Armory;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Lab;
+import com.ubalube.scifiaddon.world.gen.legion.WorldGenCustomStructures_Legion_BossRoom;
 import com.ubalube.scifiaddon.world.gen.legion.WorldGenCustomStructures_Legion_SmallComp;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
 
@@ -54,8 +53,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RegistryHandler 
 {
 	
-	public static KeyBinding[] keyBindings;
-	
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(ModItems.ITEMS.toArray(new Item[0]));
@@ -77,10 +74,10 @@ public class RegistryHandler
 			{
 				ModelShield shield = ((IShield) item).shieldModel();
 				
-				if(item == ModItems.BLITZSHIELD)
-				{
-					RegistryHandler.createRender(item, shield, ":textures/models/shield/blitzshield.png");
-				}
+				//if(item == ModItems.BLITZSHIELD)
+				//{
+					//RegistryHandler.createRender(item, shield, ":textures/models/shield/blitzshield.png");
+				//}
 				
 			}
 			
@@ -112,22 +109,13 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
 		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_SmallComp(), 50);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_BossRoom(), 10);
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void preInitRegistriesOne() 
 	{
 		RenderHandler.registerEntityRenders();
-		keyBindings = new KeyBinding[1]; 
-		  
-		// instantiate the key bindings
-		keyBindings[0] = new KeyBinding("key.nv.desc", Keyboard.KEY_N, "key.dc");
-		  
-		// register all the key bindings
-		for (int i = 0; i < keyBindings.length; ++i) 
-		{
-		    ClientRegistry.registerKeyBinding(keyBindings[i]);
-		}
 	}
 	
 	public static void initRegistries()
@@ -152,8 +140,6 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
-		e.registerServerCommand(new CommandJoinSquad());
-		e.registerServerCommand(new CommandSquadInfo());
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -14,13 +14,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockOre extends Block implements IHasModel
 {
 	
 	Item i;
+	int xp;
 	
-	public BlockOre(String name, Material material, Item item)
+	public BlockOre(String name, Material material, Item item, int XP)
 	{
 		super(material);
 		setUnlocalizedName(name);
@@ -30,9 +33,15 @@ public class BlockOre extends Block implements IHasModel
 		this.setHardness(4.0F);
 		
 		i = item;
+		this.xp = XP;
 		
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	}
+	
+	@Override
+	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
+		return this.xp;
 	}
 	
 	@Override

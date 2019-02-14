@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "ICS",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:pistol_caliber_carbon"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_uzi"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:uzi",
+        "count": 1
+    }
+}

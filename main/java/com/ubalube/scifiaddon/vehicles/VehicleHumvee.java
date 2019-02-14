@@ -5,8 +5,6 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import com.google.common.base.Optional;
-import com.ubalube.scifiaddon.util.packets.CPacketSteerVehicle;
-
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.client.model.ModelBoat;
 import net.minecraft.client.model.ModelHorse;

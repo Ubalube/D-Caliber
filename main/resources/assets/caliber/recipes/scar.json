@@ -3,32 +3,28 @@
    
     "pattern":
     [
-        " I ",
-        "SRB",
+        "   ",
+        "ICS",
         "   "
     ],
    
     "key":
     {
-        "S":
-        {
-            "item": "caliber:m16a4stock"
-        },
-    
-        "R":
-        {
-            "item": "caliber:riflecaliber"
-        },
-        
-        "B":
-        {
-            "item": "caliber:longbarrel"
-        },
-        
         "I":
         {
-            "item": "caliber:ironsights"
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_carbon"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
         }
+        
     },
     
     "result":

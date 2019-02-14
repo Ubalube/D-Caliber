@@ -5,11 +5,6 @@ import javax.swing.text.html.parser.Entity;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.items.GunBase;
-import com.ubalube.scifiaddon.squads.SquadProvider;
-import com.ubalube.scifiaddon.util.packets.ISquad;
-import com.ubalube.scifiaddon.util.packets.MessageReputation;
-import com.ubalube.scifiaddon.util.packets.MessageSquad;
-
 import net.minecraft.block.BlockNote;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

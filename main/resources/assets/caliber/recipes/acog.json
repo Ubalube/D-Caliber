@@ -3,19 +3,18 @@
    
     "pattern":
     [
-        " RR",
-        "WWL",
-        "   "
+        "RII",
+        "LRL",
+        "III"
     ],
    
     "key":
     {
-        
-        "W":
+        "I":
         {
             "item": "caliber:steel"
         },
-        
+    
         "R":
         {
             "item": "minecraft:redstone"
@@ -25,6 +24,7 @@
         {
             "item": "caliber:lense"
         }
+        
     },
     
     "result":
