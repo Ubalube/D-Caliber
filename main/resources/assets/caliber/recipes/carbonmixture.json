@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "IRI",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:coal",
+            "data": 0
+        },
+        "R":
+        {
+            "item": "minecraft:iron_ingot"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:carbonmixture",
+        "count": 2
+    }
+}

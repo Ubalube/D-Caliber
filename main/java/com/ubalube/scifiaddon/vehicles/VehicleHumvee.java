@@ -254,8 +254,7 @@ public class VehicleHumvee extends EntityCreature
             
             if (this.canPassengerSteer())
             {
-            	
-                this.setAIMoveSpeed((float)this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
+            	this.setAIMoveSpeed((float)this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
                 super.travel(0, vertical, forward);
             }
             else if (entitylivingbase instanceof EntityPlayer)

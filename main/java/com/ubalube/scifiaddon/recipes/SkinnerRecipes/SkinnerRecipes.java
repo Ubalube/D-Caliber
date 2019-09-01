@@ -48,6 +48,19 @@ public class SkinnerRecipes
 		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 1);
 		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
 		addHarvestorRecipe(new ItemStack(ModItems.MP18), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.MP18), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.AWP), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.AWP), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.M4A1), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.M4A1), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 1);
+		
+		//Reset
+		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.HK416), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.AKM), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.MP18), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.MP18), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.AWP), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.AWP), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.M4A1), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.M4A1), 5.0F, 0);
+		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 0);
 	}
 
 	

@@ -59,10 +59,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityBandit extends EntityMob
+public class EntityBandit extends EntitySoldierBase
 {
-	private static final DataParameter<Integer> VARIANT = EntityDataManager.<Integer>createKey(EntityBandit.class, DataSerializers.VARINT);
-	
 	public EntityBandit(World worldIn) 
 	{
 		super(worldIn);
@@ -70,13 +68,7 @@ public class EntityBandit extends EntityMob
 		
 	}
 	
-	@Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
-    {
-    	int d = Math.round(difficulty.getClampedAdditionalDifficulty()*3f);
-    	this.addGear(d);
-    } 
-	
+    @Override
 	protected void addGear(int difficulty){
 		Random r = new Random();
 		Item weapon = null;
@@ -92,176 +84,27 @@ public class EntityBandit extends EntityMob
         
     }
     
+	@Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0);
     }
     
 	@Override
 	protected void initEntityAI() 
 	{
-		this.tasks.addTask(4, new EntityBandit.AIShoot(this));
-		this.tasks.addTask(3, new EntityAIWander(this, this.getAIMoveSpeed()));
-		this.tasks.addTask(2, new EntityAIOpenDoor(this, false));
-		this.tasks.addTask(1, new EntityAISwimming(this));
+		this.tasks.addTask(1, new AIShoot(this));
+		this.tasks.addTask(2, new EntityAIWander(this, this.getAIMoveSpeed()));
+		this.tasks.addTask(3, new EntityAIOpenDoor(this, false));
+		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoldier.class, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhost.class, true));
 		
 	}
-	
-	
-	@Nullable
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
-    {
-        this.setVariant(this.rand.nextInt(4));
-        this.setEquipmentBasedOnDifficulty(difficulty);
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
-	
-	public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-        compound.setInteger("Variant", this.getVariant());
-    }
-
-    
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-        this.setVariant(compound.getInteger("Variant"));
-    }
-	
-	protected void entityInit()
-    {
-        super.entityInit();
-        this.dataManager.register(VARIANT, Integer.valueOf(0));
-    }
-	
-	public int getVariant()
-    {
-        return MathHelper.clamp(((Integer)this.dataManager.get(VARIANT)).intValue(), 0, 4);
-    }
-
-    public void setVariant(int variant)
-    {
-        this.dataManager.set(VARIANT, Integer.valueOf(variant));
-    }
-	
-    static class AIShoot extends EntityAIBase
-    {
-        private final EntityBandit e;
-        private int attackStep;
-        private int attackTime;
-
-        public AIShoot(EntityBandit en)
-        {
-            this.e = en;
-            this.setMutexBits(3);
-        }
-
-        /**
-         * Returns whether the EntityAIBase should begin execution.
-         */
-        public boolean shouldExecute()
-        {
-            EntityLivingBase entitylivingbase = this.e.getAttackTarget();
-            return entitylivingbase != null && entitylivingbase.isEntityAlive();
-        }
-
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
-        public void startExecuting()
-        {
-            this.attackStep = 0;
-        }
-
-        /**
-         * Reset the task's internal state. Called when this task is interrupted by another one
-         */
-        public void resetTask()
-        {
-        }
-
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
-        public void updateTask()
-        {
-            --this.attackTime;
-            EntityLivingBase entitylivingbase = this.e.getAttackTarget();
-            double d0 = this.e.getDistanceSq(entitylivingbase);
-
-            if (d0 < 4.0D)
-            {
-                if (this.attackTime <= 0)
-                {
-                    this.attackTime = 20;
-                    this.e.attackEntityAsMob(entitylivingbase);
-                }
-
-                this.e.getMoveHelper().setMoveTo(entitylivingbase.posX, entitylivingbase.posY, entitylivingbase.posZ, 1.0D);
-            }
-            else if (d0 < this.getFollowDistance() * this.getFollowDistance())
-            {
-                double d1 = entitylivingbase.posX - this.e.posX;
-                double d2 = entitylivingbase.getEntityBoundingBox().minY + (double)(entitylivingbase.height / 2.0F) - (this.e.posY + (double)(this.e.height / 2.0F));
-                double d3 = entitylivingbase.posZ - this.e.posZ;
-
-                if (this.attackTime <= 0)
-                {
-                    ++this.attackStep;
-
-                    if (this.attackStep == 1)
-                    {
-                        this.attackTime = 20;
-                    }
-                    else if (this.attackStep <= 4)
-                    {
-                        this.attackTime = 6;
-                    }
-                    else
-                    {
-                        this.attackTime = 20;
-                        this.attackStep = 0;
-                    }
-
-                    if (this.attackStep > 1)
-                    {
-                        float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
-                        this.e.world.playEvent((EntityPlayer)null, 1018, new BlockPos((int)this.e.posX, (int)this.e.posY, (int)this.e.posZ), 0);
-
-                        for (int i = 0; i < 1; ++i)
-                        	
-                        {
-                        	World w = this.e.getEntityWorld();
-                        	EntityBullet entity = new EntityBullet(w, this.e);
-    						entity.shoot(this.e, this.e.rotationPitch, this.e.rotationYaw, 1.0F, 2.0F, 0.0F);
-    						entity.setGunDamage((double)6.0);
-    						entity.setRange(500);
-    						w.spawnEntity(entity);
-                        }
-                    }
-                }
-
-                this.e.getLookHelper().setLookPositionWithEntity(entitylivingbase, 10.0F, 10.0F);
-            }
-            else
-            {
-                this.e.getNavigator().clearPath();
-                this.e.getMoveHelper().setMoveTo(entitylivingbase.posX, entitylivingbase.posY, entitylivingbase.posZ, 1.0D);
-            }
-
-            super.updateTask();
-        }
-
-        private double getFollowDistance()
-        {
-            IAttributeInstance iattributeinstance = this.e.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
-            return iattributeinstance == null ? 16.0D : iattributeinstance.getAttributeValue();
-        }
-    }
 	
 }

@@ -25,9 +25,9 @@ public class EntityInit
 	public static void registerEntities() 
 	{
 		registerEntity("soldier", EntitySoldier.class, Reference.ENTITY_SOLDIER, 50, 7326320, 17920);
-		registerEntity("legionsoldier", EntityGhost.class, Reference.ENTITY_GHOST, 50, 7326320, 17920);
-		registerEntity("bandit", EntityBandit.class, Reference.ENTITY_BANDIT, 50, 7326320, 17920);
-		registerEntity("milita", EntityMilita.class, Reference.ENTITY_MILITA, 50, 7326320, 17920);
+		registerEntity("legionsoldier", EntityGhost.class, Reference.ENTITY_GHOST, 50, 16763717, 16735301);
+		registerEntity("bandit", EntityBandit.class, Reference.ENTITY_BANDIT, 50, 16711680, 9742457);
+		registerEntity("milita", EntityMilita.class, Reference.ENTITY_MILITA, 50, 9751417, 9751551);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
 		registerEntity("legionboss", EntityLegionBoss.class, Reference.ENTITY_L_BOSS, 50, 000000, 10289152);
 		//registerEntity("trader", EntityTrader.class, Reference.ENTITY_TRADER, 50, 000000, 10289152);

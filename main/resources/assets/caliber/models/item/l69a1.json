@@ -13658,7 +13658,7 @@
 		"gui": {
 			"rotation":  [ 90, -45, 90 ],
 			"translation":  [ 0, 0.1, 0 ],
-			"scale":  [ 0.175, 0.175, 0.175 ]
+			"scale":  [ 0.5, 0.5, 0.5 ]
 		},
 		"ground": {
 			"translation":  [ 0, 5, 0 ],
@@ -13688,6 +13688,34 @@
                 "running": 1.0
             },
             "model": "caliber:item/awp/awp_running"
+        },
+        {
+            "predicate": {
+                "aiming": 0,
+                "skin": 1
+            },
+            "model": "caliber:item/awp/skin/l69a1"
+        },
+        {
+            "predicate": {
+                "aiming": 1.0,
+                "skin": 1
+            },
+            "model": "caliber:item/awp/skin/awp_aiming"
+        },
+        {
+            "predicate": {
+                "reloading": 1.0,
+                "skin": 1
+            },
+            "model": "caliber:item/awp/skin/awp_reload"
+        },
+        {
+            "predicate": {
+                "running": 1.0,
+                "skin": 1
+            },
+            "model": "caliber:item/awp/skin/awp_running"
         }
     ]
 }

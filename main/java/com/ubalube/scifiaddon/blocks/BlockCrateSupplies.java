@@ -153,11 +153,7 @@ public class BlockCrateSupplies extends BlockHorizontal implements IHasModel
 			break;
 			
 		case 9:
-			i = ModItems.SUPPLIES1;
-			break;
-			
-		case 10:
-			i = ModItems.SUPPLIES2;
+			i = Items.IRON_INGOT;
 			break;
 
 		default:

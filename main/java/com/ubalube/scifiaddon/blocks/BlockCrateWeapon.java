@@ -26,6 +26,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -111,7 +112,7 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 	{
 		Random r = new Random();
 		Item i = ModItems.STEEL;
-		int result = r.nextInt(11);
+		int result = r.nextInt(30);
 		switch (result) {
 		case 0:
 			i = ModItems.SCAR;
@@ -151,6 +152,86 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 			
 		case 9:
 			i = ModItems.RANGER_PANTS;
+			break;
+			
+		case 10:
+			i = ModItems.VECTOR_HELMET;
+			break;
+			
+		case 11:
+			i = ModItems.VECTOR_CHEST;
+			break;
+			
+		case 12:
+			i = ModItems.VECTOR_PANTS;
+			break;
+			
+		case 13:
+			i = ModItems.VECTOR;
+			break;
+			
+		case 14:
+			i = ModItems.NVGOGGLES_t2;
+			break;
+			
+		case 15:
+			i = ModItems.ACOG;
+			break;
+			
+		case 16:
+			i = ModItems.AIMPOINT;
+			break;
+			
+		case 17:
+			i = new ItemStack(ModItems.STEEL, 5).getItem();
+			break;
+			
+		case 18:
+			i = ModItems.CRYSIS;
+			break;
+			
+		case 19:
+			i = ModItems.UZI;
+			break;
+			
+		case 20:
+			i = ModItems.BLITZSHIELD;
+			break;
+			
+		case 21:
+			i = ModItems.GIGN_HELMET;
+			break;
+			
+		case 22:
+			i = ModItems.GIGN_CHEST;
+			break;
+			
+		case 23:
+			i = ModItems.GIGN_PANTS;
+			break;
+			
+		case 24:
+			i = ModItems.GHILLIE_HELMET;
+			break;
+			
+		case 25:
+			i = ModItems.GHILLIE_CHEST;
+			break;
+			
+		case 26:
+			i = ModItems.GHILLIE_PANTS;
+			break;
+			
+		case 27:
+			i = ModItems.COMBAT_HELMET;
+			break;
+			
+		case 28:
+			i = ModItems.COMBAT_CHEST;
+			break;
+			
+		case 29:
+			i = ModItems.COMBAT_PANTS;
 			break;
 
 		default:

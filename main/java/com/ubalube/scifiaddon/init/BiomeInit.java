@@ -13,11 +13,11 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class BiomeInit 
 {
 	
-	//public static final Biome BADLANDS = new BiomeBadlands();
+	public static final Biome BADLANDS = new BiomeBadlands();
 	
 	public static void registerBiomes()
 	{
-		//initBiome(BADLANDS, "badlands", BiomeType.DESERT, Type.DEAD, Type.HOT, Type.WASTELAND);
+		initBiome(BADLANDS, "badlands", BiomeType.DESERT, Type.DEAD, Type.HOT, Type.WASTELAND);
 	}
 	
 	private static Biome initBiome(Biome biome, String name, BiomeType biomeType, Type... types)

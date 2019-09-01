@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RR ",
+        "RR ",
+        "   "
+    ],
+   
+    "key":
+    {
+        
+        "R":
+        {
+            "item": "caliber:asphalt"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:asphalt_polished",
+        "count": 4
+    }
+}

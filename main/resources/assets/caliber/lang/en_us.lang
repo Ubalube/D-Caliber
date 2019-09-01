@@ -13,7 +13,7 @@ key.dc=Diamond Caliber
 entity.soldier.name=Scorpion
 entity.legionsoldier.name=Legion Soldier
 entity.bandit.name=Bandit
-entity.milita.name=Legion Soldier
+entity.milita.name=Milita Soldier
 entity.legionboss.name=Legion General
 entity.trader.name=Trader
 
@@ -88,6 +88,35 @@ item.helmet_ghillie.name=Ghillie Hat
 item.chest_ghillie.name=Ghillie Suit
 item.pants_ghillie.name=Ghillie Pants
 
+item.nightvision.name=Night Vision Goggles
+
+item.holo.name=Holographic Scope
+item.acog.name=Acog Scope
+item.sniperscope.name=Sniper Scope
+item.reddot.name=Reddot Scope
+item.aimpoint.name=Aimpoint Scope
+item.caliber_carbon.name=Carbon Rifle Caliber
+item.caliber_iron.name=Iron Rifle Caliber
+item.pistol_caliber_carbon.name=Carbon Pistol Caliber
+item.pistol_caliber_iron.name=Iron Pistol Caliber
+item.stock_tactical.name=Tactical Stock
+item.stock_uzi.name=Foldable Stock
+item.stock_compact.name=Compact Stock
+item.stock_compact_wood.name=Wooden Compact Stock
+item.56mclip.name=5.56*55mm Clip
+item.762mclip.name=7.62*45mm Clip
+item.45acpclip.name=.45 ACP Clip
+item.9mmclip.name=9mm Clip
+item.dmrclip.name=7.62*45mm DMR Clip
+item.sniperclip.name=.338 Sniper Clip
+tile.rotarylamp.name=Rotary Lamp
+
+item.bluepaint.name=Blue Paint
+item.redpaint.name=Red Paint
+item.greenpaint.name=Green Paint
+item.orangepaint.name=Orange Paint
+item.bossmedal.name=Medal <Legion General>
+
 tile.crate.name=Weapon Case
 tile.sandbags.name=Sandbags
 tile.concretebrick.name=Concrete Bricks
@@ -124,6 +153,8 @@ gun.g36.desc=A 5.56x45mm assault rifle designed in Germany as a replacement for 
 gun.ak74u.desc=A lightweight AK-47 and modified to be in the SMG category.
 gun.p250.desc=A semi-automatic pistol that uses .45 ACP rounds.
 gun.mp18.desc=A SMG used in WW1 as the first submachine gun used in combat by the German Army.
+gun.vector.desc=A SMG designed in 2006 that uses an unconventional delayed blowback system combined to reduce recoil and muzzle climb.
+gun.m4.desc=The M4 is a 5.56×45mm NATO, air-cooled, direct impingement gas-operated, magazine-fed carbine.
 
 #Guns
 item.blitz.name=G52 - Tactical Shield
@@ -144,3 +175,6 @@ item.g36c.name=G36 Tactical
 item.ak74u.name=AKS-74U
 item.mp18.name=MP18
 item.p250.name=P250
+item.vector.name=Kriss Vector
+item.m4.name=M4A1
+item.ak12.name=AK-12

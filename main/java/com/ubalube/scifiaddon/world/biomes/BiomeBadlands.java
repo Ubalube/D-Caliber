@@ -12,13 +12,13 @@ public class BiomeBadlands extends Biome
 {
 	public BiomeBadlands()
 	{
-		super(new BiomeProperties("Badlands").setBaseHeight(-0.1F).setHeightVariation(0.0F).setRainDisabled().setTemperature(8.0F));
+		super(new BiomeProperties("Badlands").setBaseHeight(-0.1F).setHeightVariation(0.1F).setRainDisabled().setTemperature(20.0F));
 		
 		topBlock = Blocks.SANDSTONE.getDefaultState();
 		fillerBlock = Blocks.STONE.getDefaultState();
 		
 		this.decorator.treesPerChunk = 0;
-		this.getSkyColorByTemp(8.0F);
+		this.getSkyColorByTemp(10.0F);
 		
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableCreatureList.clear();

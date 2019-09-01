@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "ICI",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:node"
+        },
+    
+        "C":
+        {
+            "item": "minecraft:emerald"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:sting",
+        "count": 1
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RR ",
+        "RR ",
+        "   "
+    ],
+   
+    "key":
+    {
+        
+        "E":
+        {
+            "item": "minecraft:stone"
+            "data": 0
+        }
+        "R":
+        {
+            "item": "minecraft:sand"
+            "data": 0
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:sandbags",
+        "count": 4
+    }
+}

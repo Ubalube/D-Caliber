@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "RIR",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "R":
+        {
+            "item": "caliber:dmrclip"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:sniperclip",
+        "count": 2
+    }
+}

@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ubalube.scifiaddon.client.gui.GuiLoadout;
 import com.ubalube.scifiaddon.entity.Player;
 import com.ubalube.scifiaddon.util.Reference;
 
@@ -40,6 +41,10 @@ public class ClientProxy extends CommonProxy
 	public EntityPlayer getPlayer(EntityPlayer player) {
         return player = Minecraft.getMinecraft().player;
     }
+
 	
+	public void OpenLoadoutGUI(EntityPlayer player) {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiLoadout(player));
+	}
 	
 }

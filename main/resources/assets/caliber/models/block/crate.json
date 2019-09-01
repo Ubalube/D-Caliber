@@ -1,6 +1,7 @@
 {
 	"__comment": "Designed by Sgeorge1970 with Cubik Studio - https://cubik.studio",
 	"textures": {
+        "particle": "caliber:blocks/paintingtable_side",
 		"texture": "caliber:blocks/crate"
 	},
 	"elements": [ 	 

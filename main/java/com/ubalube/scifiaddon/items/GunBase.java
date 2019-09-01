@@ -45,7 +45,7 @@ public class GunBase extends Item implements IHasModel
 	public int Recoil;
 	
 	int Firerate;
-	int clipsize;
+	public int clipsize;
 	int ReloadTime;
 	int AutoFiremode;
 	int SingleFiremode;
@@ -53,11 +53,27 @@ public class GunBase extends Item implements IHasModel
 	int range;
 	Item ammo;
 	int type;
+	int strength;
 	
 	String description;
 	String ammoName;
 	
-	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoName) 
+	/**
+	 * 
+	 * @param name
+	 * @param fireRate
+	 * @param ammocap
+	 * @param reloadtm
+	 * @param recoil
+	 * @param bulletDamage
+	 * @param bulletDuration
+	 * @param ammunition
+	 * @param guntype
+	 * @param desc
+	 * @param ammoName
+	 * @param strength
+	 */
+	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoName, int strength) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -73,6 +89,7 @@ public class GunBase extends Item implements IHasModel
 		
 		this.description = desc;
 		this.ammoName = ammoName;
+		this.strength = strength;
 		
 		this.addPropertyOverride(new ResourceLocation("aiming"), new IItemPropertyGetter()
         {
@@ -141,7 +158,7 @@ public class GunBase extends Item implements IHasModel
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
 		{
 			tooltip.add(TextFormatting.RED + "Recoil Patterns <!>");
-			tooltip.add(TextFormatting.RED + "Verticle Recoil: 1");
+			tooltip.add(TextFormatting.RED + "Verticle Recoil: " + this.getRecoil());
 			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Left> : " + (this.getRecoil() - 1));
 			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: " + (this.getRecoil() + 1));
 		}
@@ -217,7 +234,17 @@ public class GunBase extends Item implements IHasModel
         return nbt;
     }
 	
-	
+	public boolean isAiming(ItemStack stack)
+	{
+		NBTTagCompound nbt = stack.getTagCompound();
+        if(nbt == null)
+        {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        
+        return nbt.getBoolean("ADS");
+	}
 	
 	public void doAim(ItemStack stack)
 	{
@@ -294,10 +321,24 @@ public class GunBase extends Item implements IHasModel
 		
 	}
 	
+	public boolean isRunning(ItemStack stack)
+	{
+
+		NBTTagCompound nbt = stack.getTagCompound();
+		
+		if(nbt == null)
+        {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+		
+		return nbt.getBoolean("running");
+	}
+	
 	/*
 	 * Shoots the gun
 	 */
-	public void shootGun(World worldIn, EntityPlayer playerIn, EnumHand handIn, ItemStack itemstack)
+	public void shootGun(World worldIn, EntityPlayer playerIn, ItemStack itemstack)
 	{
 		
 		boolean attach = false;
@@ -313,17 +354,7 @@ public class GunBase extends Item implements IHasModel
 				{
 					if(itemstack.getItemDamage() == clipsize)
 					{
-						if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
-						{
-							itemstack.setItemDamage(-clipsize);
-							playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
-							playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
-							if(nbt.getBoolean("ADS") == true)
-							{
-								nbt.setBoolean("ADS", false);
-							}
-							nbt.setFloat("reload", 1);
-						}
+						Reload(playerIn, itemstack, nbt);
 					}
 					else
 					{
@@ -332,13 +363,14 @@ public class GunBase extends Item implements IHasModel
 						{
 							if(!playerIn.isSprinting())
 							{
-								EntityBullet entity = new EntityBullet(worldIn, playerIn);
+								EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 								entity.setGunDamage((double)this.damage);
 								entity.shootingEntity = playerIn;
 								entity.setRange(this.range);
 								worldIn.spawnEntity(entity);
 								itemstack.damageItem(1, playerIn);
+								playShootSound(playerIn);
 								
 							}
 							
@@ -358,13 +390,14 @@ public class GunBase extends Item implements IHasModel
 					{
 						if(!playerIn.isSprinting())
 						{
-							EntityBullet entity = new EntityBullet(worldIn, playerIn);
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 							entity.setGunDamage((double)this.damage);
 							entity.shootingEntity = playerIn;
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
 							itemstack.damageItem(1, playerIn);
+							playShootSound(playerIn);
 						}
 						
 					}
@@ -381,15 +414,31 @@ public class GunBase extends Item implements IHasModel
 				{
 					if(!playerIn.isSprinting())
 					{
-						EntityBullet entity = new EntityBullet(worldIn, playerIn);
+						EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 						entity.setGunDamage((double)this.damage);
 						entity.setRange(this.range);
 						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);
 						itemstack.damageItem(1, playerIn);
+						playShootSound(playerIn);
 					}
 				}
+		}
+	}
+	
+	public void Reload(EntityPlayer playerIn, ItemStack itemstack, NBTTagCompound nbt)
+	{
+		if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
+		{
+			itemstack.setItemDamage(-clipsize);
+			playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
+			playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+			if(nbt.getBoolean("ADS") == true)
+			{
+				nbt.setBoolean("ADS", false);
+			}
+			nbt.setFloat("reload", 1);
 		}
 	}
 	

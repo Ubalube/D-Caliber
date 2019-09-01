@@ -34,7 +34,7 @@ public class Overlay
 
         
         
-        if(p.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == ModItems.NVGOGGLES_t2 || p.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == ModItems.NVGOGGLES_t1)
+        if(p.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == ModItems.NVGOGGLES_t2)
         {
             if(event.getType() == ElementType.HELMET)
             {

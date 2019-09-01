@@ -2,20 +2,19 @@
 {
   "modid": "caliber",
   "name": "Diamond Caliber",
-  "description": "Guns, Gears, Vehicles, Multiplayer, and more!",
-  "version": "1.0",
+  "description": "Guns, Gears, Mobs, and more!",
+  "version": "1.2",
   "mcversion": "1.12.2",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/diamond-caliber",
   "updateUrl": "",
   "authorList": ["XboxSignOut"],
   "credits": "Thanks to all of the helpers below!
     Textures: XboxSignOut, VampireRedEye
-    Models: Kevin Liang (MrSanBro)
-    Vehicle Models: VampireRedEye
+    Models: San Zang (MrSanBro)
     -------
-    Huge thanks to Kevin Liang for all of the gun models!",
+    Huge thanks to San Zang for all of the gun models!",
   "logoFile": "icon.png",
-  "screenshots": [],
+  "screenshots": [ "vector.png", "uzi.png" ],
   "dependencies": []
 }
 ]

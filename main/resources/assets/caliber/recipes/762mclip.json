@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "RRI",
+        "RII"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "R":
+        {
+            "item": "caliber:copper"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:762mclip",
+        "count": 4
+    }
+}

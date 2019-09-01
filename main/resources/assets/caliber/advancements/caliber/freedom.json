@@ -32,5 +32,5 @@
     "rewards": {
         "experience": 100
     },
-    "parent": "caliber:caliber/bossfight"
+    "parent": "caliber:caliber/root"
 }

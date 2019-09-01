@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        "ICS",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "R":
+        {
+            "item": "caliber:reddot"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_iron"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:ak12",
+        "count": 1
+    }
+}

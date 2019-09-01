@@ -57,13 +57,26 @@ import scala.reflect.internal.Trees.Modifiers;
 public class GunAimable extends GunBase implements IHasModel
 {
 	
-	
-	
-	
-	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN) 
+	/**
+	 * 
+	 * @param name
+	 * @param tab
+	 * @param fireRate
+	 * @param ammocap
+	 * @param reloadtm
+	 * @param recoil
+	 * @param bulletDamage
+	 * @param bulletDuration
+	 * @param ammunition
+	 * @param guntype
+	 * @param desc
+	 * @param ammoN
+	 * @param strength
+	 */
+	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN);
+		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		
@@ -85,18 +98,26 @@ public class GunAimable extends GunBase implements IHasModel
         return EnumAction.BOW;
     }
 	
-	@Override
+	/*@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
-		ItemStack itemstack = playerIn.getHeldItem(handIn);
-		this.shootGun(worldIn, playerIn, handIn, itemstack);
-		this.doRecoil(playerIn);
-		this.playShootSound(playerIn);
-		//}
-		playerIn.addStat(StatList.getObjectUseStats(this));
-		this.checkStates(itemstack, worldIn, playerIn);
+		
+		ItemStack itemstack = playerIn.getHeldItemMainhand();
+		if(!this.isRunning(itemstack))
+		{
+			this.shootGun(worldIn, playerIn, itemstack);
+			if(itemstack.getItemDamage() != this.clipsize)
+			{
+				this.doRecoil(playerIn);
+				this.playShootSound(playerIn);
+			}
+			//}
+			playerIn.addStat(StatList.getObjectUseStats(this));
+			this.checkStates(itemstack, worldIn, playerIn);
+		}
+		
 		return new ActionResult(EnumActionResult.PASS, itemstack);
-	}
+	}*/
 	
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
@@ -121,13 +142,24 @@ public class GunAimable extends GunBase implements IHasModel
 	}
 	
 	@Override
+	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player) {
+		if(this.isAiming(itemstack))
+		{
+			return false;
+		}
+		return super.onBlockStartBreak(itemstack, pos, player);
+	}
+	
+	/*@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
 	{
+		EntityPlayer playerIn = (EntityPlayer) entityLiving;
+
 		this.doAim(stack);
-		World worldIn = entityLiving.world;
+		
 		//this.checkStates(stack, worldIn, entityLiving);
 		return true;
-	}
+	}*/
 	
 	@Override
 	public void registerModels() 

@@ -14,9 +14,9 @@ public class WorldTypeBadlands extends WorldType
 		super("Badlands");
 	}
 	
-	/*@Override
+	@Override
 	public BiomeProvider getBiomeProvider(World world) {
 		return new BiomeProviderSingle(BiomeInit.BADLANDS);
-	}*/
+	}
 	
 }

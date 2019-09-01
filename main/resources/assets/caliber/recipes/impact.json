@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RIR",
+        "IBI",
+        "RIR"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        "B":
+        {
+            "item": "minecraft:tnt"
+        },
+        
+        "R":
+        {
+            "item": "minecraft:gunpowder"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:impact",
+        "count": 3
+    }
+}

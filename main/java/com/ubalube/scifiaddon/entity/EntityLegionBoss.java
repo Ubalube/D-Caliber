@@ -243,7 +243,7 @@ public class EntityLegionBoss extends EntityMob
                         	
                         {
                         	World w = this.e.getEntityWorld();
-                        	EntityBullet entity = new EntityBullet(w, this.e);
+                        	EntityBullet entity = new EntityBullet(w, this.e, 2);
     						entity.shoot(this.e, this.e.rotationPitch, this.e.rotationYaw, 1.0F, 2.0F, 0.0F);
     						entity.setGunDamage((double)6.0);
     						entity.setRange(500);

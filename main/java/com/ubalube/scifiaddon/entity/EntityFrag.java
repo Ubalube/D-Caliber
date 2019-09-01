@@ -52,7 +52,7 @@ public class EntityFrag extends EntityThrowable
     public EntityFrag(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.5F, 0.5F);
+        this.setSize(0.25F, 0.25F);
         this.height=0.5f;
     }
 

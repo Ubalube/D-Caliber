@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " R ",
+        "ICS",
+        " II"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "R":
+        {
+            "item": "caliber:reddot"
+        },
+    
+        "C":
+        {
+            "item": "caliber:pistol_caliber_iron"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:vector",
+        "count": 1
+    }
+}

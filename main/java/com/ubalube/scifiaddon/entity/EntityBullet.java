@@ -62,6 +62,8 @@ public class EntityBullet extends EntityArrow
     private int ticksInGround;
     private int ticksInAir;
     
+    private int strength;
+    
     public EntityBullet(World a) {
 		super(a);
 	}
@@ -70,8 +72,16 @@ public class EntityBullet extends EntityArrow
 		super(worldIn, x, y, z);
 	}
 
-	public EntityBullet(World worldIn, EntityLivingBase shooter) {
+	/**
+	 * 
+	 * @param worldIn the world
+	 * @param shooter the shooter
+	 * @param strength the strength: 1 = Glass can be broken, 2 = Stone can be Broken
+	 */
+	public EntityBullet(World worldIn, EntityLivingBase shooter, int strength) {
 		super(worldIn, shooter);
+		this.strength = strength;
+		this.shootingEntity = shooter;
 	}
 	
 	
@@ -120,6 +130,15 @@ public class EntityBullet extends EntityArrow
     {
         Entity entity = raytraceResultIn.entityHit;
 
+        /*if(raytraceResultIn.typeOfHit == Type.BLOCK)
+        {
+        	BlockPos pos = raytraceResultIn.getBlockPos();
+        	if(entity.getEntityWorld().getBlockState(pos).getBlock() == Blocks.GLASS)
+        	{
+        		entity.getEntityWorld().getBlockState(pos).getBlock().breakBlock(world, pos, entity.getEntityWorld().getBlockState(pos));
+        	}
+        }*/
+        
         if (entity != null)
         {
         	

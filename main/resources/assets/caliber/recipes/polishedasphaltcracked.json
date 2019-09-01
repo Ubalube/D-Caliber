@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RRE",
+        "RR ",
+        "   "
+    ],
+   
+    "key":
+    {
+        
+        "R":
+        {
+            "item": "caliber:asphalt_polished"
+        }
+        "E":
+        {
+            "item": "minecraft:stick"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:asphalt_polished_cracked",
+        "count": 4
+    }
+}

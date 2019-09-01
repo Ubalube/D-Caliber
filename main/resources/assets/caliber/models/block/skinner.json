@@ -1,6 +1,7 @@
 {
 	"__comment": "Made By Ubalube",
 	"textures": {
+        "particle": "caliber:blocks/paintingtable_side",
 		"texture": "caliber:blocks/paintingtable_side",
 		"texture1": "caliber:blocks/paintingtable_top",
 		"texture2": "caliber:blocks/paintingtable_bottom"

@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "III",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:carbonfibre",
+        "count": 1
+    }
+}

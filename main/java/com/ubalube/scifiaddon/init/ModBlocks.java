@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.blocks.Airdrop;
 import com.ubalube.scifiaddon.blocks.BarbedWire;
 import com.ubalube.scifiaddon.blocks.BlockBase;

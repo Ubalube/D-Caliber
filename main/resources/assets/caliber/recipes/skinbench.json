@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "IEI",
+        "IRI",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        
+        "R":
+        {
+            "item": "minecraft:crafting_table"
+        },
+        
+        "E":
+        {
+            "item": "caliber:defaultpaint"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:skinner",
+        "count": 1
+    }
+}

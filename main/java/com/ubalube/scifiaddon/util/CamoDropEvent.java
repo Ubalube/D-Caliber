@@ -2,6 +2,7 @@ package com.ubalube.scifiaddon.util;
 
 import java.util.Random;
 
+import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.init.ModItems;
@@ -23,7 +24,7 @@ public class CamoDropEvent
     public void onMobDrops(LivingDropsEvent event)
     {
         if (event.getEntity() instanceof EntityZombie || event.getEntity() instanceof EntitySoldier || event.getEntity() instanceof EntityGhost
-        		|| event.getEntity() instanceof EntitySkeleton)
+        		|| event.getEntity() instanceof EntitySkeleton || event.getEntity() instanceof EntityBandit)
         {
         	World world = event.getEntity().getEntityWorld();
             

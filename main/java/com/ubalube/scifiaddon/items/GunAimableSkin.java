@@ -56,13 +56,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.reflect.internal.Trees.Modifiers;
 import scala.util.Random;
 
-public class GunAimableSkin extends GunBase implements IHasModel
+public class GunAimableSkin extends GunAimable implements IHasModel
 {
 	
-	public GunAimableSkin(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN) 
+	/**
+	 * 
+	 * @param name
+	 * @param tab
+	 * @param fireRate
+	 * @param ammocap
+	 * @param reloadtm
+	 * @param recoil
+	 * @param bulletDamage
+	 * @param bulletDuration
+	 * @param ammunition
+	 * @param guntype
+	 * @param desc
+	 * @param ammoN
+	 * @param strength
+	 */
+	
+	public GunAimableSkin(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN);
+		super(name, tab, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		setMaxDamage(clipsize);
@@ -79,59 +96,6 @@ public class GunAimableSkin extends GunBase implements IHasModel
         });
 		
 		ModItems.ITEMS.add(this);
-	}
-	
-	@Override
-    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return false;
-    }
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack)
-    {
-        return EnumAction.BOW;
-    }
-	
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
-	{
-		ItemStack itemstack = playerIn.getHeldItem(handIn);
-		this.shootGun(worldIn, playerIn, handIn, itemstack);
-		this.doRecoil(playerIn);
-		this.playShootSound(playerIn);
-		//}
-		playerIn.addStat(StatList.getObjectUseStats(this));
-		this.checkStates(itemstack, worldIn, playerIn);
-		return new ActionResult(EnumActionResult.PASS, itemstack);
-	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
-	{
-		EntityPlayer p = (EntityPlayer) entityIn;
-		NBTTagCompound nbt = stack.getTagCompound();
-		this.checkStates(stack, worldIn, entityIn);
-		//if(p.isSprinting())
-		//{
-		//	this.checkStates(stack, worldIn, entityIn);
-		//}
-		//else
-		//{
-			//if(!p.isSprinting() && nbt.getBoolean("running") == true)
-			//{
-			//	nbt.setBoolean("running", false);
-			//}
-		//}
-		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-	}
-	
-	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
-	{
-		this.doAim(stack);
-		World worldIn = entityLiving.world;
-		//this.checkStates(stack, worldIn, entityLiving);
-		return true;
 	}
 	
 	@Override

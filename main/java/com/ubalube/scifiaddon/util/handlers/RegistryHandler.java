@@ -4,6 +4,8 @@ import org.lwjgl.input.Keyboard;
 
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.commands.CommandLoadout;
+import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
 import com.ubalube.scifiaddon.entity.model.shields.Blitzshield;
@@ -17,11 +19,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.IShield;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
-import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Armory;
-import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Dune;
-import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures_Lab;
-import com.ubalube.scifiaddon.world.gen.legion.WorldGenCustomStructures_Legion_BossRoom;
-import com.ubalube.scifiaddon.world.gen.legion.WorldGenCustomStructures_Legion_SmallComp;
+import com.ubalube.scifiaddon.world.gen.WorldGenOceanStructures;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
 
 import net.minecraft.block.Block;
@@ -74,10 +72,10 @@ public class RegistryHandler
 			{
 				ModelShield shield = ((IShield) item).shieldModel();
 				
-				//if(item == ModItems.BLITZSHIELD)
-				//{
-					//RegistryHandler.createRender(item, shield, ":textures/models/shield/blitzshield.png");
-				//}
+				if(item == ModItems.BLITZSHIELD)
+				{
+					RegistryHandler.createRender(item, shield, ":textures/models/shield/blitzshield.png");
+				}
 				
 			}
 			
@@ -103,13 +101,14 @@ public class RegistryHandler
 		
 		EntityInit.registerProjectile();
 		EntityInit.registerEntities();
-		
+
+		GameRegistry.registerWorldGenerator(new WorldGenOceanStructures(), 100);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
+		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
+		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
 		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_SmallComp(), 50);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_BossRoom(), 10);
+		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_SmallComp(), 50);
+		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Legion_BossRoom(), 10);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -121,13 +120,14 @@ public class RegistryHandler
 	public static void initRegistries()
 	{
 		SoundHandler.registerSounds();
-		BiomeInit.registerBiomes();
+		//BiomeInit.registerBiomes();
 		
 		//NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
 		
 		//For the Goliath Spawn
 		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};
-		EntityRegistry.addSpawn(EntityGoliath.class, 1, 0, 1, EnumCreatureType.CREATURE, spawnBiomes);
+		EntityRegistry.addSpawn(EntityBandit.class, 5, 4, 5, EnumCreatureType.CREATURE, spawnBiomes);
+		EntityRegistry.addSpawn(EntityGoliath.class, 10, 0, 1, EnumCreatureType.CREATURE, spawnBiomes);
 		Biome[] spawnBiomes2 = {Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")), };
 		EntityRegistry.addSpawn(EntityGhost.class, 30, 2, 4, EnumCreatureType.MONSTER, spawnBiomes2);
 	}
@@ -140,6 +140,7 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
+		//e.registerServerCommand(new CommandLoadout());
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "IRI",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:copper"
+        },
+    
+        "R":
+        {
+            "item": "minecraft:glass"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:lense",
+        "count": 1
+    }
+}

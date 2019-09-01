@@ -103,11 +103,10 @@ public class ItemBlitzShield extends ItemBase implements IShield
     	World worldIn = playerIn.world;
     	
     	Vec3d playerVision = playerIn.getLookVec();
-		AxisAlignedBB reachDistance = playerIn.getEntityBoundingBox().expand(15.0F, 15.0F, 15.0F);
 
-		List<Entity> locatedEntities = playerIn.world.getEntitiesWithinAABB(Entity.class, reachDistance);
+		List<Entity> locatedEntities = playerIn.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), playerIn.getPosition().getX() + 10, playerIn.getPosition().getY() + 10, playerIn.getPosition().getZ() + 10));
 		
-		for(Object e : locatedEntities)
+		for(Entity e : locatedEntities)
 		{
 			
 			Entity eb = (Entity) e;
@@ -116,7 +115,6 @@ public class ItemBlitzShield extends ItemBase implements IShield
 			{
 				if(eb != playerIn)
 				{
-					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 140, 2));
 					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 140, 2));
 					((EntityLivingBase) eb).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 80, 2));
 				}
@@ -124,6 +122,7 @@ public class ItemBlitzShield extends ItemBase implements IShield
 			}
 			
 		}
+		playerIn.getCooldownTracker().setCooldown(this, 40);
 		
 		worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1, 1);
     	return true;
