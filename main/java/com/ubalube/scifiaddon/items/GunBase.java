@@ -1,5 +1,6 @@
 package com.ubalube.scifiaddon.items;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -27,7 +28,9 @@ import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -49,11 +52,16 @@ public class GunBase extends Item implements IHasModel
 	int ReloadTime;
 	int AutoFiremode;
 	int SingleFiremode;
-	float damage;
+    float damage;
 	int range;
-	Item ammo;
+	public Item ammo;
 	int type;
 	int strength;
+	
+	float IncreaseDamageAmount = damage + 3f;
+	int LowRecoil = Recoil / 2;
+	
+	private List<String> attachmentNames= new ArrayList<String>();
 	
 	String description;
 	String ammoName;
@@ -136,7 +144,124 @@ public class GunBase extends Item implements IHasModel
 		ModItems.ITEMS.add(this);
 	}
 	
+	public float getGunDamage()
+	{
+		return this.damage;
+	}
+	
+	public void addModification(GunAttachments attachment, ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setBoolean(attachment.toString(), true);
+	}
+	
+	public void removeModification(GunAttachments attachment, ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setBoolean(attachment.toString(), false);
+	}
+	
+	public List<String> getModifications(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		List<String> Attachments = new ArrayList<String>();
+		
+		if(nbt.getBoolean(GunAttachments.INCREASEDAMAGE.toString()) == true)
+		{
+			Attachments.add("diamondcaliber.upgrades.increased_damage");
+		}
+		
+		if(nbt.getBoolean(GunAttachments.LOWRECOIL.toString()) == true)
+		{
+			Attachments.add("diamondcaliber.upgrades.low_recoil");
+		}
+		
+		if(nbt.getBoolean(GunAttachments.POTIONEFFECT.toString()) == true)
+		{
+			Attachments.add("diamondcaliber.upgrades.potioneffect");
+		}
+		
+		if(nbt.getBoolean(GunAttachments.STATTRACK.toString()) == true)
+		{
+			Attachments.add("diamondcaliber.upgrades.stattrack");
+		}
+		
+		return Attachments;
+	}
+	
+	public void addPotionEffect(Potion potion, ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setInteger("PotionID", potion.getIdFromPotion(potion));
+	}
+	
+	public Potion getBoundPotionEffect(ItemStack stack)
+	{
+		
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		int potionID = nbt.getInteger("PotionID");
+		
+		return Potion.getPotionById(potionID);
+	}
+	
+	public Boolean hasBoundPotionEffect(ItemStack stack)
+	{
+		
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		if(nbt.hasKey("PotionID"))
+		{
+			return true;
+		}
+		
+		return false;
+	}
 
+	public void addStatTrack(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setInteger("StatTrack", 0);
+	}
+	
+	public void removeStatTrack(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.removeTag("StatTrack");
+	}
+	
+	public Boolean hasStatTrack(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		return nbt.hasKey("StatTrack");
+	}
+	
+	public int getStatTrackCount(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		return nbt.getInteger("StatTrack");
+	}
+	
+	public void addStatTrackKill(int killAmount, ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setInteger("StatTrack", getStatTrackCount(stack) + killAmount);
+	}
+	
+	public void resetStatTrackKills(ItemStack stack)
+	{
+		NBTTagCompound nbt = checkNBTTags(stack);
+		
+		nbt.setInteger("StatTrack", 0);
+	}
+	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
@@ -153,6 +278,12 @@ public class GunBase extends Item implements IHasModel
 			tooltip.add(TextFormatting.BLUE + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.BLUE + "Clipsize: " + TextFormatting.GREEN + clipsize);
 			tooltip.add(TextFormatting.BLUE + "Ammunition: " + TextFormatting.GREEN + ammoName);
+			tooltip.add("");
+			tooltip.add(TextFormatting.YELLOW + "Weapon Modifications <!>");
+			for(String s : getModifications(stack))
+			{
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.AQUA + s);
+			}
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
@@ -202,6 +333,16 @@ public class GunBase extends Item implements IHasModel
 		EntityPlayerSP sp = (EntityPlayerSP) p;
 		
 		p.rotationPitch += -this.Recoil;
+		
+
+		
+		for(String s : getModifications(p.getHeldItemMainhand()))
+		{
+			if(s == "diamondcaliber.upgrades.low_recoil")
+			{
+				this.Recoil = this.LowRecoil;
+			}
+		}
 		
 		if(yawWay == 1)
 		{
@@ -295,6 +436,11 @@ public class GunBase extends Item implements IHasModel
         }
 	}
 	
+	public void playDryFireSound(EntityPlayer playerIn)
+	{
+		
+	}
+	
 	public void playShootSound(EntityPlayer playerIn)
 	{
 		World worldIn = playerIn.getEntityWorld();
@@ -364,7 +510,18 @@ public class GunBase extends Item implements IHasModel
 							if(!playerIn.isSprinting())
 							{
 								EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+								if(this.hasBoundPotionEffect(itemstack))
+									entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
 								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+								
+								for(String s : getModifications(itemstack))
+								{
+									if(s == "diamondcaliber.upgrades.increased_damage")
+									{
+										this.damage = this.IncreaseDamageAmount;
+									}
+								}
+								
 								entity.setGunDamage((double)this.damage);
 								entity.shootingEntity = playerIn;
 								entity.setRange(this.range);
@@ -391,6 +548,15 @@ public class GunBase extends Item implements IHasModel
 						if(!playerIn.isSprinting())
 						{
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+							if(this.hasBoundPotionEffect(itemstack))
+								entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+							for(String s : getModifications(itemstack))
+							{
+								if(s == "diamondcaliber.upgrades.increased_damage")
+								{
+									this.damage = this.IncreaseDamageAmount;
+								}
+							}
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 							entity.setGunDamage((double)this.damage);
 							entity.shootingEntity = playerIn;
@@ -415,6 +581,16 @@ public class GunBase extends Item implements IHasModel
 					if(!playerIn.isSprinting())
 					{
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+						if(this.hasBoundPotionEffect(itemstack))
+							entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+						
+						for(String s : getModifications(itemstack))
+						{
+							if(s == "diamondcaliber.upgrades.increased_damage")
+							{
+								this.damage = this.IncreaseDamageAmount;
+							}
+						}
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
 						entity.setGunDamage((double)this.damage);
 						entity.setRange(this.range);

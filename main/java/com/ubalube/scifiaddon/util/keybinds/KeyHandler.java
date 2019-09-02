@@ -4,6 +4,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.util.packets.LeanDirection;
+import com.ubalube.scifiaddon.util.packets.MessageLean;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
 
 import ca.weblite.objc.Message;
@@ -38,6 +40,9 @@ public class KeyHandler
 		{
 			main.NETWORK.sendToServer(new MessageReloadGun(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getHeldItemMainhand().getItem()));
 		}
+		
+		
+		
 	}
 	
 }

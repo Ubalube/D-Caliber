@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModBlocks;
+import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.particles.MainParticles;
 import com.ubalube.scifiaddon.particles.ParticleBlood;
 import com.ubalube.scifiaddon.util.Reference;
@@ -29,10 +30,13 @@ import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketChangeGameState;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -64,6 +68,8 @@ public class EntityBullet extends EntityArrow
     
     private int strength;
     
+    private Potion effect;
+    
     public EntityBullet(World a) {
 		super(a);
 	}
@@ -82,8 +88,8 @@ public class EntityBullet extends EntityArrow
 		super(worldIn, shooter);
 		this.strength = strength;
 		this.shootingEntity = shooter;
+		
 	}
-	
 	
 
 	@Override
@@ -98,6 +104,11 @@ public class EntityBullet extends EntityArrow
 		if (this.inGround) {
 			this.world.removeEntity(this);
 		}
+	}
+	
+	public void setPotionEffect(Potion potion)
+	{
+		this.effect = potion;
 	}
 	
 	public void setGunDamage(double damage)
@@ -165,9 +176,14 @@ public class EntityBullet extends EntityArrow
                 if (entity instanceof EntityLivingBase)
                 {
                     EntityLivingBase entitylivingbase = (EntityLivingBase)entity;
-
+                    
                     if (!this.world.isRemote)
                     {
+
+                        if(this.effect != null)
+                        {
+                            entitylivingbase.addPotionEffect(new PotionEffect(this.effect, 80, 1));
+                        }
                     }
 
                     this.arrowHit(entitylivingbase);

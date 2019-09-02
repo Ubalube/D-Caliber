@@ -1,12 +1,15 @@
-package com.ubalube.scifiaddon.client.gui;
+package com.ubalube.scifiaddon.client.gui.player;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.commands.util.Loadout;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.Player.LoadoutProvider;
+import com.ubalube.scifiaddon.util.Player.util.ILoadout;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -60,6 +63,20 @@ public class GuiLoadout extends GuiScreen
 	private GuiButton loadout2;
 	private GuiButton loadout3;
 	private GuiButton loadout4;
+	
+	private GuiButton EditPrimary, EditSecondary;
+	
+	public List<Item> AssaultClassGuns = new ArrayList<Item>();
+	public int currentAssaultGunIndex = 0;
+	public List<Item> MarksmanClassGuns = new ArrayList<Item>();
+	public int currentMarksmanGunIndex = 0;
+	public List<Item> ScoutClassGuns = new ArrayList<Item>();
+	public int currentScoutGunIndex = 0;
+	public List<Item> SupportClassGuns = new ArrayList<Item>();
+	public int currentSupportGunIndex = 0;
+	public List<Item> Secondary = new ArrayList<Item>();
+	public int currentSecondaryGunIndex = 0;
+	
 	private Loadout loadout1_contents = new Loadout();
 	private Loadout loadout2_contents = new Loadout();
 	private Loadout loadout3_contents = new Loadout();
@@ -79,7 +96,7 @@ public class GuiLoadout extends GuiScreen
 
 	private boolean hovering1, hovering2, hovering3, hovering4;
 	
-	private Loadout selectedLoadout = new Loadout();
+	private Loadout selectedLoadout = null;
 	
 	int g_width = 256;
 	int g_height = 256;
@@ -90,45 +107,65 @@ public class GuiLoadout extends GuiScreen
 		
 		this.countdown5 = true;
 		
-		int y_offset = (this.height - height) / 2;
-		loadout1_contents.Primary = new ItemStack(ModItems.M4A1, 1);
-		loadout2_contents.Primary = new ItemStack(ModItems.AWP, 1);
-		loadout3_contents.Primary = new ItemStack(ModItems.VECTOR, 1);
-		loadout4_contents.Primary = new ItemStack(ModItems.FAL, 1);
-		loadout1_contents.Secondary = new ItemStack(ModItems.GLOCK, 1);
-		loadout2_contents.Secondary = new ItemStack(ModItems.UZI, 1);
-		loadout3_contents.Secondary = new ItemStack(ModItems.GLOCK_SCOPED, 1);
-		loadout4_contents.Secondary = new ItemStack(ModItems.GLOCK, 1);
+		ILoadout loadout = this.player.getCapability(LoadoutProvider.LOADOUTS, null);
 		
-		//Rifle man
-		loadout1_contents.items.add(new ItemStack(ModItems.RIFLE56, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.PISTOL9mm, 32));
+		int y_offset = (this.height - height) / 2;
+		
+		
+		
+		AssaultClassGuns.add(ModItems.M4A1);
+		AssaultClassGuns.add(ModItems.AK12);
+		AssaultClassGuns.add(ModItems.AKM);
+		AssaultClassGuns.add(ModItems.HK416);
+		AssaultClassGuns.add(ModItems.CR4);
+		AssaultClassGuns.add(ModItems.G36);
+		AssaultClassGuns.add(ModItems.SCAR);
+		AssaultClassGuns.add(ModItems.SCARACOG);
+		
+		MarksmanClassGuns.add(ModItems.AWP);
+		MarksmanClassGuns.add(ModItems.MK14);
+		MarksmanClassGuns.add(ModItems.G36C);
+		
+		ScoutClassGuns.add(ModItems.HK416C);
+		ScoutClassGuns.add(ModItems.VECTOR);
+		ScoutClassGuns.add(ModItems.AK74U);
+		ScoutClassGuns.add(ModItems.UZI);
+		ScoutClassGuns.add(ModItems.MP18);
+		ScoutClassGuns.add(ModItems.TOMMYGUN);
+		
+		SupportClassGuns.add(ModItems.RPK);
+		SupportClassGuns.add(ModItems.FAL);
+		
+		Secondary.add(ModItems.GLOCK);
+		Secondary.add(ModItems.GLOCK_SCOPED);
+		Secondary.add(ModItems.P250);
+		
+		loadout1_contents.Primary = new ItemStack(AssaultClassGuns.get(0), 1);
+		loadout1_contents.Secondary = new ItemStack(Secondary.get(0), 1);
+		loadout2_contents.Primary = new ItemStack(MarksmanClassGuns.get(0), 1);
+		loadout2_contents.Secondary = new ItemStack(Secondary.get(0), 1);
+		loadout3_contents.Primary = new ItemStack(ScoutClassGuns.get(0), 1);
+		loadout3_contents.Secondary = new ItemStack(Secondary.get(0), 1);
+		loadout4_contents.Primary = new ItemStack(SupportClassGuns.get(0), 1);
+		loadout4_contents.Secondary = new ItemStack(Secondary.get(0), 1);
+		
 		loadout1_contents.items.add(new ItemStack(ModItems.COMBAT_HELMET, 1));
 		loadout1_contents.items.add(new ItemStack(ModItems.COMBAT_CHEST, 1));
 		loadout1_contents.items.add(new ItemStack(ModItems.COMBAT_PANTS, 1));
 		
-		//Marksman
-		loadout1_contents.items.add(new ItemStack(ModItems.SNIPERCLIP, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.SMG45, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.GHILLIE_HELMET, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.GHILLIE_CHEST, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.GHILLIE_PANTS, 1));
+		loadout2_contents.items.add(new ItemStack(ModItems.GHILLIE_HELMET, 1));
+		loadout2_contents.items.add(new ItemStack(ModItems.GHILLIE_CHEST, 1));
+		loadout2_contents.items.add(new ItemStack(ModItems.GHILLIE_PANTS, 1));
 		
-		//Scout
-		loadout1_contents.items.add(new ItemStack(ModItems.SMG45, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.PISTOL9mm, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.RANGER_HELMET, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.RANGER_CHEST, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.RANGER_PANTS, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.PILLS, 3));
+		loadout3_contents.items.add(new ItemStack(ModItems.RANGER_HELMET, 1));
+		loadout3_contents.items.add(new ItemStack(ModItems.RANGER_CHEST, 1));
+		loadout3_contents.items.add(new ItemStack(ModItems.RANGER_PANTS, 1));
+		loadout3_contents.items.add(new ItemStack(ModItems.PILLS, 3));
 		
-		//Support
-		loadout1_contents.items.add(new ItemStack(ModItems.RIFLE762, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.PISTOL9mm, 32));
-		loadout1_contents.items.add(new ItemStack(ModItems.GIGN_HELMET, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.GIGN_CHEST, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.GIGN_PANTS, 1));
-		loadout1_contents.items.add(new ItemStack(ModItems.MEDKIT, 3));
+		loadout4_contents.items.add(new ItemStack(ModItems.GIGN_HELMET, 1));
+		loadout4_contents.items.add(new ItemStack(ModItems.GIGN_CHEST, 1));
+		loadout4_contents.items.add(new ItemStack(ModItems.GIGN_PANTS, 1));
+		loadout4_contents.items.add(new ItemStack(ModItems.MEDKIT, 3));
 		
 		int offsetFromScreenLeft = (width - g_width) / 2;	
 		this.buttonList.add(loadout1 = new GuiButton(0, offsetFromScreenLeft - (int) 90.0f, this.height - (this.height / 4) - 80, "Assault"));
@@ -136,7 +173,14 @@ public class GuiLoadout extends GuiScreen
 		this.buttonList.add(loadout3 = new GuiButton(2, offsetFromScreenLeft - (int) 90.0f, this.height - (this.height / 4) - 40, "Scout"));
 		this.buttonList.add(loadout4 = new GuiButton(3, offsetFromScreenLeft - (int) 90.0f, this.height - (this.height / 4) - 60, "Support"));
 		this.buttonList.add(deploy = new GuiButton(4, offsetFromScreenLeft + (int)30F, this.height - (this.height / 4) + 20, "Deploy"));
+
+		this.buttonList.add(EditPrimary = new GuiButton(5, offsetFromScreenLeft + (int) 145f, this.height - (this.height / 4) - 5, "Change"));
+		EditPrimary.width = EditPrimary.width / 3;
 		
+		this.buttonList.add(EditSecondary = new GuiButton(5, offsetFromScreenLeft + (int)150F + (int)80F, this.height - (this.height / 4) - 5, "Change"));
+		EditSecondary.width = EditSecondary.width / 3;
+		
+		deploy.enabled = false;
 		super.initGui();
 	}
 	
@@ -173,11 +217,15 @@ public class GuiLoadout extends GuiScreen
 			loadout2.visible = false;
 			loadout3.visible = false;
 			loadout4.visible = false;
-			deploy.visible = false;
 			hovering1 = false;
 			hovering2 = false;
 			hovering3 = false;
 			hovering4 = false;
+			
+			if(selectedLoadout != null)
+			{
+				deploy.enabled = true;
+			}
 			
 			if(this.countdown5)
 			{
@@ -421,6 +469,8 @@ public class GuiLoadout extends GuiScreen
 	protected void actionPerformed(GuiButton button) throws IOException 
 	{
 		
+		
+		
 		if(button == deploy)
 		{
 			if(selectedLoadout != null)
@@ -434,6 +484,102 @@ public class GuiLoadout extends GuiScreen
 				}
 				
 				this.countdown = true;
+				this.deploy.visible = false;
+				this.EditPrimary.visible = false;
+				this.EditSecondary.visible = false;
+			}
+		}
+		
+		if(button == EditPrimary)
+		{
+			if(this.selectedLoadout == loadout1_contents)
+			{
+				
+				if(currentAssaultGunIndex == 7)
+				{
+					currentAssaultGunIndex = 0;
+				}
+				else
+				{
+					currentAssaultGunIndex++;
+				}
+				
+				this.loadout1_contents.Primary = new ItemStack(AssaultClassGuns.get(currentAssaultGunIndex));
+				
+			}
+			else
+			{
+
+				if(this.selectedLoadout == loadout2_contents)
+				{
+					
+					if(currentMarksmanGunIndex == 2)
+					{
+						currentMarksmanGunIndex = 0;
+					}
+					else
+					{
+						currentMarksmanGunIndex++;
+					}
+					
+					this.loadout2_contents.Primary = new ItemStack(MarksmanClassGuns.get(currentMarksmanGunIndex));
+					
+				}
+				else
+				{
+					if(this.selectedLoadout == loadout3_contents)
+					{
+						
+						if(currentScoutGunIndex == 5)
+						{
+							currentScoutGunIndex = 0;
+						}
+						else
+						{
+							currentScoutGunIndex++;
+						}
+						
+						this.loadout3_contents.Primary = new ItemStack(ScoutClassGuns.get(currentScoutGunIndex));
+						
+					}
+					else
+					{
+						if(this.selectedLoadout == loadout4_contents)
+						{
+							
+							if(currentScoutGunIndex == 1)
+							{
+								currentSupportGunIndex = 0;
+							}
+							else
+							{
+								currentSupportGunIndex++;
+							}
+							
+							this.loadout4_contents.Primary = new ItemStack(SupportClassGuns.get(currentSupportGunIndex));
+							
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			if(button == EditSecondary)
+			{
+				if(currentSecondaryGunIndex == Secondary.size() - 1)
+				{
+					currentSecondaryGunIndex = 0;
+				}
+				else
+				{
+					currentSecondaryGunIndex++;
+				}
+				
+				this.loadout1_contents.Secondary = new ItemStack(Secondary.get(currentSecondaryGunIndex));
+				this.loadout2_contents.Secondary = new ItemStack(Secondary.get(currentSecondaryGunIndex));
+				this.loadout3_contents.Secondary = new ItemStack(Secondary.get(currentSecondaryGunIndex));
+				this.loadout4_contents.Secondary = new ItemStack(Secondary.get(currentSecondaryGunIndex));
 			}
 		}
 		

@@ -21,6 +21,8 @@ import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
 import com.ubalube.scifiaddon.util.CamoDropEvent;
+import com.ubalube.scifiaddon.util.CapabilityHandler;
+import com.ubalube.scifiaddon.util.DiamondCaliberHUD;
 import com.ubalube.scifiaddon.util.FovUpdater;
 import com.ubalube.scifiaddon.util.GunNBTEvent;
 import com.ubalube.scifiaddon.util.MainEvents;
@@ -30,8 +32,8 @@ import com.ubalube.scifiaddon.util.handlers.GuiHandler;
 import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
 import com.ubalube.scifiaddon.util.keybinds.KeyHandler;
-import com.ubalube.scifiaddon.util.keybinds.ReloadKeyBind;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
+import com.ubalube.scifiaddon.util.packets.MessageLean;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 import com.ubalube.scifiaddon.world.WorldGen;
@@ -102,11 +104,13 @@ public class main
 	public static void preinit(FMLPreInitializationEvent event)
 	{
 		RegistryHandler.preInitRegistries();
+		CapabilityHandler.register();
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());
 		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 2, Side.SERVER);
 		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 3, Side.SERVER);
 		NETWORK.registerMessage(MessageReloadGun.HandleReloadGun.class, MessageReloadGun.class, 4, Side.SERVER);
+		//NETWORK.registerMessage(MessageLean.HandleLean.class, MessageLean.class, 5, Side.CLIENT);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -133,6 +137,7 @@ public class main
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
+		MinecraftForge.EVENT_BUS.register(new DiamondCaliberHUD());
 	    FMLCommonHandler.instance().bus().register(new KeyHandler());
 	     
 		ModRecipes.init();

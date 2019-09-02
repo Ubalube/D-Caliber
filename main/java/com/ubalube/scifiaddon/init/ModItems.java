@@ -68,10 +68,14 @@ public class ModItems
 	public static final ArmorMaterial ARMOR_MATERIAL_RANGER = EnumHelper.addArmorMaterial("armor_material_ranger", Reference.MOD_ID + ":ranger_model", 20, new int[] { 2, 5, 8, 4 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial ARMOR_MATERIAL_SPECOPS = EnumHelper.addArmorMaterial("armor_material_specops", Reference.MOD_ID + ":specop", 20, new int[] { 1, 4, 5, 8 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0f);
 	public static final ArmorMaterial SEAL_SUIT = EnumHelper.addArmorMaterial("seal", "caliber:seal", 40, new int[]{2, 7, 10, 5}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial GIGN_SUIT = EnumHelper.addArmorMaterial("gign", "caliber:gign", 40, new int[]{2, 7, 8, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial GHILLIE_SUIT = EnumHelper.addArmorMaterial("ghillie", "caliber:ghillie", 40, new int[]{2, 5, 4, 3}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	public static final ArmorMaterial COMBAT_SUIT = EnumHelper.addArmorMaterial("combat", "caliber:combat", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial COMBAT_SUIT = EnumHelper.addArmorMaterial("combat", "caliber:combat", 40, new int[]{2, 5, 10, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial VECTOR_SUIT = EnumHelper.addArmorMaterial("vector", "caliber:vector", 40, new int[]{2, 6, 7, 4}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial HAZMAT_SUIT = EnumHelper.addArmorMaterial("hazmat", "caliber:hazmat", 40, new int[]{1, 2, 3, 1}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial CAPTAIN_SUIT = EnumHelper.addArmorMaterial("captain", "caliber:captain", 40, new int[]{1, 2, 3, 1}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial MARINE_SUIT = EnumHelper.addArmorMaterial("marine", "caliber:marine", 40, new int[]{2, 8, 7, 4}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial JUGGERNAUT_SUIT = EnumHelper.addArmorMaterial("juggernaut", "caliber:juggernaut", 40, new int[]{5, 5, 5, 5}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final ArmorMaterial CHROM_SUIT = EnumHelper.addArmorMaterial("chrom", "caliber:chrom", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial NV = EnumHelper.addArmorMaterial("nightvision", "caliber:nightvision", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
@@ -169,6 +173,22 @@ public class ModItems
 	public static final Item CHROM_CHEST = new ArmorBaseSkin("chest_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item CHROM_PANTS = new ArmorBaseSkin("pants_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
+	public static final Item HAZMAT_HELMET = new ArmorBaseSkin("helmet_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item HAZMAT_CHEST = new ArmorBaseSkin("chest_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item HAZMAT_PANTS = new ArmorBaseSkin("pants_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item CAPTAIN_HELMET = new ArmorBaseSkin("helmet_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CAPTAIN_CHEST = new ArmorBaseSkin("chest_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item CAPTAIN_PANTS = new ArmorBaseSkin("pants_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item JUGGERNAUT_HELMET = new ArmorBaseSkin("helmet_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item JUGGERNAUT_CHEST = new ArmorBaseSkin("chest_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item JUGGERNAUT_PANTS = new ArmorBaseSkin("pants_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item MARINE_HELMET = new ArmorBaseSkin("helmet_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item MARINE_CHEST = new ArmorBaseSkin("chest_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item MARINE_PANTS = new ArmorBaseSkin("pants_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.FEET);
+	
 	public static final Item NVGOGGLES_t2 = new ArmorNV("nightvision", NV, 1, EntityEquipmentSlot.HEAD);
 	
 	//GUNS
@@ -183,6 +203,7 @@ public class ModItems
 	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 4F, 500, ModItems.SMG45, 1, "gun.thompson.desc", ".45 ACP Clip", 1);
 	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 4, 35, 50, 1, 6F, 500, ModItems.RIFLE56, 1, "gun.hk.desc", "5.56x45mm Clip", 2);
 	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 3, 35, 50, 5, 6.5F, 500, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip", 2);
+	public static final Item RPK = new GunAimableSkin("rpk", main.gunTab, 3, 50, 50, 5, 8.5F, 500, ModItems.RIFLE762, 1, "gun.rpk.desc", "7.62x39mm Clip", 2);
 	public static final Item CR4 = new GunAimable("cr4", main.gunTab, 8, 35, 50, 5, 6F, 500, ModItems.RIFLE762, 1, "gun.cr4.desc", "7.62x39mm Clip", 2);
 	public static final Item FAL = new GunAimable("fal", main.gunTab, 8, 35, 50, 5, 5.5F, 500, ModItems.RIFLE762, 1, "gun.fal.desc", "7.62x39mm Clip", 2);
 	public static final Item UZI = new GunAimable("uzi", main.gunTab, 2, 35, 50, 5, 6F, 500, ModItems.PISTOL9mm, 1, "gun.uzi.desc", "9mm Clip", 1);
@@ -195,6 +216,8 @@ public class ModItems
 	public static final Item AK12 = new GunAimable("ak12", main.gunTab, 2, 35, 50, 2, 5.5F, 200, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip", 2);
 	public static final Item VECTOR = new GunAimableSkin("vector", main.gunTab, 2, 25, 50, 2, 4.5F, 200, ModItems.SMG45, 1, "gun.vector.desc", ".45ACP Clip", 1);
 	public static final Item M4A1 = new GunAimableSkin("m4", main.gunTab, 2, 40, 50, 2, 4.0F, 200, ModItems.RIFLE56, 1, "gun.m4.desc", "5.56x45mm Clip", 2);
+	public static final Item HK416C = new GunAimableSkin("hk416c", main.gunTab, 2, 45, 50, 2, 3.5F, 200, ModItems.RIFLE56, 1, "gun.hk416c.desc", "5.56x45mm Clip", 2);
+	public static final Item MK14 = new GunAimable("mk14", main.gunTab, 8, 10, 50, 5, 9F, 500, ModItems.RIFLE762, 1, "gun.mk14.desc", "7.62x39mm Clip", 2);
 	//public static final Item Grenade = new CGrenade("frag", 16, main.gunTab, type.FRAG);
 	public static final Item ImpactGrenade = new CGrenade("impact", 16, main.gunTab, type.IMPACT);
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);

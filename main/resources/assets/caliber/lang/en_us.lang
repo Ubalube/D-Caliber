@@ -155,6 +155,15 @@ gun.p250.desc=A semi-automatic pistol that uses .45 ACP rounds.
 gun.mp18.desc=A SMG used in WW1 as the first submachine gun used in combat by the German Army.
 gun.vector.desc=A SMG designed in 2006 that uses an unconventional delayed blowback system combined to reduce recoil and muzzle climb.
 gun.m4.desc=The M4 is a 5.56Ã—45mm NATO, air-cooled, direct impingement gas-operated, magazine-fed carbine.
+gun.hk416c.desc=A carbine variant of the HK416.
+gun.rpk.desc=The RPK is a 7.62×39mm light machine gun that is part of the AK family. 
+gun.mk14.desc=The Mk 14 Enhanced Battle Rifle is a military designated marksman rifle chambered for the 7.62×51mm NATO cartridge.
+
+#Upgrades
+diamondcaliber.upgrades.potioneffect=Bullet Effect
+diamondcaliber.upgrades.lowrecoil=Recoil Control
+diamondcaliber.upgrades.increasedamage=Modified Caliber
+diamondcaliber.upgrades.stattrack=Stat Track
 
 #Guns
 item.blitz.name=G52 - Tactical Shield
@@ -168,6 +177,9 @@ item.thompson.name=Thompson
 item.hk.name=HK416
 item.akm.name=AKM
 item.cr4.name=CR4-C
+item.mk14.name=MK14 EBR
+item.hk416c.name=HK416-C
+item.rpk.name=RPK
 item.fal.name=FN Fal
 item.uzi.name=Micro Uzi
 item.g36.name=G36

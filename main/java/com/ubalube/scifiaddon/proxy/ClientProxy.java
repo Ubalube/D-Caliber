@@ -3,7 +3,7 @@ package com.ubalube.scifiaddon.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ubalube.scifiaddon.client.gui.GuiLoadout;
+import com.ubalube.scifiaddon.client.gui.player.GuiLoadout;
 import com.ubalube.scifiaddon.entity.Player;
 import com.ubalube.scifiaddon.util.Reference;
 

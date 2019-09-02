@@ -25,5 +25,6 @@ public class Reference
 	
 	//GUIS
 	public static final int GUI_SKINNER = 0;
+	public static final int GUI_WORKSHOP = 1;
 }
 

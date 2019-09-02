@@ -98,7 +98,7 @@ public class GunAimable extends GunBase implements IHasModel
         return EnumAction.BOW;
     }
 	
-	/*@Override
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	{
 		
@@ -117,7 +117,7 @@ public class GunAimable extends GunBase implements IHasModel
 		}
 		
 		return new ActionResult(EnumActionResult.PASS, itemstack);
-	}*/
+	}
 	
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
@@ -150,7 +150,7 @@ public class GunAimable extends GunBase implements IHasModel
 		return super.onBlockStartBreak(itemstack, pos, player);
 	}
 	
-	/*@Override
+	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) 
 	{
 		EntityPlayer playerIn = (EntityPlayer) entityLiving;
@@ -159,7 +159,7 @@ public class GunAimable extends GunBase implements IHasModel
 		
 		//this.checkStates(stack, worldIn, entityLiving);
 		return true;
-	}*/
+	}
 	
 	@Override
 	public void registerModels() 

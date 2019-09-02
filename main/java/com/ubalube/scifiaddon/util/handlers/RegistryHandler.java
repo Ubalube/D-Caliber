@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
-import com.ubalube.scifiaddon.commands.CommandLoadout;
+import com.ubalube.scifiaddon.commands.CommandModify;
 import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
@@ -36,6 +36,7 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -140,7 +141,7 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
-		//e.registerServerCommand(new CommandLoadout());
+		e.registerServerCommand(new CommandModify());
 	}
 	
 	@SideOnly(Side.CLIENT)

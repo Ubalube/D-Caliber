@@ -58,8 +58,12 @@ public class MessageReloadGun implements IMessage{
 				Entity p = world.getEntityByID(message.playerId);
 				if(p != null && p instanceof EntityPlayer)
 				{
-			        NBTTagCompound nbt = ((EntityPlayer) p).inventory.getCurrentItem().getTagCompound();
-					((GunBase)((EntityPlayer) p).inventory.getCurrentItem().getItem()).Reload(((EntityPlayer) p), ((EntityPlayer) p).inventory.getCurrentItem(), nbt);
+					if(((EntityPlayer) p).getHeldItemMainhand().getItem() instanceof GunBase)
+					{
+						NBTTagCompound nbt = ((EntityPlayer) p).inventory.getCurrentItem().getTagCompound();
+						((GunBase)((EntityPlayer) p).inventory.getCurrentItem().getItem()).Reload(((EntityPlayer) p), ((EntityPlayer) p).inventory.getCurrentItem(), nbt);
+					}
+			        
 				}
 			}
 			return null;
