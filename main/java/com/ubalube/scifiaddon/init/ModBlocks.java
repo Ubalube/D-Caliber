@@ -16,6 +16,7 @@ import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockRadius;
 import com.ubalube.scifiaddon.blocks.BlockRotaryLamp;
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
+import com.ubalube.scifiaddon.blocks.BlockWorkshop;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
 import com.ubalube.scifiaddon.blocks.TransparentBlock;
 
@@ -58,6 +59,7 @@ public class ModBlocks
 	
 	//Skinner
 	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);
+	public static final Block WORKSHOP = new BlockWorkshop("workshop", Material.ROCK, 1.5F);
 	
 	//Labs
 	public static final Block LABGLASS = new TransparentBlock("labglass", Material.GLASS, 3.0F, false);

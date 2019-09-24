@@ -18,12 +18,14 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DiamondCaliberHUD extends Gui
+@EventBusSubscriber(Side.CLIENT)
+public class DiamondCaliberHUD
 {
 	
 	@SideOnly(Side.CLIENT)
@@ -92,33 +94,16 @@ public class DiamondCaliberHUD extends Gui
 		}
 		
 	}
+    
 	@SideOnly(Side.CLIENT)
-	public void drawKillNotifier(Minecraft mc, Entity victim, EntityPlayer attacker, ScaledResolution scaled)
-	{
-		if(attacker.getHeldItemMainhand().getItem() instanceof GunBase)
-		{
-			
-			int width = scaled.getScaledWidth();
-	        int height = scaled.getScaledHeight();
-			
-			String Victim = ChatFormatting.RED + "Killed " + victim.getDisplayName();
-			String ScoreAmount = ChatFormatting.GREEN + "[ " + TextFormatting.YELLOW + attacker.getHeldItemMainhand().getDisplayName() + ChatFormatting.GREEN + " ]";
-			
-			drawCenteredString(mc.fontRenderer, Victim, width / 2, (height / 2) - 4, Integer.parseInt("FFAA00", 16));
-			drawCenteredString(mc.fontRenderer, ScoreAmount, width / 2, (height / 2) - 14, Integer.parseInt("FFAA00", 16));
-		}
-		
-	}
-    
-    
 	@SubscribeEvent(priority=EventPriority.HIGH, receiveCanceled=false)
     public void doStatTrack(LivingDeathEvent e)
     {
     	DamageSource source = e.getSource();
     	
-    	if(source.getImmediateSource() instanceof EntityPlayer)
+    	if(source.getTrueSource() instanceof EntityPlayer)
     	{
-    		EntityPlayer attacker = (EntityPlayer) source.getImmediateSource();
+    		EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
     		Entity victim = e.getEntity();
     		if(attacker.getHeldItemMainhand().getItem() instanceof GunBase)
     		{
@@ -183,8 +168,8 @@ public class DiamondCaliberHUD extends Gui
 		
 		if(gb.hasStatTrack(item))
 		{
-			String StatTrack = ChatFormatting.YELLOW + "x " + gb.getStatTrackCount(item);
-			mc.fontRenderer.drawString(StatTrack, sr.getScaledWidth()-15-ammoText.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-2+i , 0xFFFFFFFF);
+			String StatTrack = ChatFormatting.YELLOW + "x" + gb.getStatTrackCount(item);
+			mc.fontRenderer.drawString(StatTrack, sr.getScaledWidth()-40-ammoText.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-2+i , 0xFFFFFFFF);
 		}
 		
 		mc.fontRenderer.drawString(GunName, sr.getScaledWidth()-7-ammoText.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-12+i , 0xFFFFFFFF);

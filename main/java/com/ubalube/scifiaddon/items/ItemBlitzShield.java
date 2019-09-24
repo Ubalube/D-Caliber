@@ -104,7 +104,7 @@ public class ItemBlitzShield extends ItemBase implements IShield
     	
     	Vec3d playerVision = playerIn.getLookVec();
 
-		List<Entity> locatedEntities = playerIn.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), playerIn.getPosition().getX() + 10, playerIn.getPosition().getY() + 10, playerIn.getPosition().getZ() + 10));
+		List<Entity> locatedEntities = playerIn.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(playerIn.getPosition().getX() - 10, playerIn.getPosition().getY(), playerIn.getPosition().getZ() - 10, playerIn.getPosition().getX() + 10, playerIn.getPosition().getY(), playerIn.getPosition().getZ() + 10));
 		
 		for(Entity e : locatedEntities)
 		{

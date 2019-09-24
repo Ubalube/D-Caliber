@@ -7,9 +7,12 @@ import java.util.List;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.commands.util.Loadout;
 import com.ubalube.scifiaddon.init.ModItems;
+import com.ubalube.scifiaddon.items.GunBase;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.Player.LoadoutProvider;
 import com.ubalube.scifiaddon.util.Player.util.ILoadout;
+import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
+import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -95,6 +98,7 @@ public class GuiLoadout extends GuiScreen
 	int second;
 
 	private boolean hovering1, hovering2, hovering3, hovering4;
+	private boolean sound1, sound2, sound3, sound4, sound5;
 	
 	private Loadout selectedLoadout = null;
 	
@@ -111,7 +115,12 @@ public class GuiLoadout extends GuiScreen
 		
 		int y_offset = (this.height - height) / 2;
 		
-		
+
+		this.sound5 = true;
+		this.sound4 = true;
+		this.sound3 = true;
+		this.sound2 = true;
+		this.sound1 = true;
 		
 		AssaultClassGuns.add(ModItems.M4A1);
 		AssaultClassGuns.add(ModItems.AK12);
@@ -232,7 +241,12 @@ public class GuiLoadout extends GuiScreen
 
 				mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/loadout/countdown_5.png"));
 				this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)100F, y + 100, 0, 0, 64, 64, 64, 64);
-				player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_HAT, SoundCategory.MASTER, 1, 1);
+				if(!sound1)
+				{
+					player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_HAT, SoundCategory.MASTER, 1, 1);
+					this.sound1 = true;
+				}
+				
 			}
 			else
 			{
@@ -241,7 +255,12 @@ public class GuiLoadout extends GuiScreen
 
 					mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/loadout/countdown_4.png"));
 					this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)100F, y + 100, 0, 0, 64, 64, 64, 64);
-					player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_HAT, SoundCategory.MASTER, 1, 1);
+					if(!sound2)
+					{
+						player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_HAT, SoundCategory.MASTER, 1, 1);
+						this.sound2 = true;
+					}
+					
 				}
 				else
 				{
@@ -250,7 +269,12 @@ public class GuiLoadout extends GuiScreen
 
 						mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/loadout/countdown_3.png"));
 						this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)100F, y + 100, 0, 0, 64, 64, 64, 64);
-						player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 1);
+						if(!sound3)
+						{
+							player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 1);
+							this.sound3 = true;
+						}
+						
 					}
 					else
 					{
@@ -259,7 +283,12 @@ public class GuiLoadout extends GuiScreen
 
 							mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/loadout/countdown_2.png"));
 							this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)100F, y + 100, 0, 0, 64, 64, 64, 64);
-							player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 1);
+							if(!sound4)
+							{
+								player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 1);
+								this.sound4 = true;
+							}
+							
 						}
 						else
 						{
@@ -268,7 +297,11 @@ public class GuiLoadout extends GuiScreen
 
 								mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/loadout/countdown_1.png"));
 								this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)100F, y + 100, 0, 0, 64, 64, 64, 64);
-								player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 3);
+								if(!sound5)
+								{
+									player.getEntityWorld().playSound(player, player.getPosition(), SoundEvents.BLOCK_NOTE_PLING, SoundCategory.MASTER, 1, 3);
+									this.sound4 = true;
+								}
 							}
 							else
 							{
@@ -475,12 +508,24 @@ public class GuiLoadout extends GuiScreen
 		{
 			if(selectedLoadout != null)
 			{
-				player.inventory.clear();
-				player.inventory.addItemStackToInventory(selectedLoadout.Primary);
-				player.inventory.addItemStackToInventory(selectedLoadout.Secondary);
+				for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+				{
+					if(!player.inventory.getStackInSlot(i).isEmpty())
+					{
+						main.NETWORK.sendToServer(new MessageTakeItems(player, player.inventory.getStackInSlot(i).getItem(), player.inventory.getStackInSlot(i).getCount()));
+					}
+				}
+				
+				GunBase primaryGun = (GunBase) selectedLoadout.Primary.getItem();
+				GunBase secondaryGun = (GunBase) selectedLoadout.Secondary.getItem();
+				
+				main.NETWORK.sendToServer(new MessageGiveItems(player, selectedLoadout.Primary.getItem(), 1));
+				main.NETWORK.sendToServer(new MessageGiveItems(player, selectedLoadout.Secondary.getItem(), 1));
+				main.NETWORK.sendToServer(new MessageGiveItems(player, primaryGun.ammo, 32));
+				main.NETWORK.sendToServer(new MessageGiveItems(player, secondaryGun.ammo, 32));
 				for(ItemStack stack : selectedLoadout.items)
 				{
-					player.inventory.addItemStackToInventory(stack);
+					main.NETWORK.sendToServer(new MessageGiveItems(player, stack.getItem(), stack.getCount()));
 				}
 				
 				this.countdown = true;

@@ -62,56 +62,28 @@ public class CommandModify extends CommandBase
 				GunBase gun = (GunBase)p.getHeldItemMainhand().getItem();
 				if(args[0].equalsIgnoreCase("PotionEffect"))
 				{
-					if(p.getHeldItemOffhand().getItem() instanceof ItemPotion)
-					{
-						List<PotionEffect> peffect = PotionUtils.getEffectsFromStack(p.getHeldItemOffhand());
-						
-						effect = peffect.get(0).getPotion();
+					List<PotionEffect> peffect = PotionUtils.getEffectsFromStack(p.getHeldItemOffhand());
+					
+					effect = peffect.get(0).getPotion();
 
-						gun.addModification(GunAttachments.POTIONEFFECT, p.getHeldItemMainhand());
-						gun.addPotionEffect(effect, p.getHeldItemMainhand());
-					}
-					else
-					{
-						p.sendMessage(new TextComponentString(ChatFormatting.RED + "You need to have a potion in your off hand!"));
-					}
+					gun.addModification(GunAttachments.POTIONEFFECT, p.getHeldItemMainhand());
+					gun.addPotionEffect(effect, p.getHeldItemMainhand());
 				}
 				
 				if(args[0].equalsIgnoreCase("IncreaseDamage"))
 				{
-					if(p.getHeldItemOffhand().getItem() instanceof ItemSword)
-					{
-						gun.addModification(GunAttachments.INCREASEDAMAGE, p.getHeldItemMainhand());
-					}
-					else
-					{
-						p.sendMessage(new TextComponentString(ChatFormatting.RED + "You need to have a diamond sword in your off hand!"));
-					}
+					gun.addModification(GunAttachments.INCREASEDAMAGE, p.getHeldItemMainhand());
 				}
 				
 				if(args[0].equalsIgnoreCase("LowRecoil"))
 				{
-					if(p.getHeldItemOffhand().getItem() instanceof ItemSpectralArrow)
-					{
-						gun.addModification(GunAttachments.LOWRECOIL, p.getHeldItemMainhand());
-					}
-					else
-					{
-						p.sendMessage(new TextComponentString(ChatFormatting.RED + "You need to have a spectral arrow in your off hand!"));
-					}
+					gun.addModification(GunAttachments.LOWRECOIL, p.getHeldItemMainhand());
 				}
 				
 				if(args[0].equalsIgnoreCase("StatTrack"))
 				{
-					if(p.getHeldItemOffhand().getItem() instanceof ItemRecord)
-					{
-						gun.addModification(GunAttachments.STATTRACK, p.getHeldItemMainhand());
-						gun.addStatTrack(p.getHeldItemMainhand());
-					}
-					else
-					{
-						p.sendMessage(new TextComponentString(ChatFormatting.RED + "You need to have a repeater in your off hand!"));
-					}
+					gun.addModification(GunAttachments.STATTRACK, p.getHeldItemMainhand());
+					gun.addStatTrack(p.getHeldItemMainhand());
 				}
 				
 				

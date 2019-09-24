@@ -11,10 +11,13 @@ import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
 import ca.weblite.objc.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class KeyHandler 
 {
@@ -38,7 +41,10 @@ public class KeyHandler
 	// FMLClientHandler.instance().getClient().inGameHasFocus
 		if (keys[0].isPressed()) 
 		{
-			main.NETWORK.sendToServer(new MessageReloadGun(Minecraft.getMinecraft().player, Minecraft.getMinecraft().player.getHeldItemMainhand().getItem()));
+			
+			EntityPlayer p = (EntityPlayer) Minecraft.getMinecraft().player;
+			
+			main.NETWORK.sendToServer(new MessageReloadGun(p, p.getHeldItemMainhand().getItem()));
 		}
 		
 		

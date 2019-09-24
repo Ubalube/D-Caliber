@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:workshop" },
+        "facing=west": { "model": "caliber:workshop", "y": 90 },
+        "facing=north": { "model": "caliber:workshop", "y": 180 },
+        "facing=east": { "model": "caliber:workshop", "y": 270 }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "TTT",
+        "RIR",
+        "TAT"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:crafting_table"
+        },
+    
+        "R":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        
+        "T":
+        {
+            "item": "minecraft:planks",
+            "data": 32767
+        },
+        
+        "A":
+        {
+            "item": "minecraft:iron_axe"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:workshop",
+        "count": 1
+    }
+}

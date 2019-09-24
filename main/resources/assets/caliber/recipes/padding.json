@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "ITI",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "T":
+        {
+            "item": "minecraft:paper"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:padding",
+        "count": 4
+    }
+}

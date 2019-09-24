@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RRR",
+        "R R",
+        "R R"
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "minecraft:leaves",
+            "data": 32767
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "pants_ghillie",
+        "count": 1
+    }
+}

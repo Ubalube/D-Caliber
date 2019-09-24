@@ -31,10 +31,10 @@ import net.minecraftforge.client.event.sound.SoundSetupEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GuiTestItem extends ItemBase
+public class GuiItem extends ItemBase
 {
 
-	public GuiTestItem(String name, int StackSize, CreativeTabs tab) {
+	public GuiItem(String name, int StackSize, CreativeTabs tab) {
 		super(name, StackSize, tab);
 		// TODO Auto-generated constructor stub
 	}

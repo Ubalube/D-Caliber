@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "R R",
+        "IFI",
+        "RRR"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:padding"
+        },
+        
+        "F":
+        {
+            "item": "minecraft:iron_chestplate"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:chest_marine",
+        "count": 1
+    }
+}

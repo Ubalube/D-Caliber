@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.util.handlers;
 import com.ubalube.scifiaddon.client.gui.GuiSkinner;
 import com.ubalube.scifiaddon.client.gui.GuiWorkshop;
 import com.ubalube.scifiaddon.tileentity.ContainerSkinner;
+import com.ubalube.scifiaddon.tileentity.ContainerWorkshop;
 import com.ubalube.scifiaddon.tileentity.TileEntitySkinner;
 import com.ubalube.scifiaddon.tileentity.TileEntityWorkshop;
 import com.ubalube.scifiaddon.util.Reference;
@@ -18,7 +19,7 @@ public class GuiHandler implements IGuiHandler
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		if(ID == Reference.GUI_SKINNER) return new ContainerSkinner(player.inventory, (TileEntitySkinner)world.getTileEntity(new BlockPos(x,y,z)));
-		
+		if(ID == Reference.GUI_WORKSHOP) return new ContainerWorkshop(player.inventory, (TileEntityWorkshop)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 

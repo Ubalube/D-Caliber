@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RIR",
+        "I I",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "minecraft:gold_ingot"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "helmet_captain",
+        "count": 1
+    }
+}

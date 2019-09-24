@@ -23,6 +23,8 @@ class.scout.name=Scout
 class.recon.name=Marksman
 class.engineer.name=Support
 
+tile.workshop.name=Workshop
+
 //objects
 item.redstonepaint.name=Camo <Redstone>
 item.lightningpaint.name=Camo <Lightning>
@@ -36,6 +38,7 @@ item.tankmedal.name=Medal <Goliath>
 item.pills.name=Adrenaline Pills
 item.medkit.name=Medical Kit
 item.node.name=Node
+item.loadout.name=Loadout
 
 //music
 item.hostile_lands.name=Music Disc
@@ -44,6 +47,7 @@ item.crysis.name=Music Disc
 item.record.crysis.desc=Crysis 2 Epilogue Hans Zimmer
 
 container.skinner=Skin Bench
+container.workshop=Work Shop
 
 item.frag.name=Frag Grenade
 item.impact.name=Impact Grenade
@@ -55,6 +59,8 @@ item.carbonmixture.name=Carbon Mixture
 item.icon.name=Mod Icon
 item.supplies1.name=Parts
 item.supplies2.name=Encrypted Codes
+item.cloth.name=Cloth
+item.padding.name=Kevlar Padding
 
 item.helmet_ranger.name=Ranger Helmet
 item.chest_ranger.name=Ranger Vest
@@ -87,6 +93,22 @@ item.pants_combat.name=Combat Pants
 item.helmet_ghillie.name=Ghillie Hat
 item.chest_ghillie.name=Ghillie Suit
 item.pants_ghillie.name=Ghillie Pants
+
+item.helmet_hazmat.name=Hazmat Helmet
+item.chest_hazmat.name=Hazmat Suit
+item.pants_hazmat.name=Hazmat Pants
+
+item.helmet_captain.name=Captain's Hat
+item.chest_captain.name=Captain's Shirt
+item.pants_captain.name=Captain's Pants
+
+item.helmet_juggernaut.name=Juggernaut Helmet
+item.chest_juggernaut.name=Juggernaut Chestplate
+item.pants_juggernaut.name=Juggernaut Leggings
+
+item.helmet_marine.name=Marine Helmet
+item.chest_marine.name=Marine Shirt
+item.pants_marine.name=Marine Pants
 
 item.nightvision.name=Night Vision Goggles
 
@@ -156,14 +178,14 @@ gun.mp18.desc=A SMG used in WW1 as the first submachine gun used in combat by th
 gun.vector.desc=A SMG designed in 2006 that uses an unconventional delayed blowback system combined to reduce recoil and muzzle climb.
 gun.m4.desc=The M4 is a 5.56Ã—45mm NATO, air-cooled, direct impingement gas-operated, magazine-fed carbine.
 gun.hk416c.desc=A carbine variant of the HK416.
-gun.rpk.desc=The RPK is a 7.62×39mm light machine gun that is part of the AK family. 
-gun.mk14.desc=The Mk 14 Enhanced Battle Rifle is a military designated marksman rifle chambered for the 7.62×51mm NATO cartridge.
+gun.rpk.desc=The RPK is a 7.62x39mm light machine gun that is part of the AK family. 
+gun.mk14.desc=The Mk 14 Enhanced Battle Rifle is a military designated marksman rifle chambered for the 7.62x51mm NATO cartridge.
 
 #Upgrades
-diamondcaliber.upgrades.potioneffect=Bullet Effect
-diamondcaliber.upgrades.lowrecoil=Recoil Control
-diamondcaliber.upgrades.increasedamage=Modified Caliber
-diamondcaliber.upgrades.stattrack=Stat Track
+item.stattrack.name=Stat Track
+item.increasedamage.name=Upgraded Caliber
+item.lowrecoil.name=Recoil Control
+item.potioneffect.name=Bullet Effect
 
 #Guns
 item.blitz.name=G52 - Tactical Shield

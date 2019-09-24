@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "R R",
+        "RRR",
+        "RRR"
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "minecraft:leaves",
+            "data": 32767
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "chest_ghillie",
+        "count": 1
+    }
+}

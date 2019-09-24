@@ -1,11 +1,11 @@
 {
 	"__comment": "Designed by Sgeorge1970 with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"texture": "blocks/planks",
-		"wrench": "blocks/wrench",
-		"hammer": "blocks/hammer",
-		"texture1": "blocks/stonemat",
-		"texture2": "blocks/asphalt_polished"
+		"texture": "caliber:blocks/planks",
+		"wrench": "caliber:blocks/wrench",
+		"hammer": "caliber:blocks/hammer",
+		"texture1": "caliber:blocks/stonemat",
+		"texture2": "caliber:blocks/asphalt_polished"
 	},
 	"elements": [ 	 
 		{

@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "R R",
+        "I I"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:padding"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:pants_ranger",
+        "count": 1
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "IRI",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:dye",
+            "data": 15
+        },
+    
+        "R":
+        {
+            "item": "minecraft:paper"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:cloth",
+        "count": 8
+    }
+}

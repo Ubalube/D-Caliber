@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RIR",
+        "IRI",
+        "III"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:steel"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:chest_juggernaut",
+        "count": 1
+    }
+}

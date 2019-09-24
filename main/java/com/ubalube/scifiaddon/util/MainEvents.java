@@ -12,16 +12,17 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MainEvents 
 {
-	
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
-	public static void onEvent(KeyInputEvent event)
+	@SubscribeEvent
+	public static void doRespawnEvent(PlayerRespawnEvent e)
 	{
+		EntityPlayer p = (EntityPlayer) e.player;
+		main.proxy.OpenLoadoutGUI(p);
 	}
 	
 }

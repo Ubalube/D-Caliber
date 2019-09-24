@@ -170,22 +170,19 @@ public class GunBase extends Item implements IHasModel
 		
 		if(nbt.getBoolean(GunAttachments.INCREASEDAMAGE.toString()) == true)
 		{
-			Attachments.add("diamondcaliber.upgrades.increased_damage");
+			Attachments.add("Upgraded Caliber");
 		}
-		
 		if(nbt.getBoolean(GunAttachments.LOWRECOIL.toString()) == true)
 		{
-			Attachments.add("diamondcaliber.upgrades.low_recoil");
+			Attachments.add("Recoil Control");
 		}
-		
 		if(nbt.getBoolean(GunAttachments.POTIONEFFECT.toString()) == true)
 		{
-			Attachments.add("diamondcaliber.upgrades.potioneffect");
+			Attachments.add("Bullet Effect");
 		}
-		
 		if(nbt.getBoolean(GunAttachments.STATTRACK.toString()) == true)
 		{
-			Attachments.add("diamondcaliber.upgrades.stattrack");
+			Attachments.add("StatTrack");
 		}
 		
 		return Attachments;
@@ -265,7 +262,8 @@ public class GunBase extends Item implements IHasModel
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
-		
+
+		NBTTagCompound nbt = checkNBTTags(stack);
 		tooltip.add(TextFormatting.YELLOW + "Show Information (LSHIFT)");
 		tooltip.add(TextFormatting.YELLOW + "Show Recoil Patterns (CTRL)");
 		tooltip.add(TextFormatting.YELLOW + "Weapon Description (RSHIFT)");
@@ -274,7 +272,14 @@ public class GunBase extends Item implements IHasModel
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 		{
 			tooltip.add(TextFormatting.YELLOW + "Weapon Information <!>");
-			tooltip.add(TextFormatting.BLUE + "Impact: " + TextFormatting.GREEN + damage);
+			if(nbt.getBoolean(GunAttachments.INCREASEDAMAGE.toString()) == true)
+			{
+				tooltip.add(TextFormatting.BLUE + "Impact: " + TextFormatting.GREEN + this.IncreaseDamageAmount);
+			}
+			else
+			{
+				tooltip.add(TextFormatting.BLUE + "Impact: " + TextFormatting.GREEN + damage);
+			}
 			tooltip.add(TextFormatting.BLUE + "Range:  " + TextFormatting.GREEN + range);
 			tooltip.add(TextFormatting.BLUE + "Clipsize: " + TextFormatting.GREEN + clipsize);
 			tooltip.add(TextFormatting.BLUE + "Ammunition: " + TextFormatting.GREEN + ammoName);
@@ -289,9 +294,21 @@ public class GunBase extends Item implements IHasModel
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
 		{
 			tooltip.add(TextFormatting.RED + "Recoil Patterns <!>");
-			tooltip.add(TextFormatting.RED + "Verticle Recoil: " + this.getRecoil());
-			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Left> : " + (this.getRecoil() - 1));
-			tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: " + (this.getRecoil() + 1));
+
+			if(nbt.getBoolean(GunAttachments.LOWRECOIL.toString()) == true)
+			{
+				tooltip.add(TextFormatting.RED + "Verticle Recoil: " + this.getRecoil() / 2);
+				int horiz = this.getRecoil() / 2 - 1;
+				int vertical = this.getRecoil() / 2 + 1;
+				tooltip.add(TextFormatting.RED + "Horizontal Recoil <Left> : " + horiz);
+				tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: "+ vertical);
+			}
+			else
+			{
+				tooltip.add(TextFormatting.RED + "Verticle Recoil: " + this.getRecoil());
+				tooltip.add(TextFormatting.RED + "Horizontal Recoil <Left> : " + (this.getRecoil() - 1));
+				tooltip.add(TextFormatting.RED + "Horizontal Recoil <Right>: " + (this.getRecoil() + 1));
+			}
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
@@ -330,6 +347,8 @@ public class GunBase extends Item implements IHasModel
 		Random rand = new Random();
 		int yawWay = rand.nextInt(2);
 		
+		int recoil = this.Recoil;
+		
 		EntityPlayerSP sp = (EntityPlayerSP) p;
 		
 		p.rotationPitch += -this.Recoil;
@@ -338,9 +357,9 @@ public class GunBase extends Item implements IHasModel
 		
 		for(String s : getModifications(p.getHeldItemMainhand()))
 		{
-			if(s == "diamondcaliber.upgrades.low_recoil")
+			if(s == "Recoil Control")
 			{
-				this.Recoil = this.LowRecoil;
+				recoil = this.LowRecoil;
 			}
 		}
 		
@@ -513,16 +532,17 @@ public class GunBase extends Item implements IHasModel
 								if(this.hasBoundPotionEffect(itemstack))
 									entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
 								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-								
+
+								entity.setGunDamage((double)this.damage);
 								for(String s : getModifications(itemstack))
 								{
-									if(s == "diamondcaliber.upgrades.increased_damage")
+									if(s == "Upgraded Caliber")
 									{
-										this.damage = this.IncreaseDamageAmount;
+										entity.setGunDamage((double)this.IncreaseDamageAmount);
+										break;
 									}
 								}
 								
-								entity.setGunDamage((double)this.damage);
 								entity.shootingEntity = playerIn;
 								entity.setRange(this.range);
 								worldIn.spawnEntity(entity);
@@ -550,15 +570,17 @@ public class GunBase extends Item implements IHasModel
 							EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 							if(this.hasBoundPotionEffect(itemstack))
 								entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+
+							entity.setGunDamage((double)this.damage);
 							for(String s : getModifications(itemstack))
 							{
-								if(s == "diamondcaliber.upgrades.increased_damage")
+								if(s == "Upgraded Caliber")
 								{
-									this.damage = this.IncreaseDamageAmount;
+									entity.setGunDamage((double)this.IncreaseDamageAmount);
+									break;
 								}
 							}
 							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-							entity.setGunDamage((double)this.damage);
 							entity.shootingEntity = playerIn;
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
@@ -583,16 +605,17 @@ public class GunBase extends Item implements IHasModel
 						EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 						if(this.hasBoundPotionEffect(itemstack))
 							entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
-						
+
+						entity.setGunDamage((double)this.damage);
 						for(String s : getModifications(itemstack))
 						{
-							if(s == "diamondcaliber.upgrades.increased_damage")
+							if(s == "Upgraded Caliber")
 							{
-								this.damage = this.IncreaseDamageAmount;
+								entity.setGunDamage((double)this.IncreaseDamageAmount);
+								break;
 							}
 						}
 						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
-						entity.setGunDamage((double)this.damage);
 						entity.setRange(this.range);
 						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);

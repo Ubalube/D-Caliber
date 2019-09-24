@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "I I",
+        "R R"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:steel"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:pants_hazmat",
+        "count": 1
+    }
+}

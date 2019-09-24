@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " T ",
+        "ICS",
+        "I  "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_iron"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "T":
+        {
+            "item": "caliber:aimpoint"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:hk416c",
+        "count": 1
+    }
+}

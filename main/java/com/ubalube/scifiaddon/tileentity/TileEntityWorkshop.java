@@ -4,6 +4,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import com.ubalube.scifiaddon.blocks.BlockSkinner;
 import com.ubalube.scifiaddon.recipes.SkinnerRecipes.SkinnerRecipes;
+import com.ubalube.scifiaddon.recipes.SkinnerRecipes.WorkshopRecipes;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -47,7 +48,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : "container.skinner";
+		return this.hasCustomName() ? this.customName : "container.workshop";
 	}
 
 	@Override
@@ -175,7 +176,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 			
 			if(this.isBurning() || !stack.isEmpty() && !((((ItemStack)this.inventory.get(0)).isEmpty()) || ((ItemStack)this.inventory.get(1)).isEmpty())) 
 			{
-				if(!this.isBurning() && this.canSmelt()) 
+				/*Line 179*/if(!this.isBurning() && this.canSmelt()) 
 				{
 					this.burnTime = getItemBurnTime(stack);
 					this.currentBurnTime = this.burnTime;
@@ -233,7 +234,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 		if(((ItemStack)this.inventory.get(0)).isEmpty() || ((ItemStack)this.inventory.get(1)).isEmpty()) return false;
 		else 
 		{
-			ItemStack result = SkinnerRecipes.getInstance().getHarvestorResult((ItemStack)this.inventory.get(0), (ItemStack)this.inventory.get(1));	
+			/*Line 237*/ItemStack result = WorkshopRecipes.getInstance().getHarvestorResult((ItemStack)this.inventory.get(0), (ItemStack)this.inventory.get(1));	
 			if(result.isEmpty()) return false;
 			else
 			{
@@ -252,7 +253,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 		{
 			ItemStack input1 = (ItemStack)this.inventory.get(0);
 			ItemStack input2 = (ItemStack)this.inventory.get(1);
-			ItemStack result = SkinnerRecipes.getInstance().getHarvestorResult(input1, input2);
+			ItemStack result = WorkshopRecipes.getInstance().getHarvestorResult(input1, input2);
 			ItemStack output = (ItemStack)this.inventory.get(3);
 			
 			if(output.isEmpty()) this.inventory.set(3, result.copy());
@@ -270,7 +271,23 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 		{
 			Item item = fuel.getItem();
 
+			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR) 
+			{
+				Block block = Block.getBlockFromItem(item);
+
+				//if (block == Blocks.WOODEN_SLAB) return 150;
+				//if (block.getDefaultState().getMaterial() == Material.WOOD) return 300;
+				//if (block == Blocks.COAL_BLOCK) return 16000;
+			}
+
 			if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
+			//if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
+			//if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
+			//if (item == Items.STICK) return 100;
+			//if (item == Items.COAL) return 1600;
+			//if (item == Items.LAVA_BUCKET) return 20000;
+			//if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
+			//if (item == Items.BLAZE_ROD) return 2400;
 
 			return GameRegistry.getFuelValue(fuel);
 		}
@@ -278,13 +295,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 		
 	public static boolean isItemFuel(ItemStack fuel)
 	{
-		
-		if(fuel.getItem() instanceof ItemTool)
-		{
-			return true;
-		}
-		
-		return false;
+		return getItemBurnTime(fuel) > 0;
 	}
 	
 	@Override
@@ -313,7 +324,7 @@ public class TileEntityWorkshop extends TileEntity implements ITickable, IInvent
 	
 	public String getGuiID() 
 	{
-		return "caliber:skinner";
+		return "caliber:workshop";
 	}
 
 	@Override

@@ -49,6 +49,12 @@ public class ArmorHazmat extends ArmorBase {
 
 	
 	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
+	{
+		player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 1));
+	}
+	
+	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {		 
 		return this.armorTexturePath + this.skinType + "_layer_" + this.renderIndex + ".png";
 	}

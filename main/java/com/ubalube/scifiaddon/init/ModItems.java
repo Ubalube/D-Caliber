@@ -12,18 +12,22 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.armor.Armor3D;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkin;
 import com.ubalube.scifiaddon.armor.ArmorBaseSkinNV;
+import com.ubalube.scifiaddon.armor.ArmorHazmat;
+import com.ubalube.scifiaddon.armor.ArmorJuggernaut;
 import com.ubalube.scifiaddon.armor.ArmorNV;
 import com.ubalube.scifiaddon.armor.ArmorNV2;
 import com.ubalube.scifiaddon.items.CGrenade;
 import com.ubalube.scifiaddon.items.CGrenade.type;
 import com.ubalube.scifiaddon.items.CNode;
-import com.ubalube.scifiaddon.items.GuiTestItem;
+import com.ubalube.scifiaddon.items.GuiItem;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
+import com.ubalube.scifiaddon.items.GunAttachments;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemLore;
+import com.ubalube.scifiaddon.items.ItemModification;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.items.ItemWaterHelmet;
 import com.ubalube.scifiaddon.items.TraderCase;
@@ -106,7 +110,7 @@ public class ModItems
 	public static final Item LEGIONMEDAL = new ItemLore("bossmedal", 1, main.objectTab, "You defeated the Legion General", TextFormatting.YELLOW);
 	public static final Item ICON = new ItemBase("icon", 1, main.objectTab);
 	
-	public static final Item GuiTest = new GuiTestItem("guiTest", 1, main.objectTab);
+	public static final Item LoadoutEditor = new GuiItem("loadout", 1, main.objectTab);
 	
 	//Materials
 	public static final Item CARBONFIBRE = new ItemBase("carbonfibre", 64, main.partTab);
@@ -139,6 +143,15 @@ public class ModItems
 	
 	//Objects
 	public static final Item NODE = new CNode("node", main.objectTab);
+	
+	public static final Item PADDING = new ItemBase("padding", 64, main.objectTab);
+	public static final Item CLOTH = new ItemBase("cloth", 64,main.objectTab);
+	
+	//Modifications
+	public static final Item STATTRACK = new ItemModification("stattrack", 16, main.partTab, GunAttachments.STATTRACK);
+	public static final Item INCREASEDAMAGE = new ItemModification("increasedamage", 16, main.partTab, GunAttachments.INCREASEDAMAGE);
+	public static final Item LOWRECOIL = new ItemModification("lowrecoil", 16, main.partTab, GunAttachments.LOWRECOIL);
+	public static final Item BULLETEFFECT = new ItemModification("potioneffect", 16, main.partTab, GunAttachments.POTIONEFFECT);
 	
 	//Armor
 	public static final Item RANGER_HELMET = new ArmorBaseSkin("helmet_ranger", "ranger_model_", ARMOR_MATERIAL_RANGER, 1, EntityEquipmentSlot.HEAD);
@@ -173,17 +186,17 @@ public class ModItems
 	public static final Item CHROM_CHEST = new ArmorBaseSkin("chest_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item CHROM_PANTS = new ArmorBaseSkin("pants_chrom", "chrombody_", GIGN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
-	public static final Item HAZMAT_HELMET = new ArmorBaseSkin("helmet_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.HEAD);
-	public static final Item HAZMAT_CHEST = new ArmorBaseSkin("chest_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.CHEST);
-	public static final Item HAZMAT_PANTS = new ArmorBaseSkin("pants_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.FEET);
+	public static final Item HAZMAT_HELMET = new ArmorHazmat("helmet_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item HAZMAT_CHEST = new ArmorHazmat("chest_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item HAZMAT_PANTS = new ArmorHazmat("pants_hazmat", "hazmat_", HAZMAT_SUIT, 1, EntityEquipmentSlot.FEET);
 	
 	public static final Item CAPTAIN_HELMET = new ArmorBaseSkin("helmet_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.HEAD);
 	public static final Item CAPTAIN_CHEST = new ArmorBaseSkin("chest_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.CHEST);
 	public static final Item CAPTAIN_PANTS = new ArmorBaseSkin("pants_captain", "captain_", CAPTAIN_SUIT, 1, EntityEquipmentSlot.FEET);
 	
-	public static final Item JUGGERNAUT_HELMET = new ArmorBaseSkin("helmet_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.HEAD);
-	public static final Item JUGGERNAUT_CHEST = new ArmorBaseSkin("chest_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.CHEST);
-	public static final Item JUGGERNAUT_PANTS = new ArmorBaseSkin("pants_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.FEET);
+	public static final Item JUGGERNAUT_HELMET = new ArmorJuggernaut("helmet_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.HEAD);
+	public static final Item JUGGERNAUT_CHEST = new ArmorJuggernaut("chest_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.CHEST);
+	public static final Item JUGGERNAUT_PANTS = new ArmorJuggernaut("pants_juggernaut", "juggernaut_", JUGGERNAUT_SUIT, 1, EntityEquipmentSlot.FEET);
 	
 	public static final Item MARINE_HELMET = new ArmorBaseSkin("helmet_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.HEAD);
 	public static final Item MARINE_CHEST = new ArmorBaseSkin("chest_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.CHEST);

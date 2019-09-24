@@ -8,11 +8,21 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
+import com.ubalube.scifiaddon.items.GunAttachments;
+import com.ubalube.scifiaddon.items.GunBase;
+import com.ubalube.scifiaddon.items.ItemModification;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipesBanners.RecipeAddPattern;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class WorkshopRecipes 
 {
@@ -43,44 +53,81 @@ public class WorkshopRecipes
 		 */
 		
 		//AK12
-		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.RED_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.ORANGE_PAINT), new ItemStack(ModItems.HK416), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.AKM), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.MP18), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.MP18), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.AWP), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.AWP), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.M4A1), new ItemStack(ModItems.BLUE_PAINT), new ItemStack(ModItems.M4A1), 5.0F, 1);
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.GREEN_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 1);
+		addHarvestorRecipe(new ItemStack(Items.IRON_AXE), new ItemStack(Items.REPEATER), new ItemStack(ModItems.STATTRACK), 5.0F);
+		addHarvestorRecipe(new ItemStack(Items.IRON_AXE), new ItemStack(Blocks.WOOL), new ItemStack(ModItems.LOWRECOIL), 5.0F);
+		addHarvestorRecipe(new ItemStack(Items.DIAMOND_AXE), new ItemStack(Items.IRON_SWORD), new ItemStack(ModItems.INCREASEDAMAGE), 5.0F);
+		addHarvestorRecipe(new ItemStack(Items.GLASS_BOTTLE), new ItemStack(Items.BLAZE_ROD), new ItemStack(ModItems.BULLETEFFECT), 5.0F);
 		
 		//Reset
-		addHarvestorRecipe(new ItemStack(ModItems.SCAR), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.SCAR), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.HK416), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.HK416), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.SCARACOG), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.SCARACOG), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.AKM), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.AKM), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.MP18), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.MP18), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.AWP), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.AWP), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.M4A1), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.M4A1), 5.0F, 0);
-		addHarvestorRecipe(new ItemStack(ModItems.VECTOR), new ItemStack(ModItems.DEFAULT_PAINT), new ItemStack(ModItems.VECTOR), 5.0F, 0);
+		for(Item i : ModItems.ITEMS)
+		{
+			if(i instanceof GunBase)
+			{
+				addModificationRecipe(new ItemStack(i), new ItemStack(ModItems.INCREASEDAMAGE), 2.0f);
+				addModificationRecipe(new ItemStack(i), new ItemStack(ModItems.LOWRECOIL), 2.0f);
+				addModificationRecipe(new ItemStack(i), new ItemStack(ModItems.STATTRACK), 2.0f);
+				addModificationRecipe(new ItemStack(i), new ItemStack(ModItems.BULLETEFFECT), 2.0f);
+			}
+		}
+		
 	}
 
 	
-	public void addHarvestorRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience, int skinId) 
+	public void addHarvestorRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) 
 	{
 		if(getHarvestorResult(input1, input2) != ItemStack.EMPTY) return;
 		this.smeltingList.put(input1, input2, result);
 		this.experienceList.put(result, Float.valueOf(experience));
+
 		
-		NBTTagCompound nbt = result.getTagCompound();
-		
-		if(result.getItem() instanceof GunAimableSkin)
+	}
+	
+	public void addModificationRecipe(ItemStack weapon, ItemStack modification,  float experience)
+	{
+
+		ItemStack result = weapon.copy();
+		ItemModification mod = (ItemModification) modification.getItem();
+		GunBase gun = (GunBase) result.getItem();
+		if(mod.getModification() == GunAttachments.POTIONEFFECT)
 		{
-			if (nbt == null) {
-	            nbt = new NBTTagCompound();
-	            result.setTagCompound(nbt);
-	        }
-			nbt.setInteger("SKIN", skinId);
-			nbt.setBoolean("reload", false);
+			if(mod.getPotionEffect() != null)
+			{
+				if(getHarvestorResult(weapon, modification) != ItemStack.EMPTY) return;
+				this.smeltingList.put(weapon, modification, result);
+				this.experienceList.put(result, Float.valueOf(experience));
+				
+				if(modification.getItem() instanceof ItemModification)
+				{
+					
+					if(mod.getModification() == GunAttachments.POTIONEFFECT)
+					{
+						gun.addPotionEffect(mod.getPotionEffect().getPotion(), result);
+					}
+					
+					gun.addModification(mod.getModification(), result);
+				}
+			}
 		}
+		else
+		{
+			if(getHarvestorResult(weapon, modification) != ItemStack.EMPTY) return;
+			this.smeltingList.put(weapon, modification, result);
+			this.experienceList.put(result, Float.valueOf(experience));
+			
+			if(modification.getItem() instanceof ItemModification)
+			{
+
+				if(mod.getModification() == GunAttachments.STATTRACK)
+				{
+					gun.addStatTrack(result);
+				}
+				gun.addModification(mod.getModification(), result);
+				
+			}
+		}
+		
+		
+		
 		
 	}
 	

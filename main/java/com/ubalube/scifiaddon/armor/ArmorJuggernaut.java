@@ -48,7 +48,8 @@ public class ArmorJuggernaut extends ArmorBase {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
-		player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 5, 2));
+		player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 2));
+		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 1));
 	}
 	
 	@Override

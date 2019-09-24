@@ -80,6 +80,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.ForgeRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class main 
@@ -118,6 +119,8 @@ public class main
 	public static void preinitOne(FMLPreInitializationEvent event)
 	{
 		RegistryHandler.preInitRegistriesOne();
+		MinecraftForge.EVENT_BUS.register(new DiamondCaliberHUD());
+		FMLCommonHandler.instance().bus().register(new KeyHandler());
 	}
 	
 	//GAMERULES
@@ -133,12 +136,11 @@ public class main
 	public static void init(FMLInitializationEvent e) 
 	{
 		RegistryHandler.initRegistries();
-		
+		//MinecraftForge.EVENT_BUS.register(new KeyHandler());
 		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
-		MinecraftForge.EVENT_BUS.register(new DiamondCaliberHUD());
-	    FMLCommonHandler.instance().bus().register(new KeyHandler());
+		MinecraftForge.EVENT_BUS.register(new MainEvents());
 	     
 		ModRecipes.init();
 		

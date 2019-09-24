@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "IRI",
+        " T "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "minecraft:glass_pane",
+            "data": 0
+        },
+        
+        "T":
+        {
+            "item": "minecraft:glass_bottle"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:helmet_hazmat",
+        "count": 1
+    }
+}

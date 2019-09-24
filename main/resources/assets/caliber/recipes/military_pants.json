@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RRR",
+        "I I",
+        "R R"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:padding"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:pants_marine",
+        "count": 1
+    }
+}

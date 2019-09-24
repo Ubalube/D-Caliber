@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "IRI",
+        "ITI",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:padding"
+        },
+        
+        "T":
+        {
+            "item": "minecraft:glass_pane",
+            "data": 0
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:helmet_ranger",
+        "count": 1
+    }
+}

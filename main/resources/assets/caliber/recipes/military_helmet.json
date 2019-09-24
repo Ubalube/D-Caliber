@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "RIR",
+        "IFI",
+        "   "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:padding"
+        },
+        
+        "F":
+        {
+            "item": "minecraft:iron_helmet"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:helmet_marine",
+        "count": 1
+    }
+}

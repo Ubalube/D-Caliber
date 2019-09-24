@@ -18,6 +18,7 @@ import com.ubalube.scifiaddon.init.ModMusic;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.IShield;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.keybinds.KeyHandler;
 import com.ubalube.scifiaddon.world.gen.WorldGenCustomStructures;
 import com.ubalube.scifiaddon.world.gen.WorldGenOceanStructures;
 import com.ubalube.scifiaddon.world.types.WorldTypeBadlands;
@@ -31,6 +32,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
@@ -44,9 +46,11 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -121,6 +125,7 @@ public class RegistryHandler
 	public static void initRegistries()
 	{
 		SoundHandler.registerSounds();
+		//KeyHandler.registerKeyBinds();
 		//BiomeInit.registerBiomes();
 		
 		//NetworkRegistry.INSTANCE.registerGuiHandler(main.instance, new GuiHandler());

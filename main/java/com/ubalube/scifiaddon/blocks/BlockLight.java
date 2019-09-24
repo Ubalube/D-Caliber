@@ -9,6 +9,7 @@ import com.ubalube.scifiaddon.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockGlowstone;
 import net.minecraft.block.BlockReed;
 import net.minecraft.block.BlockTorch;
@@ -60,8 +61,9 @@ public class BlockLight extends Block implements IHasModel
 	
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
+		return BlockRenderLayer.CUTOUT;	
 	}
+
 	
 	@Override
 	public void registerModels()

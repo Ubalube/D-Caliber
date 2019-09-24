@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "III",
+        "ITI",
+        "RTR"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:cloth"
+        },
+        
+        "R":
+        {
+            "item": "caliber:steel"
+        },
+        
+        "T":
+        {
+            "item": "minecraft:glass_bottle"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:chest_hazmat",
+        "count": 1
+    }
+}
