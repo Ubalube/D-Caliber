@@ -180,6 +180,8 @@ gun.m4.desc=The M4 is a 5.56×45mm NATO, air-cooled, direct impingement gas-oper
 gun.hk416c.desc=A carbine variant of the HK416.
 gun.rpk.desc=The RPK is a 7.62x39mm light machine gun that is part of the AK family. 
 gun.mk14.desc=The Mk 14 Enhanced Battle Rifle is a military designated marksman rifle chambered for the 7.62x51mm NATO cartridge.
+gun.akbeta.desc=The AK Beta is a variant of the AKM that is more modernized. This AK takes 5.56x45mm rounds! 
+gun.badger.desc=The Honey Badger is a M4 variant PDW that used 5.56x45mm rounds.
 
 #Upgrades
 item.stattrack.name=Stat Track
@@ -212,3 +214,5 @@ item.p250.name=P250
 item.vector.name=Kriss Vector
 item.m4.name=M4A1
 item.ak12.name=AK-12
+item.badger.name=Honey Badger
+item.akbeta.name=AK BETA

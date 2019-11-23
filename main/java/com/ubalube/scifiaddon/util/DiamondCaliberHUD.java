@@ -3,6 +3,7 @@ package com.ubalube.scifiaddon.util;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunBase;
+import com.ubalube.scifiaddon.items.GunHybrid;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -42,7 +43,7 @@ public class DiamondCaliberHUD
         		if(stack.getItem() instanceof GunBase)
         		{
     				event.setCanceled(true);
-        			NBTTagCompound nbt2 = ((GunAimable) stack.getItem()).checkNBTTags(stack);
+        			NBTTagCompound nbt2 = ((GunBase) stack.getItem()).checkNBTTags(stack);
         			if (!nbt2.getBoolean("ADS")) 
         			{
         				Minecraft.getMinecraft().getTextureManager().bindTexture(Gui.ICONS);
@@ -91,6 +92,11 @@ public class DiamondCaliberHUD
 			
 			this.drawAmmo(mc, sr, gb, item, playerIn, 0);
 			
+			if(item.getItem() instanceof GunHybrid)
+			{
+				GunHybrid gh = ((GunHybrid) item.getItem());
+				this.drawHybridState(mc, sr, gh, item, playerIn, 0);
+			}
 		}
 		
 	}
@@ -117,6 +123,22 @@ public class DiamondCaliberHUD
     	}
     	
     }
+	
+	private void drawHybridState(Minecraft mc, ScaledResolution sr, GunHybrid gb, ItemStack item, EntityPlayer playerIn, int i)
+	{
+		boolean isHybridOn = gb.getHybrid(item, item.getTagCompound());
+		String hybridOn = ChatFormatting.GREEN + "Hybrid: ON";
+		String hybridOff = ChatFormatting.GREEN + "Hybrid:" + ChatFormatting.RED + "OFF";
+		if(!isHybridOn)
+		{
+			mc.fontRenderer.drawString(hybridOn, sr.getScaledWidth()-7-hybridOn.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-25+i , 0xFFFFFFFF);
+		}
+		else
+		{
+			mc.fontRenderer.drawString(hybridOff, sr.getScaledWidth()-7-hybridOff.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-25+i , 0xFFFFFFFF);
+		}
+		
+	}
 
 	private void drawAmmo(Minecraft mc, ScaledResolution sr, GunBase gb, ItemStack item, EntityPlayer playerIn,
 			int i) {
@@ -131,7 +153,7 @@ public class DiamondCaliberHUD
 		
 		String GunName = ChatFormatting.GREEN + item.getDisplayName();
 		
-		NBTTagCompound nbt2 = ((GunAimable) item.getItem()).checkNBTTags(item);
+		NBTTagCompound nbt2 = ((GunBase) item.getItem()).checkNBTTags(item);
 		
 		if (nbt2.getBoolean("reload")) 
 		{

@@ -33,9 +33,11 @@ import com.ubalube.scifiaddon.util.handlers.RegistryHandler;
 import com.ubalube.scifiaddon.util.handlers.RenderHandler;
 import com.ubalube.scifiaddon.util.keybinds.KeyHandler;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
-import com.ubalube.scifiaddon.util.packets.MessageLean;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
+import com.ubalube.scifiaddon.util.packets.MessageSpotPlayer;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
+import com.ubalube.scifiaddon.util.packets.MessageThrowGrenade;
+import com.ubalube.scifiaddon.util.packets.MessageToggleHybrid;
 import com.ubalube.scifiaddon.world.WorldGen;
 
 import net.minecraft.client.Minecraft;
@@ -111,6 +113,9 @@ public class main
 		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 2, Side.SERVER);
 		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 3, Side.SERVER);
 		NETWORK.registerMessage(MessageReloadGun.HandleReloadGun.class, MessageReloadGun.class, 4, Side.SERVER);
+		NETWORK.registerMessage(MessageToggleHybrid.HandleToggleHybrid.class, MessageToggleHybrid.class, 5, Side.SERVER);
+		NETWORK.registerMessage(MessageThrowGrenade.HandleThrowGrenade.class, MessageThrowGrenade.class, 6, Side.SERVER);
+		NETWORK.registerMessage(MessageSpotPlayer.HandleSpotPlayer.class, MessageSpotPlayer.class, 7, Side.SERVER);
 		//NETWORK.registerMessage(MessageLean.HandleLean.class, MessageLean.class, 5, Side.CLIENT);
 	}
 	

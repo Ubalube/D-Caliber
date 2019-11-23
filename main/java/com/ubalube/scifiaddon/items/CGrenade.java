@@ -31,7 +31,7 @@ public class CGrenade extends Item implements IHasModel
 		FRAG
 	}
 	
-	Enum typeOfGrenade;
+	public Enum typeOfGrenade;
 	
 	public CGrenade(String name, int StackSize, CreativeTabs tab, type t) 
 	{

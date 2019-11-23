@@ -65,9 +65,9 @@ public class Player
                 
                 ModelPlayer model = (ModelPlayer) renderer.getMainModel();
                 
-                if(stack.getItem() instanceof GunAimableSkin)
+                if(stack.getItem() instanceof GunBase)
         		{
-        			NBTTagCompound nbt = ((GunAimableSkin) stack.getItem()).checkNBTTags(stack);
+        			NBTTagCompound nbt = ((GunBase) stack.getItem()).checkNBTTags(stack);
         			if (nbt.getBoolean("ADS")) 
         			{
         				model.leftArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
@@ -75,29 +75,6 @@ public class Player
                     }
         			
         			if(nbt.getBoolean("running"))
-        			{
-        				if(player.getPrimaryHand() == EnumHandSide.LEFT)
-        				{
-        					model.leftArmPose = ModelBiped.ArmPose.BLOCK;
-        				}
-        				else
-        				{
-        					 model.rightArmPose = ModelBiped.ArmPose.BLOCK;
-        				}
-        			}
-        			
-        		}
-        		
-        		if(stack.getItem() instanceof GunAimable)
-        		{
-        			NBTTagCompound nbt2 = ((GunAimable) stack.getItem()).checkNBTTags(stack);
-        			if (nbt2.getBoolean("ADS")) 
-        			{
-        				model.rightArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
-        				model.leftArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
-                    }
-        			
-        			if(nbt2.getBoolean("running"))
         			{
         				if(player.getPrimaryHand() == EnumHandSide.LEFT)
         				{

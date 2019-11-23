@@ -23,6 +23,7 @@ import com.ubalube.scifiaddon.items.GuiItem;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunAttachments;
+import com.ubalube.scifiaddon.items.GunHybrid;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
@@ -231,6 +232,7 @@ public class ModItems
 	public static final Item M4A1 = new GunAimableSkin("m4", main.gunTab, 2, 40, 50, 2, 4.0F, 200, ModItems.RIFLE56, 1, "gun.m4.desc", "5.56x45mm Clip", 2);
 	public static final Item HK416C = new GunAimableSkin("hk416c", main.gunTab, 2, 45, 50, 2, 3.5F, 200, ModItems.RIFLE56, 1, "gun.hk416c.desc", "5.56x45mm Clip", 2);
 	public static final Item MK14 = new GunAimable("mk14", main.gunTab, 8, 10, 50, 5, 9F, 500, ModItems.RIFLE762, 1, "gun.mk14.desc", "7.62x39mm Clip", 2);
+	public static final Item BADGER = new GunHybrid("pdw", main.gunTab, 2, 20, 50, 2, 2.5F, 200, ModItems.RIFLE56, 1, "gun.pdw.desc", "5.56x45mm Clip", 2);
 	//public static final Item Grenade = new CGrenade("frag", 16, main.gunTab, type.FRAG);
 	public static final Item ImpactGrenade = new CGrenade("impact", 16, main.gunTab, type.IMPACT);
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);

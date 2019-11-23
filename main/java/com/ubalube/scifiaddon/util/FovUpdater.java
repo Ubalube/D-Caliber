@@ -4,6 +4,8 @@ import com.ubalube.scifiaddon.init.EntityInit;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
+import com.ubalube.scifiaddon.items.GunBase;
+import com.ubalube.scifiaddon.items.GunHybrid;
 import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
 
 import net.minecraft.entity.Entity;
@@ -30,17 +32,32 @@ public class FovUpdater
 	public static void fovUpdate(FOVUpdateEvent event) {
 		ItemStack stack = event.getEntity().getHeldItemMainhand();
 		
-		
-		
-		if(stack.getItem() instanceof GunAimableSkin)
+		if(stack.getItem() instanceof GunHybrid)
 		{
-			NBTTagCompound nbt = ((GunAimableSkin) stack.getItem()).checkNBTTags(stack);
-			if (nbt.getBoolean("ADS")) 
+			NBTTagCompound nbt = ((GunHybrid) stack.getItem()).checkNBTTags(stack);
+			if (nbt.getBoolean("ADS") && !nbt.getBoolean("hybrid")) 
 			{
-				event.setNewfov(0.5F);
+				event.setNewfov(0.3F);
             }
+			else
+			{
+				if(nbt.getBoolean("ADS"))
+				{
+					event.setNewfov(0.5F);
+				}
+			}
 		}
-		
+		else
+		{
+			if(stack.getItem() instanceof GunBase)
+			{
+				NBTTagCompound nbt = ((GunBase) stack.getItem()).checkNBTTags(stack);
+				if (nbt.getBoolean("ADS")) 
+				{
+					event.setNewfov(0.5F);
+	            }
+			}
+		}
 		EntityPlayer p = event.getEntity();
 		World worldIn = p.world;
 		
@@ -52,14 +69,6 @@ public class FovUpdater
 			{
 				event.setNewfov(1.2F);
 			}
-		}
-		
-		if(stack.getItem() instanceof GunAimable)
-		{
-			NBTTagCompound nbt2 = ((GunAimable) stack.getItem()).checkNBTTags(stack);
-			if (nbt2.getBoolean("ADS")) {
-                event.setNewfov(0.3F);
-            }
 		}
 	}
 }
