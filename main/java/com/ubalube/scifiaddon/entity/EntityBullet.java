@@ -8,6 +8,7 @@ import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.particles.MainParticles;
 import com.ubalube.scifiaddon.particles.ParticleBlood;
 import com.ubalube.scifiaddon.util.Reference;
+import com.ubalube.scifiaddon.util.handlers.ConfigHandler;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
 import io.netty.buffer.ByteBuf;
@@ -193,8 +194,11 @@ public class EntityBullet extends EntityArrow
                         ((EntityPlayerMP)this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
                     }
                 }
-
-                this.playSound(SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                
+                if(ConfigHandler.ServerSide.hitmark == true)
+                {
+                    this.playSound(SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                }
 
                 if (!(entity instanceof EntityEnderman))
                 {

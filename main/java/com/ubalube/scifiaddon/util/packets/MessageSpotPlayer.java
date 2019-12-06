@@ -8,6 +8,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -70,12 +71,12 @@ public class MessageSpotPlayer implements IMessage{
 				Entity p = world.getEntityByID(message.playerId);
 				if(p != null && p instanceof EntityPlayer)
 				{
-					RayTraceResult raytraceResultIn = new RayTraceResult(p);
+					RayTraceResult raytraceResultIn = p.rayTrace(50, 1.0f);
 					Entity entity = raytraceResultIn.entityHit;
 
 			        if(raytraceResultIn.typeOfHit == Type.ENTITY)
 			        {
-			        	if(entity instanceof EntityLiving)
+			        	if(entity instanceof EntityLivingBase && entity != p)
 			        	{
 			        		EntityPlayer spotter = (EntityPlayer) p;
 			        		EntityPlayerMP spotterMP = mp;
@@ -83,7 +84,7 @@ public class MessageSpotPlayer implements IMessage{
 			        		{
 			        			spotterMP.getServer().getPlayerList().getPlayers().get(i).sendMessage(new TextComponentString("[" + ChatFormatting.GREEN + spotter.getDisplayNameString() + ChatFormatting.RESET + "]" + "Enemy Spotted!"));
 			        		}
-			        		((EntityPlayer) entity).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 60, 1));
+			        		((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 60, 1));
 			        	}
 			        }
 				}

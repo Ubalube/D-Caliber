@@ -34,6 +34,7 @@ import com.ubalube.scifiaddon.util.handlers.RenderHandler;
 import com.ubalube.scifiaddon.util.keybinds.KeyHandler;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
+import com.ubalube.scifiaddon.util.packets.MessageSaveData;
 import com.ubalube.scifiaddon.util.packets.MessageSpotPlayer;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 import com.ubalube.scifiaddon.util.packets.MessageThrowGrenade;
@@ -116,6 +117,7 @@ public class main
 		NETWORK.registerMessage(MessageToggleHybrid.HandleToggleHybrid.class, MessageToggleHybrid.class, 5, Side.SERVER);
 		NETWORK.registerMessage(MessageThrowGrenade.HandleThrowGrenade.class, MessageThrowGrenade.class, 6, Side.SERVER);
 		NETWORK.registerMessage(MessageSpotPlayer.HandleSpotPlayer.class, MessageSpotPlayer.class, 7, Side.SERVER);
+		NETWORK.registerMessage(MessageSaveData.MessageHandler.class, MessageSaveData.class, 8, Side.SERVER);
 		//NETWORK.registerMessage(MessageLean.HandleLean.class, MessageLean.class, 5, Side.CLIENT);
 	}
 	

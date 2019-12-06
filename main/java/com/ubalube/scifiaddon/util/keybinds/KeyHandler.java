@@ -13,6 +13,7 @@ import ca.weblite.objc.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.client.settings.KeyBindingMap;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -34,6 +35,9 @@ public class KeyHandler
 		for (int i = 0; i < desc.length; ++i) {
 		keys[i] = new KeyBinding(desc[i], keyValues[i], "Diamond Caliber");
 		ClientRegistry.registerKeyBinding(keys[i]);
+		
+		
+		
 		}
 	}
 	

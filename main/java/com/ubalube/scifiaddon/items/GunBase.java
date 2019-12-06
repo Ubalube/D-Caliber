@@ -58,6 +58,8 @@ public class GunBase extends Item implements IHasModel
 	int type;
 	int strength;
 	
+	public ResourceLocation texture;
+	
 	float IncreaseDamageAmount = damage + 3f;
 	int LowRecoil = Recoil / 2;
 	
@@ -503,10 +505,153 @@ public class GunBase extends Item implements IHasModel
 	/*
 	 * Shoots the gun
 	 */
+	
+	public void shootShotgun(World worldIn, EntityPlayer playerIn, ItemStack itemstack, float spread)
+	{
+		boolean attach = false;
+		
+		NBTTagCompound nbt = itemstack.getTagCompound();
+		if(nbt == null)
+		{
+			nbt = new NBTTagCompound();
+		}
+			if (!playerIn.capabilities.isCreativeMode)
+			{
+				if(itemstack.isItemDamaged())
+				{
+					if(itemstack.getItemDamage() == clipsize)
+					{
+						Reload(playerIn, itemstack, nbt);
+					}
+					else
+					{
+						playerIn.getCooldownTracker().setCooldown(this, Firerate);
+						if (!worldIn.isRemote)
+						{
+							if(!playerIn.isSprinting())
+							{
+								for(int i = 0; i < 6; i++)
+								{
+									EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+									if(this.hasBoundPotionEffect(itemstack))
+										entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+
+									entity.setGunDamage((double)this.damage);
+									for(String s : getModifications(itemstack))
+									{
+										if(s == "Upgraded Caliber")
+										{
+											entity.setGunDamage((double)this.IncreaseDamageAmount);
+											break;
+										}
+									}
+									Random r = new Random();
+									int addedSpread = r.nextInt((int) spread);
+									entity.setPosition(entity.getPosition().getX() + addedSpread, entity.getPosition().getY() + addedSpread, entity.getPosition().getZ());
+									entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+									entity.setRange(this.range);
+									entity.shootingEntity = playerIn;
+									worldIn.spawnEntity(entity);
+								}
+								
+								itemstack.damageItem(1, playerIn);
+								playShootSound(playerIn);
+								
+							}
+							
+							
+							
+						}
+						
+						
+					}
+					
+				}
+				else
+				{
+					//First Bullet
+					playerIn.getCooldownTracker().setCooldown(this, Firerate);
+					if(!worldIn.isRemote)
+					{
+						if(!playerIn.isSprinting())
+						{
+							for(int i = 0; i < 3; i++)
+							{
+								EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+								if(this.hasBoundPotionEffect(itemstack))
+									entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+
+								entity.setGunDamage((double)this.damage);
+								for(String s : getModifications(itemstack))
+								{
+									if(s == "Upgraded Caliber")
+									{
+										entity.setGunDamage((double)this.IncreaseDamageAmount);
+										break;
+									}
+								}
+								Random r = new Random();
+								int addedSpread = r.nextInt((int) spread);
+								entity.setPosition(entity.getPosition().getX() + addedSpread, entity.getPosition().getY() + addedSpread, entity.getPosition().getZ());
+								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+								entity.setRange(this.range);
+								entity.shootingEntity = playerIn;
+								worldIn.spawnEntity(entity);
+							}
+							
+							itemstack.damageItem(1, playerIn);
+							playShootSound(playerIn);
+						}
+						
+					}
+					
+				}
+			}
+			
+			else
+			{
+				
+				//Creative Move
+				playerIn.getCooldownTracker().setCooldown(this, Firerate);
+				if(!worldIn.isRemote)
+				{
+					if(!playerIn.isSprinting())
+					{
+						for(int i = 0; i < 3; i++)
+						{
+							EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
+							if(this.hasBoundPotionEffect(itemstack))
+								entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
+
+							entity.setGunDamage((double)this.damage);
+							for(String s : getModifications(itemstack))
+							{
+								if(s == "Upgraded Caliber")
+								{
+									entity.setGunDamage((double)this.IncreaseDamageAmount);
+									break;
+								}
+							}
+							Random r = new Random();
+							int addedSpread = r.nextInt((int) spread);
+							entity.setPosition(entity.getPosition().getX() + addedSpread, entity.getPosition().getY() + addedSpread, entity.getPosition().getZ());
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+							entity.setRange(this.range);
+							entity.shootingEntity = playerIn;
+							worldIn.spawnEntity(entity);
+						}
+						
+						itemstack.damageItem(1, playerIn);
+						playShootSound(playerIn);
+					}
+				}
+		}
+	}
+	
 	public void shootGun(World worldIn, EntityPlayer playerIn, ItemStack itemstack)
 	{
 		
-		boolean attach = false;
+boolean attach = false;
 		
 		NBTTagCompound nbt = itemstack.getTagCompound();
 		if(nbt == null)

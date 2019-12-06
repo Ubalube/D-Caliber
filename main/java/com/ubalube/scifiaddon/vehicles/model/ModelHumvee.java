@@ -5,6 +5,7 @@ import com.ubalube.scifiaddon.vehicles.VehicleHumvee;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.AbstractHorse;
@@ -186,7 +187,7 @@ public class ModelHumvee extends ModelBase {
         this.truck1Child_18.addBox(-12.0F, 12.0F, -21.0F, 24, 4, 9, 0.0F);
         this.truck1 = new ModelRenderer(this, 0, 130);
         this.truck1.setRotationPoint(0.0F, 0.0F, -3.799999952316284F);
-        this.truck1.addBox(-15.0F, 12.0F, -23.0F, 30, 4, 4, 0.0F);
+        this.truck1.addBox(-15.0F, 16.0F, -23.0F, 30, 4, 4, 0.0F);
         this.truck1Child_4 = new ModelRenderer(this, 0, 140);
         this.truck1Child_4.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.truck1Child_4.addBox(-15.0F, 12.0F, 22.0F, 30, 4, 4, 0.0F);
@@ -252,7 +253,14 @@ public class ModelHumvee extends ModelBase {
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(this.truck1.offsetX, this.truck1.offsetY, this.truck1.offsetZ);
+        GlStateManager.translate(this.truck1.rotationPointX * f5, this.truck1.rotationPointY * f5, this.truck1.rotationPointZ * f5);
+        GlStateManager.scale(1.2D, 1.2D, 1.2D);
+        GlStateManager.translate(-this.truck1.offsetX, -this.truck1.offsetY, -this.truck1.offsetZ);
+        GlStateManager.translate(-this.truck1.rotationPointX * f5, -this.truck1.rotationPointY * f5 * 2, -this.truck1.rotationPointZ * f5);
         this.truck1.render(f5);
+        GlStateManager.popMatrix();
     }
     
     @Override

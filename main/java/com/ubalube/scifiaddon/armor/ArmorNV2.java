@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.entity.model.ModelChromaticHelm;
-import com.ubalube.scifiaddon.entity.model.ModelNV1;
+import com.ubalube.scifiaddon.entity.model.ModelNVG;
 import com.ubalube.scifiaddon.entity.model.ModelNvGoggles;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
@@ -47,7 +47,7 @@ public class ArmorNV2 extends ItemArmor implements IHasModel{
 		if(!itemStack.isEmpty()) {
 			if(itemStack.getItem() instanceof ItemArmor) {
 				
-				ModelNV1 armorModel = new ModelNV1(1.0f);
+				ModelNVG armorModel = new ModelNVG(1.0f);
 				
 				
 				

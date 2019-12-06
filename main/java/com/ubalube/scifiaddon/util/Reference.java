@@ -19,6 +19,7 @@ public class Reference
 	public static final int ENTITY_BANDIT = 162;
 	public static final int ENTITY_MILITA = 163;
 	public static final int ENTITY_L_BOSS = 164;
+	public static final int ENTITY_HOSTAGE = 165;
 	
 	//Vehicles
 	public static final int ENTITY_VEHICLE_HUMVEE = 300;

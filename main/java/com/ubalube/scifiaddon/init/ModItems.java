@@ -24,8 +24,10 @@ import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunAttachments;
 import com.ubalube.scifiaddon.items.GunHybrid;
+import com.ubalube.scifiaddon.items.GunShotgun;
 import com.ubalube.scifiaddon.items.ItemBase;
 import com.ubalube.scifiaddon.items.ItemBlitzShield;
+import com.ubalube.scifiaddon.items.ItemDeployableShield;
 import com.ubalube.scifiaddon.items.ItemDurability;
 import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemModification;
@@ -83,10 +85,10 @@ public class ModItems
 	public static final ArmorMaterial JUGGERNAUT_SUIT = EnumHelper.addArmorMaterial("juggernaut", "caliber:juggernaut", 40, new int[]{5, 5, 5, 5}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	
 	public static final ArmorMaterial CHROM_SUIT = EnumHelper.addArmorMaterial("chrom", "caliber:chrom", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	public static final ArmorMaterial NV = EnumHelper.addArmorMaterial("nightvision", "caliber:nightvision", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	public static final ArmorMaterial NV1 = EnumHelper.addArmorMaterial("nightvision1", "caliber:nightvision1", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial NV = EnumHelper.addArmorMaterial("nightvision", "caliber:nightvision", 40, new int[]{2, 10, 5, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+	public static final ArmorMaterial NVPANO = EnumHelper.addArmorMaterial("nvpano", "caliber:nvpano", 40, new int[]{2, 10, 8, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 	public static final ArmorMaterial CHROMB_SUIT = EnumHelper.addArmorMaterial("chrombody", "caliber:chrombody", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
-	
+
 	
 	//Objects
 	//public static final Item SUPPLIES1 = new ItemBase("supplies1", 64, main.objectTab);
@@ -132,6 +134,7 @@ public class ModItems
 	public static final Item UZISTOCK = new ItemBase("stock_uzi", 64, main.partTab);
 	public static final Item COMPACTSTOCK = new ItemBase("stock_compact", 64, main.partTab);
 	public static final Item WOODCOMPACTSTOCK = new ItemBase("stock_compact_wood", 64, main.partTab);
+	public static final Item DEPLOYABLESHIELD = new ItemDeployableShield("spawnshield", 1, main.partTab);
 	
 	//Music
 	//Music Discs
@@ -204,6 +207,7 @@ public class ModItems
 	public static final Item MARINE_PANTS = new ArmorBaseSkin("pants_marine", "marine_", MARINE_SUIT, 1, EntityEquipmentSlot.FEET);
 	
 	public static final Item NVGOGGLES_t2 = new ArmorNV("nightvision", NV, 1, EntityEquipmentSlot.HEAD);
+	public static final Item NVGOGGLES_t3 = new ArmorNV2("nvpano", NVPANO, 1, EntityEquipmentSlot.HEAD);
 	
 	//GUNS
 	//Types: 
@@ -232,7 +236,7 @@ public class ModItems
 	public static final Item M4A1 = new GunAimableSkin("m4", main.gunTab, 2, 40, 50, 2, 4.0F, 200, ModItems.RIFLE56, 1, "gun.m4.desc", "5.56x45mm Clip", 2);
 	public static final Item HK416C = new GunAimableSkin("hk416c", main.gunTab, 2, 45, 50, 2, 3.5F, 200, ModItems.RIFLE56, 1, "gun.hk416c.desc", "5.56x45mm Clip", 2);
 	public static final Item MK14 = new GunAimable("mk14", main.gunTab, 8, 10, 50, 5, 9F, 500, ModItems.RIFLE762, 1, "gun.mk14.desc", "7.62x39mm Clip", 2);
-	public static final Item BADGER = new GunHybrid("pdw", main.gunTab, 2, 20, 50, 2, 2.5F, 200, ModItems.RIFLE56, 1, "gun.pdw.desc", "5.56x45mm Clip", 2);
+	public static final Item SHOTGUN = new GunShotgun("shotgun", main.gunTab, 2, 20, 50, 2, 2.5F, 200, ModItems.RIFLE56, 1, "gun.shotgun.desc", "5.56x45mm Clip", 2, 2.0f);
 	//public static final Item Grenade = new CGrenade("frag", 16, main.gunTab, type.FRAG);
 	public static final Item ImpactGrenade = new CGrenade("impact", 16, main.gunTab, type.IMPACT);
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);

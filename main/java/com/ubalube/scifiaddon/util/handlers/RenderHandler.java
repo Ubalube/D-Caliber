@@ -2,19 +2,23 @@ package com.ubalube.scifiaddon.util.handlers;
 
 import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.entity.EntityDeployableShield;
 import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.entity.EntityLegionBoss;
 import com.ubalube.scifiaddon.entity.EntityMilita;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.EntityHostage;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
 import com.ubalube.scifiaddon.entity.render.RenderBandit;
 import com.ubalube.scifiaddon.entity.render.RenderBullet;
+import com.ubalube.scifiaddon.entity.render.RenderDeployableShield;
 import com.ubalube.scifiaddon.entity.render.RenderImpact;
 import com.ubalube.scifiaddon.entity.render.RenderLegionBoss;
 import com.ubalube.scifiaddon.entity.render.RenderMilita;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
+import com.ubalube.scifiaddon.entity.render.RenderHostage;
 import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
 import com.ubalube.scifiaddon.entity.render.RenderTank;
@@ -57,6 +61,15 @@ public class RenderHandler
 			public Render<? super EntityBandit> createRenderFor(RenderManager manager) 
 			{
 				return new RenderBandit(manager);
+			}
+		});
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityDeployableShield.class, new IRenderFactory<EntityDeployableShield>()
+		{
+			@Override
+			public Render<? super EntityDeployableShield> createRenderFor(RenderManager manager) 
+			{
+				return new RenderDeployableShield(manager);
 			}
 		});
 		
@@ -121,6 +134,16 @@ public class RenderHandler
 			public Render<? super EntityLegionBoss> createRenderFor(RenderManager manager) 
 			{
 				return new RenderLegionBoss(manager);
+			}
+		});
+		
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityHostage.class, new IRenderFactory<EntityHostage>()
+		{
+			@Override
+			public Render<? super EntityHostage> createRenderFor(RenderManager manager) 
+			{
+				return new RenderHostage(manager);
 			}
 		});
 		

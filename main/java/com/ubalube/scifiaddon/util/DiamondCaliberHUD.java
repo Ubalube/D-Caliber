@@ -1,9 +1,13 @@
 package com.ubalube.scifiaddon.util;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import com.mojang.realmsclient.gui.ChatFormatting;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunBase;
 import com.ubalube.scifiaddon.items.GunHybrid;
+import com.ubalube.scifiaddon.util.handlers.ConfigHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -34,7 +38,7 @@ public class DiamondCaliberHUD
     public void onRenderGameOverlayEvent(RenderGameOverlayEvent event) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (event.getType() == RenderGameOverlayEvent.ElementType.CROSSHAIRS) {
-            if(player.getHeldItemMainhand().getItem() instanceof GunBase)
+            if(player.getHeldItemMainhand().getItem() instanceof GunBase && ConfigHandler.ClientSide.dcCrosshair == true)
             {
             	Minecraft mc = Minecraft.getMinecraft();
             	ScaledResolution sr = new ScaledResolution(mc);
@@ -86,7 +90,7 @@ public class DiamondCaliberHUD
 		ScaledResolution sr = new ScaledResolution(mc);
 		ItemStack item =playerIn.getHeldItemMainhand();
 		
-		if(!item.isEmpty() && item.getItem() instanceof GunBase)
+		if(!item.isEmpty() && item.getItem() instanceof GunBase && ConfigHandler.ClientSide.weaponHud == true)
 		{
 			GunBase gb = ((GunBase) item.getItem());
 			
@@ -97,6 +101,11 @@ public class DiamondCaliberHUD
 				GunHybrid gh = ((GunHybrid) item.getItem());
 				this.drawHybridState(mc, sr, gh, item, playerIn, 0);
 			}
+		}
+		
+		if(WorldData.team.containsKey(playerIn.getUniqueID()))
+		{
+			drawTeamList(mc, sr, item, playerIn, 0);
 		}
 		
 	}
@@ -197,6 +206,33 @@ public class DiamondCaliberHUD
 		mc.fontRenderer.drawString(GunName, sr.getScaledWidth()-7-ammoText.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-12+i , 0xFFFFFFFF);
 		mc.fontRenderer.drawString(ammoText, sr.getScaledWidth()-7-ammoText.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-2+i , 0xFFFFFFFF);
 		
+	}
+	
+	private void drawTeamList(Minecraft mc, ScaledResolution sr, ItemStack item, EntityPlayer playerIn,
+			int i)
+	{
+		String teamName = WorldData.team.get(playerIn.getUniqueID());
+		
+		int lastYPos = 500;
+		for(UUID uuid : WorldData.teams.get(teamName))
+		{
+			EntityPlayer p = playerIn.getServer().getPlayerList().getPlayerByUUID(uuid);
+			if(p == playerIn)
+			{
+				drawText(mc, sr, i, lastYPos, TextFormatting.YELLOW + p.getDisplayNameString());
+			}
+			else
+			{
+				drawText(mc, sr, i, lastYPos, p.getDisplayNameString());
+			}
+			lastYPos -= 25;
+		}
+		
+	}
+	
+	private void drawText(Minecraft mc, ScaledResolution sr, int i, int lastYPos, String text)
+	{
+		mc.fontRenderer.drawString(text, sr.getScaledWidth()-500-text.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-lastYPos+i , 0xFFFFFFFF);
 	}
 	
 }

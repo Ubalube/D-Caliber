@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import com.google.common.graph.Network;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.commands.CommandModify;
+import com.ubalube.scifiaddon.commands.CommandTeam;
 import com.ubalube.scifiaddon.entity.EntityBandit;
 import com.ubalube.scifiaddon.entity.EntityGhost;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
@@ -106,9 +107,12 @@ public class RegistryHandler
 		
 		EntityInit.registerProjectile();
 		EntityInit.registerEntities();
-
-		GameRegistry.registerWorldGenerator(new WorldGenOceanStructures(), 100);
-		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
+		
+		if(ConfigHandler.ServerSide.spawnStructures)
+		{
+			GameRegistry.registerWorldGenerator(new WorldGenOceanStructures(), 100);
+			GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 100);
+		}
 		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Dune(), 100);
 		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Lab(), 100);
 		//GameRegistry.registerWorldGenerator(new WorldGenCustomStructures_Armory(), 50);
@@ -133,7 +137,7 @@ public class RegistryHandler
 		//For the Goliath Spawn
 		Biome[] spawnBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("desert")),};
 		EntityRegistry.addSpawn(EntityBandit.class, 5, 4, 5, EnumCreatureType.CREATURE, spawnBiomes);
-		EntityRegistry.addSpawn(EntityGoliath.class, 10, 0, 1, EnumCreatureType.CREATURE, spawnBiomes);
+		EntityRegistry.addSpawn(EntityGoliath.class, ConfigHandler.ServerSide.spawnChance, 0, 1, EnumCreatureType.CREATURE, spawnBiomes);
 		Biome[] spawnBiomes2 = {Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")), };
 		EntityRegistry.addSpawn(EntityGhost.class, 30, 2, 4, EnumCreatureType.MONSTER, spawnBiomes2);
 	}
@@ -147,6 +151,7 @@ public class RegistryHandler
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
 		e.registerServerCommand(new CommandModify());
+		e.registerServerCommand(new CommandTeam());
 	}
 	
 	@SideOnly(Side.CLIENT)
