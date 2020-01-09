@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "ICS",
+        " T "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:shotguncaliber"
+        },
+    
+        "T":
+        {
+            "item": "caliber:shotgunshell"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_compact"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:shotgun",
+        "count": 1
+    }
+}

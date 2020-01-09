@@ -112,7 +112,7 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 	{
 		Random r = new Random();
 		Item i = ModItems.STEEL;
-		int result = r.nextInt(30);
+		int result = r.nextInt(32);
 		switch (result) {
 		case 0:
 			i = ModItems.SCAR;
@@ -232,6 +232,14 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 			
 		case 29:
 			i = ModItems.COMBAT_PANTS;
+			break;
+			
+		case 30:
+			i = ModItems.NVGOGGLES_t3;
+			break;
+			
+		case 31:
+			i = ModItems.DEPLOYABLESHIELD;
 			break;
 
 		default:

@@ -1,8 +1,12 @@
 package com.ubalube.scifiaddon.util.handlers;
 
 
+import com.mojang.authlib.GameProfile;
 import com.ubalube.scifiaddon.util.Reference;
 
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid=Reference.MOD_ID)
@@ -18,6 +22,21 @@ public class ConfigHandler {
         public boolean weaponHud;
         @Config.Comment({"Left Click to Shoot"})
         public boolean leftClickToShoot = false;
+        @Config.Comment({"Diamond Caliber Main Menu"})
+        public boolean DiamondCaliberMainMenu = true;
+        
+        @Config.Ignore
+        public ItemStack lastMainItem = ItemStack.EMPTY;
+        @Config.Ignore
+        public ItemStack HELMET = ItemStack.EMPTY;
+        @Config.Ignore
+        public ItemStack CHESTPLATE = ItemStack.EMPTY;
+        @Config.Ignore
+        public ItemStack LEGGINGS = ItemStack.EMPTY;
+        @Config.Ignore
+        public ItemStack BOOTS = ItemStack.EMPTY;
+        @Config.Ignore
+        public boolean ShowNewGUI = true;
     }
 
     public static class Server {

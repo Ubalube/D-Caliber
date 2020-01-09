@@ -5,7 +5,6 @@ import java.util.Random;
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.init.ModBlocks;
 import com.ubalube.scifiaddon.init.ModItems;
-import com.ubalube.scifiaddon.tileentity.TileEntitySkinner;
 import com.ubalube.scifiaddon.tileentity.TileEntityWorkshop;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.Reference;

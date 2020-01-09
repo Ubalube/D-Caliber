@@ -1,5 +1,7 @@
 package com.ubalube.scifiaddon;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.plaf.metal.OceanTheme;
@@ -20,7 +22,6 @@ import com.ubalube.scifiaddon.tabs.Decor;
 import com.ubalube.scifiaddon.tabs.Guns;
 import com.ubalube.scifiaddon.tabs.Objects;
 import com.ubalube.scifiaddon.tabs.Parts;
-import com.ubalube.scifiaddon.util.CamoDropEvent;
 import com.ubalube.scifiaddon.util.CapabilityHandler;
 import com.ubalube.scifiaddon.util.DiamondCaliberHUD;
 import com.ubalube.scifiaddon.util.FovUpdater;
@@ -35,13 +36,12 @@ import com.ubalube.scifiaddon.util.keybinds.KeyHandler;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
 import com.ubalube.scifiaddon.util.packets.MessageSaveData;
-import com.ubalube.scifiaddon.util.packets.MessageSpotPlayer;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
 import com.ubalube.scifiaddon.util.packets.MessageThrowGrenade;
-import com.ubalube.scifiaddon.util.packets.MessageToggleHybrid;
 import com.ubalube.scifiaddon.world.WorldGen;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.FolderResourcePack;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.settings.KeyBinding;
@@ -52,6 +52,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.GameRules.ValueType;
@@ -84,6 +85,8 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.ForgeRegistry;
+import scala.Console;
+import scala.collection.concurrent.Debug;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class main 
@@ -94,6 +97,10 @@ public class main
 	public static final Armor armorTab = new Armor();
 	public static final Decor decorTab = new Decor();
 	public static final Objects objectTab = new Objects();
+	public static File MOD_DIR;
+	public static Logger LOGGER;
+	
+	public File operationsFolder;
 	
 	@Instance
 	public static main instance;
@@ -114,9 +121,7 @@ public class main
 		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 2, Side.SERVER);
 		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 3, Side.SERVER);
 		NETWORK.registerMessage(MessageReloadGun.HandleReloadGun.class, MessageReloadGun.class, 4, Side.SERVER);
-		NETWORK.registerMessage(MessageToggleHybrid.HandleToggleHybrid.class, MessageToggleHybrid.class, 5, Side.SERVER);
-		NETWORK.registerMessage(MessageThrowGrenade.HandleThrowGrenade.class, MessageThrowGrenade.class, 6, Side.SERVER);
-		NETWORK.registerMessage(MessageSpotPlayer.HandleSpotPlayer.class, MessageSpotPlayer.class, 7, Side.SERVER);
+		NETWORK.registerMessage(MessageThrowGrenade.HandleThrowGrenade.class, MessageThrowGrenade.class, 5, Side.SERVER);
 		NETWORK.registerMessage(MessageSaveData.MessageHandler.class, MessageSaveData.class, 8, Side.SERVER);
 		//NETWORK.registerMessage(MessageLean.HandleLean.class, MessageLean.class, 5, Side.CLIENT);
 	}
@@ -128,6 +133,19 @@ public class main
 		RegistryHandler.preInitRegistriesOne();
 		MinecraftForge.EVENT_BUS.register(new DiamondCaliberHUD());
 		FMLCommonHandler.instance().bus().register(new KeyHandler());
+		
+		File operationsHolder = new File(Minecraft.getMinecraft().mcDataDir.toString() + "/Operations/");
+		
+		if(!operationsHolder.exists())
+		{
+			try {
+				operationsHolder.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}
 	}
 	
 	//GAMERULES
@@ -144,7 +162,6 @@ public class main
 	{
 		RegistryHandler.initRegistries();
 		//MinecraftForge.EVENT_BUS.register(new KeyHandler());
-		MinecraftForge.EVENT_BUS.register(new CamoDropEvent());
 		MinecraftForge.EVENT_BUS.register(new GunNBTEvent());
 		MinecraftForge.EVENT_BUS.register(new FovUpdater());
 		MinecraftForge.EVENT_BUS.register(new MainEvents());

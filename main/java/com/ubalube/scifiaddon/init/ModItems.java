@@ -21,7 +21,6 @@ import com.ubalube.scifiaddon.items.CGrenade.type;
 import com.ubalube.scifiaddon.items.CNode;
 import com.ubalube.scifiaddon.items.GuiItem;
 import com.ubalube.scifiaddon.items.GunAimable;
-import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunAttachments;
 import com.ubalube.scifiaddon.items.GunHybrid;
 import com.ubalube.scifiaddon.items.GunShotgun;
@@ -33,7 +32,6 @@ import com.ubalube.scifiaddon.items.ItemLore;
 import com.ubalube.scifiaddon.items.ItemModification;
 import com.ubalube.scifiaddon.items.ItemPaint;
 import com.ubalube.scifiaddon.items.ItemWaterHelmet;
-import com.ubalube.scifiaddon.items.TraderCase;
 import com.ubalube.scifiaddon.util.Reference;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
 
@@ -100,18 +98,14 @@ public class ModItems
 	public static final Item PISTOL9mm = new ItemBase("9mmclip", 64, main.gunTab);
 	public static final Item DMRCLIP = new ItemBase("dmrclip", 64, main.gunTab);
 	public static final Item SNIPERCLIP = new ItemBase("sniperclip", 64, main.gunTab);
+	public static final Item SHOTGUNAMMO = new ItemBase("shotgunshell", 64, main.gunTab);
 	
-	//Paints
-	public static final Item BLUE_PAINT = new ItemPaint("bluepaint", 10, main.objectTab, "Bright Blue", TextFormatting.BLUE);
-	public static final Item RED_PAINT = new ItemPaint("redpaint", 10, main.objectTab, "Bright Red", TextFormatting.RED);
-	public static final Item GREEN_PAINT = new ItemPaint("greenpaint", 10, main.objectTab, "Bright Green", TextFormatting.RED);
-	public static final Item ORANGE_PAINT = new ItemPaint("orangepaint", 10, main.objectTab, "Orange", TextFormatting.RED);
-	public static final Item DEFAULT_PAINT = new ItemPaint("defaultpaint", 10, main.objectTab, "Default Skin", TextFormatting.WHITE); 
 	
 	//Medals
 	public static final Item TANKMEDAL = new ItemLore("tankmedal", 1, main.objectTab, "You defeated the Goliath", TextFormatting.YELLOW);
 	public static final Item LEGIONMEDAL = new ItemLore("bossmedal", 1, main.objectTab, "You defeated the Legion General", TextFormatting.YELLOW);
 	public static final Item ICON = new ItemBase("icon", 1, main.objectTab);
+	public static final Item ICONHOSTAGE = new ItemBase("iconhostage", 1, main.objectTab);
 	
 	public static final Item LoadoutEditor = new GuiItem("loadout", 1, main.objectTab);
 	
@@ -128,13 +122,14 @@ public class ModItems
 	public static final Item AIMPOINT = new ItemBase("aimpoint", 1, main.partTab);
 	public static final Item CALIBERCARBON = new ItemBase("caliber_carbon", 64, main.partTab);
 	public static final Item CALIBERIRON = new ItemBase("caliber_iron", 64, main.partTab);
+	public static final Item CALIBERSHOTGUN = new ItemBase("shotguncaliber", 64, main.partTab);
 	public static final Item PISTOLCALIBERCARBON = new ItemBase("pistol_caliber_carbon", 64, main.partTab);
 	public static final Item PISTOLCALIBERIRON = new ItemBase("pistol_caliber_iron", 64, main.partTab);
 	public static final Item TACTICALSTOCK = new ItemBase("stock_tactical", 64, main.partTab);
 	public static final Item UZISTOCK = new ItemBase("stock_uzi", 64, main.partTab);
 	public static final Item COMPACTSTOCK = new ItemBase("stock_compact", 64, main.partTab);
 	public static final Item WOODCOMPACTSTOCK = new ItemBase("stock_compact_wood", 64, main.partTab);
-	public static final Item DEPLOYABLESHIELD = new ItemDeployableShield("spawnshield", 1, main.partTab);
+	public static final Item DEPLOYABLESHIELD = new ItemDeployableShield("deployableshield", 1, main.partTab);
 	
 	//Music
 	//Music Discs
@@ -213,15 +208,15 @@ public class ModItems
 	//Types: 
 	//1 = Rifle | 2 = Pistol | 3 = Sniper
 	//Format: Name, Creative Tab, Firerate, Clipsize, reload time, Automatic firerate, Single firerate, Bullet Damage, Bullet Range (Ticks), Ammo, Shootsound, reload sound
-	public static final Item SCARACOG = new GunAimableSkin("scar_acog", main.gunTab, 4, 35, 50, 2, 5, 500, ModItems.RIFLE56, 1, "gun.scar.desc", "5.56x45mm Clip", 2);
-	public static final Item SCAR = new GunAimableSkin("scar", main.gunTab, 4, 35, 50, 2, 5, 500, ModItems.RIFLE56, 1, "gun.scar.desc", "5.56x45mm Clip", 2);
+	public static final Item SCARACOG = new GunAimable("scar_acog", main.gunTab, 4, 35, 50, 2, 5, 500, ModItems.RIFLE56, 1, "gun.scar.desc", "5.56x45mm Clip", 2);
+	public static final Item SCAR = new GunAimable("scar", main.gunTab, 4, 35, 50, 2, 5, 500, ModItems.RIFLE56, 1, "gun.scar.desc", "5.56x45mm Clip", 2);
 	public static final Item GLOCK = new GunAimable("glock", main.gunTab, 12, 12, 50, 1, 3, 200, ModItems.PISTOL9mm, 1, "gun.glock.desc", "9mm Clip", 1);
-	public static final Item AWP = new GunAimableSkin("l69a1", main.gunTab, 10, 6, 100, 3, 20, 500, ModItems.SNIPERCLIP, 1, "gun.l69a1.desc", ".338 Sniper Clip", 2);
+	public static final Item AWP = new GunAimable("l69a1", main.gunTab, 10, 6, 100, 3, 20, 500, ModItems.SNIPERCLIP, 1, "gun.l69a1.desc", ".338 Sniper Clip", 2);
 	public static final Item SMG = new GunAimable("sting", main.gunTab, 2, 35, 50, 1, 7, 500, ModItems.SMG45, 1, "gun.sting.desc", ".45 ACP Clip", 2);
 	public static final Item TOMMYGUN = new GunAimable("thompson", main.gunTab, 8, 35, 50, 1, 4F, 500, ModItems.SMG45, 1, "gun.thompson.desc", ".45 ACP Clip", 1);
-	public static final Item HK416 = new GunAimableSkin("hk", main.gunTab, 4, 35, 50, 1, 6F, 500, ModItems.RIFLE56, 1, "gun.hk.desc", "5.56x45mm Clip", 2);
-	public static final Item AKM = new GunAimableSkin("akm", main.gunTab, 3, 35, 50, 5, 6.5F, 500, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip", 2);
-	public static final Item RPK = new GunAimableSkin("rpk", main.gunTab, 3, 50, 50, 5, 8.5F, 500, ModItems.RIFLE762, 1, "gun.rpk.desc", "7.62x39mm Clip", 2);
+	public static final Item HK416 = new GunAimable("hk", main.gunTab, 4, 35, 50, 1, 6F, 500, ModItems.RIFLE56, 1, "gun.hk.desc", "5.56x45mm Clip", 2);
+	public static final Item AKM = new GunAimable("akm", main.gunTab, 3, 35, 50, 5, 6.5F, 500, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip", 2);
+	public static final Item RPK = new GunAimable("rpk", main.gunTab, 3, 50, 50, 5, 8.5F, 500, ModItems.RIFLE762, 1, "gun.rpk.desc", "7.62x39mm Clip", 2);
 	public static final Item CR4 = new GunAimable("cr4", main.gunTab, 8, 35, 50, 5, 6F, 500, ModItems.RIFLE762, 1, "gun.cr4.desc", "7.62x39mm Clip", 2);
 	public static final Item FAL = new GunAimable("fal", main.gunTab, 8, 35, 50, 5, 5.5F, 500, ModItems.RIFLE762, 1, "gun.fal.desc", "7.62x39mm Clip", 2);
 	public static final Item UZI = new GunAimable("uzi", main.gunTab, 2, 35, 50, 5, 6F, 500, ModItems.PISTOL9mm, 1, "gun.uzi.desc", "9mm Clip", 1);
@@ -229,16 +224,16 @@ public class ModItems
 	public static final Item G36C = new GunAimable("g36c", main.gunTab, 8, 35, 50, 2, 9F, 500, ModItems.DMRCLIP, 1, "gun.g36.desc", "5.56x45mm DMR Clip", 2);
 	public static final Item GLOCK_SCOPED = new GunAimable("g18_scoped", main.gunTab, 12, 12, 50, 1, 3, 200, ModItems.PISTOL9mm, 1, "gun.glock.desc", "9mm Clip", 1);
 	public static final Item AK74U = new GunAimable("ak74u", main.gunTab, 2, 35, 50, 1, 5.5F, 200, ModItems.RIFLE762, 1, "gun.ak74u.desc", "7.62x39mm Clip", 1);
-	public static final Item MP18 = new GunAimableSkin("mp18", main.gunTab, 3, 32, 50, 1, 5, 200, ModItems.SMG45, 1, "gun.mp18.desc", ".45ACP Clip", 2);
+	public static final Item MP18 = new GunAimable("mp18", main.gunTab, 3, 32, 50, 1, 5, 200, ModItems.SMG45, 1, "gun.mp18.desc", ".45ACP Clip", 2);
 	public static final Item P250 = new GunAimable("p250", main.gunTab, 8, 12, 50, 1, 4, 200, ModItems.PISTOL9mm, 1, "gun.p250.desc", "9mm Clip", 1);
 	public static final Item AK12 = new GunAimable("ak12", main.gunTab, 2, 35, 50, 2, 5.5F, 200, ModItems.RIFLE762, 1, "gun.akm.desc", "7.62x39mm Clip", 2);
-	public static final Item VECTOR = new GunAimableSkin("vector", main.gunTab, 2, 25, 50, 2, 4.5F, 200, ModItems.SMG45, 1, "gun.vector.desc", ".45ACP Clip", 1);
-	public static final Item M4A1 = new GunAimableSkin("m4", main.gunTab, 2, 40, 50, 2, 4.0F, 200, ModItems.RIFLE56, 1, "gun.m4.desc", "5.56x45mm Clip", 2);
-	public static final Item HK416C = new GunAimableSkin("hk416c", main.gunTab, 2, 45, 50, 2, 3.5F, 200, ModItems.RIFLE56, 1, "gun.hk416c.desc", "5.56x45mm Clip", 2);
+	public static final Item VECTOR = new GunAimable("vector", main.gunTab, 2, 25, 50, 2, 4.5F, 200, ModItems.SMG45, 1, "gun.vector.desc", ".45ACP Clip", 1);
+	public static final Item M4A1 = new GunAimable("m4", main.gunTab, 2, 40, 50, 2, 4.0F, 200, ModItems.RIFLE56, 1, "gun.m4.desc", "5.56x45mm Clip", 2);
+	public static final Item HK416C = new GunAimable("hk416c", main.gunTab, 2, 45, 50, 2, 3.5F, 200, ModItems.RIFLE56, 1, "gun.hk416c.desc", "5.56x45mm Clip", 2);
 	public static final Item MK14 = new GunAimable("mk14", main.gunTab, 8, 10, 50, 5, 9F, 500, ModItems.RIFLE762, 1, "gun.mk14.desc", "7.62x39mm Clip", 2);
-	public static final Item SHOTGUN = new GunShotgun("shotgun", main.gunTab, 2, 20, 50, 2, 2.5F, 200, ModItems.RIFLE56, 1, "gun.shotgun.desc", "5.56x45mm Clip", 2, 2.0f);
+	public static final Item SHOTGUN = new GunShotgun("shotgun", main.gunTab, 2, 6, 10, 2, 8.0F, 50, ModItems.SHOTGUNAMMO, 1, "gun.shotgun.desc", "12 Gauge Shells", 2, 2.0f);
 	//public static final Item Grenade = new CGrenade("frag", 16, main.gunTab, type.FRAG);
-	public static final Item ImpactGrenade = new CGrenade("impact", 16, main.gunTab, type.IMPACT);
+	public static final Item IMPACTGRENADE = new CGrenade("impact", 16, main.gunTab, type.IMPACT);
 	public static final Item BLITZSHIELD = new ItemBlitzShield("blitzshield", 1000, main.gunTab);
 }
 

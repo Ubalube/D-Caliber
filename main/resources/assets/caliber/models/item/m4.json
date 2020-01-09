@@ -17986,34 +17986,6 @@
                 "running": 1.0
             },
             "model": "caliber:item/M4A1/m4_running"
-        },
-        {
-            "predicate": {
-                "aiming": 0,
-                "skin": 1
-            },
-            "model": "caliber:item/m4a1/skin/m4"
-        },
-        {
-            "predicate": {
-                "aiming": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/m4a1/skin/m4_aiming"
-        },
-        {
-            "predicate": {
-                "reloading": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/m4a1/skin/m4_reloading"
-        },
-        {
-            "predicate": {
-                "running": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/m4a1/skin/m4_running"
         }
     ]
 }

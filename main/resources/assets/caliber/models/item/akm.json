@@ -12347,34 +12347,6 @@
                 "running": 1.0
             },
             "model": "caliber:item/akm/akm_running"
-        },
-        {
-            "predicate": {
-                "aiming": 0,
-                "skin": 1
-            },
-            "model": "caliber:item/akm/skin/akm_e"
-        },
-        {
-            "predicate": {
-                "aiming": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/akm/skin/akm_aiming_e"
-        },
-        {
-            "predicate": {
-                "reloading": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/akm/skin/akm_reload_e"
-        },
-        {
-            "predicate": {
-                "running": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/akm/skin/akm_running_e"
         }
     ]
 }

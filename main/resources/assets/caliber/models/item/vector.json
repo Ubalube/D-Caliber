@@ -15397,34 +15397,6 @@
                 "running": 1.0
             },
             "model": "caliber:item/vector/vector_running"
-        },
-        {
-            "predicate": {
-                "aiming": 0,
-                "skin": 1
-            },
-            "model": "caliber:item/vector/skin/vector"
-        },
-        {
-            "predicate": {
-                "aiming": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/vector/skin/vector_aiming"
-        },
-        {
-            "predicate": {
-                "reloading": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/vector/skin/vector_reload"
-        },
-        {
-            "predicate": {
-                "running": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/vector/skin/vector_running"
         }
     ]
 }

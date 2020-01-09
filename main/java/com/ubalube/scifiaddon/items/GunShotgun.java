@@ -84,7 +84,7 @@ public class GunShotgun extends GunBase implements IHasModel
 		setMaxStackSize(1);
 		this.spread = spread;
 		setMaxDamage(clipsize);
-		
+		this.isShotgun = true;
 		
 		
 		ModItems.ITEMS.add(this);

@@ -44,13 +44,15 @@ public class ItemDeployableShield extends ItemBase
 	}
 	
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		EntityDeployableShield shield = new EntityDeployableShield(worldIn);
-		shield.setRotation(player);
-		worldIn.spawnEntity(shield);
-		shield.setPosition(hitX, hitY, hitZ);
-		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		if(!worldIn.isRemote)
+		{
+			EntityDeployableShield shield = new EntityDeployableShield(worldIn);
+			shield.setRotation(playerIn);
+			shield.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
+			worldIn.spawnEntity(shield);
+		}
+		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 	
 }

@@ -145,7 +145,7 @@ public class EntityHostage extends EntityLiving
 	@Override
 	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
 		this.setDead();
-		if(!player.world.isRemote)
+		if(player.world.isRemote)
 		{
 			player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Good Work! You rescued a hostage!"));
 		}

@@ -57,6 +57,7 @@ public class GunBase extends Item implements IHasModel
 	public Item ammo;
 	int type;
 	int strength;
+	public boolean isShotgun;
 	
 	public ResourceLocation texture;
 	
@@ -773,17 +774,38 @@ boolean attach = false;
 	
 	public void Reload(EntityPlayer playerIn, ItemStack itemstack, NBTTagCompound nbt)
 	{
-		if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
+		if(this.isShotgun)
 		{
-			itemstack.setItemDamage(-clipsize);
-			playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
-			playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
-			if(nbt.getBoolean("ADS") == true)
+			
+			ItemStack shotAmmo = new ItemStack(ammo, this.clipsize);
+			
+			if(playerIn.inventory.hasItemStack(shotAmmo))
 			{
-				nbt.setBoolean("ADS", false);
+				itemstack.setItemDamage(clipsize - 1);
+				playerIn.inventory.clearMatchingItems(ammo, 0, clipsize, null);
+				playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+				if(nbt.getBoolean("ADS") == true)
+				{
+					nbt.setBoolean("ADS", false);
+				}
+				nbt.setFloat("reload", 1);
 			}
-			nbt.setFloat("reload", 1);
 		}
+		else
+		{
+			if(playerIn.inventory.hasItemStack(new ItemStack(ammo)))
+			{
+				itemstack.setItemDamage(-clipsize);
+				playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
+				playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+				if(nbt.getBoolean("ADS") == true)
+				{
+					nbt.setBoolean("ADS", false);
+				}
+				nbt.setFloat("reload", 1);
+			}
+		}
+		
 	}
 	
 	@Override

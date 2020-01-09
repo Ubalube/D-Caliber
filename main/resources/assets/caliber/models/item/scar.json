@@ -12193,34 +12193,6 @@
                 "running": 1.0
             },
             "model": "caliber:item/scar/scar_running"
-        },
-        {
-            "predicate": {
-                "aiming": 0,
-                "skin": 1
-            },
-            "model": "caliber:item/scar/skin/scar_e"
-        },
-        {
-            "predicate": {
-                "aiming": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/scar/skin/scar_0_aiming_e"
-        },
-        {
-            "predicate": {
-                "reloading": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/scar/skin/scar_0_reload_e"
-        },
-        {
-            "predicate": {
-                "running": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/scar/skin/scar_running_e"
         }
     ]
 }

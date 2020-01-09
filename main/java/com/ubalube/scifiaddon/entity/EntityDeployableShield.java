@@ -116,6 +116,13 @@ public class EntityDeployableShield extends EntityLiving
     public boolean isChild() {
     	return false;
     }
+    
+    
+    
+    @Override
+    public boolean hasNoGravity() {
+    	return false;
+    }
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {

@@ -5,9 +5,7 @@ import org.lwjgl.input.Mouse;
 
 import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
-import com.ubalube.scifiaddon.util.packets.MessageSpotPlayer;
 import com.ubalube.scifiaddon.util.packets.MessageThrowGrenade;
-import com.ubalube.scifiaddon.util.packets.MessageToggleHybrid;
 
 import ca.weblite.objc.Message;
 import net.minecraft.client.Minecraft;
@@ -24,9 +22,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class KeyHandler 
 {
 	public static final int CUSTOM_INV = 0;
-	private static final String[] desc = {"Reload", "Toggle Hybrid", "Throw Grenade", "Spot Enemy"};
+	private static final String[] desc = {"Reload", "Throw Grenade"};
 	/** Default key values */
-	private static final int[] keyValues = {Keyboard.KEY_R, Keyboard.KEY_V, Keyboard.KEY_G, Keyboard.KEY_P};
+	private static final int[] keyValues = {Keyboard.KEY_R, Keyboard.KEY_G};
 	private final KeyBinding[] keys;
 	
 	
@@ -55,22 +53,8 @@ public class KeyHandler
 		{
 			
 			EntityPlayer p = (EntityPlayer) Minecraft.getMinecraft().player;
-			
-			main.NETWORK.sendToServer(new MessageToggleHybrid(p, p.getHeldItemMainhand().getItem()));
-		}
-		if (keys[2].isPressed()) 
-		{
-			
-			EntityPlayer p = (EntityPlayer) Minecraft.getMinecraft().player;
-			
+
 			main.NETWORK.sendToServer(new MessageThrowGrenade(p, p.getHeldItemMainhand().getItem()));
-		}
-		if (keys[3].isPressed()) 
-		{
-			
-			EntityPlayer p = (EntityPlayer) Minecraft.getMinecraft().player;
-			
-			main.NETWORK.sendToServer(new MessageSpotPlayer(p, p.getHeldItemMainhand().getItem()));
 		}
 		
 		

@@ -52,10 +52,10 @@ public class WorldGenCustomStructures implements IWorldGenerator
 		case 0:
 
 			//generateStructureOcean(new WorldGenStructures("oilrig"), world, random, chunkX, chunkZ, 500, Blocks.WATER, BiomeOcean.class);
-			generateStructure(new WorldGenStructures("checkpoint"), world, random, chunkX, chunkZ, 220, Blocks.GRASS, BiomePlains.class);
+			generateStructure(new WorldGenStructures("checkpoint"), world, random, chunkX, chunkZ, 220, Blocks.GRASS, BiomeSavanna.class);
 			generateStructure(new WorldGenStructures("dune"), world, random, chunkX, chunkZ, 470, Blocks.SAND, BiomeDesert.class);
 			generateStructure(new WorldGenStructures("laboratory"), world, random, chunkX, chunkZ, 470, Blocks.GRASS, BiomeSnow.class);
-			generateStructure(new WorldGenStructures("legion_1"), world, random, chunkX, chunkZ, 470, Blocks.GRASS, BiomeSavanna.class);
+			generateStructure(new WorldGenStructures("legion_1"), world, random, chunkX, chunkZ, 470, Blocks.GRASS, BiomePlains.class);
 			generateStructure(new WorldGenStructures("legionbossroom"), world, random, chunkX, chunkZ, 200, Blocks.MYCELIUM, BiomeMushroomIsland.class);
 			
 			break;
@@ -79,14 +79,16 @@ public class WorldGenCustomStructures implements IWorldGenerator
 		
 		Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
 		
-		if(world.getWorldType() != WorldType.FLAT)
+		if(world.getWorldType() == WorldType.FLAT)
 		{
-			if(classesList.contains(biome))
+			y = y + 1;
+		}
+		
+		if(classesList.contains(biome))
+		{
+			if(random.nextInt(chance) == 0)
 			{
-				if(random.nextInt(chance) == 0)
-				{
-					generator.generate(world, random, pos);
-				}
+				generator.generate(world, random, pos);
 			}
 		}
 		

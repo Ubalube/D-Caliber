@@ -2,8 +2,6 @@ package com.ubalube.scifiaddon.tileentity;
 
 import net.minecraft.tileentity.TileEntity;
 
-import com.ubalube.scifiaddon.blocks.BlockSkinner;
-import com.ubalube.scifiaddon.recipes.SkinnerRecipes.SkinnerRecipes;
 import com.ubalube.scifiaddon.recipes.SkinnerRecipes.WorkshopRecipes;
 
 import net.minecraft.block.Block;

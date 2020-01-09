@@ -1,6 +1,6 @@
 package com.ubalube.scifiaddon.client.gui.slot;
 
-import com.ubalube.scifiaddon.tileentity.TileEntitySkinner;
+import com.ubalube.scifiaddon.tileentity.TileEntityWorkshop;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -19,7 +19,7 @@ public class SlotFuel extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack) 
 	{
-		return TileEntitySkinner.isItemFuel(stack);
+		return TileEntityWorkshop.isItemFuel(stack);
 	}
 	
 	@Override

@@ -1,8 +1,6 @@
 package com.ubalube.scifiaddon.client.gui;
 
-import com.ubalube.scifiaddon.tileentity.ContainerSkinner;
 import com.ubalube.scifiaddon.tileentity.ContainerWorkshop;
-import com.ubalube.scifiaddon.tileentity.TileEntitySkinner;
 import com.ubalube.scifiaddon.tileentity.TileEntityWorkshop;
 import com.ubalube.scifiaddon.util.Reference;
 
@@ -44,7 +42,7 @@ public class GuiWorkshop extends GuiContainer
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		if(TileEntitySkinner.isBurning(tileentity))
+		if(TileEntityWorkshop.isBurning(tileentity))
 		{
 			int k = this.getBurnLeftScaled(13);
 			this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 54 + 12 - k, 176, 12 - k, 14, k + 1);

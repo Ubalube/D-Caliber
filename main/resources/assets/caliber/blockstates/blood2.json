@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "caliber:blood2" },
+        "facing=west": { "model": "caliber:blood2", "y": 90 },
+        "facing=north": { "model": "caliber:blood2", "y": 180 },
+        "facing=east": { "model": "caliber:blood2", "y": 270 }
+    }
+}

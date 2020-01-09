@@ -112,7 +112,7 @@ public class CommandTeam extends CommandBase
                         p.sendMessage(new TextComponentString(TextFormatting.GREEN + "Successfully left the squad!"));
                         for(UUID pla : data.teams.get(toLeave))
                         {
-                        	p.getServer().getPlayerList().getPlayerByUUID(pla).sendMessage(new TextComponentString(TextFormatting.RED + p.getDisplayNameString() + " has left your clan!"));
+                        	p.getServer().getPlayerList().getPlayerByUUID(pla).sendMessage(new TextComponentString(TextFormatting.RED + p.getDisplayNameString() + " has left your squad!"));
                         }
                         if(data.teams.get(toLeave).isEmpty()) {
                             data.removeTeam(toLeave);

@@ -7,7 +7,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.ubalube.scifiaddon.init.ModItems;
-import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunAttachments;
 import com.ubalube.scifiaddon.items.GunBase;
 import com.ubalube.scifiaddon.items.ItemModification;

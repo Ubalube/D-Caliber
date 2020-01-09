@@ -26310,7 +26310,7 @@
             "predicate": {
                 "aiming": 1.0
             },
-            "model": "caliber:item/shotgun/shotgun_aim"
+            "model": "caliber:item/shotgun/shotgun_aiming"
         },
         {
             "predicate": {

@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " T ",
+        " I ",
+        " G "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        
+        "T":
+        {
+            "item": "caliber:copper"
+        },
+        
+        "G":
+        {
+            "item": "minecraft:gunpowder"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:shotgunshell",
+        "count": 4
+    }
+}

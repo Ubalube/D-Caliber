@@ -69,15 +69,12 @@ public class WorldGenOceanStructures implements IWorldGenerator
 		
 		Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
 		
-		if(world.getWorldType() != WorldType.FLAT)
+		if(classesList.contains(biome))
 		{
-			if(classesList.contains(biome))
+			if(random.nextInt(chance) == 0)
 			{
-				if(random.nextInt(chance) == 0)
-				{
-					generator.generate(world, random, pos);
-					//generateRigLegs(new WorldGenStructures("oilrigstands"), world, pos.getX(), pos.getY(), pos.getZ(), random);
-				}
+				generator.generate(world, random, pos);
+				//generateRigLegs(new WorldGenStructures("oilrigstands"), world, pos.getX(), pos.getY(), pos.getZ(), random);
 			}
 		}
 		

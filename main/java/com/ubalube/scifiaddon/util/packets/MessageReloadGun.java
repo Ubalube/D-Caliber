@@ -1,6 +1,7 @@
 package com.ubalube.scifiaddon.util.packets;
 
 import com.ubalube.scifiaddon.items.GunBase;
+import com.ubalube.scifiaddon.items.GunShotgun;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;

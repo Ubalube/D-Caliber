@@ -4,7 +4,6 @@ import net.minecraft.inventory.Container;
 
 import com.ubalube.scifiaddon.client.gui.slot.SlotFuel;
 import com.ubalube.scifiaddon.client.gui.slot.SlotOutput;
-import com.ubalube.scifiaddon.recipes.SkinnerRecipes.SkinnerRecipes;
 import com.ubalube.scifiaddon.recipes.SkinnerRecipes.WorkshopRecipes;
 
 import net.minecraft.entity.player.EntityPlayer;

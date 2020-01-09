@@ -36,7 +36,7 @@ public class EntityInit
 		//registerEntity("trader", EntityTrader.class, Reference.ENTITY_TRADER, 50, 000000, 10289152);
 		
 		//VEHICLES
-		registerEntity("humvee", VehicleHumvee.class, Reference.ENTITY_VEHICLE_HUMVEE, 50, 000000, 10289152);
+		//registerEntity("humvee", VehicleHumvee.class, Reference.ENTITY_VEHICLE_HUMVEE, 50, 000000, 10289152);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)

@@ -81,6 +81,10 @@ public class MessageThrowGrenade implements IMessage{
 								entity.setGravity(0.1F);
 								pla.world.spawnEntity(entity);
 							}
+							if(!world.isRemote)
+							{
+								pla.inventory.clearMatchingItems(pla.inventory.getStackInSlot(i).getItem(), 0, 1, null);
+							}
 							break;
 						}
 					}

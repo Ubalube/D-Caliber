@@ -13688,34 +13688,6 @@
                 "running": 1.0
             },
             "model": "caliber:item/awp/awp_running"
-        },
-        {
-            "predicate": {
-                "aiming": 0,
-                "skin": 1
-            },
-            "model": "caliber:item/awp/skin/l69a1"
-        },
-        {
-            "predicate": {
-                "aiming": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/awp/skin/awp_aiming"
-        },
-        {
-            "predicate": {
-                "reloading": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/awp/skin/awp_reload"
-        },
-        {
-            "predicate": {
-                "running": 1.0,
-                "skin": 1
-            },
-            "model": "caliber:item/awp/skin/awp_running"
         }
     ]
 }

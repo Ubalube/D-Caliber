@@ -30,7 +30,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import com.ubalube.scifiaddon.items.GunAimable;
-import com.ubalube.scifiaddon.items.GunAimableSkin;
 import com.ubalube.scifiaddon.items.GunBase;
 import com.ubalube.scifiaddon.util.Reference;
 
@@ -57,7 +56,7 @@ public class Player
             
             
             
-            if (player.getHeldItemMainhand().getItem() instanceof GunAimableSkin || player.getHeldItemMainhand().getItem() instanceof GunAimable) {
+            if (player.getHeldItemMainhand().getItem() instanceof GunBase) {
                 
                 RenderLivingBase renderer = event.getRenderer();
                 

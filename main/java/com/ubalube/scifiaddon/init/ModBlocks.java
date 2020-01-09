@@ -7,6 +7,7 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.blocks.Airdrop;
 import com.ubalube.scifiaddon.blocks.BarbedWire;
 import com.ubalube.scifiaddon.blocks.BlockBase;
+import com.ubalube.scifiaddon.blocks.BlockBlood;
 import com.ubalube.scifiaddon.blocks.BlockCrateMedic;
 import com.ubalube.scifiaddon.blocks.BlockCrateSupplies;
 import com.ubalube.scifiaddon.blocks.BlockCrateWeapon;
@@ -15,7 +16,6 @@ import com.ubalube.scifiaddon.blocks.BlockLaser;
 import com.ubalube.scifiaddon.blocks.BlockOre;
 import com.ubalube.scifiaddon.blocks.BlockRadius;
 import com.ubalube.scifiaddon.blocks.BlockRotaryLamp;
-import com.ubalube.scifiaddon.blocks.BlockSkinner;
 import com.ubalube.scifiaddon.blocks.BlockWorkshop;
 import com.ubalube.scifiaddon.blocks.NodeBlock;
 import com.ubalube.scifiaddon.blocks.TransparentBlock;
@@ -54,11 +54,15 @@ public class ModBlocks
 	public static final Block CONCRETEBRICK = new BlockBase("concretebrick", Material.ROCK, 1.5F);
 	public static final Block COPPERORE = new BlockOre("copperore", Material.ROCK, ModItems.COPPER, 2);
 	
+
+	public static final Block BLOOD1 = new BlockBlood("blood1", Material.REDSTONE_LIGHT);
+	public static final Block BLOOD2 = new BlockBlood("blood2", Material.REDSTONE_LIGHT);
+	public static final Block BLOOD3 = new BlockBlood("blood3", Material.REDSTONE_LIGHT);
+	
 	//Radius
 	//public static final Block RADIUS = new BlockRadius("radius", Material.ROCK, 1.5F);
 	
 	//Skinner
-	public static final Block SKINNER = new BlockSkinner("skinner", Material.ROCK, 1.5F);
 	public static final Block WORKSHOP = new BlockWorkshop("workshop", Material.ROCK, 1.5F);
 	
 	//Labs
