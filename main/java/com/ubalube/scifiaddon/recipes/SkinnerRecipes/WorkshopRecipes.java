@@ -13,6 +13,7 @@ import com.ubalube.scifiaddon.items.ItemModification;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
@@ -36,22 +37,6 @@ public class WorkshopRecipes
 	
 	private WorkshopRecipes() 
 	{
-		//Input 1 = Gun 
-		//Input 2 = Paint
-		
-		/*
-		 Skins
-		 1 = Redstone
-		 2 = Lightning
-		 3 = Volcanic
-		 4 = Fade
-		 5 = Desert
-		 6 = Forest
-		 7 = Blue
-		 8 = Red
-		 */
-		
-		//AK12
 		addHarvestorRecipe(new ItemStack(Items.IRON_AXE), new ItemStack(Items.REPEATER), new ItemStack(ModItems.STATTRACK), 5.0F);
 		addHarvestorRecipe(new ItemStack(Items.IRON_AXE), new ItemStack(Blocks.WOOL), new ItemStack(ModItems.LOWRECOIL), 5.0F);
 		addHarvestorRecipe(new ItemStack(Items.DIAMOND_AXE), new ItemStack(Items.IRON_SWORD), new ItemStack(ModItems.INCREASEDAMAGE), 5.0F);
@@ -87,14 +72,13 @@ public class WorkshopRecipes
 		ItemStack result = weapon.copy();
 		ItemModification mod = (ItemModification) modification.getItem();
 		GunBase gun = (GunBase) result.getItem();
+		if(getHarvestorResult(weapon, modification) != ItemStack.EMPTY) return;
+		this.smeltingList.put(weapon, modification, result);
+		this.experienceList.put(result, Float.valueOf(experience));
 		if(mod.getModification() == GunAttachments.POTIONEFFECT)
 		{
 			if(mod.getPotionEffect() != null)
 			{
-				if(getHarvestorResult(weapon, modification) != ItemStack.EMPTY) return;
-				this.smeltingList.put(weapon, modification, result);
-				this.experienceList.put(result, Float.valueOf(experience));
-				
 				if(modification.getItem() instanceof ItemModification)
 				{
 					
@@ -109,10 +93,6 @@ public class WorkshopRecipes
 		}
 		else
 		{
-			if(getHarvestorResult(weapon, modification) != ItemStack.EMPTY) return;
-			this.smeltingList.put(weapon, modification, result);
-			this.experienceList.put(result, Float.valueOf(experience));
-			
 			if(modification.getItem() instanceof ItemModification)
 			{
 

@@ -15,6 +15,6 @@ public class Objects extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(ModItems.TANKMEDAL);
+		return new ItemStack(ModItems.ICON);
 	}
 }

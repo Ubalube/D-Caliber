@@ -17,13 +17,9 @@ public class ConfigHandler {
 	
     public static class Client {
         @Config.Comment({"Use Diamond Caliber Crosshair"})
-        public boolean dcCrosshair;
+        public boolean dcCrosshair = true;
         @Config.Comment({"Show Weapon HUD"})
-        public boolean weaponHud;
-        @Config.Comment({"Left Click to Shoot"})
-        public boolean leftClickToShoot = false;
-        @Config.Comment({"Diamond Caliber Main Menu"})
-        public boolean DiamondCaliberMainMenu = true;
+        public boolean weaponHud = true;
         
         @Config.Ignore
         public ItemStack lastMainItem = ItemStack.EMPTY;
@@ -35,8 +31,6 @@ public class ConfigHandler {
         public ItemStack LEGGINGS = ItemStack.EMPTY;
         @Config.Ignore
         public ItemStack BOOTS = ItemStack.EMPTY;
-        @Config.Ignore
-        public boolean ShowNewGUI = true;
     }
 
     public static class Server {
@@ -44,8 +38,6 @@ public class ConfigHandler {
         public boolean spawnStructures = true;
         @Config.Comment({"Goliath Spawn Chance"})
         public int spawnChance = 10;
-        @Config.Comment({"Show Loadout GUI on Join"})
-        public boolean showLoadoutGUI = false;
         @Config.Comment({"Do hitmarker sound"})
         public boolean hitmark;
     }

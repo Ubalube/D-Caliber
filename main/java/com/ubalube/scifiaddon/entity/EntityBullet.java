@@ -71,6 +71,8 @@ public class EntityBullet extends EntityArrow
     
     private Potion effect;
     
+    private int tracerNum;
+    
     public EntityBullet(World a) {
 		super(a);
 	}
@@ -89,22 +91,35 @@ public class EntityBullet extends EntityArrow
 		super(worldIn, shooter);
 		this.strength = strength;
 		this.shootingEntity = shooter;
-		
+		this.tracerNum = 0;
 	}
 	
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		
+		
+		
 		int x = MathHelper.floor(this.getEntityBoundingBox().minX);
 		int y = MathHelper.floor(this.getEntityBoundingBox().minY);
 		int z = MathHelper.floor(this.getEntityBoundingBox().minZ);
 		World world = this.world;
 		Entity entity = (Entity) shootingEntity;
 		
+		for (int k = 0; k < 4; ++k)
+        {
+            this.world.spawnParticle(EnumParticleTypes.CRIT, this.posX + this.motionX * (double)k / 4.0D, this.posY + this.motionY * (double)k / 4.0D, this.posZ + this.motionZ * (double)k / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
+        }
+		
 		if (this.inGround) {
 			this.world.removeEntity(this);
 		}
+	}
+	
+	public void setTracer(int color)
+	{
+		this.tracerNum = color;
 	}
 	
 	public void setPotionEffect(Potion potion)
@@ -257,6 +272,9 @@ public class EntityBullet extends EntityArrow
         {
             this.setDead();
         }
+        
+        
+        
         super.onEntityUpdate();
     }
 

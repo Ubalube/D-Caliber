@@ -46,6 +46,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.EnumAction;
@@ -85,6 +86,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.ForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 import scala.Console;
 import scala.collection.concurrent.Debug;
 
@@ -133,19 +135,6 @@ public class main
 		RegistryHandler.preInitRegistriesOne();
 		MinecraftForge.EVENT_BUS.register(new DiamondCaliberHUD());
 		FMLCommonHandler.instance().bus().register(new KeyHandler());
-		
-		File operationsHolder = new File(Minecraft.getMinecraft().mcDataDir.toString() + "/Operations/");
-		
-		if(!operationsHolder.exists())
-		{
-			try {
-				operationsHolder.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		}
 	}
 	
 	//GAMERULES

@@ -15,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeDesert;
+import net.minecraft.world.biome.BiomeForest;
 import net.minecraft.world.biome.BiomeMushroomIsland;
 import net.minecraft.world.biome.BiomeOcean;
 import net.minecraft.world.biome.BiomePlains;
@@ -34,6 +35,7 @@ public class WorldGenCustomStructures implements IWorldGenerator
 	public static final WorldGenStructures LAB = new WorldGenStructures("laboratory");
 	public static final WorldGenStructures LEGION = new WorldGenStructures("legion_1");
 	public static final WorldGenStructures LEGIONBOSSROOM = new WorldGenStructures("legionbossroom");
+	public static final WorldGenStructures UNDERGROUND = new WorldGenStructures("undergroundlab");
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -57,12 +59,42 @@ public class WorldGenCustomStructures implements IWorldGenerator
 			generateStructure(new WorldGenStructures("laboratory"), world, random, chunkX, chunkZ, 470, Blocks.GRASS, BiomeSnow.class);
 			generateStructure(new WorldGenStructures("legion_1"), world, random, chunkX, chunkZ, 470, Blocks.GRASS, BiomePlains.class);
 			generateStructure(new WorldGenStructures("legionbossroom"), world, random, chunkX, chunkZ, 200, Blocks.MYCELIUM, BiomeMushroomIsland.class);
+			generateStructureUnderground(new WorldGenStructures("undergroundlab"), world, random, chunkX, chunkZ, 400, Blocks.GRASS, BiomeForest.class);
 			
 			break;
 			
 		case -1:
 			
 			break;
+		}
+		
+	}
+	
+	private void generateStructureUnderground(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes)
+	{
+		ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
+		
+		int x = (chunkX * 16) + random.nextInt(15);
+		int z = (chunkZ * 16) + random.nextInt(15);
+		int y = calculateGenerationHeight(world, x, z, topBlock);
+		
+		if(world.getWorldType() != WorldType.FLAT)
+		{
+			y = y - 25;
+		}
+		
+		
+		BlockPos pos = new BlockPos(x,y,z);
+		
+		Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
+		
+		
+		if(classesList.contains(biome))
+		{
+			if(random.nextInt(chance) == 0)
+			{
+				generator.generate(world, random, pos);
+			}
 		}
 		
 	}

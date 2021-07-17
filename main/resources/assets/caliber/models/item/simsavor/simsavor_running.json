@@ -1,0 +1,39 @@
+{
+  "parent": "caliber:item/simsavor",
+  "textures": {
+        "particle": "blocks/e_particle",
+        "texture": "blocks/e_texture",
+        "simsavor_palette": "caliber:gun/simsavor",
+        "texture1": "caliber:gun/fnfal"
+  },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation":  [ 53, 0, 0 ],
+            "translation":  [ 0, -1.391, 0 ],
+            "scale":  [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation":  [ 53, 0, 0 ],
+            "translation":  [ 0, -1.391, 0 ],
+            "scale":  [ 0.4, 0.4, 0.4 ]
+        },
+        "firstperson_righthand": {
+            "rotation":  [ 47, 0, -14 ],
+            "translation":  [ -2.086, -2.782, 0 ]
+        },
+        "firstperson_lefthand": {
+            "rotation":  [ 47, 0, -14 ],
+            "translation":  [ -2.086, -2.782, 0 ]
+        },
+        "gui": {
+            "rotation":  [ 90, -59, 90 ],
+            "scale":  [ 0.5, 0.5, 0.5 ]
+        },
+        "ground": {
+            "scale":  [ 0.5, 0.5, 0.5 ]
+        },
+        "fixed": {
+            "rotation":  [ 0, 90, 0 ]
+        }
+    }
+}

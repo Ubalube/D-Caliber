@@ -4,7 +4,6 @@ import com.ubalube.scifiaddon.util.Player.LoadoutProvider;
 import com.ubalube.scifiaddon.util.Player.util.ILoadout;
 import com.ubalube.scifiaddon.util.Player.util.LoadoutStorage;
 import com.ubalube.scifiaddon.util.Player.util.Loadouts;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.CapabilityManager;

@@ -105,7 +105,6 @@ public class EntityMilita extends EntitySoldierBase
 		this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoldier.class, true));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhost.class, true));
-		
 	}
 	
 }

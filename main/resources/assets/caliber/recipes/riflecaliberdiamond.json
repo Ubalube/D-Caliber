@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "III",
+        "IT "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:diamond"
+        },
+    
+        "T":
+        {
+            "item": "minecraft:tripwire_hook"
+        }
+    },
+    
+    "result":
+    {
+        "item": "caliber:caliber_diamond",
+        "count": 1
+    }
+}

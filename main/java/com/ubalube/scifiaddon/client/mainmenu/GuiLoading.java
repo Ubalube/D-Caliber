@@ -72,7 +72,7 @@ public class GuiLoading extends GuiScreen
     protected void actionPerformed(GuiButton button) throws IOException {
     	if(button == this.contBut)
     	{
-    		ConfigHandler.ClientSide.ShowNewGUI = false;
+    		//ConfigHandler.ClientSide.ShowNewGUI = false;
     		this.mc.displayGuiScreen(new GuiCaliberMenu());
     	}
     	super.actionPerformed(button);

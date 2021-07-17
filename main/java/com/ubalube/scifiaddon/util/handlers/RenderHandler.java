@@ -6,8 +6,11 @@ import com.ubalube.scifiaddon.entity.EntityDeployableShield;
 import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.entity.EntityLegionBoss;
 import com.ubalube.scifiaddon.entity.EntityMilita;
+import com.ubalube.scifiaddon.entity.EntitySimBoss;
 import com.ubalube.scifiaddon.entity.EntityGhost;
+import com.ubalube.scifiaddon.entity.EntityGlitch;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.EntityHazmat;
 import com.ubalube.scifiaddon.entity.EntityHostage;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
@@ -17,7 +20,10 @@ import com.ubalube.scifiaddon.entity.render.RenderDeployableShield;
 import com.ubalube.scifiaddon.entity.render.RenderImpact;
 import com.ubalube.scifiaddon.entity.render.RenderLegionBoss;
 import com.ubalube.scifiaddon.entity.render.RenderMilita;
+import com.ubalube.scifiaddon.entity.render.RenderSimBoss;
 import com.ubalube.scifiaddon.entity.render.RenderGhost;
+import com.ubalube.scifiaddon.entity.render.RenderGlitch;
+import com.ubalube.scifiaddon.entity.render.RenderHazmat;
 import com.ubalube.scifiaddon.entity.render.RenderHostage;
 import com.ubalube.scifiaddon.entity.render.RenderFrag;
 import com.ubalube.scifiaddon.entity.render.RenderSoldier;
@@ -148,6 +154,35 @@ public class RenderHandler
 		});
 		
 		
+		RenderingRegistry.registerEntityRenderingHandler(EntitySimBoss.class, new IRenderFactory<EntitySimBoss>()
+		{
+			@Override
+			public Render<? super EntitySimBoss> createRenderFor(RenderManager manager) 
+			{
+				return new RenderSimBoss(manager);
+			}
+		});
+
+		
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityGlitch.class, new IRenderFactory<EntityGlitch>()
+		{
+			@Override
+			public Render<? super EntityGlitch> createRenderFor(RenderManager manager) 
+			{
+				return new RenderGlitch(manager);
+			}
+		});
+
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityHazmat.class, new IRenderFactory<EntityHazmat>()
+		{
+			@Override
+			public Render<? super EntityHazmat> createRenderFor(RenderManager manager) 
+			{
+				return new RenderHazmat(manager);
+			}
+		});
 		/*
 		 * 
 		 * VEHICLES

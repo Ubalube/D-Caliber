@@ -70,7 +70,7 @@ public class MainEvents
 	public static void doRespawnEvent(PlayerRespawnEvent e)
 	{
 		EntityPlayer p = (EntityPlayer) e.player;
-		main.proxy.OpenLoadoutGUI(p);
+		//main.proxy.OpenLoadoutGUI(p);
 	}
 
 	@SubscribeEvent
@@ -92,11 +92,11 @@ public class MainEvents
 	@SubscribeEvent
 	public void onGuiLaunch(GuiOpenEvent event) {
 		
-		if(ConfigHandler.ClientSide.ShowNewGUI == true)
+		/*if(ConfigHandler.ClientSide.ShowNewGUI == true)
 		{
 			if (event.getGui() instanceof GuiMainMenu) 
 			{
-				event.setGui(new GuiNew());
+				//event.setGui(new GuiNew());
 			}
 		}
 		else
@@ -105,10 +105,10 @@ public class MainEvents
 			{
 				if (event.getGui() instanceof GuiMainMenu) 
 				{
-					event.setGui(new GuiCaliberMenu());
+					//event.setGui(new GuiCaliberMenu());
 				}
 			}
-		}
+		}*/
 		
 	}
 
@@ -133,10 +133,10 @@ public class MainEvents
     public static void logIn(PlayerEvent.PlayerLoggedInEvent event) {
         if(!event.player.getEntityWorld().isRemote) {
         	main.NETWORK.sendToAll(new MessageSaveData(WorldData.teams));
-            if(ConfigHandler.ServerSide.showLoadoutGUI == true)
-            {
-            	main.proxy.OpenLoadoutGUI(event.player);
-            }
+            //if(ConfigHandler.ServerSide.showLoadoutGUI == true)
+            //{
+            	//main.proxy.OpenLoadoutGUI(event.player);
+            //}
         }
     }
 	

@@ -8,7 +8,7 @@ public class Reference
 
 	public static final String MOD_ID = "caliber";
 	public static final String NAME = "Diamond Caliber";
-	public static final String VERSION = "2.0";
+	public static final String VERSION = "3.0";
 	public static final String ACCEPTED_VERSIONS = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "com.ubalube.scifiaddon.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.ubalube.scifiaddon.proxy.CommonProxy";
@@ -23,6 +23,10 @@ public class Reference
 	public static final int ENTITY_MILITA = 163;
 	public static final int ENTITY_L_BOSS = 164;
 	public static final int ENTITY_HOSTAGE = 165;
+	public static final int ENTITY_SIMBOSS = 166;
+	public static final int ENTITY_SHIELD = 167;
+	public static final int ENTITY_GLITCH = 168;
+	public static final int ENTITY_HAZMAT = 169;
 	
 
     public static final String LINK_WEBSITE = "https://www.curseforge.com/minecraft/mc-mods/diamond-caliber";

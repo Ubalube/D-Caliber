@@ -6,7 +6,6 @@ import java.util.UUID;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import com.ubalube.scifiaddon.items.GunAimable;
 import com.ubalube.scifiaddon.items.GunBase;
-import com.ubalube.scifiaddon.items.GunHybrid;
 import com.ubalube.scifiaddon.util.handlers.ConfigHandler;
 
 import net.minecraft.client.Minecraft;
@@ -15,11 +14,15 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.WorldProviderEnd;
+import net.minecraft.world.gen.structure.StructureEndCityPieces;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -95,12 +98,6 @@ public class DiamondCaliberHUD
 			GunBase gb = ((GunBase) item.getItem());
 			
 			this.drawAmmo(mc, sr, gb, item, playerIn, 0);
-			
-			if(item.getItem() instanceof GunHybrid)
-			{
-				GunHybrid gh = ((GunHybrid) item.getItem());
-				this.drawHybridState(mc, sr, gh, item, playerIn, 0);
-			}
 		}
 		
 		if(WorldData.team.containsKey(playerIn.getUniqueID()))
@@ -132,22 +129,6 @@ public class DiamondCaliberHUD
     	}
     	
     }
-	
-	private void drawHybridState(Minecraft mc, ScaledResolution sr, GunHybrid gb, ItemStack item, EntityPlayer playerIn, int i)
-	{
-		boolean isHybridOn = gb.getHybrid(item, item.getTagCompound());
-		String hybridOn = ChatFormatting.GREEN + "Hybrid: ON";
-		String hybridOff = ChatFormatting.GREEN + "Hybrid:" + ChatFormatting.RED + "OFF";
-		if(!isHybridOn)
-		{
-			mc.fontRenderer.drawString(hybridOn, sr.getScaledWidth()-7-hybridOn.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-25+i , 0xFFFFFFFF);
-		}
-		else
-		{
-			mc.fontRenderer.drawString(hybridOff, sr.getScaledWidth()-7-hybridOff.length()*6,sr.getScaledHeight()-mc.fontRenderer.FONT_HEIGHT-25+i , 0xFFFFFFFF);
-		}
-		
-	}
 
 	private void drawAmmo(Minecraft mc, ScaledResolution sr, GunBase gb, ItemStack item, EntityPlayer playerIn,
 			int i) {

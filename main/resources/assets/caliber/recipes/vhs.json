@@ -1,0 +1,50 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "HA ",
+        "ICS",
+        "  R"
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:steel"
+        },
+    
+        "C":
+        {
+            "item": "caliber:caliber_diamond"
+        },
+        
+        "S":
+        {
+            "item": "caliber:stock_tactical"
+        },
+        
+        "A":
+        {
+            "item": "caliber:aimpoint"
+        },
+        
+        "H":
+        {
+            "item": "caliber:holo"
+        },
+        
+        "R":
+        {
+            "item": "caliber:56mclip"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:vhs",
+        "count": 1
+    }
+}

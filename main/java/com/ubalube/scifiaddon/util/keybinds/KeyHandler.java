@@ -7,7 +7,6 @@ import com.ubalube.scifiaddon.main;
 import com.ubalube.scifiaddon.util.packets.MessageReloadGun;
 import com.ubalube.scifiaddon.util.packets.MessageThrowGrenade;
 
-import ca.weblite.objc.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;

@@ -49,7 +49,7 @@ public class ArmorBaseSkinNV extends ArmorBase {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
-		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 20, 2));
+		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 200, 2));
 	}
 
 	

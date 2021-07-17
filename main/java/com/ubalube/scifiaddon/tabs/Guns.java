@@ -10,8 +10,6 @@ import net.minecraft.item.ItemStack;
 public class Guns extends CreativeTabs
 {
 	
-	
-	
 	public Guns() {
 		super("Weapons");
 	}
@@ -20,6 +18,6 @@ public class Guns extends CreativeTabs
 	public ItemStack getTabIconItem() 
 	{
 		
-		return new ItemStack(ModItems.G36);
+		return new ItemStack(ModItems.KNIFE);
 	}
 }

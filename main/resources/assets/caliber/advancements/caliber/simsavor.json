@@ -1,0 +1,35 @@
+{
+    "display": {
+        "title": {
+            "text": "Simulation Savior",
+            "color": "gold",
+            "bold": true
+        },
+        "description": {
+            "text": "Obtain the simulation savior"
+        },
+        "icon": {
+            "item": "caliber:simsavor"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "inventorychanged": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "caliber:simsavor"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "parent": "caliber:caliber/root"
+}

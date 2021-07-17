@@ -1,0 +1,38 @@
+{
+  "parent": "caliber:item/mk18",
+  "textures": {
+        "mk18_palette": "caliber:gun/mk18"
+  },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation":  [ 0, 180, 0 ],
+            "translation":  [ 0, -2.782, -1.39 ],
+            "scale":  [ 0.5, 0.5, 0.5 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation":  [ 0, 180, 0 ],
+            "translation":  [ 0, -2.782, -1.39 ],
+            "scale":  [ 0.5, 0.5, 0.5 ]
+        },
+        "firstperson_righthand": {
+            "rotation":  [ 0, 180, 0 ],
+            "translation":  [ -8.46, -2.5, -3.477 ]
+        },
+        "firstperson_lefthand": {
+            "rotation":  [ 0, 180, 0 ],
+            "translation":  [ -9.4, -2.5, -3.477 ]
+        },
+        "gui": {
+            "rotation":  [ -90, 56, 90 ],
+            "translation":  [ 1.5, -0.6, 0 ],
+            "scale":  [ 0.4, 0.4, 0.4 ]
+        },
+        "ground": {
+            "scale":  [ 0.5, 0.5, 0.5 ]
+        },
+        "fixed": {
+            "rotation":  [ 0, 90, 0 ],
+            "translation":  [ 0, -4.869, 0 ]
+        }
+    }
+}

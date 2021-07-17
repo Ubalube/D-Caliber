@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " I ",
+        "ISI",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "caliber:schematic"
+        },
+        "S":
+        {
+            "item": "caliber:node"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:simcore",
+        "count": 1
+    }
+}

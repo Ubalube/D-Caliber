@@ -73,10 +73,10 @@ public class GunAimable extends GunBase implements IHasModel
 	 * @param ammoN
 	 * @param strength
 	 */
-	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength) 
+	public GunAimable(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength, SoundEvent sound) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength);
+		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength, sound);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		

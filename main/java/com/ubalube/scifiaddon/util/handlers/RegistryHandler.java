@@ -30,6 +30,7 @@ import net.minecraft.client.model.ModelWolf;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -104,7 +105,7 @@ public class RegistryHandler
 	
 	
 	public static void preInitRegistries() {
-		
+		SoundHandler.registerSounds();
 		EntityInit.registerProjectile();
 		EntityInit.registerEntities();
 		
@@ -128,7 +129,6 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		SoundHandler.registerSounds();
 		//KeyHandler.registerKeyBinds();
 		//BiomeInit.registerBiomes();
 		
@@ -151,7 +151,7 @@ public class RegistryHandler
 	public static void serverRegistries(FMLServerStartingEvent e)
 	{
 		e.registerServerCommand(new CommandModify());
-		e.registerServerCommand(new CommandTeam());
+		//e.registerServerCommand(new CommandTeam());
 	}
 	
 	@SideOnly(Side.CLIENT)

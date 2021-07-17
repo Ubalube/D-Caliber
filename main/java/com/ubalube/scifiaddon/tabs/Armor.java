@@ -15,6 +15,6 @@ public class Armor extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(ModItems.RANGER_HELMET);
+		return new ItemStack(ModItems.NVGOGGLES_t3);
 	}
 }

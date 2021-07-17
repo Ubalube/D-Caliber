@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        " R ",
+        " T "
+    ],
+   
+    "key":
+    {
+        "R":
+        {
+            "item": "caliber:helmet_combat"
+        },
+        
+        "T":
+        {
+            "item": "caliber:nvpano"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:helmet_combatnv",
+        "count": 1
+    }
+}

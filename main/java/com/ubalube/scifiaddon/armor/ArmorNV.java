@@ -41,7 +41,7 @@ public class ArmorNV extends ItemArmor implements IHasModel{
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 1, 1));
+		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 200, 1));
 		super.onArmorTick(world, player, itemStack);
 	}
 	

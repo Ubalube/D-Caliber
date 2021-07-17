@@ -13,7 +13,6 @@ import com.ubalube.scifiaddon.util.Player.LoadoutProvider;
 import com.ubalube.scifiaddon.util.Player.util.ILoadout;
 import com.ubalube.scifiaddon.util.packets.MessageGiveItems;
 import com.ubalube.scifiaddon.util.packets.MessageTakeItems;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -130,6 +129,7 @@ public class GuiLoadout extends GuiScreen
 		AssaultClassGuns.add(ModItems.G36);
 		AssaultClassGuns.add(ModItems.SCAR);
 		AssaultClassGuns.add(ModItems.SCARACOG);
+		AssaultClassGuns.add(ModItems.VHS);
 		
 		MarksmanClassGuns.add(ModItems.AWP);
 		MarksmanClassGuns.add(ModItems.MK14);
@@ -540,7 +540,7 @@ public class GuiLoadout extends GuiScreen
 			if(this.selectedLoadout == loadout1_contents)
 			{
 				
-				if(currentAssaultGunIndex == 7)
+				if(currentAssaultGunIndex == AssaultClassGuns.size() - 1)
 				{
 					currentAssaultGunIndex = 0;
 				}
@@ -558,7 +558,7 @@ public class GuiLoadout extends GuiScreen
 				if(this.selectedLoadout == loadout2_contents)
 				{
 					
-					if(currentMarksmanGunIndex == 2)
+					if(currentMarksmanGunIndex == MarksmanClassGuns.size() - 1)
 					{
 						currentMarksmanGunIndex = 0;
 					}
@@ -575,7 +575,7 @@ public class GuiLoadout extends GuiScreen
 					if(this.selectedLoadout == loadout3_contents)
 					{
 						
-						if(currentScoutGunIndex == 5)
+						if(currentScoutGunIndex == ScoutClassGuns.size() - 1)
 						{
 							currentScoutGunIndex = 0;
 						}
@@ -592,7 +592,7 @@ public class GuiLoadout extends GuiScreen
 						if(this.selectedLoadout == loadout4_contents)
 						{
 							
-							if(currentScoutGunIndex == 1)
+							if(currentSupportGunIndex == SupportClassGuns.size() - 1)
 							{
 								currentSupportGunIndex = 0;
 							}

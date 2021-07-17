@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        " S ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:stick"
+        },
+    
+        "S":
+        {
+            "item": "caliber:steel"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "caliber:knife",
+        "count": 1
+    }
+}

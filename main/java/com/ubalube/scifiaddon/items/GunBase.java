@@ -2,6 +2,7 @@ package com.ubalube.scifiaddon.items;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -9,7 +10,9 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.AMDPerformanceMonitor;
 
 import com.ubalube.scifiaddon.main;
+import com.ubalube.scifiaddon.enchantment.EnchantmentJohnWickReload;
 import com.ubalube.scifiaddon.entity.EntityBullet;
+import com.ubalube.scifiaddon.init.ModEnchantments;
 import com.ubalube.scifiaddon.init.ModItems;
 import com.ubalube.scifiaddon.util.IHasModel;
 import com.ubalube.scifiaddon.util.handlers.SoundHandler;
@@ -19,6 +22,8 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,8 +63,11 @@ public class GunBase extends Item implements IHasModel
 	int type;
 	int strength;
 	public boolean isShotgun;
+	int tracerValue;
 	
 	public ResourceLocation texture;
+	
+	private SoundEvent sound;
 	
 	float IncreaseDamageAmount = damage + 3f;
 	int LowRecoil = Recoil / 2;
@@ -84,7 +92,7 @@ public class GunBase extends Item implements IHasModel
 	 * @param ammoName
 	 * @param strength
 	 */
-	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoName, int strength) 
+	public GunBase(String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoName, int strength, SoundEvent sound) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -97,6 +105,7 @@ public class GunBase extends Item implements IHasModel
 		this.range = bulletDuration;
 		this.ammo = ammunition;
 		this.Recoil = recoil;
+		this.sound = sound;
 		
 		this.description = desc;
 		this.ammoName = ammoName;
@@ -466,26 +475,8 @@ public class GunBase extends Item implements IHasModel
 	public void playShootSound(EntityPlayer playerIn)
 	{
 		World worldIn = playerIn.getEntityWorld();
-		
-		if(this.ammo == ModItems.DMRCLIP || this.ammo == ModItems.SNIPERCLIP)
-		{
-			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_SNIPER_SHOOT, SoundCategory.PLAYERS, 1, 1);
-		}
-		
-		if(this.ammo == ModItems.RIFLE56 || this.ammo == ModItems.RIFLE762)
-		{
-			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.PLAYERS, 1, 1);
-		}
-		
-		if(this.ammo == ModItems.SMG45)
-		{
-			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.GUN_RIFLE_SHOOT, SoundCategory.PLAYERS, 1, 1);
-		}
-		
-		if(this.ammo == ModItems.PISTOL9mm)
-		{
-			worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, SoundHandler.G17_SHOOT, SoundCategory.PLAYERS, 1, 1);
-		}
+
+		worldIn.playSound(playerIn,	playerIn.posX, playerIn.posY, playerIn.posZ, this.sound, SoundCategory.PLAYERS, 1, 1);
 		
 	}
 	
@@ -652,8 +643,8 @@ public class GunBase extends Item implements IHasModel
 	public void shootGun(World worldIn, EntityPlayer playerIn, ItemStack itemstack)
 	{
 		
-boolean attach = false;
-		
+		boolean attach = false;
+		float velocity = 7;
 		NBTTagCompound nbt = itemstack.getTagCompound();
 		if(nbt == null)
 		{
@@ -677,7 +668,7 @@ boolean attach = false;
 								EntityBullet entity = new EntityBullet(worldIn, playerIn, this.strength);
 								if(this.hasBoundPotionEffect(itemstack))
 									entity.setPotionEffect(this.getBoundPotionEffect(itemstack));
-								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+								entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, velocity, 0.0F);
 
 								entity.setGunDamage((double)this.damage);
 								for(String s : getModifications(itemstack))
@@ -726,7 +717,7 @@ boolean attach = false;
 									break;
 								}
 							}
-							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+							entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, velocity, 0.0F);
 							entity.shootingEntity = playerIn;
 							entity.setRange(this.range);
 							worldIn.spawnEntity(entity);
@@ -761,7 +752,7 @@ boolean attach = false;
 								break;
 							}
 						}
-						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, 7 * 3, 0.0F);
+						entity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 1.0F, velocity, 0.0F);
 						entity.setRange(this.range);
 						entity.shootingEntity = playerIn;
 						worldIn.spawnEntity(entity);
@@ -781,9 +772,10 @@ boolean attach = false;
 			
 			if(playerIn.inventory.hasItemStack(shotAmmo))
 			{
-				itemstack.setItemDamage(clipsize - 1);
-				playerIn.inventory.clearMatchingItems(ammo, 0, clipsize, null);
-				playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+				if(itemstack.getItemDamage() == -clipsize) return;
+				itemstack.setItemDamage(itemstack.getItemDamage() - 1);
+				playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
+				playerIn.getCooldownTracker().setCooldown(this, 20);
 				if(nbt.getBoolean("ADS") == true)
 				{
 					nbt.setBoolean("ADS", false);
@@ -797,7 +789,15 @@ boolean attach = false;
 			{
 				itemstack.setItemDamage(-clipsize);
 				playerIn.inventory.clearMatchingItems(ammo, 0, 1, null);
-				playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+				Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(itemstack);
+				if(enchantments.get(ModEnchantments.johnwickreload) != null)
+				{
+					playerIn.getCooldownTracker().setCooldown(this, ReloadTime / 2);
+				}
+				else
+				{
+					playerIn.getCooldownTracker().setCooldown(this, ReloadTime);
+				}
 				if(nbt.getBoolean("ADS") == true)
 				{
 					nbt.setBoolean("ADS", false);

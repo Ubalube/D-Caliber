@@ -1,51 +1,58 @@
 {
-    "gun.pistol.shoot":
+    "gun.pistol":
     {
         "category": "gun",
         "subtitle": "Pistol Shot",
-        "sounds": [{ "name": "caliber:gun/pistol/shoot", "stream": false}]
+        "sounds": [{ "name": "caliber:gun/pistol", "stream": false}]
     },
     
-    "gun.sniper.shoot":
-    {
-        "category": "gun",
-        "subtitle": "Sniper Shot",
-        "sounds": [{ "name": "caliber:gun/sniper/shoot", "stream": false}]
-    },
-    
-    "gun.rifle.shoot":
+    "gun.rifle1":
     {
         "category": "gun",
         "subtitle": "Rifle Shot",
-        "sounds": [{ "name": "caliber:gun/rifle/shoot", "stream": false}]
+        "sounds": [{ "name": "caliber:gun/rifle1", "stream": false}]
     },
     
-    "reload.firemode":
-    {
-        "category": "reload",
-        "subtitle": "Toggle firemode",
-        "sounds": [{ "name": "caliber:reload/firemode", "stream": false}]
-    },
-    
-    "reload.riflereload":
-    {
-        "category": "reload",
-        "subtitle": "Reload Rifle",
-        "sounds": [{ "name": "caliber:reload/riflereload", "stream": false}]
-    },
-    
-    "reload.pistolreload":
-    {
-        "category": "reload",
-        "subtitle": "Pistol Reload",
-        "sounds": [{ "name": "caliber:reload/pistolreload", "stream": false}]
-    },
-    
-    "gun.glockshoot":
+    "gun.rifle2":
     {
         "category": "gun",
-        "subtitle": "G17 Shot",
-        "sounds": [{ "name": "caliber:gun/glock_shoot", "stream": false}]
+        "subtitle": "Rifle Shot",
+        "sounds": [{ "name": "caliber:gun/rifle2", "stream": false}]
+    },
+    
+    "gun.shotgun":
+    {
+        "category": "gun",
+        "subtitle": "Shotgun Shot",
+        "sounds": [{ "name": "caliber:gun/shotgun", "stream": false}]
+    },
+    
+    "gun.sniper":
+    {
+        "category": "gun",
+        "subtitle": "Sniper Shot",
+        "sounds": [{ "name": "caliber:gun/sniper", "stream": false}]
+    },
+    
+    "gun.stinger":
+    {
+        "category": "gun",
+        "subtitle": "Sting Shot",
+        "sounds": [{ "name": "caliber:gun/stinger", "stream": false}]
+    },
+    
+    "gun.smg1":
+    {
+        "category": "gun",
+        "subtitle": "SMG Shot",
+        "sounds": [{ "name": "caliber:gun/smg1", "stream": false}]
+    },
+    
+    "gun.smg2":
+    {
+        "category": "gun",
+        "subtitle": "SMG Shot",
+        "sounds": [{ "name": "caliber:gun/smg2", "stream": false}]
     },
     
     "hostile_lands": 

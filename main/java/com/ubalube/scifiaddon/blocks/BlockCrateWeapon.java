@@ -241,6 +241,10 @@ public class BlockCrateWeapon extends BlockHorizontal implements IHasModel
 		case 31:
 			i = ModItems.DEPLOYABLESHIELD;
 			break;
+			
+		case 32:
+			i = ModItems.VHS;
+			break;
 
 		default:
 			i = ModItems.SPEC_HELMET;

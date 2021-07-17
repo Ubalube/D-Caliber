@@ -4,7 +4,6 @@ import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.items.CGrenade;
 import com.ubalube.scifiaddon.items.GunBase;
-import com.ubalube.scifiaddon.items.GunHybrid;
 import com.ubalube.scifiaddon.items.CGrenade.type;
 
 import io.netty.buffer.ByteBuf;

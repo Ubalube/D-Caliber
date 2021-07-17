@@ -76,10 +76,10 @@ public class GunShotgun extends GunBase implements IHasModel
 	
 	float spread;
 	
-	public GunShotgun(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength, float spread) 
+	public GunShotgun(String name, CreativeTabs tab, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype, String desc, String ammoN, int strength, float spread, SoundEvent sound) 
 	{
 		//String name, int fireRate, int ammocap, int reloadtm, int recoil, float bulletDamage, int bulletDuration, Item ammunition, int guntype
-		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength);
+		super(name, fireRate, ammocap, reloadtm, recoil, bulletDamage, bulletDuration, ammunition, guntype, desc, ammoN, strength, sound);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
 		this.spread = spread;

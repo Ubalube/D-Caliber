@@ -9,8 +9,11 @@ import com.ubalube.scifiaddon.entity.EntityDeployableShield;
 import com.ubalube.scifiaddon.entity.EntityImpact;
 import com.ubalube.scifiaddon.entity.EntityLegionBoss;
 import com.ubalube.scifiaddon.entity.EntityMilita;
+import com.ubalube.scifiaddon.entity.EntitySimBoss;
 import com.ubalube.scifiaddon.entity.EntityGhost;
+import com.ubalube.scifiaddon.entity.EntityGlitch;
 import com.ubalube.scifiaddon.entity.EntityGoliath;
+import com.ubalube.scifiaddon.entity.EntityHazmat;
 import com.ubalube.scifiaddon.entity.EntityHostage;
 import com.ubalube.scifiaddon.entity.EntityFrag;
 import com.ubalube.scifiaddon.entity.EntitySoldier;
@@ -32,7 +35,10 @@ public class EntityInit
 		registerEntity("milita", EntityMilita.class, Reference.ENTITY_MILITA, 50, 9751417, 9751551);
 		registerEntity("goliath", EntityGoliath.class, Reference.ENTITY_GOLIATH, 50, 000000, 10289152);
 		registerEntity("legionboss", EntityLegionBoss.class, Reference.ENTITY_L_BOSS, 50, 000000, 10289152);
+		registerEntity("simboss", EntitySimBoss.class, Reference.ENTITY_SIMBOSS, 50, 000000, 10289152);
 		registerEntity("hostage", EntityHostage.class, Reference.ENTITY_HOSTAGE, 50, 16745216, 0);
+		registerEntity("glitch", EntityGlitch.class, Reference.ENTITY_GLITCH, 50, 000000, 10289152);
+		registerEntity("hazmat", EntityHazmat.class, Reference.ENTITY_HAZMAT, 50, 000000, 10289152);
 		//registerEntity("trader", EntityTrader.class, Reference.ENTITY_TRADER, 50, 000000, 10289152);
 		
 		//VEHICLES
@@ -49,7 +55,7 @@ public class EntityInit
 		registerProjectileType("gunBullet", EntityBullet.class , Reference.ENTITY_BULLET, 50);
 		registerProjectileType("frag", EntityImpact.class , Reference.ENTITY_FRAG, 50);
 		registerProjectileType("grenade", EntityFrag.class , Reference.ENTITY_FRAG + 1, 50);
-		registerProjectileType("deployableshield", EntityDeployableShield.class , Reference.ENTITY_HOSTAGE + 1, 50);
+		registerProjectileType("deployableshield", EntityDeployableShield.class , Reference.ENTITY_SHIELD, 50);
 	}
 	
 	private static void registerProjectileType(String entityName, Class<? extends Entity> entityClass, int id, int range) 
